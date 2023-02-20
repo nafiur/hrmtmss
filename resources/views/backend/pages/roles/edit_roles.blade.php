@@ -12,82 +12,47 @@
                             <li class="breadcrumb-item">
                                 <a href="/dashboard">Home</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">User Roles Permission Management</li>
+                            <li class="breadcrumb-item">
+                                <a href="{{ route('all.roles') }}">All Roles</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit Roles</li>
                             </ol>
                         </nav>
-
-                        {{-- <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="m-0 breadcrumb">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Edit Roles</a></li>
-                                            
-                                        </ol>
+                        <div class="block block-rounded">
+                            <div class="block-header block-header-default">
+                              <h3 class="block-title">Edit Roles</h3>
+                              <a href="{{ route('all.roles') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fa fa-undo"> Back </i></a> <br>  <br>
+                            </div>
+                            <div class="block-content">    
+                              <div class="row">
+                                <div class="col-lg-4">
+                                  <p class="text-muted">
+                                    Update Roles Information
+                                  </p>
+                                </div>
+                                <div class="col-lg-8 col-xl-5">
+                                  <form class="mb-5" action="{{ route('roles.update') }}" method="POST">
+                                    @csrf
+                                    <div class="mb-4">
+                                        <input type="hidden" name="id" value="{{ $roles->id }}">
+                                      <label class="form-label" for="example-text-input">Roles Name</label>
+                                      <input type="text" class="form-control" id="myform" name="name" value="{{ $roles->name }}" placeholder="Role Name">
                                     </div>
-                                    <h4 class="page-title">Edit Roles</h4>
+                                    <div class="mb-4">
+                                      <button type="submit" style="float:right" class="btn mb-3 btn-primary">Save</button>
+                                    </div>
+                                  </form>                        
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> --}}
-
-<div class="row">
-    
-
-  <div class="col-lg-8 col-xl-8">
-<div class="card">
-    <div class="card-body">
-                                    
-                                      
-                                         
-                                           
-
-    <!-- end timeline content-->
-
-    <div class="tab-pane" id="settings">
-        <form id="myForm" method="post" action="{{ route('roles.update') }}" enctype="multipart/form-data">
-            @csrf
-
-            <input type="hidden" name="id" value="{{ $roles->id }}">
-
-            <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Edit Roles</h5>
-
-            <div class="row">
-
-
-    <div class="col-md-6">
-        <div class="mb-3 form-group">
-            <label for="firstname" class="form-label">Role Name</label>
-            <input type="text" name="name" class="form-control" value="{{ $roles->name }}"  >
-           
-        </div>
-    </div>
- 
-
-
-            </div> <!-- end row -->
- 
-        
-            
-            <div class="text-end">
-                <button type="submit" class="mt-2 btn btn-success waves-effect waves-light"><i class="mdi mdi-content-save"></i> Save</button>
-            </div>
-        </form>
-    </div>
-    <!-- end settings content-->
-    
-                                       
+                            </div>
+                        </div>
                                     </div>
                                 </div> <!-- end card-->
-
                             </div> <!-- end col -->
                         </div>
                         <!-- end row-->
-
                     </div> <!-- container -->
-
-                </div> <!-- content -->
+</div> <!-- content -->
 
 
 <script type="text/javascript">

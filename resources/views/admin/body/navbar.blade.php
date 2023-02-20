@@ -35,6 +35,11 @@
                         </a>
                     </li>
                     @endif
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('staffprofile.all') }}">
+                            <i class="ri-file-word-2-line me-2"></i> HRM Staff
+                        </a>
+                    </li>
                     
                     {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="urp" role="button"

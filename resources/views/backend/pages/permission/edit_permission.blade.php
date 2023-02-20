@@ -77,6 +77,7 @@
                 <option value="efile"{{ $permission->group_name == 'efile' ? 'selected' : '' }}> eFile </option>
                 <option value="sector"{{ $permission->group_name == 'sector' ? 'selected' : '' }}> Sector </option>
                 <option value="domain"{{ $permission->group_name == 'domain' ? 'selected' : '' }}> Domain </option>
+                <option value="department"{{ $permission->group_name == 'department' ? 'selected' : '' }}> Department </option>
                 <option value="designation"{{ $permission->group_name == 'designation' ? 'selected' : '' }}> Designation </option>
                 <option value="division"{{ $permission->group_name == 'division' ? 'selected' : '' }}> Division</option>
                 <option value="district"{{ $permission->group_name == 'district' ? 'selected' : '' }}> District </option>
@@ -85,6 +86,15 @@
                 <option value="department"{{ $permission->group_name == 'department' ? 'selected' : '' }}> Department</option>                                                                 
                 <option value="employeetype"{{ $permission->group_name == 'employeetype' ? 'selected' : '' }}> Employeetype</option>                                                                 
                 <option value="roles"{{ $permission->group_name == 'roles' ? 'selected' : '' }}> Roles</option>   
+                <option value="module"{{ $permission->group_name == 'module' ? 'selected' : '' }}> Module</option>   
+                <option value="eduqualification"{{ $permission->group_name == 'eduqualification' ? 'selected' : '' }}> Edu Qualification</option>   
+                <option value="gender"{{ $permission->group_name == 'gender' ? 'selected' : '' }}> Gender</option>   
+                <option value="jobstatus"{{ $permission->group_name == 'jobstatus' ? 'selected' : '' }}> Job Status</option>   
+                <option value="maritalstatus"{{ $permission->group_name == 'maritalstatus' ? 'selected' : '' }}> Marital Status</option>   
+                <option value="religion"{{ $permission->group_name == 'religion' ? 'selected' : '' }}> Religion</option>   
+                <option value="zone"{{ $permission->group_name == 'zone' ? 'selected' : '' }}> Zone</option>   
+                <option value="area"{{ $permission->group_name == 'area' ? 'selected' : '' }}> Area</option>   
+                <option value="branch"{{ $permission->group_name == 'branch' ? 'selected' : '' }}> Branch</option>   
                 <option value="module"{{ $permission->group_name == 'module' ? 'selected' : '' }}> Module</option>   
             </select>           
         </div>

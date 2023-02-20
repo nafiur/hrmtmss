@@ -22,6 +22,7 @@ use App\Http\Controllers\Setup\BranchController;
 use App\Http\Controllers\Setup\DomainController;
 use App\Http\Controllers\Setup\GenderController;
 use App\Http\Controllers\Setup\SectorController;
+use App\Http\Controllers\StaffProfileController;
 use App\Http\Controllers\Setup\DistrictController;
 use App\Http\Controllers\Setup\DivisionController;
 use App\Http\Controllers\Setup\ReligionController;
@@ -67,6 +68,12 @@ Route::controller(AdminController::class)->group(function () {
 
 Route::controller(SetupController::class)->group(function () {
     Route::get('/setup/all', 'SetupAll')->name('setup.all');
+    
+});
+
+ // Satff Profile All Route 
+Route::controller(StaffProfileController::class)->group(function () {
+    Route::get('/staffprofile/all', 'StaffProfileAll')->name('staffprofile.all');
     
 });
 
@@ -271,8 +278,10 @@ Route::controller(BranchController::class)->group(function () {
 Route::controller(NewEmployeeController::class)->group(function () {
     Route::get('/newemployee/all', 'NewEmployeeAll')->name('newemployee.all')->middleware('permission:newemployee.all');
     Route::get('/newemployee/add', 'NewEmployeeAdd')->name('newemployee.add')->middleware('permission:newemployee.add'); 
+    // Route::get('/newemployee/show', 'NewEmployeeShow')->name('newemployee.show')->middleware('permission:newemployee.show'); 
     Route::post('/newemployee/store', 'NewEmployeeStore')->name('newemployee.store');
-    Route::get('/newemployee/edit/{id}', 'NewEmployeeEdit')->name('newemployee.edit'); 
+    Route::get('/newemployee/show/{id}', 'NewEmployeeShow')->name('newemployee.show')->middleware('permission:newemployee.show'); 
+    Route::get('/newemployee/edit/{id}', 'NewEmployeeEdit')->name('newemployee.edit')->middleware('permission:newemployee.edit'); 
     Route::post('/newemployee/update', 'NewEmployeeUpdate')->name('newemployee.update');
     Route::get('/newemployee/delete/{id}', 'NewEmployeeDelete')->name('newemployee.delete')->middleware('permission:newemployee.delete');
     

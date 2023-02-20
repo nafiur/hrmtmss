@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @extends('admin.admin_master')
 @section('admin')
 @section('title'){{'All Role'}} @endsection
@@ -24,7 +23,7 @@
                                         <tr>
                                             <th>Sl</th>
                                             <th>Role Name </th>
-                                            <th>Action</th>
+                                            <th width="20%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -32,12 +31,9 @@
                                             <tr>
                                                 <td>{{ $key+1 }}</td> 
                                                 <td>{{ $item->name }}</td> 
-                                                <td>
+                                                <td  width="20%">
                                                     <a href="{{ route('edit.roles',$item->id) }}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
                                                     <a href="{{ route('delete.roles',$item->id) }}" class="btn btn-danger rounded-pill waves-effect waves-light" id="delete">Delete</a>
-=======
-
->>>>>>> dc63e67fe7447fc504f37efffa13a94cff5d66a4
                                                 </td>
                                             </tr>
                                         @endforeach

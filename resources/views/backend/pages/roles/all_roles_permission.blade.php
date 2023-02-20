@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @extends('admin.admin_master')
 @section('admin')
 @section('title'){{'Role in Permission'}} @endsection
@@ -25,7 +24,7 @@
                                             <th>Sl</th>
                                             <th>Roles Name </th>
                                             <th>Permission Name </th> 
-                                            <th width="18%">Action</th>
+                                            <th width="15%">Action</th>
                                         </tr>
                                     </thead>
                                 
@@ -41,7 +40,7 @@
                             @endforeach
             
                             </td> 
-                            <td width="18%">
+                            <td width="15%">
                                 <a href="{{ route('admin.edit.roles',$item->id) }}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
                                 <a href="{{ route('admin.delete.roles',$item->id) }}" class="btn btn-danger rounded-pill waves-effect waves-light" id="delete">Delete</a>
             
@@ -57,5 +56,4 @@
 </div> <!-- container-fluid -->
 </div>
 @endsection
-=======
->>>>>>> dc63e67fe7447fc504f37efffa13a94cff5d66a4
+

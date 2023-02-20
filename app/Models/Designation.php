@@ -9,4 +9,8 @@ class Designation extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function newemployee(){
+        return $this->belongsTo(Designation::class,'designation_id','id');
+    }
 }

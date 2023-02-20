@@ -12,15 +12,6 @@
               <li class="breadcrumb-item active" aria-current="page">Employee Management</li>
             </ol>
           </nav>
-        {{-- <!-- start page title -->
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">All New Employee</h4>
-                </div>
-            </div>
-        </div>
-        <!-- end page title -->                   --}}
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -30,10 +21,13 @@
                                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
-                                            <th>Sl</th>
+                                            <th width="5%">Sl</th>
+                                            <th width="5%">Employee ID</th> 
                                             <th>Name</th> 
+                                            <th>Designation</th> 
                                             <th>Domain</th> 
-                                            <th>date of Birth</th> 
+                                            <th>Joining Date</th> 
+                                            <th>Status</th> 
                                             <th width="10%">Action</th>
                                         </tr>
                                     </thead>
@@ -42,10 +36,17 @@
                                             <tr>
                                                 <td> {{ $key+1}} </td>
                                                 {{-- <td> {{ $item['domains']['name']  }}</td>  --}}
+                                                <td> {{ $item->id }} </td> 
                                                 <td> {{ $item->name }} </td> 
-                                                <td> {{ $item->domain_id }} </td> 
-                                                <td> {{ $item->date_of_birth }} </td> 
+                                                {{-- <td> {{ $item->designation_id }} </td>  --}}
+                                                <td> {{ $item['designation']['name']  }} </td> 
+                                                <td> {{ $item['domain']['name']  }} </td> 
+                                                {{-- <td> {{ $item->domain_id }} </td>  --}}
+                                                <td> {{ $item->joiningdate }} </td>   
+                                                <td> {{ $item->status }} </td>   
                                                 <td>
+                                                    <a href="{{ route('newemployee.show',$item->id) }}" class="btn btn-info sm" title="Show Data">  <i class="fas fa-eye"></i> </a>
+                                                    <a href="{{ route('newemployee.delete',$item->id) }}" class="btn btn-success sm" title="Delete Data" id="delete">  <i class="fas fa-download"></i> </a>
                                                     <a href="{{ route('newemployee.edit',$item->id) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
                                                     <a href="{{ route('newemployee.delete',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
                                                 </td>  

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @extends('admin.admin_master')
 @section('admin')
 @section('title'){{'Add Permission'}} @endsection
@@ -41,6 +40,7 @@
                                                     <option value="efile"> eFile </option>
                                                     <option value="sector"> Sector </option>
                                                     <option value="domain"> Domain </option>
+                                                    <option value="department"> Department </option>
                                                     <option value="designation"> Designation </option>
                                                     <option value="division"> Division</option>
                                                     <option value="district"> District </option>
@@ -48,8 +48,16 @@
                                                     <option value="bloodgroup"> Bloodgroup</option>                                                                 
                                                     <option value="department"> Department</option>                                                                 
                                                     <option value="employeetype"> Employeetype</option>                                                                 
-                                                    <option value="roles"> Roles</option>                                                                 
-                                                    <option value="module"> Module</option>                                                                 
+                                                    <option value="roles">Roles</option>                                                                 
+                                                    <option value="module">Module</option>        
+                                                    <option value="eduqualification">Edu Qualification</option>                                                                 
+                                                    <option value="gender">Gender</option>                                                                 
+                                                    <option value="jobstatus">Job Status</option>                                                                 
+                                                    <option value="maritalstatus">Marital Status</option>                                                                 
+                                                    <option value="religion">Religion</option>                                                                 
+                                                    <option value="zone">Zone</option>                                                                 
+                                                    <option value="area">Area</option>                                                                 
+                                                    <option value="branch">Branch</option>                                                                 
                                                     {{-- <option value="roles"> Roles</option>                                                                 
                                                     <option value="roles"> Roles</option>                                                                 
                                                     <option value="roles"> Roles</option>               
@@ -73,5 +81,4 @@
     </div> <!-- container-fluid -->
 </div>
 @endsection
-=======
->>>>>>> dc63e67fe7447fc504f37efffa13a94cff5d66a4
+

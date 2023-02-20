@@ -16,6 +16,6 @@ class District extends Model
         return $this->belongsTo(Division::class,'division_id','id');
     }
     public function newemployee(){
-        return $this->belongsTo(NewEmployee::class,'employee_id','id');
+        return $this->belongsTo(NewEmployee::class,'id','id');
     }
 }

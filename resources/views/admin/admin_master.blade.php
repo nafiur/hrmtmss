@@ -124,6 +124,19 @@
 <script src="{{ asset('backend/assets/js/pages/form-advanced.init.js') }}"></script>
 <!-- end  For Select2 -->
 
+{{-- <script src="{{ asset('backend/mix/assets/js/dashmix.app.min-5.5.js') }}"></script>
+<script src="{{ asset('backend/mix/assets/js/lib/jquery.min.js') }}"></script>
+<script src="{{ asset('backend/mix/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('backend/mix/assets/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+<script src="{{ asset('backend/mix/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
+<script src="{{ asset('backend/mix/assets/js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>
+<script src="{{ asset('backend/mix/assets/js/plugins/jquery.maskedinput/jquery.maskedinput.min.js') }}"></script>
+<script src="{{ asset('backend/mix/assets/js/plugins/dropzone/min/dropzone.min.js') }}"></script>
+<script src="{{ asset('backend/mix/assets/js/plugins/pwstrength-bootstrap/pwstrength-bootstrap.min.js') }}"></script>
+<script src="{{ asset('backend/mix/assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
+<script>Dashmix.helpersOnLoad(['js-flatpickr', 'jq-datepicker', 'jq-maxlength', 'jq-select2', 'jq-rangeslider', 'jq-masked-inputs', 'jq-pw-strength']);</script>
+<script src="{{ asset('backend/mix/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}') }}"></script> --}}
+
     </body>
 
 </html>

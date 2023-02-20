@@ -42,7 +42,8 @@
       <!-- Main Container -->
       <main id="main-container">
         <!-- Page Content -->
-        <div class="bg-image" style="background-image: url('backend/mix/assets/media/photos/photo22@2x.jpg')">
+        {{-- <div class="bg-image" style="background-image: url('backend/mix/assets/media/photos/photo22@2x.jpg')"> --}}
+        <div class="bg-image" style="background-image: url('upload/2053111.jpg')">
           <div class="row g-0 bg-primary-op">
             <!-- Main Section -->
             <div class="hero-static col-md-6 d-flex align-items-center bg-body-extra-light">
@@ -51,7 +52,7 @@
                 <div class="text-center mt-4">
                     <div class="mb-3">
                         <a href="{{ route('login') }}" class="auth-logo">
-                            <img src="{{ asset('backend/assets/images/tmss.png') }}" height="150" class="logo-dark mx-auto" alt="">
+                            <img src="{{ asset('backend/assets/images/tmss.png') }}" height="250" class="logo-dark mx-auto" alt="">
                             {{-- <img src="{{ asset('backend/assets/images/hrm-light.png') }}" height="60" class="logo-light mx-auto" alt=""> --}}
                         </a>
                     </div>

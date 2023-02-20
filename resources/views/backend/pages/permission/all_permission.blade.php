@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @extends('admin.admin_master')
 @section('admin')
 @section('title'){{'All Permission'}} @endsection
@@ -49,5 +48,4 @@
 </div> <!-- container-fluid -->
 </div>
 @endsection
-=======
->>>>>>> dc63e67fe7447fc504f37efffa13a94cff5d66a4
+

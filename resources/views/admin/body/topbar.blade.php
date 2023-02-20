@@ -155,7 +155,7 @@
 
                                 <div class="col-sm-5">
                                     <div>
-                                        <img src="assets/images/megamenu-img.png" alt="megamenu-img" class="img-fluid mx-auto d-block">
+                                        <img src="{{ asset('assets/images/megamenu-img.png')}}" alt="megamenu-img" class="img-fluid mx-auto d-block">
                                     </div>
                                 </div>
                             </div>

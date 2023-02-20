@@ -4,23 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\Zone;
 use App\Models\Domain;
-use App\Models\NewEmployee;
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use App\Http\Controllers\Controller;
-use App\Models\BloodGroup;
-use App\Models\Designation;
 use App\Models\District;
 use App\Models\Division;
-use App\Models\EducationalQualification;
-use App\Models\MaritalStatus;
 use App\Models\Upazilla;
+use App\Models\BloodGroup;
+use App\Models\Designation;
+use App\Models\NewEmployee;
+use App\Models\EmployeeType;
+use Illuminate\Http\Request;
+use App\Models\MaritalStatus;
+use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\EducationalQualification;
 
 class NewEmployeeController extends Controller
 {
     public function NewEmployeeAll(){
 
+        $domains = Domain::all();
+        $designations = Designation::all();
+        $maritalstatus = MaritalStatus::all();
+        $districts = District::all();
+        $divisions = Division::all();
+        $upazillas = Upazilla::all();
+        $blood_groups = BloodGroup::all();
+        $educationqualifications = EducationalQualification::all();
+        $employeetypes = EmployeeType::all();
         $newemployees = NewEmployee::all();
         return view('backend.newemployee.newemployee_all',compact('newemployees'));
     } // End Method 
@@ -34,15 +44,24 @@ class NewEmployeeController extends Controller
         $divisions = Division::all();
         $upazillas = Upazilla::all();
         $blood_groups = BloodGroup::all();
+        $employeetypes = EmployeeType::all();
         $educationqualifications = EducationalQualification::all();
-        return view('backend.newemployee.newemployee_add',compact('domains','designations','maritalstatus','districts','divisions','blood_groups','educationqualifications','upazillas'));
+        return view('backend.newemployee.newemployee_add',compact('domains','employeetypes','designations','maritalstatus','districts','divisions','blood_groups','educationqualifications','upazillas'));
     } // End Method 
 
 
        public function NewEmployeeStore(Request $request){
 
+
+        $validateData = $request->validate([
+            'name' => 'required',
+            // 'id' => 'required|unique:newemployee,id|max:8|min:8', 
+            'id' => 'required|max:8|min:8', 
+        ]);
+
         NewEmployee::insert([
             'id' => $request->id,
+            'employee_type_id' => $request->employee_type_id,
             'name' => $request->name,
             'father_name' => $request->father_name,
             'mother_name' => $request->mother_name,
@@ -68,7 +87,7 @@ class NewEmployeeController extends Controller
             'email' => $request->email,
             'nid' => $request->nid,
             'smartcard' => $request->smartcard,
-            'bloodgroups_id' => $request->smartcard,
+            'bloodgroups_id' => $request->bloodgroups_id,
             'created_by' => Auth::user()->id,
             'created_at' => Carbon::now(), 
 
@@ -83,10 +102,38 @@ class NewEmployeeController extends Controller
 
     } // End Method 
 
-    public function NewEmployeeEdit($id){
+    public function NewEmployeeShow($id){
+
+        $domains = Domain::all();
+        $designations = Designation::all();
+        $maritalstatus = MaritalStatus::all();
+        $districts = District::all();
+        $divisions = Division::all();
+        $upazillas = Upazilla::all();
+        $blood_groups = BloodGroup::all();
+        $employeetypes = EmployeeType::all();
+        $educationqualifications = EducationalQualification::all();
 
         $newemployee = NewEmployee::findOrFail($id);
-        return view('backend.newemployee.newemployee_edit',compact('newemployee'));
+        return view('backend.newemployee.newemployee_show',compact('newemployee','employeetypes','domains','designations','maritalstatus','districts','divisions','blood_groups','educationqualifications','upazillas'));
+
+    } // End Method 
+
+
+    public function NewEmployeeEdit($id){
+
+        $domains = Domain::all();
+        $designations = Designation::all();
+        $maritalstatus = MaritalStatus::all();
+        $districts = District::all();
+        $divisions = Division::all();
+        $upazillas = Upazilla::all();
+        $blood_groups = BloodGroup::all();
+        $employeetypes = EmployeeType::all();
+        $educationqualifications = EducationalQualification::all();
+
+        $newemployee = NewEmployee::findOrFail($id);
+        return view('backend.newemployee.newemployee_edit',compact('newemployee','employeetypes','domains','designations','maritalstatus','districts','divisions','blood_groups','educationqualifications','upazillas'));
 
     } // End Method 
 
@@ -95,6 +142,7 @@ class NewEmployeeController extends Controller
         $id = $request->id;
 
         NewEmployee::findOrFail($id)->update([
+            'employee_type_id' => $request->employee_type_id,
             'name' => $request->name,
             'father_name' => $request->father_name,
             'mother_name' => $request->mother_name,
@@ -120,7 +168,7 @@ class NewEmployeeController extends Controller
             'email' => $request->email,
             'nid' => $request->nid,
             'smartcard' => $request->smartcard,
-            'bloodgroups_id' => $request->smartcard,
+            'bloodgroups_id' => $request->bloodgroups_id,
             'updated_by' => Auth::user()->id,
             'updated_at' => Carbon::now(), 
 
@@ -131,7 +179,7 @@ class NewEmployeeController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('domain.all')->with($notification);
+        return redirect()->route('newemployee.all')->with($notification);
 
     } // End Method 
 

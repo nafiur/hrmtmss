@@ -1,0 +1,10 @@
+Id Sector Name
+1 HEM Grand Sector
+2 Grand Health Sector
+3 Others
+4 N/A
+5 N/I
+6 Program Sector
+7 Trade Business Sector
+8 Training & Education Sector
+9 ICT & Environment Sector

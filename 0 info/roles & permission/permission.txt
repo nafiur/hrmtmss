@@ -1,0 +1,119 @@
+dashboard
+settings
+	settings.all
+form & formats
+	downloads.all
+	downloads.add
+	downloads.edit
+	downloads.delete
+user management
+	branch.all
+	branch.add
+	branch.edit
+	branch.delete
+all employee
+	branch.all
+	branch.add
+	branch.edit
+	branch.delete
+new employee
+	newemployee.all
+	newemployee.add
+	newemployee.edit
+	newemployee.delete
+efile management
+	branch.all
+	branch.add
+	branch.edit
+	branch.delete
+all setup
+	branch.all
+	branch.add
+	branch.edit
+	branch.delete
+Sector
+	sector.all
+	sector.add
+	sector.edit
+	sector.delete
+Domain
+	domain.all
+	domain.add
+	domain.edit
+	domain.delete
+Designation
+	designation.all
+	designation.add
+	designation.edit
+	designation.delete
+Division
+	division.all
+	division.add
+	division.edit
+	division.delete
+District
+	district.all
+	district.add
+	district.edit
+	district.delete
+Upazilla
+	upazilla.all
+	upazilla.add
+	upazilla.edit
+	upazilla.delete
+Blood Group
+	bloodgroup.all
+	bloodgroup.add
+	bloodgroup.edit
+	bloodgroup.delete
+Department
+	department.all
+	department.add
+	department.edit
+	department.delete
+Edu Qualification
+	educationalqualification.all
+	educationalqualification.add
+	educationalqualification.edit
+	educationalqualification.delete
+Employee Type
+	employeetype.all
+	employeetype.add
+	employeetype.edit
+	employeetype.delete
+Gender
+	gender.all
+	gender.add
+	gender.edit
+	gender.delete
+Job Status
+	jobstatus.all
+	jobstatus.add
+	jobstatus.edit
+	jobstatus.delete
+Marital Status
+	maritalstatus.all
+	maritalstatus.add
+	maritalstatus.edit
+	maritalstatus.delete
+Religion
+	religion.all
+	religion.add
+	religion.edit
+	religion.delete
+Zone
+	zone.all
+	zone.add
+	zone.edit
+	zone.delete
+Area
+	area.all
+	area.add
+	area.edit
+	area.delete
+Branch
+	branch.all
+	branch.add
+	branch.edit
+	branch.delete
+Documents

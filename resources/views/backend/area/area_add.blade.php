@@ -18,7 +18,7 @@
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                     <h4 class="mb-sm-0">Area All</h4>
                     <div class="page-title-right">
-                        <ol class="breadcrumb m-0">
+                        <ol class="m-0 breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">HRM</a></li>
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
@@ -36,7 +36,7 @@
                                 <form method="post" action="{{ route('area.store') }}" id="myForm" >
                                         @csrf
 
-                                        <div class="row mb-3">
+                                        <div class="mb-3 row">
                                             <label class="col-sm-2 col-form-label">Domain Name </label>
                                             <div class="col-sm-6">
                                                 <select name="domain_id" class="form-select" aria-label="Default select example">
@@ -47,7 +47,7 @@
                                                     </select>
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
+                                        <div class="mb-3 row">
                                             <label class="col-sm-2 col-form-label">Zone Name </label>
                                             <div class="col-sm-6">
                                                 <select name="zone_id" class="form-select" aria-label="Default select example">
@@ -59,14 +59,16 @@
                                             </div>
                                         </div>
 
-                                    <div class="row mb-3">
+                                    <div class="mb-3 row">
                                         <label for="example-text-input" class="col-sm-2 col-form-label">Area Name </label>
                                         <div class="form-group col-sm-6">
                                             <input name="name" class="form-control" type="text"    >
                                         </div>
                                     </div>
                                     <!-- end row -->
+                                    @if (Auth::user()->can('area.add'))
                                     <input type="submit" class="btn btn-info waves-effect waves-light" value="Save">
+                                    @endif
                                 </form>
                             </div>
                         </div>

@@ -21,7 +21,7 @@
                                 <form method="post" action="{{ route('branch.store') }}" id="myForm" >
                                         @csrf
 
-                                        <div class="row mb-3">
+                                        <div class="mb-3 row">
                                             <label class="col-sm-2 col-form-label">Domain Name </label>
                                             <div class="col-sm-10">
                                                 <select name="domain_id" class="form-select" aria-label="Default select example">
@@ -32,7 +32,7 @@
                                                     </select>
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
+                                        <div class="mb-3 row">
                                             <label class="col-sm-2 col-form-label">Zone Name </label>
                                             <div class="col-sm-10">
                                                 <select name="zone_id" class="form-select" aria-label="Default select example">
@@ -43,7 +43,7 @@
                                                     </select>
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
+                                        <div class="mb-3 row">
                                             <label class="col-sm-2 col-form-label">Area Name </label>
                                             <div class="col-sm-10">
                                                 <select name="area_id" class="form-select" aria-label="Default select example">
@@ -55,14 +55,16 @@
                                             </div>
                                         </div>
 
-                                    <div class="row mb-3">
+                                    <div class="mb-3 row">
                                         <label for="example-text-input" class="col-sm-2 col-form-label">Branch Name </label>
                                         <div class="form-group col-sm-10">
                                             <input name="name" class="form-control" type="text"    >
                                         </div>
                                     </div>
                                     <!-- end row -->
-                                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Add Branch">
+                                    @if (Auth::user()->can('branch.add'))
+                                        <input type="submit" class="btn btn-info waves-effect waves-light" value="Add Branch">
+                                    @endif
                                 </form>
                         </div>
                     </div>

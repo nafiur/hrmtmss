@@ -12,28 +12,62 @@
               <li class="breadcrumb-item active" aria-current="page">Add New Form</li>
             </ol>
           </nav>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="{{ route('download.all') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-plus-circle"> Back </i></a> <br>  <br>
-                            <h4 class="card-title">Add Form </h4><br><br>
-                                <form method="post" action="{{ route('download.store') }}" id="myForm" >
-                                        @csrf
 
-                                    <div class="mb-3 row">
-                                        <label for="example-text-input" class="col-sm-2 col-form-label">Gender Name </label>
-                                        <div class="form-group col-sm-10">
-                                            <input name="name" class="form-control" type="text"    >
-                                        </div>
-                                    </div>
-                                    <!-- end row -->
-                                    <input type="submit" style="float:right;" class="btn btn-info waves-effect waves-light" value="Add Gender">
-                                </form>
+          <div class="block block-rounded">
+            <div class="block-header block-header-default">
+              <h3 class="block-title">All Downloads</h3>
+              <a href="{{ route('download.all') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fa fa-undo"> Back </i></a> <br>  <br>
+            </div>
+            <div class="block-content">    
+              <!-- Label on top Layout -->
+              {{-- <h2 class="content-heading">Labels on top</h2> --}}
+              <div class="row">
+                <div class="col-lg-4">
+                  <p class="text-muted">
+                    Enter New Roles Information
+                  </p>
+                </div>
+                <div class="col-lg-8 col-xl-5">
+                  <!-- Form Labels on top - Default Style -->
+                  <form class="mb-5" action="{{ route('download.store') }}" id="myform" enctype="multipart/form-data" method="POST">
+                    @csrf
+                    <div class="mb-4">
+                      <label class="form-label" for="example-text-input">File Name</label>
+                      <input type="text" class="form-control" id="example-text-input" name="form_name" required="" value="{{old('name')}}">
+                    </div>
+                    {{-- <div class="mb-4">
+                        <label class="form-label" for="example-file-input">File Input</label>
+                        <input class="form-control" type="file" id="example-file-input">
+                    </div> --}}
+                    <div class="col-md-9">
+                        <div class="mb-3 form-group">
+                            <label for="firstname" class="form-label">File Type </label>
+                            <select name="form_type"  value="{{old('name')}}" class="form-select" id="example-select">
+                                <option selected disabled >Select File Type  </option>                                                            
+                                <option value="pdf">PDF</option>
+                                <option value="doc">Word</option>
+                                <option value="xls">Excel</option>
+                                <option value="ppt">Powe Point</option>
+                                <option value="image">Image</option>
+                            </select>                                           
                         </div>
                     </div>
-                </div> <!-- end col -->
-          </div>
+                    <div class="mb-4">
+                    <label class="form-label" for="example-file-input">File Input</label>
+                    <input class="form-control" type="file" name="form_file" id="example-file-input" required="" value="{{old('name')}}">
+                    </div>
+                    <div class="mb-4">
+                      {{-- <button type="submit" style="float:right" class="mb-3 btn btn-primary">Save</button> --}}
+                      <input type="submit" style="float:right;" class="mb-4 btn btn-info waves-effect waves-light" value="Save">
+                    </div>
+                    
+                  </form>
+                  <!-- END Form Labels on top - Default Style -->
+                </div>
+              </div>
+              <!-- END Label on top Layout -->    
+            </div><!--block-content-->
+        </div><!-- END block --> 
     </div>
 </div>
 
@@ -41,12 +75,18 @@
     $(document).ready(function (){
         $('#myForm').validate({
             rules: {
-                name: {
+                form_name: {
+                    required : true,
+                }, 
+                form_file: {
                     required : true,
                 }, 
             },
             messages :{
-                name: {
+                form_name: {
+                    required : 'Please Enter Gender Name',
+                },
+                form_file: {
                     required : 'Please Enter Gender Name',
                 },
             },

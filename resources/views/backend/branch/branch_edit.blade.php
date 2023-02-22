@@ -21,7 +21,7 @@
                             <form method="post" action="{{ route('branch.update') }}" id="myForm" >
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $branch->id }}">
-                                <div class="row mb-3">
+                                <div class="mb-3 row">
                                     <label class="col-sm-2 col-form-label">Domain Name </label>
                                     <div class="col-sm-10">
                                         <select name="domain_id" class="form-select" aria-label="Default select example">
@@ -34,7 +34,7 @@
                                 </div>
                               <!-- end row -->
 
-                                <div class="row mb-3">
+                                <div class="mb-3 row">
                                     <label class="col-sm-2 col-form-label">Zone Name </label>
                                     <div class="col-sm-10">
                                         <select name="zone_id" class="form-select" aria-label="Default select example">
@@ -46,7 +46,7 @@
                                     </div>
                                 </div>
                               <!-- end row -->
-                                <div class="row mb-3">
+                                <div class="mb-3 row">
                                     <label class="col-sm-2 col-form-label">Area Name </label>
                                     <div class="col-sm-10">
                                         <select name="area_id" class="form-select" aria-label="Default select example">
@@ -60,14 +60,16 @@
                               <!-- end row -->
 
 
-                              <div class="row mb-3">
+                              <div class="mb-3 row">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Branch Name </label>
                                 <div class="form-group col-sm-10">
                                     <input name="name" class="form-control" value="{{ $branch->name }}" type="text">
                                 </div>
                             </div>
                             <!-- end row -->
+                            @if (Auth::user()->can('branch.edit'))
                                 <input type="submit" class="btn btn-info waves-effect waves-light" value="Update Branch">
+                            @endif
                             </form>
                         </div>
                     </div>

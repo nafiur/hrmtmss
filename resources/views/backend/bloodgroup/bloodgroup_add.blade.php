@@ -21,14 +21,16 @@
                                 <form method="post" action="{{ route('bloodgroup.store') }}" id="myForm" >
                                         @csrf
 
-                                    <div class="row mb-3">
+                                    <div class="mb-3 row">
                                         <label for="example-text-input" class="col-sm-2 col-form-label">Blood Group Name </label>
                                         <div class="form-group col-sm-10">
                                             <input name="name" class="form-control" type="text"    >
                                         </div>
                                     </div>
                                     <!-- end row -->
+                                    @if (Auth::user()->can('bloodgroup.add'))
                                     <input type="submit" class="btn btn-info waves-effect waves-light" value="Add Blood Group">
+                                    @endif
                                 </form>
                         </div>
                     </div>

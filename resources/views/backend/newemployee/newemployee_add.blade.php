@@ -71,6 +71,7 @@
                                                     {{-- <input type="text" class="form-control" required=""> --}}
                                                     <select name="designation_id" class="form-select" aria-label="Default select example" value="{{old('designation_id')}}">
                                                         <option selected="">Select Designation</option>
+                                                        <option value=""></option>
                                                         @foreach($designations as $designation)
                                                         <option value="{{ $designation->id }}">{{ $designation->name }}.{{ $designation->grade }}</option>
                                                        @endforeach
@@ -83,6 +84,7 @@
                                                     {{-- <input type="text" class="form-control" required=""> --}}
                                                     <select name="domain_id" class="form-select" aria-label="Default select example" value="{{old('domain_id')}}">
                                                         <option selected="">Select Domain</option>
+                                                        <option value=""></option>
                                                         @foreach($domains as $domain)
                                                         <option value="{{ $domain->id }}">{{ $domain->name }}</option>
                                                        @endforeach
@@ -113,6 +115,7 @@
                                                     <label for="example-text-input" class="form-label">Marital Status</label>
                                                     <select name="marital_status_id" class="form-select" aria-label="Default select example" value="{{old('marital_status_id')}}">
                                                         <option selected="">Select Marital Status</option>
+                                                        <option value=""></option>
                                                         @foreach($maritalstatus as $mstatus)
                                                         <option value="{{ $mstatus->id }}">{{ $mstatus->name }}</option>
                                                        @endforeach
@@ -124,6 +127,7 @@
                                                     <label for="example-text-input" class="form-label">Place of Birth District</label>
                                                     <select name="birth_place_district_id" class="form-select" aria-label="Default select example" value="{{old('birth_place_district_id')}}">
                                                         <option selected="">Select District</option>
+                                                        <option value=""></option>
                                                         @foreach($districts as $district)
                                                         <option value="{{ $district->id }}">{{ $district->name }}</option>
                                                        @endforeach
@@ -133,8 +137,9 @@
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="example-text-input" class="form-label">Educational Qualification (Last)</label>
-                                                    <select name="birth_place_district_id" class="form-select" aria-label="Default select example" value="{{old('birth_place_district_id')}}">
+                                                    <select name="educational_qualification_id" class="form-select" aria-label="Default select example" value="{{old('birth_place_district_id')}}">
                                                         <option selected="">Select Qualification</option>
+                                                        <option value=""></option>
                                                         @foreach($educationqualifications as $educationqualification)
                                                         <option value="{{ $educationqualification->id }}">{{ $educationqualification->name }}</option>
                                                        @endforeach
@@ -171,6 +176,7 @@
                                                     {{-- <input type="text" class="form-control"  required=""> --}}
                                                     <select name="permanent_division_id" id="permanent_division" class="form-select" aria-label="Default select example" value="{{old('permanent_division_id')}}">
                                                         <option selected="">Select Division</option>
+                                                        <option value=""></option>
                                                         @foreach($divisions as $division)
                                                         <option value="{{ $division->id }}">{{ $division->name }}</option>
                                                        @endforeach
@@ -183,6 +189,7 @@
                                                     {{-- <input type="text" class="form-control"  required=""> --}}
                                                     <select name="permanent_district_id" id="permanent_district" class="form-select" aria-label="Default select example" value="{{old('permanent_district_id')}}">
                                                         <option selected="">Select District</option>
+                                                        <option value=""></option>
                                                         @foreach($districts as $district)
                                                         <option value="{{ $district->id }}">{{ $district->name }}</option>
                                                        @endforeach
@@ -195,6 +202,7 @@
                                                     {{-- <input type="text" class="form-control"  required=""> --}}
                                                     <select name="permanent_upazilla_id" id="permanent_upazilla" class="form-select" aria-label="Default select example" value="{{old('permanent_upazilla_id')}}">
                                                         <option selected="">Select Upazilla</option>
+                                                        <option value=""></option>
                                                         @foreach($upazillas as $upazilla)
                                                         <option value="{{ $upazilla->id }}">{{ $upazilla->name }}</option>
                                                        @endforeach
@@ -233,6 +241,7 @@
                                                     {{-- <input type="text" class="form-control"  required=""> --}}
                                                     <select name="present_division_id" id="present_division" class="form-select" aria-label="Default select example" value="{{old('present_division_id')}}">
                                                         <option selected="">Select Division</option>
+                                                        <option value=""></option>
                                                         @foreach($divisions as $division)
                                                         <option value="{{ $division->id }}">{{ $division->name }}</option>
                                                        @endforeach
@@ -245,6 +254,7 @@
                                                     {{-- <input type="text" class="form-control"  required=""> --}}
                                                     <select name="present_district_id" id="present_district" class="form-select" aria-label="Default select example" value="{{old('present_district_id')}}">
                                                         <option selected="">Select District</option>
+                                                        <option value=""></option>
                                                         @foreach($districts as $district)
                                                         <option value="{{ $district->id }}">{{ $district->name }}</option>
                                                        @endforeach
@@ -257,6 +267,7 @@
                                                     {{-- <input type="text" class="form-control"  required=""> --}}
                                                     <select name="present_upazilla_id" id="present_upazilla" class="form-select" aria-label="Default select example" value="{{old('present_upazilla_id')}}">
                                                         <option selected="">Select Upazilla</option>
+                                                        <option value=""></option>
                                                         @foreach($upazillas as $upazilla)
                                                         <option value="{{ $upazilla->id }}">{{ $upazilla->name }}</option>
                                                        @endforeach
@@ -295,8 +306,9 @@
                                                 <div class="mb-3 position-relative">
                                                     <label for="example-text-input" class="form-label">BloodGroups</label>
                                                     {{-- <input type="text" class="form-control"  required=""> --}}
-                                                    <select name="bloodgroups_id" class="form-select" aria-label="Default select example" value="{{old('bloodgroups_id')}}">
+                                                    <select name="blood_groups_id" class="form-select" aria-label="Default select example" value="{{old('bloodgroups_id')}}">
                                                         <option selected="">Select Blood Group</option>
+                                                        <option value=""></option>
                                                         @foreach($blood_groups as $blood_group)
                                                         <option value="{{ $blood_group->id }}">{{ $blood_group->name }}</option>
                                                        @endforeach

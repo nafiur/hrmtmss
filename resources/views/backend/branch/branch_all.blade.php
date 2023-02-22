@@ -25,7 +25,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                                <a href="{{ route('branch.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-plus-circle"> Add Branch </i></a> <br>  <br>               
+                        @if (Auth::user()->can('branch.add'))
+                        <a href="{{ route('branch.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-plus-circle"> Add Branch </i></a> <br>  <br>
+                        @endif
+                                       
                                 <h4 class="card-title">Branch All Data </h4>
                                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
@@ -45,8 +48,15 @@
                                                 <td> {{ $item['Area']['name']  }} </td> 
                                                 <td> {{ $item->name }} </td> 
                                                 <td>
+                                                    @if (Auth::user()->can('branch.edit'))
                                                     <a href="{{ route('branch.edit',$item->id) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
+                                                    @endif
+
+                                                    @if (Auth::user()->can('branch.delete'))
                                                     <a href="{{ route('branch.delete',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
+                                                    @endif
+                                                    
+                                                    
                                                 </td>  
                                         </tr>
                                         @endforeach

@@ -93,7 +93,7 @@ class NewEmployeeController extends Controller
             'email' => $request->email,
             'nid' => $request->nid,
             'smartcard' => $request->smartcard,
-            'bloodgroups_id' => $request->bloodgroups_id,
+            'blood_groups_id' => $request->blood_groups_id,
             'created_by' => Auth::user()->id,
             'created_at' => Carbon::now(), 
 
@@ -182,7 +182,7 @@ class NewEmployeeController extends Controller
             'email' => $request->email,
             'nid' => $request->nid,
             'smartcard' => $request->smartcard,
-            'bloodgroups_id' => $request->bloodgroups_id,
+            'blood_groups_id' => $request->blood_groups_id,
             'updated_by' => Auth::user()->id,
             'updated_at' => Carbon::now(), 
 

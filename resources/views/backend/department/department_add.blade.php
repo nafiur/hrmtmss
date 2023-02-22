@@ -21,14 +21,16 @@
                                 <form method="post" action="{{ route('department.store') }}" id="myForm" >
                                         @csrf
 
-                                    <div class="row mb-3">
+                                    <div class="mb-3 row">
                                         <label for="example-text-input" class="col-sm-2 col-form-label">Department Name </label>
                                         <div class="form-group col-sm-10">
                                             <input name="name" class="form-control" type="text"    >
                                         </div>
                                     </div>
                                     <!-- end row -->
+                                    @if (Auth::user()->can('department.add'))
                                     <input type="submit" class="btn btn-info waves-effect waves-light" value="Add Department">
+                                    @endif
                                 </form>
                         </div>
                     </div>

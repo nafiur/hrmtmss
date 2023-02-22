@@ -21,10 +21,26 @@
                             <form method="post" action="{{ route('download.update') }}" id="myForm" >
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $downloads->id }}">
+                                <div class="mb-4">
+                                    <label class="form-label" for="example-text-input">Form Name</label>
+                                    <input type="text" class="form-control" id="example-text-input" name="form_name" required="" value="{{ $downloads->form_name }}">
+                                  </div>
+                                
+                                <div class="mb-3 form-group">
+                                    <label for="firstname" class="form-label">Group Name </label>
+                                    <select name="form_type" class="form-select" id="example-select">
+                                        <option selected disabled >Select Group  </option>         
+                                        <option value="pdf"{{ $downloads->form_type == 'pdf' ? 'selected' : '' }}>PDF</option>   
+                                        <option value="doc"{{ $downloads->form_type == 'doc' ? 'selected' : '' }}>Word</option>   
+                                        <option value="xls"{{ $downloads->form_type == 'xls' ? 'selected' : '' }}>Excel</option>   
+                                        <option value="ppt"{{ $downloads->form_type == 'ppt' ? 'selected' : '' }}>Power Point</option>   
+                                        <option value="image"{{ $downloads->form_type == 'image' ? 'selected' : '' }}>Image</option>   
+                                    </select>           
+                                </div>
                                 <div class="mb-3 row">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Form Name </label>
                                     <div class="form-group col-sm-10">
-                                        <input name="name" class="form-control" value="{{ $downloads->name }}" type="text">
+                                        <input name="form_file" class="form-control" value="{{ $downloads->form_file }}" type="text">
                                     </div>
                                 </div>
                                 <!-- end row -->

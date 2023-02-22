@@ -83,25 +83,28 @@
                     <div class="card-body">
                                 <a href="{{ route('download.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-plus-circle"> Add New Form </i></a> <br>  <br>               
                                 <h4 class="card-title"> All Data </h4>
-                                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <table id="datatable" class="self-center table align-middle table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
-                                            <th>Sl</th>
-                                            <th>Name Bangla</th> 
-                                            <th>Name English</th> 
-                                            <th width="5%">PDF</th>
-                                            <th width="5%">Doc</th>
-                                            <th width="10%">Action</th>
+                                            <th width="10%">Sl</th>
+                                            <th>Name</th> 
+                                            {{-- <th>Name English</th>  --}}
+                                            <th width="10%">Download</th>
+                                            {{-- <th width="5%">Doc</th> --}}
+                                            <th width="20%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($downloads as $key => $item)
                                             <tr>
                                                 <td> {{ $key+1}} </td>
-                                                <td> {{ $item->name }} </td> 
-                                                <td> {{ $item->name }} </td> 
-                                                <td> {{ $item->name }} </td> 
+                                                {{-- <td> {{ $item->name }} </td>  --}}
+                                                <td> {{ $item->form_name }} </td> 
+                                                {{-- <td> {{ $item->form_file }} </td>  --}}
+                                                <td> <a href="{{ asset('upload/downloads/form/'. $item->form_file) }}" class="btn btn-primary sm" title="Download">  <i class="fas fa-file-download"></i></a> </td> 
+                                                {{-- <td> {{ $item->name }} </td>  --}}
                                                 <td>
+                                                    {{-- <a href="{{ asset('upload/downloads/'. $item->form_file) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a> --}}
                                                     <a href="{{ route('download.edit',$item->id) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
                                                     <a href="{{ route('download.delete',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
                                                 </td>  

@@ -21,14 +21,16 @@
                             <form method="post" action="{{ route('department.update') }}" id="myForm" >
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $department->id }}">
-                                <div class="row mb-3">
+                                <div class="mb-3 row">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Department Name </label>
                                     <div class="form-group col-sm-10">
                                         <input name="name" class="form-control" value="{{ $department->name }}" type="text">
                                     </div>
                                 </div>
                                 <!-- end row -->
+                                @if (Auth::user()->can('department.edit'))
                                 <input type="submit" class="btn btn-info waves-effect waves-light" value="Update Blood Group">
+                                @endif
                             </form>
                         </div>
                     </div>

@@ -4,8 +4,10 @@ namespace App\Models;
 
 use App\Models\Domain;
 use App\Models\District;
+use App\Models\Upazilla;
 use App\Models\BloodGroup;
 use App\Models\Designation;
+use App\Models\MaritalStatus;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\EducationalQualification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -22,6 +24,19 @@ class NewEmployee extends Model
     public function birth_place_district(){
         return $this->belongsTo(District::class,'birth_place_district_id','id');
     }
+
+    public function present_upazilla(){
+        return $this->belongsTo(Upazilla::class,'present_upazilla_id','id');
+    }
+    public function present_district(){
+        return $this->belongsTo(District::class,'present_district_id','id');
+    }
+    public function permanent_upazilla(){
+        return $this->belongsTo(Upazilla::class,'permanent_upazilla_id','id');
+    }
+    public function permanent_district(){
+        return $this->belongsTo(District::class,'permanent_district_id','id');
+    }
     
     public function designation(){
         return $this->belongsTo(Designation::class,'designation_id','id');
@@ -30,10 +45,16 @@ class NewEmployee extends Model
     public function domain(){
         return $this->belongsTo(Domain::class,'domain_id','id');
     }
-    public function bloodgroup(){
-        return $this->belongsTo(BloodGroup::class,'bloodgroup_id','id');
+    public function blood_groups(){
+        return $this->belongsTo(BloodGroup::class,'blood_groups_id','id');
     }
-    public function educationqualification(){
+    public function marital_status(){
+        return $this->belongsTo(MaritalStatus::class,'marital_status_id','id');
+    }
+    public function educational_qualification(){
         return $this->belongsTo(EducationalQualification::class,'educational_qualification_id','id');
+    }
+    public function employee_type(){
+        return $this->belongsTo(EmployeeType::class,'employee_type_id','id');
     }
 }

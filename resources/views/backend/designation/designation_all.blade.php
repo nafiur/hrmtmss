@@ -12,26 +12,15 @@
                               <li class="breadcrumb-item active" aria-current="page">Designation Management</li>
                             </ol>
                           </nav>
-                        {{-- <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0">Designation All</h4>
 
-                                     
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end page title --> --}}
                         
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-
+                    @if (Auth::user()->can('designation.add'))
                     <a href="{{ route('designation.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-plus-circle"> Add Domain </i></a> <br>  <br>               
-
+                    @endif
                     <h4 class="card-title">Domain All Data </h4>
                     
 
@@ -41,26 +30,21 @@
                             <th>Sl</th>
                             <th>Name</th> 
                             <th>Grade </th>
-                            {{-- <th>Email</th>
-                            <th>Address</th>  --}}
                             <th width="10%">Action</th>
-                            
                         </thead>
-
-
-                        <tbody>
-                        	 
+                        <tbody>                        	 
                         	@foreach($designations as $key => $item)
                         <tr>
                             <td> {{ $key+1}} </td>
                             <td> {{ $item->name }} </td> 
                             <td> {{ $item->grade }} </td> 
-                             {{-- <td> {{ $item->mobile_no }} </td> 
-                              <td> {{ $item->email }} </td> 
-                               <td> {{ $item->address }} </td>  --}}
                             <td>
+                                @if (Auth::user()->can('designation.edit'))
                                 <a href="{{ route('designation.edit',$item->id) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
+                                @endif
+                                @if (Auth::user()->can('designation.delete'))
                                 <a href="{{ route('designation.delete',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

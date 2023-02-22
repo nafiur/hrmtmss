@@ -39,17 +39,28 @@
                                                 {{-- <td> {{ $item['domains']['name']  }}</td>  --}}
                                                 <td> {{ $item->id }} </td> 
                                                 <td> {{ $item->name }} </td> 
-                                                {{-- <td> {{ $item->designation_id }} </td>  --}}
+                                                {{-- <td> {{ $item->Designation->name  }} </td>  --}}
                                                 <td> {{ $item['designation']['name']  }} </td> 
                                                 <td> {{ $item['domain']['name']  }} </td> 
                                                 {{-- <td> {{ $item->domain_id }} </td>  --}}
                                                 <td> {{ $item->joiningdate }} </td>   
                                                 <td> {{ $item->status }} </td>   
                                                 <td>
-                                                    <a href="{{ route('newemployee.show',$item->id) }}" class="btn btn-info sm" title="Show Data">  <i class="fas fa-eye"></i> </a>
+                                                    @if (Auth::user()->can('newemployee.show'))
+                                                        <a href="{{ route('newemployee.show',$item->id) }}" class="btn btn-info sm" title="Show Data">  <i class="fas fa-eye"></i> </a>
+                                                    @endif
+                                                    
+                                                    @if (Auth::user()->can('ewemployee.export'))
                                                     <a href="{{ route('newemployee.delete',$item->id) }}" class="btn btn-success sm" title="Delete Data" id="delete">  <i class="fas fa-download"></i> </a>
+                                                    @endif
+                                                    
+                                                    @if (Auth::user()->can('newemployee.edit'))
                                                     <a href="{{ route('newemployee.edit',$item->id) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
+                                                    @endif
+                                                    
+                                                    @if (Auth::user()->can('newemployee.delete'))
                                                     <a href="{{ route('newemployee.delete',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
+                                                    @endif
                                                 </td>  
                                         </tr>
                                         @endforeach

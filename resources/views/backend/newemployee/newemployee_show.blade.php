@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- @section('title'){{'Edit Educational Qualification'}} @endsection
+ @section('title'){{'Employee Details Information'}} @endsection
 <div class="page-content">
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
@@ -9,7 +9,7 @@
               <li class="breadcrumb-item">
                 <a href="javascript:void(0)">Home</a>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">Employee Details Informatio</li>
+              <li class="breadcrumb-item active" aria-current="page">Employee Details Information</li>
             </ol>
           </nav>
 
@@ -29,8 +29,8 @@
                 </div>
                 <div class="col-lg-10 col-xl-7">
                   <!-- Form Labels on top - Default Style -->
-                  <form class="mb-5" action="{{ route('roles.store') }}" method="POST">
-                    @csrf
+                  {{-- <form class="mb-5" action="{{ route('roles.store') }}" method="POST">
+                    @csrf --}}
                                         <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Employee ID</label>
                         <div class="col-sm-10">
@@ -46,7 +46,7 @@
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Designation</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" value="{{ $newemployee->Designation->name }}" readonly>
+                            <input class="form-control" type="text" value="{{ $newemployee->Designation->name }} " readonly>
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -77,25 +77,27 @@
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Marital Status</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" value="{{ $newemployee->marital_status_id }}" readonly>
+                            <input class="form-control" type="text" value="{{ $newemployee->marital_status->name }}" readonly>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Place of Birth (District)</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" value="{{ $newemployee->birth_place_district->name }}" readonly>
+                            <input class="form-control" type="text" value="{{ $newemployee->birth_place_district->name }}" readonly>                            
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Present Address</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" value="Village: {{ $newemployee->present_village }} , PostOffice: {{ $newemployee->present_village }}, Postcode: {{ $newemployee->present_postal_code }}, Upazilla: {{ $newemployee->present_upazilla_id }}, District: {{ $newemployee->present_district_id }}" readonly>
+                            <textarea id="textarea" class="form-control" readonly>Village: {{ $newemployee->present_village }} , PostOffice: {{ $newemployee->present_village }}, Postcode: {{ $newemployee->present_postal_code }}, Upazilla: {{ $newemployee->present_upazilla->name }}, District: {{ $newemployee->present_district->name }}</textarea>
+                            {{-- <input class="form-control" type="text" value="Village: {{ $newemployee->present_village }} , PostOffice: {{ $newemployee->present_village }}, Postcode: {{ $newemployee->present_postal_code }}, Upazilla: {{ $newemployee->present_upazilla_id }}, District: {{ $newemployee->present_district_id }}" readonly> --}}
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Permanent Address</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" value="Village: {{ $newemployee->permanent_village }} , PostOffice: {{ $newemployee->permanent_village }}, Postcode: {{ $newemployee->permanent_postal_code }}, Upazilla: {{ $newemployee->permanent_upazilla_id }}, District: {{ $newemployee->permanent_district_id }}" readonly>
+                            <textarea id="textarea" class="form-control" readonly>Village: {{ $newemployee->permanent_village }} , PostOffice: {{ $newemployee->permanent_village }}, Postcode: {{ $newemployee->permanent_postal_code }}, Upazilla: {{ $newemployee->permanent_upazilla->name }}, District: {{ $newemployee->permanent_district->name }}</textarea>
+                            {{-- <input class="form-control" type="text" value="Village: {{ $newemployee->permanent_village }} , PostOffice: {{ $newemployee->permanent_village }}, Postcode: {{ $newemployee->permanent_postal_code }}, Upazilla: {{ $newemployee->permanent_upazilla_id }}, District: {{ $newemployee->permanent_district_id }}" readonly> --}}
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -119,7 +121,7 @@
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Bloodgroup</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" value="{{ $newemployee->blood_groups_id }}" readonly>
+                            <input class="form-control" type="text" value="{{ $newemployee->blood_groups->name }}" readonly>
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -137,19 +139,19 @@
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Educational Qualification</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" value="{{ $newemployee->educational_qualification_id }}" readonly>
+                            <input class="form-control" type="text" value="{{ $newemployee->educational_qualification->name }}" readonly>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Employee Type</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" value="{{ $newemployee->employee_type_id }}" readonly>
+                            <input class="form-control" type="text" value="{{ $newemployee->employee_type->name }}" readonly>
                         </div>
                     </div>
 
                    
                    
-                  </form>
+                  {{-- </form> --}}
                   <!-- END Form Labels on top - Default Style -->
                 </div>
               </div>

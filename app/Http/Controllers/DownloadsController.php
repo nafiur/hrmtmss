@@ -22,17 +22,34 @@ class DownloadsController extends Controller
 
     public function DownloadsStore(Request $request){
 
-        Downloads::insert([
-            'id' => $request->id,
-            'name' => $request->name,
-            'father_name' => $request->father_name,
-            'created_by' => Auth::user()->id,
-            'created_at' => Carbon::now(), 
+        $request->validate([
+            'form_name'=> 'required',
+            'form_file'=> 'required|mimes:png,jpg,pdf,xls,xlsx,ppt,pptx,doc,docx',
 
         ]);
 
+        if ($request->file('form_file')) {
+            $file = $request->file('form_file');
+ 
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/downloads/form/'),$filename);
+            $data['form_file'] = $filename;
+         }
+
+        Downloads::insert([
+            'form_name' => $request->form_name,
+            'form_type' => $request->form_type,
+            'form_file' => $filename,
+            'created_by' => Auth::user()->id,
+            'created_at' => Carbon::now(), 
+            
+        ]);
+
+       
+        
+
          $notification = array(
-            'message' => 'New Form Added Successfully', 
+            'message' => 'File Uploded Successfully', 
             'alert-type' => 'success'
         );
 
@@ -52,7 +69,7 @@ class DownloadsController extends Controller
         $id = $request->id;
 
         Downloads::findOrFail($id)->update([
-            'name' => $request->name,
+            'form_name' => $request->form_name,
             'father_name' => $request->father_name,
             'updated_by' => Auth::user()->id,
             'updated_at' => Carbon::now(), 

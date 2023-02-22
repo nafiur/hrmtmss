@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
 
-<link rel="stylesheet" href="assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" href="{{ asset('backend/mix/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  @section('title'){{'Add New Employee'}} @endsection
 <div class="page-content">
@@ -37,7 +37,7 @@
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="example-text-input" class="form-label">Employee ID</label>
-                                                    <input type="text" name="id" class="form-control" required="" value="{{old('id')}}" @error('id') is-invalid @enderror>
+                                                    <input data-parsley-type="digits" data-parsley-id="15" aria-describedby="parsley-id-15" type="text" name="id" class="form-control" required="" value="{{old('id')}}" @error('id') is-invalid @enderror>
                                                     @error('id')
                                                     <span class="text-danger"> {{ $message }} </span>
                                                     @enderror
@@ -94,8 +94,8 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label for="example-date-input" class="form-label">Joining Date</label>    
-                                                    <input type="text" class="js-datepicker form-control js-datepicker-enabled" id="example-datepicker3" name="joiningdate" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy">
-                                                    {{-- <input class="form-control" name="joiningdate" type="date" value="{{old('joiningdate')}}"> --}}
+                                                    {{-- <input type="text" class="js-datepicker form-control js-datepicker-enabled" id="example-datepicker3" name="joiningdate" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy"> --}}
+                                                    <input class="form-control" name="joiningdate" type="date" value="{{old('joiningdate')}}">
                                                 
                                                 </div>
                                             </div>
@@ -108,7 +108,7 @@
                                         </div>
                                     
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="example-text-input" class="form-label">Marital Status</label>
                                                     <select name="marital_status_id" class="form-select" aria-label="Default select example" value="{{old('marital_status_id')}}">
@@ -119,13 +119,24 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="example-text-input" class="form-label">Place of Birth District</label>
                                                     <select name="birth_place_district_id" class="form-select" aria-label="Default select example" value="{{old('birth_place_district_id')}}">
                                                         <option selected="">Select District</option>
                                                         @foreach($districts as $district)
                                                         <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                                       @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="example-text-input" class="form-label">Educational Qualification (Last)</label>
+                                                    <select name="birth_place_district_id" class="form-select" aria-label="Default select example" value="{{old('birth_place_district_id')}}">
+                                                        <option selected="">Select Qualification</option>
+                                                        @foreach($educationqualifications as $educationqualification)
+                                                        <option value="{{ $educationqualification->id }}">{{ $educationqualification->name }}</option>
                                                        @endforeach
                                                     </select>
                                                 </div>
@@ -358,5 +369,9 @@
   
     });
  </script>
+ <script src="{{ asset('backend/assets/libs/parsleyjs/parsley.min.js')}}"></script>
+ <script src="{{ asset('backend/mix/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+ <script src="{{ asset('backend/mix/assets/js/lib/jquery.min.js')}}"></script>
+ <script>Dashmix.helpersOnLoad(['js-flatpickr', 'jq-datepicker', 'jq-maxlength', 'jq-select2', 'jq-rangeslider', 'jq-masked-inputs', 'jq-pw-strength']);</script>
  
 @endsection 

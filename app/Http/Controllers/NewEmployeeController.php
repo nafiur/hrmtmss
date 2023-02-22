@@ -14,14 +14,17 @@ use App\Models\EmployeeType;
 use Illuminate\Http\Request;
 use App\Models\MaritalStatus;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\EducationalQualification;
+use Illuminate\Contracts\View\View;
 
 class NewEmployeeController extends Controller
 {
     public function NewEmployeeAll(){
 
+        $user= Auth::user();
         $domains = Domain::all();
         $designations = Designation::all();
         $maritalstatus = MaritalStatus::all();
@@ -31,9 +34,11 @@ class NewEmployeeController extends Controller
         $blood_groups = BloodGroup::all();
         $educationqualifications = EducationalQualification::all();
         $employeetypes = EmployeeType::all();
-        $newemployees = NewEmployee::all();
-        return view('backend.newemployee.newemployee_all',compact('newemployees'));
+        // $newemployees = NewEmployee::all();
+        $newemployees = NewEmployee::where('created_by',$user->id)->orderBy('id','DESC')->get();
+        return view('backend.newemployee.newemployee_all',compact('newemployees','user'));
     } // End Method 
+
 
 
     public function NewEmployeeAdd(){
@@ -71,6 +76,7 @@ class NewEmployeeController extends Controller
             'domain_id' => $request->domain_id,
             'marital_status_id' => $request->marital_status_id,
             'birth_place_district_id' => $request->birth_place_district_id,
+            'educational_qualification_id' => $request->educational_qualification_id,
             'permanent_village' => $request->permanent_village,
             'permanent_post' => $request->permanent_post,
             'permanent_postal_code' => $request->permanent_postal_code,
@@ -114,8 +120,15 @@ class NewEmployeeController extends Controller
         $employeetypes = EmployeeType::all();
         $educationqualifications = EducationalQualification::all();
 
+        // $employee = DB::table('newemployees')
+        // ->join('designations', 'designations.id', '=', 'newemployees.designation_id')
+        // ->get();
+
+        // $newemployees = NewEmployee::findOrFail($id);
         $newemployee = NewEmployee::findOrFail($id);
-        return view('backend.newemployee.newemployee_show',compact('newemployee','employeetypes','domains','designations','maritalstatus','districts','divisions','blood_groups','educationqualifications','upazillas'));
+        // return View('backend.newemployee.newemployee_show',['designations'=>$designation]);
+        return view('backend.newemployee.newemployee_show',compact('newemployee','domains','employeetypes','designations','maritalstatus','districts','divisions','blood_groups','educationqualifications','upazillas'));
+        // return view('backend.newemployee.newemployee_show',compact('newemployee'));
 
     } // End Method 
 
@@ -152,6 +165,7 @@ class NewEmployeeController extends Controller
             'domain_id' => $request->domain_id,
             'marital_status_id' => $request->marital_status_id,
             'birth_place_district_id' => $request->birth_place_district_id,
+            'educational_qualification_id' => $request->educational_qualification_id,
             'permanent_village' => $request->permanent_village,
             'permanent_post' => $request->permanent_post,
             'permanent_postal_code' => $request->permanent_postal_code,

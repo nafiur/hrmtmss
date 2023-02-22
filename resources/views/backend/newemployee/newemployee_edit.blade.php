@@ -99,7 +99,7 @@
                                 </div>
                             
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Marital Status</label>
                                             <select name="marital_status_id" class="form-select" aria-label="Default select example">
@@ -110,13 +110,24 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Place of Birth District</label>
                                             <select name="birth_place_district_id" class="form-select" aria-label="Default select example">
                                                 <option selected="">Select District</option>
                                                 @foreach($districts as $district)
                                                 <option value="{{ $district->id }}" {{ $district->id == $newemployee->birth_place_district_id ? 'selected' : '' }}   >{{ $district->name }}</option>
+                                               @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="example-text-input" class="form-label">Educational Qualification (Last)</label>
+                                            <select name="educational_qualification_id" class="form-select" aria-label="Default select example">
+                                                <option selected="">Select Qualification</option>
+                                                @foreach($educationqualifications as $educationqualification)
+                                                <option value="{{ $educationqualification->id }}" {{ $educationqualification->id == $newemployee->educational_qualification_id ? 'selected' : '' }}   >{{ $educationqualification->name }}</option>
                                                @endforeach
                                             </select>
                                         </div>

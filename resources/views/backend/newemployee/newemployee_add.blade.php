@@ -14,12 +14,16 @@
               <li class="breadcrumb-item active" aria-current="page">Add New Employee Information</li>
             </ol>
           </nav>
-            <div class="row">
-                <div class="col-12">
+
+<div class="block block-rounded">
+            <div class="block-header block-header-default">
+              <h3 class="block-title">Add New Employee Info</h3>
+              <a href="{{ route('newemployee.all') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fa fa-undo"> Back </i></a> <br>  <br>
+            </div>
+            <div class="block-content">    
+              <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('newemployee.all') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-rotate-left"> Back </i></a> <br>  <br>
-                            <h4 class="card-title">Add New Employee Info</h4><br><br>
                                 <form method="post" action="{{ route('newemployee.store') }}" id="myForm" >
                                         @csrf
                                         <div class="row">
@@ -95,7 +99,8 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label for="example-date-input" class="form-label">Joining Date</label>    
+                                                    <label for="example-date-input" class="form-label">Joining Date</label>   
+                                                    {{-- <input id="input-date1" name="joiningdate"  class="form-control input-mask" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="dd/mm/yyyy" inputmode="numeric">  --}}
                                                     {{-- <input type="text" class="js-datepicker form-control js-datepicker-enabled" id="example-datepicker3" name="joiningdate" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy"> --}}
                                                     <input class="form-control" name="joiningdate" type="date" value="{{old('joiningdate')}}">
                                                 
@@ -104,6 +109,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label for="example-text-input" class="form-label">Date of Birth</label>
+                                                    <input id="input-date1" name="date_of_birth"  class="form-control input-mask" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="dd/mm/yyyy" inputmode="numeric"> 
                                                     <input class="form-control" name="date_of_birth" type="date" value="{{old('date_of_birth')}}">
                                                 </div>
                                             </div>
@@ -323,6 +329,10 @@
                         </div>
                     </div>
                 </div> <!-- end col -->
+              <!-- END Label on top Layout -->    
+            </div><!--block-content-->
+        </div><!-- END block --> 
+
           </div>
     </div>
 </div>

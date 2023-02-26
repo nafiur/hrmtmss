@@ -14,6 +14,11 @@ class DownloadsController extends Controller
         $downloads = Downloads::all();
         return view('downloads.download_all',compact('downloads'));
     } // End Method 
+    public function DownloadsShow(){
+
+        $downloads = Downloads::all();
+        return view('downloads.download_show',compact('downloads'));
+    } // End Method 
 
     public function DownloadsAdd(){
         $downloads = Downloads::all();
@@ -30,11 +35,11 @@ class DownloadsController extends Controller
 
         if ($request->file('form_file')) {
             $file = $request->file('form_file');
- 
+
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/downloads/form/'),$filename);
             $data['form_file'] = $filename;
-         }
+        }
 
         Downloads::insert([
             'form_name' => $request->form_name,
@@ -45,10 +50,10 @@ class DownloadsController extends Controller
             
         ]);
 
-       
+    
         
 
-         $notification = array(
+        $notification = array(
             'message' => 'File Uploded Successfully', 
             'alert-type' => 'success'
         );
@@ -68,15 +73,30 @@ class DownloadsController extends Controller
 
         $id = $request->id;
 
+        $request->validate([
+            'form_name'=> 'required',
+            // 'form_file'=> 'required|mimes:png,jpg,pdf,xls,xlsx,ppt,pptx,doc,docx',
+
+        ]);
+
+        // if ($request->file('form_file')) {
+        //     $file = $request->file('form_file');
+
+        //     $filename = date('YmdHi') . $file->getClientOriginalName();
+        //     $file->move(public_path('upload/downloads/form/'),$filename);
+        //     $data['form_file'] = $filename;
+        //  }
+
         Downloads::findOrFail($id)->update([
             'form_name' => $request->form_name,
-            'father_name' => $request->father_name,
+            'form_type' => $request->form_type,
+            // 'form_file' => $filename,
             'updated_by' => Auth::user()->id,
             'updated_at' => Carbon::now(), 
 
         ]);
 
-         $notification = array(
+        $notification = array(
             'message' => 'NewEmployee Updated Successfully', 
             'alert-type' => 'success'
         );
@@ -87,8 +107,8 @@ class DownloadsController extends Controller
     public function DownloadsDelete($id){
 
         Downloads::findOrFail($id)->delete();
-      
-       $notification = array(
+    
+    $notification = array(
             'message' => 'Form Deleted Successfully', 
             'alert-type' => 'success'
         );

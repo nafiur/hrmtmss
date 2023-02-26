@@ -1,7 +1,8 @@
 @extends('admin.admin_master')
 @section('admin')
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- @section('title'){{'Add Form'}} @endsection
+@section('title'){{'Add Form'}} @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <div class="page-content">
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
@@ -15,52 +16,48 @@
 
           <div class="block block-rounded">
             <div class="block-header block-header-default">
-              <h3 class="block-title">All Downloads</h3>
+              <h3 class="block-title">Add New Form</h3>
               <a href="{{ route('download.all') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fa fa-undo"> Back </i></a> <br>  <br>
             </div>
+
             <div class="block-content">    
-              <!-- Label on top Layout -->
-              {{-- <h2 class="content-heading">Labels on top</h2> --}}
               <div class="row">
                 <div class="col-lg-4">
                   <p class="text-muted">
-                    Enter New Roles Information
+                    Add New Form Information
                   </p>
                 </div>
-                <div class="col-lg-8 col-xl-5">
+
+                <div class="col-lg-8 col-xl-6">
                   <!-- Form Labels on top - Default Style -->
                   <form class="mb-5" action="{{ route('download.store') }}" id="myform" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="mb-4">
-                      <label class="form-label" for="example-text-input">File Name</label>
+                      <label class="form-label" for="example-text-input">Form Name</label>
                       <input type="text" class="form-control" id="example-text-input" name="form_name" required="" value="{{old('name')}}">
                     </div>
-                    {{-- <div class="mb-4">
-                        <label class="form-label" for="example-file-input">File Input</label>
-                        <input class="form-control" type="file" id="example-file-input">
-                    </div> --}}
-                    <div class="col-md-9">
-                        <div class="mb-3 form-group">
-                            <label for="firstname" class="form-label">File Type </label>
-                            <select name="form_type"  value="{{old('name')}}" class="form-select" id="example-select">
+
+                    <div class="mb-4">
+                      <label for="firstname" class="form-label">File Type </label>
+                      <select name="form_type"  value="{{old('name')}}" class="form-select" id="example-select">
                                 <option selected disabled >Select File Type  </option>                                                            
                                 <option value="pdf">PDF</option>
                                 <option value="doc">Word</option>
                                 <option value="xls">Excel</option>
                                 <option value="ppt">Powe Point</option>
                                 <option value="image">Image</option>
-                            </select>                                           
-                        </div>
+                            </select>   
                     </div>
+
                     <div class="mb-4">
-                    <label class="form-label" for="example-file-input">File Input</label>
-                    <input class="form-control" type="file" name="form_file" id="example-file-input" required="" value="{{old('name')}}">
+                      <label class="form-label" for="example-file-input">Upload File</label>
+                      <input class="form-control" type="file" name="form_file" id="example-file-input" required="" value="{{old('name')}}">
                     </div>
+
                     <div class="mb-4">
-                      {{-- <button type="submit" style="float:right" class="mb-3 btn btn-primary">Save</button> --}}
                       <input type="submit" style="float:right;" class="mb-4 btn btn-info waves-effect waves-light" value="Save">
-                    </div>
-                    
+                    </div>    
+
                   </form>
                   <!-- END Form Labels on top - Default Style -->
                 </div>
@@ -105,5 +102,5 @@
     });
     
 </script>
- 
+
 @endsection 

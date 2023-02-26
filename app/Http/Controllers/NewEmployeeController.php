@@ -22,6 +22,22 @@ use Illuminate\Contracts\View\View;
 
 class NewEmployeeController extends Controller
 {
+    public function EmployeeAll(){
+
+        $user= Auth::user();
+        $domains = Domain::all();
+        $designations = Designation::all();
+        $maritalstatus = MaritalStatus::all();
+        $districts = District::all();
+        $divisions = Division::all();
+        $upazillas = Upazilla::all();
+        $blood_groups = BloodGroup::all();
+        $educationqualifications = EducationalQualification::all();
+        $employeetypes = EmployeeType::all();
+        $employeeall = NewEmployee::all();
+        // $employeeall = NewEmployee::where('created_by',$user->id)->orderBy('id','DESC')->get();
+        return view('backend.newemployee.employee_all',compact('employeeall'));
+    } // End Method 
     public function NewEmployeeAll(){
 
         $user= Auth::user();

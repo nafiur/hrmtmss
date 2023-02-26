@@ -99,23 +99,23 @@ Route::controller(SectorController::class)->group(function () {
 
 // Domain Setup
 Route::controller(DomainController::class)->group(function () {
-    Route::get('/domain/all', 'DomainAll')->name('domain.all');
-    Route::get('/domain/add', 'DomainAdd')->name('domain.add'); 
-    Route::post('/domain/store', 'DomainStore')->name('domain.store');
-    Route::get('/domain/edit/{id}', 'DomainEdit')->name('domain.edit'); 
-    Route::post('/domain/update', 'DomainUpdate')->name('domain.update');
-    Route::get('/domain/delete/{id}', 'DomainDelete')->name('domain.delete');
+    Route::get('/domain/all', 'DomainAll')->name('domain.all')->middleware('permission:domain.all');
+    Route::get('/domain/add', 'DomainAdd')->name('domain.add')->middleware('permission:domain.add'); 
+    Route::post('/domain/store', 'DomainStore')->name('domain.store')->middleware('permission:domain.store');
+    Route::get('/domain/edit/{id}', 'DomainEdit')->name('domain.edit')->middleware('permission:domain.edit'); 
+    Route::post('/domain/update', 'DomainUpdate')->name('domain.update')->middleware('permission:domain.update');
+    Route::get('/domain/delete/{id}', 'DomainDelete')->name('domain.delete')->middleware('permission:domain.delete');
     
 });
 
 // Designation Setup
 Route::controller(DesignationController::class)->group(function () {
-    Route::get('/designation/all', 'DesignationAll')->name('designation.all');
-    Route::get('/designation/add', 'DesignationAdd')->name('designation.add'); 
-    Route::post('/designation/store', 'DesignationStore')->name('designation.store');
-    Route::get('/designation/edit/{id}', 'DesignationEdit')->name('designation.edit'); 
-    Route::post('/designation/update', 'DesignationUpdate')->name('designation.update');
-    Route::get('/designation/delete/{id}', 'DesignationDelete')->name('designation.delete');
+    Route::get('/designation/all', 'DesignationAll')->name('designation.all')->middleware('permission:designation.all');
+    Route::get('/designation/add', 'DesignationAdd')->name('designation.add')->middleware('permission:designation.add'); 
+    Route::post('/designation/store', 'DesignationStore')->name('designation.store')->middleware('permission:designation.store');
+    Route::get('/designation/edit/{id}', 'DesignationEdit')->name('designation.edit')->middleware('permission:designation.edit'); 
+    Route::post('/designation/update', 'DesignationUpdate')->name('designation.update')->middleware('permission:designation.update');
+    Route::get('/designation/delete/{id}', 'DesignationDelete')->name('designation.delete')->middleware('permission:designation.delete');
     
 });
 
@@ -275,6 +275,7 @@ Route::controller(BranchController::class)->group(function () {
 
 // New Employee Information
 Route::controller(NewEmployeeController::class)->group(function () {
+    Route::get('/employee/all', 'EmployeeAll')->name('employee.all')->middleware('permission:employee.all');
     Route::get('/newemployee/all', 'NewEmployeeAll')->name('newemployee.all')->middleware('permission:newemployee.all');
     Route::get('/newemployee/add', 'NewEmployeeAdd')->name('newemployee.add')->middleware('permission:newemployee.add'); 
     // Route::get('/newemployee/show', 'NewEmployeeShow')->name('newemployee.show')->middleware('permission:newemployee.show'); 
@@ -288,12 +289,13 @@ Route::controller(NewEmployeeController::class)->group(function () {
 
 // Downloads
 Route::controller(DownloadsController::class)->group(function () {
-    Route::get('/download/all', 'DownloadsAll')->name('download.all');
-    Route::get('/download/add', 'DownloadsAdd')->name('download.add'); 
+    Route::get('/download/all', 'DownloadsAll')->name('download.all')->middleware('permission:formformats.all');
+    Route::get('/download/show/{id}', 'DownloadsShow')->name('download.show')->middleware('permission:formformats.show');
+    Route::get('/download/add', 'DownloadsAdd')->name('download.add')->middleware('permission:formformats.add'); 
     Route::post('/download/store', 'DownloadsStore')->name('download.store');
-    Route::get('/download/edit/{id}', 'DownloadsEdit')->name('download.edit'); 
+    Route::get('/download/edit/{id}', 'DownloadsEdit')->name('download.edit')->middleware('permission:formformats.edit'); 
     Route::post('/download/update', 'DownloadsUpdate')->name('download.update');
-    Route::get('/download/delete/{id}', 'DownloadsDelete')->name('download.delete');
+    Route::get('/download/delete/{id}', 'DownloadsDelete')->name('download.delete')->middleware('permission:formformats.delete');
     
 });
 // Usermanagement Setup
@@ -332,17 +334,16 @@ Route::controller(CustomerController::class)->group(function () {
     Route::get('/credit/customer/print/pdf', 'CreditCustomerPrintPdf')->name('credit.customer.print.pdf');
 
     Route::get('/customer/edit/invoice/{invoice_id}', 'CustomerEditInvoice')->name('customer.edit.invoice');
-     Route::post('/customer/update/invoice/{invoice_id}', 'CustomerUpdateInvoice')->name('customer.update.invoice');
+    Route::post('/customer/update/invoice/{invoice_id}', 'CustomerUpdateInvoice')->name('customer.update.invoice');
 
-     Route::get('/customer/invoice/details/{invoice_id}', 'CustomerInvoiceDetails')->name('customer.invoice.details.pdf');
+    Route::get('/customer/invoice/details/{invoice_id}', 'CustomerInvoiceDetails')->name('customer.invoice.details.pdf');
 
-      Route::get('/paid/customer', 'PaidCustomer')->name('paid.customer');
-      Route::get('/paid/customer/print/pdf', 'PaidCustomerPrintPdf')->name('paid.customer.print.pdf');
+    Route::get('/paid/customer', 'PaidCustomer')->name('paid.customer');
+    Route::get('/paid/customer/print/pdf', 'PaidCustomerPrintPdf')->name('paid.customer.print.pdf');
 
-       Route::get('/customer/wise/report', 'CustomerWiseReport')->name('customer.wise.report');
-       Route::get('/customer/wise/credit/report', 'CustomerWiseCreditReport')->name('customer.wise.credit.report');
-       Route::get('/customer/wise/paid/report', 'CustomerWisePaidReport')->name('customer.wise.paid.report');
-     
+    Route::get('/customer/wise/report', 'CustomerWiseReport')->name('customer.wise.report');
+    Route::get('/customer/wise/credit/report', 'CustomerWiseCreditReport')->name('customer.wise.credit.report');
+    Route::get('/customer/wise/paid/report', 'CustomerWisePaidReport')->name('customer.wise.paid.report');
 });
 
 
@@ -354,7 +355,6 @@ Route::controller(UnitController::class)->group(function () {
     Route::get('/unit/edit/{id}', 'UnitEdit')->name('unit.edit');
     Route::post('/unit/update', 'UnitUpdate')->name('unit.update');
     Route::get('/unit/delete/{id}', 'UnitDelete')->name('unit.delete');
-     
 });
 
 
@@ -444,11 +444,10 @@ Route::controller(RoleController::class)->group(function(){
     Route::get('/add/permission','AddPermission')->name('add.permission');
     Route::post('/store/permission','StorePermission')->name('permission.store');
     Route::get('/edit/permission/{id}','EditPermission')->name('edit.permission');
-   
-   Route::post('/update/permission','UpdatePermission')->name('permission.update');
-      Route::get('/delete/permission/{id}','DeletePermission')->name('delete.permission');
-   
-   });
+    Route::post('/update/permission','UpdatePermission')->name('permission.update');
+    Route::get('/delete/permission/{id}','DeletePermission')->name('delete.permission');
+
+});
 
    ///Roles All Route 
 Route::controller(RoleController::class)->group(function(){
@@ -458,47 +457,37 @@ Route::controller(RoleController::class)->group(function(){
     Route::get('/add/roles','AddRoles')->name('add.roles');
     Route::post('/store/roles','StoreRoles')->name('roles.store');
     Route::get('/edit/roles/{id}','EditRoles')->name('edit.roles');
-   
-   Route::post('/update/roles','UpdateRoles')->name('roles.update');
+Route::post('/update/roles','UpdateRoles')->name('roles.update');
     Route::get('/delete/roles/{id}','DeleteRoles')->name('delete.roles');
-   
-   });
-   
+});
+
    ///Add Roles in Permission All Route 
-   Route::controller(RoleController::class)->group(function(){
-   
+Route::controller(RoleController::class)->group(function(){
     Route::get('/add/roles/permission','AddRolesPermission')->name('add.roles.permission');
-     Route::post('/role/permission/store','StoreRolesPermission')->name('role.permission.store');
-   
-      Route::get('/all/roles/permission','AllRolesPermission')->name('all.roles.permission');
-   
-     Route::get('/admin/edit/roles/{id}','AdminEditRoles')->name('admin.edit.roles');
-   
-       Route::post('/role/permission/update/{id}','RolePermissionUpdate')->name('role.permission.update');
-   
-     Route::get('/admin/delete/roles/{id}','AdminDeleteRoles')->name('admin.delete.roles');
-    
-   });
-   
-   
-   
+    Route::post('/role/permission/store','StoreRolesPermission')->name('role.permission.store');
+    Route::get('/all/roles/permission','AllRolesPermission')->name('all.roles.permission');
+    Route::get('/admin/edit/roles/{id}','AdminEditRoles')->name('admin.edit.roles');
+    Route::post('/role/permission/update/{id}','RolePermissionUpdate')->name('role.permission.update');
+    Route::get('/admin/delete/roles/{id}','AdminDeleteRoles')->name('admin.delete.roles');
+});
+
    ///Admin User All Route 
-   Route::controller(AdminController::class)->group(function(){
-   
+Route::controller(AdminController::class)->group(function(){
+
     Route::get('/all/admin','AllAdmin')->name('all.admin');
     Route::get('/add/admin','AddAdmin')->name('add.admin');
     Route::post('/store/admin','StoreAdmin')->name('admin.store');
     Route::get('/edit/admin/{id}','EditAdmin')->name('edit.admin');
     Route::post('/update/admin','UpdateAdmin')->name('admin.update');
     Route::get('/delete/admin/{id}','DeleteAdmin')->name('delete.admin');
-   
+
     // // Database Backup 
     // Route::get('/database/backup','DatabaseBackup')->name('database.backup');
     // Route::get('/backup/now','BackupNow');
     // Route::get('{getFilename}','DownloadDatabase');
     // Route::get('/delete/database/{getFilename}','DeleteDatabase');
-   
-   });
+
+});
 
 
  }); // End Group Middleware
@@ -511,13 +500,11 @@ Route::controller(DefaultController::class)->group(function () {
     Route::get('/get-category', 'GetCategory')->name('get-category'); 
     Route::get('/get-product', 'GetProduct')->name('get-product'); 
     Route::get('/check-product', 'GetStock')->name('check-product-stock'); 
-     
 });
 
 
 Route::get('/efile', function () {
-    return view('efile.index');
-})->middleware(['auth'])->name('efile');
+    return view('efile.index'); })->middleware(['auth'])->name('efile');
 
 
 Route::get('/dashboard', function () {

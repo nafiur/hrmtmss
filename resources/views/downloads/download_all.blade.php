@@ -2,7 +2,7 @@
 @section('admin')
 @section('title'){{'Forms Download'}} @endsection
 
- <div class="page-content">
+<div class="page-content">
     <div class="container-fluid">
             <nav aria-label="breadcrumb">
                 <ol class="px-4 py-3 rounded breadcrumb breadcrumb-alt bg-body-extra-light push fs-sm">
@@ -12,83 +12,23 @@
                 <li class="breadcrumb-item active" aria-current="page">All Form & Formats</li>
                 </ol>
             </nav>
-        <div class="row">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-6 col-md-4 col-xl-2">
-                      <a class="block text-center block-rounded block-bordered block-link-shadow" href="{{ route('newemployee.all') }}">
-                        <div class="block-content">
-                          <p class="my-2">
-                            <i class="fa fas fa-house-user fa-2x text-muted"></i>
-                          </p>
-                          <p class="fw-semibold">All Employee</p>
-                        </div>
-                      </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-xl-2">
-                      <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary" href="{{ route('newemployee.add') }}">
-                        {{-- <div class="ribbon-box">2</div> --}}
-                        <div class="block-content">
-                          <p class="my-2">
-                            <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                          </p>
-                          <p class="fw-semibold">New Employee</p>
-                        </div>
-                      </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-xl-2">
-                      <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-success" href="/efile">
-                        {{-- <div class="ribbon-box">3</div> --}}
-                        <div class="block-content">
-                          <p class="my-2">
-                            <i class="fa fas fa-file-archive fa-2x text-muted"></i>
-                          </p>
-                          <p class="fw-semibold">eFile Magt</p>
-                        </div>
-                      </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-xl-2">
-                      <a class="block text-center block-rounded block-bordered block-link-shadow" href="{{ route('setup.all') }}">
-                        <div class="block-content">
-                          <p class="my-2">
-                            <i class="fa fas fa-cogs fa-2x text-muted"></i>
-                          </p>
-                          <p class="fw-semibold">All Setup</p>
-                        </div>
-                      </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-xl-2">
-                      <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary" href="javascript:void(0)">
-                        {{-- <div class="ribbon-box">24</div> --}}
-                        <div class="block-content">
-                          <p class="my-2">
-                            <i class="fa fa-user-tie fa-2x text-muted"></i>
-                          </p>
-                          <p class="fw-semibold">People</p>
-                        </div>
-                      </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-xl-2">
-                      <a class="block text-center block-rounded block-bordered block-link-shadow" href="javascript:void(0)">
-                        <div class="block-content">
-                          <p class="my-2">
-                            <i class="fa fa-file-word fa-2x text-muted"></i>
-                          </p>
-                          <p class="fw-semibold">Documents</p>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                <div class="card">
-                    <div class="card-body">
-                                <a href="{{ route('download.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-plus-circle"> Add New Form </i></a> <br>  <br>               
-                                <h4 class="card-title"> All Data </h4>
-                                <table id="datatable" class="self-center table align-middle table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+
+            <div class="block block-rounded">
+                <div class="block-header block-header-default">
+                <h3 class="block-title">Add New Form</h3>
+            @if (Auth::user()->can('formformats.add'))
+            <a href="{{ route('download.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fa fa-plus-circle"> Add New Form </i></a> <br>  <br>
+            @endif
+            </div>
+            <div class="block-content mb-5 bangla"> 
+                                {{-- <h4 class="card-title">Employee  All Data </h4> --}}
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
                                             <th width="10%">Sl</th>
                                             <th>Name</th> 
                                             {{-- <th>Name English</th>  --}}
+                                            <th width="10%">File Type</th>
                                             <th width="10%">Download</th>
                                             {{-- <th width="5%">Doc</th> --}}
                                             <th width="20%">Action</th>
@@ -100,13 +40,22 @@
                                                 <td> {{ $key+1}} </td>
                                                 {{-- <td> {{ $item->name }} </td>  --}}
                                                 <td> {{ $item->form_name }} </td> 
+                                                <td> {{ $item->form_type }} </td> 
                                                 {{-- <td> {{ $item->form_file }} </td>  --}}
                                                 <td> <a href="{{ asset('upload/downloads/form/'. $item->form_file) }}" class="btn btn-primary sm" title="Download">  <i class="fas fa-file-download"></i></a> </td> 
                                                 {{-- <td> {{ $item->name }} </td>  --}}
                                                 <td>
                                                     {{-- <a href="{{ asset('upload/downloads/'. $item->form_file) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a> --}}
+                                                    @if (Auth::user()->can('formformats.show'))
+                                                    <a href="{{ route('download.show',$item->id) }}" class="btn btn-info sm" title="Show Data">  <i class="fas fa-eye"></i> </a>
+                                                    @endif
+                                                    @if (Auth::user()->can('formformats.edit'))
                                                     <a href="{{ route('download.edit',$item->id) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
+                                                    @endif
+
+                                                    @if (Auth::user()->can('formformats.delete'))
                                                     <a href="{{ route('download.delete',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
+                                                    @endif
                                                 </td>  
                                         </tr>
                                         @endforeach
@@ -116,6 +65,10 @@
                     </div>
                 </div> <!-- end col -->
         </div> <!-- end row -->
+            <!-- END Label on top Layout -->    
+            </div><!--block-content--> 
+            </div><!--block-content--> 
+        
     </div> <!-- container-fluid -->
 </div>
 @endsection

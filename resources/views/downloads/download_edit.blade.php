@@ -12,44 +12,57 @@
               <li class="breadcrumb-item active" aria-current="page">Edit Form Information</li>
             </ol>
           </nav>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="{{ route('download.all') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-plus-circle"> Back </i></a> <br>  <br>
-                            <h4 class="card-title">Edit Form Information</h4><br><br>
-                            <form method="post" action="{{ route('download.update') }}" id="myForm" >
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $downloads->id }}">
-                                <div class="mb-4">
-                                    <label class="form-label" for="example-text-input">Form Name</label>
-                                    <input type="text" class="form-control" id="example-text-input" name="form_name" required="" value="{{ $downloads->form_name }}">
-                                  </div>
-                                
-                                <div class="mb-3 form-group">
-                                    <label for="firstname" class="form-label">Group Name </label>
-                                    <select name="form_type" class="form-select" id="example-select">
-                                        <option selected disabled >Select Group  </option>         
-                                        <option value="pdf"{{ $downloads->form_type == 'pdf' ? 'selected' : '' }}>PDF</option>   
-                                        <option value="doc"{{ $downloads->form_type == 'doc' ? 'selected' : '' }}>Word</option>   
-                                        <option value="xls"{{ $downloads->form_type == 'xls' ? 'selected' : '' }}>Excel</option>   
-                                        <option value="ppt"{{ $downloads->form_type == 'ppt' ? 'selected' : '' }}>Power Point</option>   
-                                        <option value="image"{{ $downloads->form_type == 'image' ? 'selected' : '' }}>Image</option>   
-                                    </select>           
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Form Name </label>
-                                    <div class="form-group col-sm-10">
-                                        <input name="form_file" class="form-control" value="{{ $downloads->form_file }}" type="text">
-                                    </div>
-                                </div>
-                                <!-- end row -->
-                                <input type="submit" class="btn btn-info waves-effect waves-light"style="float:right;" value="Update">
-                            </form>
-                        </div>
-                    </div>
-                </div> <!-- end col -->
+        
+        <div class="block block-rounded">
+            <div class="block-header block-header-default">
+              <h3 class="block-title">Edit Form Information</h3>
+              <a href="{{ route('download.all') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fa fa-undo"> Back </i></a> <br>  <br>
             </div>
+            <div class="block-content">    
+              <!-- Label on top Layout -->
+              {{-- <h2 class="content-heading">Labels on top</h2> --}}
+              <div class="row">
+                <div class="col-lg-4">
+                  <p class="text-muted">
+                    Edit Form Information
+                  </p>
+                </div>
+                <div class="col-lg-8 col-xl-6">
+                  <!-- Form Labels on top - Default Style -->
+                  <form class="mb-5" action="{{ route('download.update') }}" id="myform" enctype="multipart/form-data" method="POST">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $downloads->id }}">
+                    <div class="mb-4">
+                      <label class="form-label" for="example-text-input">Form Name</label>
+                      <input type="text" class="form-control" id="example-text-input" name="form_name" required="" value="{{ $downloads->form_name }}">
+                    </div>
+                    <div class="mb-4">
+                      <label for="firstname" class="form-label">File Type </label>
+                        <select name="form_type" class="form-select" id="example-select">
+                                <option selected disabled >Select Group  </option>         
+                                <option value="pdf"{{ $downloads->form_type == 'pdf' ? 'selected' : '' }}>PDF</option>   
+                                <option value="doc"{{ $downloads->form_type == 'doc' ? 'selected' : '' }}>Word</option>   
+                                <option value="xls"{{ $downloads->form_type == 'xls' ? 'selected' : '' }}>Excel</option>   
+                                <option value="ppt"{{ $downloads->form_type == 'ppt' ? 'selected' : '' }}>Power Point</option>   
+                                <option value="image"{{ $downloads->form_type == 'image' ? 'selected' : '' }}>Image</option>   
+                        </select>  
+                    </div>
+                    <div class="mb-4">
+                    <label class="form-label" for="example-file-input">Upload File</label>
+                    {{-- <input class="form-control" type="file" name="form_file" id="example-file-input" value="{{ $downloads->form_file }}" required=""> --}}
+                    <input name="form_file" class="form-control" value="{{ $downloads->form_file}}" type="text">
+                    </div>
+                    <div class="mb-4">
+                      {{-- <button type="submit" style="float:right" class="mb-3 btn btn-primary">Save</button> --}}
+                      <input type="submit" style="float:right;" class="mb-4 btn btn-info waves-effect waves-light" value="Save">
+                    </div>                    
+                  </form>
+                  <!-- END Form Labels on top - Default Style -->
+                </div>
+              </div>
+              <!-- END Label on top Layout -->    
+            </div><!--block-content-->
+        </div><!-- END block --> 
     </div>
 </div>
 

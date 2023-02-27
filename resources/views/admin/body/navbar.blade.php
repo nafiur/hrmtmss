@@ -1,52 +1,46 @@
 <div class="topnav">
     <div class="container-fluid">
         <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
-
             <div class="collapse navbar-collapse" id="topnav-menu-content">
                 <ul class="navbar-nav">
-                                          
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('dashboard') }}">
                             <i class="ri-dashboard-line me-2"></i> Dashboard
                         </a>
                     </li>
-                    
-
-                    @if (Auth::user()->can('settings.menu')) 
+                    @if (Auth::user()->can('settings.menu'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('setup.all') }}">
                             <i class="ri-settings-2-line me-2"></i> Settings
                         </a>
                     </li>
                     @endif
-
-                    @if (Auth::user()->can('formformats.menu')) 
+                    @if (Auth::user()->can('formformats.menu'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('download.all') }}">
                             <i class="ri-file-word-2-line me-2"></i> Forms & Formats
                         </a>
                     </li>
                     @endif
-
-                    @if (Auth::user()->can('usermanagement.menu')) 
+                    @if (Auth::user()->can('usermanagement.menu'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('all.roles-permission-mgt') }}">
                             <i class="ri-file-word-2-line me-2"></i> User Management
                         </a>
                     </li>
                     @endif
+                    @if (Auth::user()->can('staffprofile.menu'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('staffprofile.all') }}">
                             <i class="ri-file-word-2-line me-2"></i> HRM Staff
                         </a>
                     </li>
-                    
+                    @endif
                     {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="urp" role="button"
                         >
                             <i class="ri-pencil-ruler-2-line me-2"></i>User Role  & Permission <div class="arrow-down"></div>
                         </a>
-
                         <div class="px-2 dropdown-menu mega-dropdown-menu dropdown-mega-menu-xl"
                             aria-labelledby="urp">
                             <div class="row">
@@ -69,7 +63,7 @@
                                         <a href="ui-rangeslider.html" class="dropdown-item">Range Slider</a>
                                         <a href="ui-roundslider.html" class="dropdown-item">Round slider</a>
                                         <a href="ui-session-timeout.html" class="dropdown-item">Session Timeout</a>
-                                        <a href="ui-progressbars.html" class="dropdown-item">Progress Bars</a>                                           
+                                        <a href="ui-progressbars.html" class="dropdown-item">Progress Bars</a>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -84,17 +78,14 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </li> --}}
-
                     {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="{{ route('download.all') }}" id="topnav-apps" role="button"
                         >
                             <i class=" ri-file-word-2-line me-2"></i>Forms & Formats <div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-apps">
-
                             <a href="{{ route('download.all') }}" class="dropdown-item">All Form</a>
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-email"
@@ -108,7 +99,6 @@
                             </div>
                         </div>
                     </li> --}}
-
                     {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button"
                         >
@@ -194,7 +184,6 @@
                             </div>
                         </div>
                     </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button"
                         >
@@ -229,7 +218,6 @@
                             </div>
                         </div>
                     </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-layout" role="button">
                             <i class="ri-layout-3-line me-2"></i><span key="t-layouts">Layouts</span> <div class="arrow-down"></div>
@@ -249,7 +237,6 @@
                                     <a href="layouts-colored-sidebar.html" class="dropdown-item" key="t-colored-sidebar">Colored Sidebar</a>
                                 </div>
                             </div>
-
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-layout-hori"
                                     role="button">
@@ -265,7 +252,6 @@
                             </div>
                         </div>
                     </li> --}}
-
                 </ul>
             </div>
         </nav>

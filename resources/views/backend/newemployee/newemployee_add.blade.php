@@ -329,11 +329,11 @@
                         </div>
                     </div>
                 </div> <!-- end col -->
-              <!-- END Label on top Layout -->
+            <!-- END Label on top Layout -->
             </div><!--block-content-->
         </div><!-- END block -->
 
-          </div>
+        </div>
     </div>
 </div>
 

@@ -40,13 +40,17 @@ Route::view('/', 'auth.login');
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+Route::get('division-district-upazilla','DivisionDistrictUpazillaController@index');
+Route::post('get-districts-by-division','DivisionDistrictUpazillaController@getDistrict');
+Route::post('get-upazillas-by-district','DivisionDistrictUpazillaController@getUpazilla');
 
 Route::controller(DemoController::class)->group(function () {
     Route::get('/about', 'Index')->name('about.page')->middleware('check');
     Route::get('/contact', 'ContactMethod')->name('cotact.page');
 });
-
+// Route::get('/newemployee/add',[DivisionDistrictUpazillaController::class,'index']);
+//     Route::post('api/fetch-district',[DivisionDistrictUpazillaController::class,'fetchDistrict']);
+//     Route::post('api/fetch-upazilla',[DivisionDistrictUpazillaController::class,'fetchUpazilla']);
 
 Route::middleware('auth')->group(function(){
 

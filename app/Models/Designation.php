@@ -11,6 +11,7 @@ class Designation extends Model
     protected $guarded = [];
 
     public function newemployee(){
-        return $this->belongsTo(Designation::class,'designation_id','id');
+        // return $this->belongsTo(Designation::class,'designation_id','id');
+        return $this->belongsTo(Designation::class);
     }
 }

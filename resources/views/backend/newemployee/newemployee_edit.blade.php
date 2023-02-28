@@ -107,7 +107,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="mb-3">
@@ -165,7 +164,7 @@
                                     <div class="col-md-4">
                                         <div class="mb-3 position-relative">
                                             <label for="example-text-input" class="form-label">Postal Code</label>
-                                            <input type="text" name="permanent_postal_code" value="{{ $newemployee->permanent_postal_code }}" class="form-control"  required="">
+                                            <input type="text" name="permanent_postal_code" value="{{ $newemployee->permanent_postal_code }}" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -224,7 +223,7 @@
                                     <div class="col-md-4">
                                         <div class="mb-3 position-relative">
                                             <label for="example-text-input" class="form-label">Postal Code</label>
-                                            <input type="text" name="present_postal_code" value="{{ $newemployee->present_postal_code }}" class="form-control"  required="">
+                                            <input type="text" name="present_postal_code" value="{{ $newemployee->present_postal_code }}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -274,7 +273,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Email</label>
-                                            <input type="email" name="email" value="{{ $newemployee->email }}" class="form-control" required="">
+                                            <input type="email" name="email" value="{{ $newemployee->email }}" class="form-control" >
                                         </div>
                                     </div>
                                 </div>
@@ -282,13 +281,13 @@
                                     <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">NID Card</label>
-                                            <input type="text" name="nid" value="{{ $newemployee->nid }}" class="form-control" required="">
+                                            <input type="text" name="nid" value="{{ $newemployee->nid }}" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Smard Card</label>
-                                            <input type="text" name="smartcard" value="{{ $newemployee->smartcard }}" class="form-control" required="">
+                                            <input type="text" name="smartcard" value="{{ $newemployee->smartcard }}" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-md-4">

@@ -71,7 +71,7 @@ class NewEmployeeController extends Controller
     } // End Method
 
 
-       public function NewEmployeeStore(Request $request){
+    public function NewEmployeeStore(Request $request){
 
 
         $validateData = $request->validate([
@@ -90,20 +90,20 @@ class NewEmployeeController extends Controller
             'educational_qualification_id' =>'required',
             'permanent_village' => 'required',
             'permanent_post' => 'required',
-            'permanent_postal_code' => 'required',
+            // 'permanent_postal_code' => 'required',
             'permanent_division_id' => 'required',
             'permanent_district_id' => 'required',
             'permanent_upazilla_id' => 'required',
             'present_village' => 'required',
             'present_post' => 'required',
-            'present_postal_code' => 'required',
+            // 'present_postal_code' => 'required',
             'present_division_id' => 'required',
             'present_district_id' => 'required',
             'present_upazilla_id' => 'required',
             'mobile' => 'required',
             'email' => 'required',
-            'nid' => 'required',
-            'smartcard' => 'required',
+            // 'nid' => 'required',
+            // 'smartcard' => 'required',
             'blood_groups_id' => 'required'
             // 'id' => ['required', 'numeric','max:8', 'min:8', 'unique:new_employees']
             // 'id' => 'required|max:8|min:8',

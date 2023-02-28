@@ -40,7 +40,7 @@
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Employee Name</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" value="{{ $newemployee->name ?? '' }}" readonly>
+                            <input class="form-control capitalize" type="text" value="{{ $newemployee->name ?? '' }}" readonly>
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -64,14 +64,14 @@
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Father's Name</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" value="{{ $newemployee->father_name }}" readonly>
+                            <input class="form-control capitalize" type="text" value="{{ $newemployee->father_name }}" readonly>
                             {{-- <input class="form-control" type="text" value="{{ $newemployee-> }}" readonly> --}}
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Mother's Name</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" value="{{ $newemployee->mother_name }}" readonly>
+                            <input class="form-control capitalize" type="text" value="{{ $newemployee->mother_name }}" readonly>
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -89,14 +89,14 @@
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Present Address</label>
                         <div class="col-sm-10">
-                            <textarea id="textarea" class="form-control" readonly>Village: {{ $newemployee->present_village }} , PostOffice: {{ $newemployee->present_village }}, Upazilla: {{ $newemployee->present_upazilla->name ?? '' }}, District: {{ $newemployee->present_district->name ?? '' }}</textarea>
+                            <textarea id="textarea" class="form-control capitalize" readonly>Village: {{ $newemployee->present_village }} , PostOffice: {{ $newemployee->present_village }}, Upazilla: {{ $newemployee->present_upazilla->name ?? '' }}, District: {{ $newemployee->present_district->name ?? '' }}</textarea>
                             {{-- <input class="form-control" type="text" value="Village: {{ $newemployee->present_village }} , PostOffice: {{ $newemployee->present_village }}, Postcode: {{ $newemployee->present_postal_code }}, Upazilla: {{ $newemployee->present_upazilla_id }}, District: {{ $newemployee->present_district_id }}" readonly> --}}
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-2 col-form-label">Permanent Address</label>
                         <div class="col-sm-10">
-                            <textarea id="textarea" class="form-control" readonly>Village: {{ $newemployee->permanent_village }} , PostOffice: {{ $newemployee->permanent_village }}, Upazilla: {{ $newemployee->permanent_upazilla->name ?? '' }}, District: {{ $newemployee->permanent_district->name ?? '' }}</textarea>
+                            <textarea id="textarea" class="form-control capitalize" readonly>Village: {{ $newemployee->permanent_village }} , PostOffice: {{ $newemployee->permanent_village }}, Upazilla: {{ $newemployee->permanent_upazilla->name ?? '' }}, District: {{ $newemployee->permanent_district->name ?? '' }}</textarea>
                             {{-- <input class="form-control" type="text" value="Village: {{ $newemployee->permanent_village }} , PostOffice: {{ $newemployee->permanent_village }}, Postcode: {{ $newemployee->permanent_postal_code }}, Upazilla: {{ $newemployee->permanent_upazilla_id }}, District: {{ $newemployee->permanent_district_id }}" readonly> --}}
                         </div>
                     </div>

@@ -17,6 +17,8 @@
         <!-- <link rel="stylesheet" id="css-theme" href="{{ asset('backend/mix/assets/css/themes/xwork.min.css') }}"> -->
         <link rel="stylesheet" id="css-theme" href="{{ asset('backend/mix/assets/css/themes/xdream.min.css') }}">
         <!-- END Stylesheets -->
+
+        <link rel="stylesheet" href="{{ asset('backend/mix/assets/js/plugins/simplemde/simplemde.min.css') }}">
         <!-- Select 2 -->
         <link href="{{ asset('backend/assets/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css">
         <!-- end Select 2  -->
@@ -25,7 +27,7 @@
         <!-- DataTables -->
         <link href="{{ asset('backend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- Responsive datatable examples -->
-        <link href="{{ asset('backend/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />  
+        <link href="{{ asset('backend/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- mix Css -->
         <link href="{{ asset('backend/assets/css/mix.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Bootstrap Css -->
@@ -40,13 +42,13 @@
 <body data-topbar="light" data-layout="horizontal">
 <!-- <body data-layout="horizontal" data-topbar="dark"> -->
         <!-- Begin page -->
-        <div id="layout-wrapper"> 
+        <div id="layout-wrapper">
         @include('admin.body.header')
         {{-- @include('admin.body.sidebar') --}}
         <div class="main-content">
             @yield('admin')
             <!-- End Page-content -->
-            @include('admin.body.footer')          
+            @include('admin.body.footer')
             </div>
             <!-- end main content-->
         </div>
@@ -59,7 +61,7 @@
         <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js') }}"></script>
         <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js') }}"></script>
 
-        
+
         <!-- apexcharts -->
         <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
@@ -70,7 +72,7 @@
         <!-- Required datatable js -->
         <script src="{{ asset('backend/assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-        
+
         <!-- Responsive examples -->
         <script src="{{ asset('backend/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
         <script src="{{ asset('backend/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
@@ -101,9 +103,9 @@ switch(type){
 
     case 'error':
     toastr.error(" {{ Session::get('message') }} ");
-    break; 
+    break;
 }
-@endif 
+@endif
 </script>
 
 <!-- Required datatable js -->

@@ -22,6 +22,13 @@
                         </a>
                     </li>
                     @endif
+                    @if (Auth::user()->can('notice.menu'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('notice.all') }}">
+                            <i class="ri-file-word-2-line me-2"></i> Notice
+                        </a>
+                    </li>
+                    @endif
                     @if (Auth::user()->can('usermanagement.menu'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('all.roles-permission-mgt') }}">

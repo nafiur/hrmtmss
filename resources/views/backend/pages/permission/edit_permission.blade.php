@@ -22,25 +22,25 @@
                                     <div class="page-title-right">
                                         <ol class="m-0 breadcrumb">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Edit Permission</a></li>
-                                            
+
                                         </ol>
                                     </div>
                                     <h4 class="page-title">Edit Permission</h4>
                                 </div>
                             </div>
-                        </div>     
+                        </div>
                         <!-- end page title --> --}}
 
 <div class="row">
-    
+
 
   <div class="col-lg-8 col-xl-12">
 <div class="card">
     <div class="card-body">
-                                    
-                                      
-                                         
-                                           
+
+
+
+
 
     <!-- end timeline content-->
 
@@ -59,7 +59,7 @@
         <div class="mb-3 form-group">
             <label for="firstname" class="form-label">Permission Name</label>
             <input type="text" name="name" class="form-control" value="{{ $permission->name }}"  >
-           
+
         </div>
     </div>
 
@@ -68,10 +68,11 @@
         <div class="mb-3 form-group">
             <label for="firstname" class="form-label">Group Name </label>
             <select name="group_name" class="form-select" id="example-select">
-                <option selected disabled >Select Group  </option>         
+                <option selected disabled >Select Group  </option>
                 <option value="dashboard"{{ $permission->group_name == 'dashboard' ? 'selected' : '' }}>Dashboard</option>
                 <option value="settings"{{ $permission->group_name == 'settings' ? 'selected' : '' }}> Settings</option>
                 <option value="form-formats"{{ $permission->group_name == 'form-formats' ? 'selected' : '' }}> Form & Formats</option>
+                <option value="notice"{{ $permission->group_name == 'notice' ? 'selected' : '' }}> Notice</option>
                 <option value="all-employee"{{ $permission->group_name == 'all-employee' ? 'selected' : '' }}> All Employee</option>
                 <option value="new-employee"{{ $permission->group_name == 'new-employee' ? 'selected' : '' }}> New Employee </option>
                 <option value="efile"{{ $permission->group_name == 'efile' ? 'selected' : '' }}> eFile </option>
@@ -81,40 +82,40 @@
                 <option value="designation"{{ $permission->group_name == 'designation' ? 'selected' : '' }}> Designation </option>
                 <option value="division"{{ $permission->group_name == 'division' ? 'selected' : '' }}> Division</option>
                 <option value="district"{{ $permission->group_name == 'district' ? 'selected' : '' }}> District </option>
-                <option value="upazilla"{{ $permission->group_name == 'upazilla' ? 'selected' : '' }}> Upazilla</option>                                                                 
-                <option value="bloodgroup"{{ $permission->group_name == 'bloodgroup' ? 'selected' : '' }}> Bloodgroup</option>                                                                 
-                <option value="department"{{ $permission->group_name == 'department' ? 'selected' : '' }}> Department</option>                                                                 
-                <option value="employeetype"{{ $permission->group_name == 'employeetype' ? 'selected' : '' }}> Employeetype</option>                                                                 
-                <option value="roles"{{ $permission->group_name == 'roles' ? 'selected' : '' }}> Roles</option>   
-                <option value="module"{{ $permission->group_name == 'module' ? 'selected' : '' }}> Module</option>   
-                <option value="eduqualification"{{ $permission->group_name == 'eduqualification' ? 'selected' : '' }}> Edu Qualification</option>   
-                <option value="gender"{{ $permission->group_name == 'gender' ? 'selected' : '' }}> Gender</option>   
-                <option value="jobstatus"{{ $permission->group_name == 'jobstatus' ? 'selected' : '' }}> Job Status</option>   
-                <option value="maritalstatus"{{ $permission->group_name == 'maritalstatus' ? 'selected' : '' }}> Marital Status</option>   
-                <option value="religion"{{ $permission->group_name == 'religion' ? 'selected' : '' }}> Religion</option>   
-                <option value="zone"{{ $permission->group_name == 'zone' ? 'selected' : '' }}> Zone</option>   
-                <option value="area"{{ $permission->group_name == 'area' ? 'selected' : '' }}> Area</option>   
-                <option value="branch"{{ $permission->group_name == 'branch' ? 'selected' : '' }}> Branch</option>   
-                <option value="module"{{ $permission->group_name == 'module' ? 'selected' : '' }}> Module</option>   
-            </select>           
+                <option value="upazilla"{{ $permission->group_name == 'upazilla' ? 'selected' : '' }}> Upazilla</option>
+                <option value="bloodgroup"{{ $permission->group_name == 'bloodgroup' ? 'selected' : '' }}> Bloodgroup</option>
+                <option value="department"{{ $permission->group_name == 'department' ? 'selected' : '' }}> Department</option>
+                <option value="employeetype"{{ $permission->group_name == 'employeetype' ? 'selected' : '' }}> Employeetype</option>
+                <option value="roles"{{ $permission->group_name == 'roles' ? 'selected' : '' }}> Roles</option>
+                <option value="module"{{ $permission->group_name == 'module' ? 'selected' : '' }}> Module</option>
+                <option value="eduqualification"{{ $permission->group_name == 'eduqualification' ? 'selected' : '' }}> Edu Qualification</option>
+                <option value="gender"{{ $permission->group_name == 'gender' ? 'selected' : '' }}> Gender</option>
+                <option value="jobstatus"{{ $permission->group_name == 'jobstatus' ? 'selected' : '' }}> Job Status</option>
+                <option value="maritalstatus"{{ $permission->group_name == 'maritalstatus' ? 'selected' : '' }}> Marital Status</option>
+                <option value="religion"{{ $permission->group_name == 'religion' ? 'selected' : '' }}> Religion</option>
+                <option value="zone"{{ $permission->group_name == 'zone' ? 'selected' : '' }}> Zone</option>
+                <option value="area"{{ $permission->group_name == 'area' ? 'selected' : '' }}> Area</option>
+                <option value="branch"{{ $permission->group_name == 'branch' ? 'selected' : '' }}> Branch</option>
+                <option value="module"{{ $permission->group_name == 'module' ? 'selected' : '' }}> Module</option>
+            </select>
         </div>
     </div>
 
-           
+
 
 
             </div> <!-- end row -->
- 
-        
-            
+
+
+
             <div class="text-end">
                 <button type="submit" class="mt-2 btn btn-success waves-effect waves-light"><i class="mdi mdi-content-save"></i> Save</button>
             </div>
         </form>
     </div>
     <!-- end settings content-->
-    
-                                       
+
+
                                     </div>
                                 </div> <!-- end card-->
 
@@ -133,23 +134,23 @@
             rules: {
                 name: {
                     required : true,
-                }, 
+                },
                 group_name: {
                     required : true,
-                }, 
-                
+                },
+
             },
             messages :{
                 name: {
                     required : 'Please Enter Permission Name',
-                }, 
+                },
                 group_name: {
                     required : 'Please Select Group Name',
                 },
-              
+
 
             },
-            errorElement : 'span', 
+            errorElement : 'span',
             errorPlacement: function (error,element) {
                 error.addClass('invalid-feedback');
                 element.closest('.form-group').append(error);
@@ -162,10 +163,10 @@
             },
         });
     });
-    
+
 </script>
 
- 
+
 
 
 

@@ -24,17 +24,18 @@
                                         <div class="col-md-6">
                                             <div class="mb-3 form-group">
                                                 <label for="firstname" class="form-label">Permission Name</label>
-                                                <input type="text" name="name" class="form-control"   >                                               
+                                                <input type="text" name="name" class="form-control"   >
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3 form-group">
                                                 <label for="firstname" class="form-label">Group Name </label>
                                                 <select name="group_name" class="form-select" id="example-select">
-                                                    <option selected disabled >Select Permission Group  </option>                                                            
+                                                    <option selected disabled >Select Permission Group  </option>
                                                     <option value="dashboard">Dashboard</option>
                                                     <option value="settings"> Settings</option>
                                                     <option value="form-formats"> Form & Formats</option>
+                                                    <option value="notice"> Notice</option>
                                                     <option value="all-employee"> All Employee</option>
                                                     <option value="new-employee"> New Employee </option>
                                                     <option value="efile"> eFile </option>
@@ -44,26 +45,26 @@
                                                     <option value="designation"> Designation </option>
                                                     <option value="division"> Division</option>
                                                     <option value="district"> District </option>
-                                                    <option value="upazilla"> Upazilla</option>                                                                 
-                                                    <option value="bloodgroup"> Bloodgroup</option>                                                                 
-                                                    <option value="department"> Department</option>                                                                 
-                                                    <option value="employeetype"> Employeetype</option>                                                                 
-                                                    <option value="roles">Roles</option>                                                                 
-                                                    <option value="module">Module</option>        
-                                                    <option value="eduqualification">Edu Qualification</option>                                                                 
-                                                    <option value="gender">Gender</option>                                                                 
-                                                    <option value="jobstatus">Job Status</option>                                                                 
-                                                    <option value="maritalstatus">Marital Status</option>                                                                 
-                                                    <option value="religion">Religion</option>                                                                 
-                                                    <option value="zone">Zone</option>                                                                 
-                                                    <option value="area">Area</option>                                                                 
-                                                    <option value="branch">Branch</option>                                                                 
-                                                    {{-- <option value="roles"> Roles</option>                                                                 
-                                                    <option value="roles"> Roles</option>                                                                 
-                                                    <option value="roles"> Roles</option>               
-                                                    <option value="roles"> Roles</option>                                                                 
+                                                    <option value="upazilla"> Upazilla</option>
+                                                    <option value="bloodgroup"> Bloodgroup</option>
+                                                    <option value="department"> Department</option>
+                                                    <option value="employeetype"> Employeetype</option>
+                                                    <option value="roles">Roles</option>
+                                                    <option value="module">Module</option>
+                                                    <option value="eduqualification">Edu Qualification</option>
+                                                    <option value="gender">Gender</option>
+                                                    <option value="jobstatus">Job Status</option>
+                                                    <option value="maritalstatus">Marital Status</option>
+                                                    <option value="religion">Religion</option>
+                                                    <option value="zone">Zone</option>
+                                                    <option value="area">Area</option>
+                                                    <option value="branch">Branch</option>
+                                                    {{-- <option value="roles"> Roles</option>
+                                                    <option value="roles"> Roles</option>
+                                                    <option value="roles"> Roles</option>
+                                                    <option value="roles"> Roles</option>
                                                     <option value="roles"> Roles</option>                                                                 --}}
-                                                </select>                                           
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

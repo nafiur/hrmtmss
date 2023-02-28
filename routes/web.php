@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\Pos\UnitController;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\DownloadsController;
@@ -301,6 +302,17 @@ Route::controller(DownloadsController::class)->group(function () {
     Route::get('/download/edit/{id}', 'DownloadsEdit')->name('download.edit')->middleware('permission:formformats.edit');
     Route::post('/download/update', 'DownloadsUpdate')->name('download.update');
     Route::get('/download/delete/{id}', 'DownloadsDelete')->name('download.delete')->middleware('permission:formformats.delete');
+
+});
+// Notices
+Route::controller(NoticeController::class)->group(function () {
+    Route::get('/notice/all', 'NoticeAll')->name('notice.all')->middleware('permission:notice.all');
+    Route::get('/notice/show/{id}', 'NoticeShow')->name('notice.show')->middleware('permission:notice.show');
+    Route::get('/notice/add', 'NoticeAdd')->name('notice.add')->middleware('permission:notice.add');
+    Route::post('/notice/store', 'NoticeStore')->name('notice.store');
+    Route::get('/notice/edit/{id}', 'NoticeEdit')->name('notice.edit')->middleware('permission:notice.edit');
+    Route::post('/notice/update', 'NoticeUpdate')->name('notice.update');
+    Route::get('/notice/delete/{id}', 'NoticeDelete')->name('notice.delete')->middleware('permission:notice.delete');
 
 });
 // Usermanagement Setup

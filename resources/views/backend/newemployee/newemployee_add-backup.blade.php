@@ -312,22 +312,29 @@
                                                 <div class="mb-3 position-relative">
                                                     <label for="example-text-input" class="form-label">BloodGroups</label>
                                                     {{-- <input type="text" class="form-control"  required=""> --}}
-                                                    {{-- <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-                                                        <datalist id="datalistOptions">
-                                                            @foreach($blood_groups as $blood_group)
-                                                            <option value="{{ $blood_group->id }}">{{ $blood_group->name }}</option>
-                                                            @endforeach
-                                                        </datalist> --}}
-                                                    <select name="blood_groups_id" required="" class="form-select" aria-label="Default select example" value="{{old('bloodgroups_id')}}">
-                                                        <option selected="">Select Blood Group</option>
+                                                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                                                            <datalist id="datalistOptions">
+                                                                @foreach($blood_groups as $blood_group)
+                                                                <option value="{{ $blood_group->name }}">{{ $blood_group->name }}</option>
+                                                                @endforeach
+                                                            </datalist>
+                                                    {{-- <select name="blood_groups_id" required="" class="form-select" aria-label="Default select example" value="{{old('bloodgroups_id')}}">
+                                                        <option selected="">Select Blood Group</option> --}}
                                                         {{-- <option value=""></option> --}}
-                                                        @foreach($blood_groups as $blood_group)
+                                                        {{-- @foreach($blood_groups as $blood_group)
                                                         <option value="{{ $blood_group->id }}">{{ $blood_group->name }}</option>
                                                     @endforeach
-                                                    </select>
+                                                    </select> --}}
                                                 </div>
                                             </div>
                                         </div>
+{{-- <label for="exampleDataList" class="form-label">Datalist example</label>
+<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+<datalist id="datalistOptions">
+    @foreach($blood_groups as $blood_group)
+    <option value="{{ $blood_group->name }}">{{ $blood_group->name }}</option>
+    @endforeach
+</datalist> --}}
 
                                     <div class="col-md-6 fl">
                                         <input type="submit" class="btn btn-info waves-effect waves-light" value="Save Info">

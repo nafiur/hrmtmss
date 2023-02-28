@@ -41,7 +41,7 @@
                                                 <td> {{ $item->name }} </td>
                                                 {{-- <td> {{ $item->designation_id }} </td> --}}
                                                 <td> {{ $item['designation']['name'] ?? ''  }} </td>
-                                                <td> {{ $item['domain']['name']  }} </td>
+                                                <td> {{ $item['domain']['name'] ?? '' }} </td>
                                                 {{-- <td> {{ $item->domain_id }} </td>  --}}
                                                 <td> {{ $item->joiningdate }} </td>
                                                 {{-- <td> {{ $item->status }} </td>    --}}

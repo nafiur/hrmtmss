@@ -273,7 +273,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Email</label>
-                                            <input type="email" name="email" value="{{ $newemployee->email }}" class="form-control" >
+                                            <input type="text" name="email" value="{{ $newemployee->email }}" class="form-control" >
                                         </div>
                                     </div>
                                 </div>

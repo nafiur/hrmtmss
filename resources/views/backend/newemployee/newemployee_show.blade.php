@@ -101,7 +101,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="example-text-input" class="col-2 col-form-label">Date of Birth</label>
+                        <label for="example-text-input" class="col-2 col-form-label">Date of Birth Date</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" value="{{ $newemployee->date_of_birth }}" readonly>
                         </div>

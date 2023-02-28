@@ -101,7 +101,7 @@ class NewEmployeeController extends Controller
             'present_district_id' => 'required',
             'present_upazilla_id' => 'required',
             'mobile' => 'required',
-            'email' => 'required',
+            // 'email' => 'required',
             // 'nid' => 'required',
             // 'smartcard' => 'required',
             'blood_groups_id' => 'required'

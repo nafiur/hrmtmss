@@ -291,7 +291,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label for="example-text-input" class="form-label">Email</label>
-                                                    <input type="email" name="email" class="form-control"  value="{{old('email')}}">
+                                                    <input type="text" name="email" class="form-control"  value="{{old('email')}}">
                                                 </div>
                                             </div>
                                         </div>

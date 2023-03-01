@@ -47,7 +47,7 @@
                     <div class="mb-4">
                     <label for="firstname" class="form-label">Notice Description </label>
                         <div class="mb-4">
-                            <textarea  extarea class="js-simplemde" id="simplemde" name="simplemde">Hello SimpleMDE!</textarea>
+                            <textarea id="elm1" name="area"></textarea>
                         </div>
                     </div>
                     <div class="mb-4">

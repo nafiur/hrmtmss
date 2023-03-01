@@ -68,7 +68,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Designation</label>
-                                            <select name="designation_id" class="form-select" aria-label="Default select example">
+                                            <select name="designation_id" class="form-select select2" aria-label="Default select example">
                                                 <option selected="">Select Designation</option>
                                                 {{-- <option value=""></option> --}}
                                                 @foreach($designations as $designation)
@@ -80,7 +80,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Domain</label>
-                                            <select name="domain_id" class="form-select" aria-label="Default select example">
+                                            <select name="domain_id" class="form-select select2" aria-label="Default select example">
                                                 <option selected="">Select Domain</option>
                                                 {{-- <option value=""></option> --}}
                                                 @foreach($domains as $domain)
@@ -123,7 +123,7 @@
                                     <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Place of Birth District</label>
-                                            <select name="birth_place_district_id" class="form-select" aria-label="Default select example">
+                                            <select name="birth_place_district_id" class="form-select select2" aria-label="Default select example">
                                                 {{-- <option value=""></option> --}}
                                                 <option selected="">Select District</option>
                                                 @foreach($districts as $district)
@@ -135,7 +135,7 @@
                                     <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Educational Qualification (Last)</label>
-                                            <select name="educational_qualification_id" class="form-select" aria-label="Default select example">
+                                            <select name="educational_qualification_id" class="form-select select2" aria-label="Default select example">
                                                 <option selected="">Select Qualification</option>
                                                 {{-- <option value=""></option> --}}
                                                 @foreach($educationqualifications as $educationqualification)
@@ -170,7 +170,7 @@
                                     <div class="col-md-4">
                                         <div class="mb-3 position-relative">
                                             <label for="example-text-input" class="form-label">Division</label>
-                                            <select name="permanent_division_id" class="form-select" aria-label="Default select example">
+                                            <select name="permanent_division_id" class="form-select select2" aria-label="Default select example">
                                             <option selected="">Select Division</option>
                                             {{-- <option value=""></option> --}}
                                             @foreach($divisions as $division)
@@ -182,7 +182,7 @@
                                     <div class="col-md-4">
                                         <div class="mb-3 position-relative">
                                             <label for="example-text-input" class="form-label">District</label>
-                                            <select name="permanent_district_id" class="form-select" aria-label="Default select example">
+                                            <select name="permanent_district_id" class="form-select select2" aria-label="Default select example">
                                                 <option selected="">Select District</option>
                                                 {{-- <option value=""></option> --}}
                                                 @foreach($districts as $district)
@@ -194,7 +194,7 @@
                                     <div class="col-md-4">
                                         <div class="mb-3 position-relative">
                                             <label for="example-text-input" class="form-label">Upazilla</label>
-                                            <select name="permanent_upazilla_id" class="form-select" aria-label="Default select example">
+                                            <select name="permanent_upazilla_id" class="form-select select2" aria-label="Default select example">
                                                 <option selected="">Select Upazilla</option>
                                                 {{-- <option value=""></option> --}}
                                                 @foreach($upazillas as $upazilla)
@@ -229,7 +229,7 @@
                                     <div class="col-md-4">
                                         <div class="mb-3 position-relative">
                                             <label for="example-text-input" class="form-label">Division</label>
-                                            <select name="present_division_id" class="form-select" aria-label="Default select example">
+                                            <select name="present_division_id" class="form-select select2" aria-label="Default select example">
                                                 <option selected="">Select Division</option>
                                                 {{-- <option value=""></option> --}}
                                                 @foreach($divisions as $division)
@@ -241,7 +241,7 @@
                                     <div class="col-md-4">
                                         <div class="mb-3 position-relative">
                                             <label for="example-text-input" class="form-label">District</label>
-                                            <select name="present_district_id" class="form-select" aria-label="Default select example">
+                                            <select name="present_district_id" class="form-select select2" aria-label="Default select example">
                                                 <option selected="">Select District</option>
                                                 {{-- <option value=""></option> --}}
                                                 @foreach($districts as $district)
@@ -253,7 +253,7 @@
                                     <div class="col-md-4">
                                         <div class="mb-3 position-relative">
                                             <label for="example-text-input" class="form-label">Upazilla</label>
-                                            <select name="present_upazilla_id" class="form-select" aria-label="Default select example">
+                                            <select name="present_upazilla_id" class="form-select select2" aria-label="Default select example">
                                                 <option selected="">Select Upazilla</option>
                                                 {{-- <option value=""></option> --}}
                                                 @foreach($upazillas as $upazilla)
@@ -293,7 +293,7 @@
                                     <div class="col-md-4">
                                         <div class="mb-3 position-relative">
                                             <label for="example-text-input" class="form-label">BloodGroups</label>
-                                            <select name="blood_groups_id" class="form-select" aria-label="Default select example">
+                                            <select name="blood_groups_id" class="form-select select2" aria-label="Default select example">
                                                 <option selected="">Select Blood Group</option>
                                                 {{-- <option value=""></option> --}}
                                                 @foreach($blood_groups as $blood_group)

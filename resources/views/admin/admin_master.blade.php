@@ -34,6 +34,7 @@
         <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
         <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css">
         <!-- App Css-->
         <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
@@ -107,7 +108,11 @@ switch(type){
 }
 @endif
 </script>
-
+<script src="{{ asset('assets/libs/select2/js/select2.min.js') }}"></script>
+<!--tinymce js-->
+<script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }}"></script>
+        <!-- init js -->
+        <script src="{{ asset('backend/assets/js/pages/form-editor.init.js') }}"></script>
 <!-- Required datatable js -->
         <script src="{{ asset('backend/assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>

@@ -16,40 +16,29 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                                <a href="{{ route('add.permission') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-plus-circle"> Add Permission </i></a> <br>  <br>
+                                <a href="{{ route('add.permissiongroup') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-plus-circle"> Add Permission </i></a> <br>  <br>
                                 <h4 class="card-title">All Permission</h4>
                                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>Sl</th>
-                                            <th>Permission Name </th>
+                                            {{-- <th>Permission Name </th> --}}
                                             <th>Group Name </th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($permissions as $key=> $item)
+                                        @foreach($permissiongroup as $key=> $item)
                                             <tr>
                                                 <td>{{ $key+1 }}</td>
-                                                <td>{{ $item->name }}</td>
+                                                {{-- <td>{{ $item->name }}</td> --}}
                                                 <td>{{ $item->group_name }}</td>
                                                 <td width="18%">
-                                                    <a href="{{ route('edit.permission',$item->id) }}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
-                                                    <a href="{{ route('delete.permission',$item->id) }}" class="btn btn-danger rounded-pill waves-effect waves-light" id="delete">Delete</a>
+                                                    <a href="{{ route('edit.permissiongroup',$item->id) }}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
+                                                    <a href="{{ route('delete.permissiongroup',$item->id) }}" class="btn btn-danger rounded-pill waves-effect waves-light" id="delete">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
-                                        {{-- @foreach($permission_groups as $key=> $item)
-                                            <tr>
-                                                <td>{{ $key+1 }}</td>
-                                                <td>{{ $item->name }}</td>
-                                                <td>{{ $item->group_name }}</td>
-                                                <td width="18%">
-                                                    <a href="{{ route('edit.permission',$item->id) }}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
-                                                    <a href="{{ route('delete.permission',$item->id) }}" class="btn btn-danger rounded-pill waves-effect waves-light" id="delete">Delete</a>
-                                                </td>
-                                            </tr>
-                                        @endforeach --}}
                                     </tbody>
                                 </table>
                     </div>

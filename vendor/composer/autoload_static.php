@@ -603,6 +603,7 @@ class ComposerStaticInit05363ffe4794b201356b8a2f36c8c19f
         'App\\Models\\Notice' => __DIR__ . '/../..' . '/app/Models/Notice.php',
         'App\\Models\\Payment' => __DIR__ . '/../..' . '/app/Models/Payment.php',
         'App\\Models\\PaymentDetail' => __DIR__ . '/../..' . '/app/Models/PaymentDetail.php',
+        'App\\Models\\PermissionGroup' => __DIR__ . '/../..' . '/app/Models/PermissionGroup.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
         'App\\Models\\Purchase' => __DIR__ . '/../..' . '/app/Models/Purchase.php',
         'App\\Models\\Religion' => __DIR__ . '/../..' . '/app/Models/Religion.php',

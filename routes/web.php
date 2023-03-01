@@ -463,6 +463,14 @@ Route::controller(RoleController::class)->group(function(){
     Route::get('/edit/permission/{id}','EditPermission')->name('edit.permission');
     Route::post('/update/permission','UpdatePermission')->name('permission.update');
     Route::get('/delete/permission/{id}','DeletePermission')->name('delete.permission');
+    //Permission_Group
+    Route::get('/all/permissiongroup','AllPermissionGroup')->name('all.permissiongroup');
+    Route::get('/add/permissiongroup','AddPermissionGroup')->name('add.permissiongroup');
+    Route::post('/store/permissiongroup','StorePermissionGroup')->name('permissiongroup.store');
+    Route::get('/edit/permissiongroup/{id}','EditPermissionGroup')->name('edit.permissiongroup');
+    Route::post('/update/permissiongroup','UpdatePermissionGroup')->name('permissiongroup.update');
+    Route::get('/delete/permissiongroup/{id}','DeletePermissionGroup')->name('delete.permissiongroup');
+
 
 });
 

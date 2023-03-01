@@ -30,6 +30,15 @@
                                         <div class="col-md-6">
                                             <div class="mb-3 form-group">
                                                 <label for="firstname" class="form-label">Group Name </label>
+                                                <select name="permission_groups_id" class="form-select select2" aria-label="Default select example" value="{{old('permission_groups_id')}}">
+                                                        <option selected="" value="">Select Permission Group</option>
+                                                        @foreach($permission_groups as $pg)
+                                                            <option value="{{ $pg->id }}">{{ $pg->name }}.{{ $pg->grade }}</option>
+                                                        @endforeach
+                                                    </select>
+                                            </div>
+                                            {{-- <div class="mb-3 form-group">
+                                                <label for="firstname" class="form-label">Group Name </label>
                                                 <select name="group_name" class="form-select" id="example-select">
                                                     <option selected disabled >Select Permission Group  </option>
                                                     <option value="dashboard">Dashboard</option>
@@ -58,14 +67,15 @@
                                                     <option value="religion">Religion</option>
                                                     <option value="zone">Zone</option>
                                                     <option value="area">Area</option>
-                                                    <option value="branch">Branch</option>
+                                                    <option value="branch">Branch</option> --}}
+                                                    {{-- <option value="branch">Permission Group</option> --}}
                                                     {{-- <option value="roles"> Roles</option>
                                                     <option value="roles"> Roles</option>
                                                     <option value="roles"> Roles</option>
                                                     <option value="roles"> Roles</option>
                                                     <option value="roles"> Roles</option>                                                                 --}}
-                                                </select>
-                                            </div>
+                                                {{-- </select>
+                                            </div> --}}
                                         </div>
                                     </div>
                                     <!-- end row -->

@@ -10,7 +10,7 @@ class PermissionGroup extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function permission(){
+    public function permission_groups(){
         return $this->belongsTo(Permission::class);
     }
 

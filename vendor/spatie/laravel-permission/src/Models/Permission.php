@@ -165,4 +165,11 @@ class Permission extends Model implements PermissionContract
     {
         return static::getPermissions($params, true)->first();
     }
+
+    // public function permission_groups(){
+    //     return $this->belongsTo(Permission::class);
+    // }
+    public function permission_groups(){
+        return $this->belongsTo(Permission::class);
+    }
 }

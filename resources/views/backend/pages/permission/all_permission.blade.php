@@ -2,16 +2,16 @@
 @section('admin')
 @section('title'){{'All Permission'}} @endsection
 
- <div class="page-content">
+<div class="page-content">
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="px-4 py-3 rounded breadcrumb breadcrumb-alt bg-body-extra-light push fs-sm">
-              <li class="breadcrumb-item">
+            <li class="breadcrumb-item">
                 <a href="/dashboard">Home</a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">All Permission</li>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">All Permission</li>
             </ol>
-          </nav>
+        </nav>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -32,7 +32,9 @@
                                             <tr>
                                                 <td>{{ $key+1 }}</td>
                                                 <td>{{ $item->name }}</td>
+                                                {{-- <td>{{ $item->group_name_id }}</td> --}}
                                                 <td>{{ $item->group_name }}</td>
+                                                {{-- <td>{{ $item['permission_groups']['group_name']}}</td> --}}
                                                 <td width="18%">
                                                     <a href="{{ route('edit.permission',$item->id) }}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
                                                     <a href="{{ route('delete.permission',$item->id) }}" class="btn btn-danger rounded-pill waves-effect waves-light" id="delete">Delete</a>

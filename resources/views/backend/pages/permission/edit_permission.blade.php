@@ -67,7 +67,7 @@
     <div class="col-md-6">
         <div class="mb-3 form-group">
             <label for="firstname" class="form-label">Group Name </label>
-            <select name="group_name" class="form-select" id="example-select">
+            <select name="group_name" class="form-select select2" id="example-select">
                 <option selected disabled >Select Group  </option>
                 <option value="dashboard"{{ $permission->group_name == 'dashboard' ? 'selected' : '' }}>Dashboard</option>
                 <option value="settings"{{ $permission->group_name == 'settings' ? 'selected' : '' }}> Settings</option>

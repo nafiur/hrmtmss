@@ -5,41 +5,48 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('dashboard') }}">
-                            <i class="ri-dashboard-line me-2"></i> Dashboard
+                            <i class="fas fa-th-large me-2"></i> Dashboard
                         </a>
                     </li>
                     @if (Auth::user()->can('settings.menu'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('setup.all') }}">
-                            <i class="ri-settings-2-line me-2"></i> Settings
+                            <i class="fas fa-cogs me-2"></i> Settings
                         </a>
                     </li>
                     @endif
                     @if (Auth::user()->can('formformats.menu'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('download.all') }}">
-                            <i class="ri-file-word-2-line me-2"></i> Forms & Formats
+                            <i class="fas fa-file-word me-2"></i> Forms & Formats
                         </a>
                     </li>
                     @endif
                     @if (Auth::user()->can('notice.menu'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('notice.all') }}">
-                            <i class="ri-file-word-2-line me-2"></i> Notice
+                            <i class="fas fa-sticky-note me-2"></i> Notice
+                        </a>
+                    </li>
+                    @endif
+                    @if (Auth::user()->can('report.menu'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('report.all') }}">
+                            <i class="fas fa-swatchbook me-2"></i> Reports
                         </a>
                     </li>
                     @endif
                     @if (Auth::user()->can('usermanagement.menu'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('all.roles-permission-mgt') }}">
-                            <i class="ri-file-word-2-line me-2"></i> User Management
+                            <i class="fas fa-user-cog me-2"></i> User Management
                         </a>
                     </li>
                     @endif
                     @if (Auth::user()->can('staffprofile.menu'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('staffprofile.all') }}">
-                            <i class="ri-file-word-2-line me-2"></i> HRM Staff
+                            <i class=" fas fa-users me-2"></i> HRM Staff
                         </a>
                     </li>
                     @endif

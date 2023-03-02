@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\Pos\UnitController;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\DownloadsController;
 use App\Http\Controllers\Pos\StockController;
+use App\Http\Controllers\AllReportsController;
 use App\Http\Controllers\Setup\AreaController;
 use App\Http\Controllers\Setup\ZoneController;
 use App\Http\Controllers\NewEmployeeController;
@@ -304,6 +306,7 @@ Route::controller(DownloadsController::class)->group(function () {
     Route::get('/download/delete/{id}', 'DownloadsDelete')->name('download.delete')->middleware('permission:formformats.delete');
 
 });
+
 // Notices
 Route::controller(NoticeController::class)->group(function () {
     Route::get('/notice/all', 'NoticeAll')->name('notice.all')->middleware('permission:notice.all');
@@ -315,6 +318,18 @@ Route::controller(NoticeController::class)->group(function () {
     Route::get('/notice/delete/{id}', 'NoticeDelete')->name('notice.delete')->middleware('permission:notice.delete');
 
 });
+// Reports
+Route::controller(ReportsController::class)->group(function () {
+    Route::get('/report/all', 'ReportAll')->name('report.all')->middleware('permission:report.all');
+    Route::get('/report/show/{id}', 'ReportShow')->name('report.show')->middleware('permission:report.show');
+    Route::get('/report/add', 'ReportAdd')->name('report.add')->middleware('permission:report.add');
+    Route::post('/report/store', 'ReportStore')->name('report.store');
+    Route::get('/report/edit/{id}', 'ReportEdit')->name('report.edit')->middleware('permission:report.edit');
+    Route::post('/report/update', 'ReportUpdate')->name('report.update');
+    Route::get('/report/delete/{id}', 'ReportDelete')->name('report.delete')->middleware('permission:report.delete');
+
+});
+
 // Usermanagement Setup
 Route::controller(UserManagementController::class)->group(function () {
     Route::get('/usermanagement/all', 'UserManagementAll')->name('usermanagement.all');
@@ -498,7 +513,6 @@ Route::controller(RoleController::class)->group(function(){
 
    ///Admin User All Route
 Route::controller(AdminController::class)->group(function(){
-
     Route::get('/all/admin','AllAdmin')->name('all.admin');
     Route::get('/add/admin','AddAdmin')->name('add.admin');
     Route::post('/store/admin','StoreAdmin')->name('admin.store');

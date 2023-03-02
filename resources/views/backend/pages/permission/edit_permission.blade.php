@@ -73,6 +73,7 @@
                 <option value="settings"{{ $permission->group_name == 'settings' ? 'selected' : '' }}> Settings</option>
                 <option value="form-formats"{{ $permission->group_name == 'form-formats' ? 'selected' : '' }}> Form & Formats</option>
                 <option value="notice"{{ $permission->group_name == 'notice' ? 'selected' : '' }}> Notice</option>
+                <option value="report"{{ $permission->group_name == 'report' ? 'selected' : '' }}> Report</option>
                 <option value="all-employee"{{ $permission->group_name == 'all-employee' ? 'selected' : '' }}> All Employee</option>
                 <option value="new-employee"{{ $permission->group_name == 'new-employee' ? 'selected' : '' }}> New Employee </option>
                 <option value="efile"{{ $permission->group_name == 'efile' ? 'selected' : '' }}> eFile </option>

@@ -91,6 +91,7 @@ return array(
     'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',
     'App\\Models\\Purchase' => $baseDir . '/app/Models/Purchase.php',
     'App\\Models\\Religion' => $baseDir . '/app/Models/Religion.php',
+    'App\\Models\\Report' => $baseDir . '/app/Models/Report.php',
     'App\\Models\\Sector' => $baseDir . '/app/Models/Sector.php',
     'App\\Models\\StaffProfile' => $baseDir . '/app/Models/StaffProfile.php',
     'App\\Models\\Supplier' => $baseDir . '/app/Models/Supplier.php',

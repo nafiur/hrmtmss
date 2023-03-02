@@ -117,6 +117,7 @@ public function DeletePermissionGroup($id){
 
         $role = Permission::create([
             'name' => $request->name,
+            'group_name_id' => '0',
             'group_name' => $request->group_name,
 
         ]);
@@ -146,6 +147,7 @@ public function DeletePermissionGroup($id){
 
         Permission::findOrFail($per_id)->update([
             'name' => $request->name,
+            'group_name_id' => '0',
             'group_name' => $request->group_name,
 
         ]);

@@ -2,118 +2,119 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Models\PermissionGroup;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
-use App\Http\Controllers\Controller;
-use App\Models\PermissionGroup;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
-    public function RolesPermissionMgt(){
+    public function RolesPermissionMgt()
+    {
 
         return view('backend.pages.permission.all_permission_mgt');
 
     } // End Method
 
-   //Permission_group
-   public function AllPermissionGroup(){
+    //Permission_group
+    public function AllPermissionGroup()
+    {
 
-    $permissiongroup = PermissionGroup::all();
-    return view('backend.pages.permission.all_permission_group',compact('permissiongroup'));
-
-} // End Method
-
-
-public function AddPermissionGroup(){
-
-    return view('backend.pages.permission.add_permission_group');
-
-} // End Method
-
-
-public function StorePermissionGroup(Request $request){
-
-    $role = PermissionGroup::create([
-        // 'name' => $request->name,
-        'group_name' => $request->group_name,
-
-    ]);
-
-    $notification = array(
-        'message' => 'Permission Group Added Successfully',
-        'alert-type' => 'success'
-    );
-
-    return redirect()->route('all.permissiongroup')->with($notification);
-
-}// End Method
-
-public function EditPermissionGroup($id){
-
-    $permissiongroup = PermissionGroup::findOrFail($id);
-    return view('backend.pages.permission.edit_permission_group',compact('permissiongroup'));
-
-}// End Method
-
-
-public function UpdatePermissionGroup(Request $request){
-
-    $per_id = $request->id;
-
-    PermissionGroup::findOrFail($per_id)->update([
-        // 'name' => $request->name,
-        'group_name' => $request->group_name,
-
-    ]);
-
-    $notification = array(
-        'message' => 'Permission Updated Successfully',
-        'alert-type' => 'success'
-    );
-
-    return redirect()->route('all.permissiongroup')->with($notification);
-
-}// End Method
-
-
-public function DeletePermissionGroup($id){
-
-    PermissionGroup::findOrFail($id)->delete();
-
-    $notification = array(
-        'message' => 'Permission Deleted Successfully',
-        'alert-type' => 'success'
-    );
-
-    return redirect()->back()->with($notification);
-
-}// End Method
-
-
-
-
-///permission
-
-    public function AllPermission(){
-
-        $permissions = Permission::all();
-        // $permission_groups = PermissionGroup::all();
-        return view('backend.pages.permission.all_permission',compact('permissions'));
+        $permissiongroup = PermissionGroup::all();
+        return view('backend.pages.permission.all_permission_group', compact('permissiongroup'));
 
     } // End Method
 
+    public function AddPermissionGroup()
+    {
 
-    public function AddPermission(){
+        return view('backend.pages.permission.add_permission_group');
+
+    } // End Method
+
+    public function StorePermissionGroup(Request $request)
+    {
+
+        $role = PermissionGroup::create([
+            // 'name' => $request->name,
+            'group_name' => $request->group_name,
+
+        ]);
+
+        $notification = array(
+            'message' => 'Permission Group Added Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('all.permissiongroup')->with($notification);
+
+    } // End Method
+
+    public function EditPermissionGroup($id)
+    {
+
+        $permissiongroup = PermissionGroup::findOrFail($id);
+        return view('backend.pages.permission.edit_permission_group', compact('permissiongroup'));
+
+    } // End Method
+
+    public function UpdatePermissionGroup(Request $request)
+    {
+
+        $per_id = $request->id;
+
+        PermissionGroup::findOrFail($per_id)->update([
+            // 'name' => $request->name,
+            'group_name' => $request->group_name,
+
+        ]);
+
+        $notification = array(
+            'message' => 'Permission Updated Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('all.permissiongroup')->with($notification);
+
+    } // End Method
+
+    public function DeletePermissionGroup($id)
+    {
+
+        PermissionGroup::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Permission Deleted Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+///permission
+
+    public function AllPermission()
+    {
+
+        $permissions = Permission::all();
+        // $permission_groups = PermissionGroup::all();
+        return view('backend.pages.permission.all_permission', compact('permissions'));
+
+    } // End Method
+
+    public function AddPermission()
+    {
 
         return view('backend.pages.permission.add_permission');
 
     } // End Method
 
-
-    public function StorePermission(Request $request){
+    public function StorePermission(Request $request)
+    {
 
         $role = Permission::create([
             'name' => $request->name,
@@ -124,24 +125,24 @@ public function DeletePermissionGroup($id){
 
         $notification = array(
             'message' => 'Permission Added Successfully',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         );
 
         return redirect()->route('all.permission')->with($notification);
 
-    }// End Method
+    } // End Method
 
-
-    public function EditPermission($id){
+    public function EditPermission($id)
+    {
 
         $permission = Permission::findOrFail($id);
         // $permissiongroup = PermissionGroup::all();
-        return view('backend.pages.permission.edit_permission',compact('permission'));
+        return view('backend.pages.permission.edit_permission', compact('permission'));
 
-    }// End Method
+    } // End Method
 
-
-    public function UpdatePermission(Request $request){
+    public function UpdatePermission(Request $request)
+    {
 
         $per_id = $request->id;
 
@@ -154,45 +155,45 @@ public function DeletePermissionGroup($id){
 
         $notification = array(
             'message' => 'Permission Updated Successfully',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         );
 
         return redirect()->route('all.permission')->with($notification);
 
-    }// End Method
+    } // End Method
 
-
-    public function DeletePermission($id){
+    public function DeletePermission($id)
+    {
 
         Permission::findOrFail($id)->delete();
 
         $notification = array(
             'message' => 'Permission Deleted Successfully',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         );
 
         return redirect()->back()->with($notification);
 
-    }// End Method
+    } // End Method
     ////////////////////// Roles All Method ///////////
 
-
-    public function AllRoles(){
+    public function AllRoles()
+    {
 
         $roles = Role::all();
-        return view('backend.pages.roles.all_roles',compact('roles'));
+        return view('backend.pages.roles.all_roles', compact('roles'));
 
-    }// End Method
+    } // End Method
 
-
-    public function AddRoles(){
+    public function AddRoles()
+    {
 
         return view('backend.pages.roles.add_roles');
 
-    }// End Method
+    } // End Method
 
-
-     public function StoreRoles(Request $request){
+    public function StoreRoles(Request $request)
+    {
 
         $role = Role::create([
             'name' => $request->name,
@@ -201,22 +202,23 @@ public function DeletePermissionGroup($id){
 
         $notification = array(
             'message' => 'Role Added Successfully',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         );
 
         return redirect()->route('all.roles')->with($notification);
 
-    }// End Method
+    } // End Method
 
-
-    public function EditRoles($id){
+    public function EditRoles($id)
+    {
 
         $roles = Role::findOrFail($id);
-        return view('backend.pages.roles.edit_roles',compact('roles'));
+        return view('backend.pages.roles.edit_roles', compact('roles'));
 
-    }// End Method
+    } // End Method
 
-     public function UpdateRoles(Request $request){
+    public function UpdateRoles(Request $request)
+    {
 
         $role_id = $request->id;
 
@@ -227,83 +229,82 @@ public function DeletePermissionGroup($id){
 
         $notification = array(
             'message' => 'Role Updated Successfully',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         );
 
         return redirect()->route('all.roles')->with($notification);
 
-    }// End Method
+    } // End Method
 
-
-     public function DeleteRoles($id){
+    public function DeleteRoles($id)
+    {
 
         Role::findOrFail($id)->delete();
 
         $notification = array(
             'message' => 'Role Deleted Successfully',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         );
 
         return redirect()->back()->with($notification);
 
-    }// End Method
-
+    } // End Method
 
     //////////////// Add Roles Permission All Method ////////////
 
-
-    public function AddRolesPermission(){
+    public function AddRolesPermission()
+    {
 
         $roles = Role::all();
         $permissions = Permission::all();
         $permission_groups = User::getpermissionGroups();
-        return view('backend.pages.roles.add_roles_permission',compact('roles','permissions','permission_groups'));
+        return view('backend.pages.roles.add_roles_permission', compact('roles', 'permissions', 'permission_groups'));
 
-    }// End Method
+    } // End Method
 
-
-    public function StoreRolesPermission(Request $request){
+    public function StoreRolesPermission(Request $request)
+    {
 
         $data = array();
         $permissions = $request->permission;
 
-        foreach($permissions as $key => $item){
-           $data['role_id'] = $request->role_id;
-           $data['permission_id'] = $item;
+        foreach ($permissions as $key => $item) {
+            $data['role_id'] = $request->role_id;
+            $data['permission_id'] = $item;
 
-           DB::table('role_has_permissions')->insert($data);
+            DB::table('role_has_permissions')->insert($data);
 
         }
 
         $notification = array(
             'message' => 'Role Permission Added Successfully',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         );
 
         return redirect()->route('all.roles.permission')->with($notification);
 
-    }// End Method
+    } // End Method
 
-
-    public function AllRolesPermission(){
+    public function AllRolesPermission()
+    {
 
         $roles = Role::all();
-        return view('backend.pages.roles.all_roles_permission',compact('roles'));
+        return view('backend.pages.roles.all_roles_permission', compact('roles'));
 
     } // End Method
 
-
-    public function AdminEditRoles($id){
+    public function AdminEditRoles($id)
+    {
 
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
         $permission_groups = User::getpermissionGroups();
-        return view('backend.pages.roles.edit_roles_permission',compact('role','permissions','permission_groups'));
+        return view('backend.pages.roles.edit_roles_permission', compact('role', 'permissions', 'permission_groups'));
 
     } // End Method
 
-
-    public function RolePermissionUpdate(Request $request,$id){
+    public function RolePermissionUpdate(Request $request, $id)
+    {
 
         $role = Role::findOrFail($id);
         $permissions = $request->permission;
@@ -312,17 +313,17 @@ public function DeletePermissionGroup($id){
             $role->syncPermissions($permissions);
         }
 
-         $notification = array(
+        $notification = array(
             'message' => 'Role Permission Updated Successfully',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         );
 
         return redirect()->route('all.roles.permission')->with($notification);
 
-    }// End Method
+    } // End Method
 
-
-    public function AdminDeleteRoles($id){
+    public function AdminDeleteRoles($id)
+    {
 
         $role = Role::findOrFail($id);
         if (!is_null($role)) {
@@ -331,10 +332,10 @@ public function DeletePermissionGroup($id){
 
         $notification = array(
             'message' => 'Role Permission Deleted Successfully',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         );
 
         return redirect()->back()->with($notification);
 
-    }// End Method
+    } // End Method
 }

@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>@yield('title'){{'e-File Management | HR-M & Admin'}} </title>
+    <title>@yield('title'){{ 'e-File Management | HR-M & Admin' }} </title>
     {{-- @section('title'){{'Add New Employee Type'}} @endsection --}}
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,24 +27,25 @@
     <!-- <link rel="stylesheet" id="css-theme" href="{{ asset('backend/mix/assets/css/themes/xwork.min.css') }}"> -->
     <link rel="stylesheet" id="css-theme" href="{{ asset('backend/mix/assets/css/themes/xdream.min.css') }}">
     <!-- END Stylesheets -->
-  </head>
+</head>
 
-  <body>
-    
+<body>
+
     <div id="page-container" class="sidebar-o side-scroll page-header-fixed page-header-dark">
         @include('efile.body.header')
         @include('efile.body.sidebar')
         @include('efile.body.page-header')
 
-      <!-- Main Container -->
-      <main id="main-container">
-        @yield('efile')
-        <!-- Page Content -->
-      </main>
-      <!-- END Main Container -->
-      @include('efile.body.footer')
+        <!-- Main Container -->
+        <main id="main-container">
+            @yield('efile')
+            <!-- Page Content -->
+        </main>
+        <!-- END Main Container -->
+        @include('efile.body.footer')
     </div>
     <!-- END Page Container -->
     <script src="{{ asset('backend/mix/assets/js/dashmix.app.min.js') }}"></script>
-  </body>
+</body>
+
 </html>

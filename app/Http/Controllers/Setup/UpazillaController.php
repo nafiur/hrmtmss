@@ -2,33 +2,34 @@
 
 namespace App\Http\Controllers\Setup;
 
+use App\Http\Controllers\Controller;
 use App\Models\District;
 use App\Models\Division;
 use App\Models\Upazilla;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class UpazillaController extends Controller
 {
-    public function UpazillaAll(){
+    public function UpazillaAll()
+    {
 
         $upazillas = Upazilla::all();
-        return view('backend.upazilla.upazilla_all',compact('upazillas'));
-    } // End Method 
+        return view('backend.upazilla.upazilla_all', compact('upazillas'));
+    } // End Method
 
-
-    public function UpazillaAdd(){
+    public function UpazillaAdd()
+    {
 
         $divisions = Division::all();
         $districts = District::all();
         $upazillas = Upazilla::all();
-        return view('backend.upazilla.upazilla_add',compact('divisions','districts','upazillas'));
-    } // End Method 
+        return view('backend.upazilla.upazilla_add', compact('divisions', 'districts', 'upazillas'));
+    } // End Method
 
-
-    public function UpazillaStore(Request $request){
+    public function UpazillaStore(Request $request)
+    {
 
         Upazilla::insert([
             'name' => $request->name,
@@ -36,27 +37,29 @@ class UpazillaController extends Controller
             'division_id' => $request->division_id,
             'district_id' => $request->district_id,
             'created_by' => Auth::user()->id,
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
         ]);
 
         $notification = array(
-            'message' => 'Upazilla Inserted Successfully', 
-            'alert-type' => 'success'
+            'message' => 'Upazilla Inserted Successfully',
+            'alert-type' => 'success',
         );
 
-        return redirect()->route('upazilla.all')->with($notification); 
+        return redirect()->route('upazilla.all')->with($notification);
 
-    } // End Method 
+    } // End Method
 
-    public function UpazillaEdit($id){
+    public function UpazillaEdit($id)
+    {
 
         $division = Division::all();
         $district = District::all();
         $upazilla = Upazilla::findOrFail($id);
-        return view('backend.upazilla.upazilla_edit',compact('upazilla','district','division'));
-    } // End Method 
+        return view('backend.upazilla.upazilla_edit', compact('upazilla', 'district', 'division'));
+    } // End Method
 
-    public function UpazillaUpdate(Request $request){
+    public function UpazillaUpdate(Request $request)
+    {
 
         $upazilla_id = $request->id;
 
@@ -67,29 +70,28 @@ class UpazillaController extends Controller
             'division_id' => $request->division_id,
             'district_id' => $request->district_id,
             'updated_by' => Auth::user()->id,
-            'updated_at' => Carbon::now(), 
+            'updated_at' => Carbon::now(),
         ]);
 
         $notification = array(
-            'message' => 'Upazilla Updated Successfully', 
-            'alert-type' => 'success'
+            'message' => 'Upazilla Updated Successfully',
+            'alert-type' => 'success',
         );
 
-        return redirect()->route('upazilla.all')->with($notification); 
+        return redirect()->route('upazilla.all')->with($notification);
 
+    } // End Method
 
-    } // End Method 
+    public function UpazillaDelete($id)
+    {
 
-
-    public function UpazillaDelete($id){
-       
-       Upazilla::findOrFail($id)->delete();
-            $notification = array(
-            'message' => 'Product Deleted Successfully', 
-            'alert-type' => 'success'
+        Upazilla::findOrFail($id)->delete();
+        $notification = array(
+            'message' => 'Product Deleted Successfully',
+            'alert-type' => 'success',
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
-    } // End Method 
+    } // End Method
 }

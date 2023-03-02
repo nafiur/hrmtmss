@@ -2,81 +2,84 @@
 
 namespace App\Http\Controllers\Setup;
 
+use App\Http\Controllers\Controller;
 use App\Models\Religion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class ReligionController extends Controller
 {
-    public function ReligionAll(){
+    public function ReligionAll()
+    {
         $religions = Religion::all();
-        return view('backend.religion.religion_all',compact('religions'));
-    } // End Method 
+        return view('backend.religion.religion_all', compact('religions'));
+    } // End Method
 
-
-    public function ReligionAdd(){
+    public function ReligionAdd()
+    {
         return view('backend.religion.religion_add');
-    } // End Method 
+    } // End Method
 
-
-       public function ReligionStore(Request $request){
+    public function ReligionStore(Request $request)
+    {
 
         Religion::insert([
             'name' => $request->name,
             'created_by' => Auth::user()->id,
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
 
         ]);
 
-         $notification = array(
-            'message' => 'Religion Inserted Successfully', 
-            'alert-type' => 'success'
+        $notification = array(
+            'message' => 'Religion Inserted Successfully',
+            'alert-type' => 'success',
         );
 
         return redirect()->route('religion.all')->with($notification);
 
-    } // End Method 
+    } // End Method
 
-    public function ReligionEdit($id){
+    public function ReligionEdit($id)
+    {
 
         $religion = Religion::findOrFail($id);
-        return view('backend.religion.religion_edit',compact('religion'));
+        return view('backend.religion.religion_edit', compact('religion'));
 
-    } // End Method 
+    } // End Method
 
-    public function ReligionUpdate(Request $request){
+    public function ReligionUpdate(Request $request)
+    {
 
         $religion_id = $request->id;
 
         Religion::findOrFail($religion_id)->update([
             'name' => $request->name,
             'updated_by' => Auth::user()->id,
-            'updated_at' => Carbon::now(), 
+            'updated_at' => Carbon::now(),
 
         ]);
 
-         $notification = array(
-            'message' => 'Religion Updated Successfully', 
-            'alert-type' => 'success'
+        $notification = array(
+            'message' => 'Religion Updated Successfully',
+            'alert-type' => 'success',
         );
 
         return redirect()->route('religion.all')->with($notification);
 
-    } // End Method 
+    } // End Method
 
-
-    public function ReligionDelete($id){
+    public function ReligionDelete($id)
+    {
 
         Religion::findOrFail($id)->delete();
-      
-       $notification = array(
-            'message' => 'Religion Deleted Successfully', 
-            'alert-type' => 'success'
+
+        $notification = array(
+            'message' => 'Religion Deleted Successfully',
+            'alert-type' => 'success',
         );
 
         return redirect()->back()->with($notification);
 
-    } // End Method 
+    } // End Method
 }

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Setup;
 
-
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class SetupController extends Controller
@@ -12,12 +10,13 @@ class SetupController extends Controller
     //     // $suppliers = Supplier::all();
     //     // $suppliers = Sector::latest()->get();
     //     return view('backend.setup.setup_all');
-    // } // End Method 
+    // } // End Method
 
-    public function SetupAll(){
+    public function SetupAll()
+    {
 
         // $categoris = SetupSetup::latest()->get();
         return view('backend.setup.setup_all');
 
-    } // End Mehtod 
+    } // End Mehtod
 }

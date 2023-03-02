@@ -2,29 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Zone;
-use App\Models\Domain;
-use App\Models\District;
-use App\Models\Division;
-use App\Models\Upazilla;
+use App\Http\Controllers\Controller;
 use App\Models\BloodGroup;
 use App\Models\Designation;
-use App\Models\NewEmployee;
-use App\Models\EmployeeType;
-use Illuminate\Http\Request;
-use App\Models\MaritalStatus;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Models\District;
+use App\Models\Division;
+use App\Models\Domain;
 use App\Models\EducationalQualification;
+use App\Models\EmployeeType;
+use App\Models\MaritalStatus;
+use App\Models\NewEmployee;
+use App\Models\Upazilla;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class NewEmployeeController extends Controller
 {
-    public function EmployeeAll(){
+    public function EmployeeAll()
+    {
 
-        $user= Auth::user();
+        $user = Auth::user();
         $domains = Domain::all();
         $designations = Designation::all();
         $maritalstatus = MaritalStatus::all();
@@ -36,11 +35,12 @@ class NewEmployeeController extends Controller
         $employeetypes = EmployeeType::all();
         $employeeall = NewEmployee::all();
         // $employeeall = NewEmployee::where('created_by',$user->id)->orderBy('id','DESC')->get();
-        return view('backend.newemployee.employee_all',compact('employeeall'));
+        return view('backend.newemployee.employee_all', compact('employeeall'));
     } // End Method
-    public function NewEmployeeAll(){
+    public function NewEmployeeAll()
+    {
 
-        $user= Auth::user();
+        $user = Auth::user();
         $domains = Domain::all();
         $designations = Designation::all();
         $maritalstatus = MaritalStatus::all();
@@ -51,13 +51,12 @@ class NewEmployeeController extends Controller
         $educationqualifications = EducationalQualification::all();
         $employeetypes = EmployeeType::all();
         // $newemployees = NewEmployee::all();
-        $newemployees = NewEmployee::where('created_by',$user->id)->orderBy('id','DESC')->get();
-        return view('backend.newemployee.newemployee_all',compact('newemployees','user'));
+        $newemployees = NewEmployee::where('created_by', $user->id)->orderBy('id', 'DESC')->get();
+        return view('backend.newemployee.newemployee_all', compact('newemployees', 'user'));
     } // End Method
 
-
-
-    public function NewEmployeeAdd(){
+    public function NewEmployeeAdd()
+    {
         $domains = Domain::all();
         $designations = Designation::all();
         $maritalstatus = MaritalStatus::all();
@@ -67,12 +66,11 @@ class NewEmployeeController extends Controller
         $blood_groups = BloodGroup::all();
         $employeetypes = EmployeeType::all();
         $educationqualifications = EducationalQualification::all();
-        return view('backend.newemployee.newemployee_add',compact('domains','employeetypes','designations','maritalstatus','districts','divisions','blood_groups','educationqualifications','upazillas'));
+        return view('backend.newemployee.newemployee_add', compact('domains', 'employeetypes', 'designations', 'maritalstatus', 'districts', 'divisions', 'blood_groups', 'educationqualifications', 'upazillas'));
     } // End Method
 
-
-    public function NewEmployeeStore(Request $request){
-
+    public function NewEmployeeStore(Request $request)
+    {
 
         $validateData = $request->validate([
             'name' => 'required',
@@ -87,7 +85,7 @@ class NewEmployeeController extends Controller
             'domain_id' => 'required',
             'marital_status_id' => 'required',
             'birth_place_district_id' => 'required',
-            'educational_qualification_id' =>'required',
+            'educational_qualification_id' => 'required',
             'permanent_village' => 'required',
             'permanent_post' => 'required',
             // 'permanent_postal_code' => 'required',
@@ -104,7 +102,7 @@ class NewEmployeeController extends Controller
             // 'email' => 'required',
             // 'nid' => 'required',
             // 'smartcard' => 'required',
-            'blood_groups_id' => 'required'
+            'blood_groups_id' => 'required',
             // 'id' => ['required', 'numeric','max:8', 'min:8', 'unique:new_employees']
             // 'id' => 'required|max:8|min:8',
         ]);
@@ -144,16 +142,17 @@ class NewEmployeeController extends Controller
 
         ]);
 
-         $notification = array(
+        $notification = array(
             'message' => 'NewEmployee Inserted Successfully',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         );
 
         return redirect()->route('newemployee.all')->with($notification);
 
     } // End Method
 
-    public function NewEmployeeShow($id){
+    public function NewEmployeeShow($id)
+    {
 
         $domains = Domain::all();
         $designations = Designation::all();
@@ -172,13 +171,13 @@ class NewEmployeeController extends Controller
         // $newemployees = NewEmployee::findOrFail($id);
         $newemployee = NewEmployee::findOrFail($id);
         // return View('backend.newemployee.newemployee_show',['designations'=>$designation]);
-        return view('backend.newemployee.newemployee_show',compact('newemployee','domains','employeetypes','designations','maritalstatus','districts','divisions','blood_groups','educationqualifications','upazillas'));
+        return view('backend.newemployee.newemployee_show', compact('newemployee', 'domains', 'employeetypes', 'designations', 'maritalstatus', 'districts', 'divisions', 'blood_groups', 'educationqualifications', 'upazillas'));
         // return view('backend.newemployee.newemployee_show',compact('newemployee'));
 
     } // End Method
 
-
-    public function NewEmployeeEdit($id){
+    public function NewEmployeeEdit($id)
+    {
 
         $domains = Domain::all();
         $designations = Designation::all();
@@ -191,11 +190,12 @@ class NewEmployeeController extends Controller
         $educationqualifications = EducationalQualification::all();
 
         $newemployee = NewEmployee::findOrFail($id);
-        return view('backend.newemployee.newemployee_edit',compact('newemployee','employeetypes','domains','designations','maritalstatus','districts','divisions','blood_groups','educationqualifications','upazillas'));
+        return view('backend.newemployee.newemployee_edit', compact('newemployee', 'employeetypes', 'domains', 'designations', 'maritalstatus', 'districts', 'divisions', 'blood_groups', 'educationqualifications', 'upazillas'));
 
     } // End Method
 
-    public function NewEmployeeUpdate(Request $request){
+    public function NewEmployeeUpdate(Request $request)
+    {
 
         $id = $request->id;
 
@@ -233,15 +233,14 @@ class NewEmployeeController extends Controller
 
         ]);
 
-         $notification = array(
+        $notification = array(
             'message' => 'NewEmployee Updated Successfully',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         );
 
         return redirect()->route('newemployee.all')->with($notification);
 
     } // End Method
-
 
     // public function NewEmployeeDelete($id){
 

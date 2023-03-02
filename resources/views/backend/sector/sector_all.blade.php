@@ -1,86 +1,93 @@
 @extends('admin.admin_master')
 @section('admin')
 
-@section('title') {{'Sector All'}} @endsection
+@section('title')
+    {{ 'Sector All' }}
+@endsection
 
- <div class="page-content">
+<div class="page-content">
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="px-4 py-3 rounded breadcrumb breadcrumb-alt bg-body-extra-light push fs-sm">
-              <li class="breadcrumb-item">
-                <a href="javascript:void(0)">Home</a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">Sector Management</li>
+                <li class="breadcrumb-item">
+                    <a href="javascript:void(0)">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Sector Management</li>
             </ol>
-          </nav>
+        </nav>
 
-                        {{-- <!-- start page title -->
+        {{-- <!-- start page title -->
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                     <h4 class="mb-sm-0">Sector All</h4>
 
-                                     
+
 
                                 </div>
                             </div>
                         </div>
                         <!-- end page title --> --}}
-                        
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
 
-    <a href="{{ route('sector.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-plus-circle"> Add Sector </i></a> <br>  <br>               
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
 
-                    <h4 class="card-title">Sector All Data </h4>
-                    
+                        <a href="{{ route('sector.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
+                            style="float:right;"><i class="fas fa-plus-circle"> Add Sector </i></a> <br> <br>
 
-                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <thead>
-                        <tr>
-                            <th>Sl</th>
-                            <th>Name</th> 
-                            {{-- <th>Mobile Number </th>
+                        <h4 class="card-title">Sector All Data </h4>
+
+
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Sl</th>
+                                    <th>Name</th>
+                                    {{-- <th>Mobile Number </th>
                             <th>Email</th>
                             <th>Address</th>  --}}
-                            <th width="18%">Action</th>
-                            
-                        </thead>
+                                    <th width="18%">Action</th>
+
+                            </thead>
 
 
-                        <tbody>
-                        	 
-                        	@foreach($sectors as $key => $item)
-                        <tr>
-                            <td> {{ $key+1}} </td>
-                            <td> {{ $item->name }} </td> 
-                             {{-- <td> {{ $item->mobile_no }} </td> 
-                              <td> {{ $item->email }} </td> 
+                            <tbody>
+
+                                @foreach ($sectors as $key => $item)
+                                    <tr>
+                                        <td> {{ $key + 1 }} </td>
+                                        <td> {{ $item->name }} </td>
+                                        {{-- <td> {{ $item->mobile_no }} </td>
+                              <td> {{ $item->email }} </td>
                                <td> {{ $item->address }} </td>  --}}
-                            <td>
-   <a href="{{ route('sector.edit',$item->id) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
+                                        <td>
+                                            <a href="{{ route('sector.edit', $item->id) }}" class="btn btn-info sm"
+                                                title="Edit Data"> <i class="fas fa-edit"></i> </a>
 
-     <a href="{{ route('sector.delete',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
+                                            <a href="{{ route('sector.delete', $item->id) }}" class="btn btn-danger sm"
+                                                title="Delete Data" id="delete"> <i class="fas fa-trash-alt"></i>
+                                            </a>
 
-                            </td>
-                           
-                        </tr>
-                        @endforeach
-                        
-                        </tbody>
-                    </table>
-        
-                                    </div>
-                                </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
-        
-                     
-                        
-                    </div> <!-- container-fluid -->
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+
+                    </div>
                 </div>
- 
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+
+
+    </div> <!-- container-fluid -->
+</div>
+
 
 @endsection

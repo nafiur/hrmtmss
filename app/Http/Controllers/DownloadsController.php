@@ -9,27 +9,31 @@ use Illuminate\Support\Facades\Auth;
 
 class DownloadsController extends Controller
 {
-    public function DownloadsAll(){
+    public function DownloadsAll()
+    {
 
         $downloads = Downloads::all();
-        return view('downloads.download_all',compact('downloads'));
-    } // End Method 
-    public function DownloadsShow(){
+        return view('downloads.download_all', compact('downloads'));
+    } // End Method
+    public function DownloadsShow()
+    {
 
         $downloads = Downloads::all();
-        return view('downloads.download_show',compact('downloads'));
-    } // End Method 
+        return view('downloads.download_show', compact('downloads'));
+    } // End Method
 
-    public function DownloadsAdd(){
+    public function DownloadsAdd()
+    {
         $downloads = Downloads::all();
-        return view('downloads.download_add',compact('downloads'));
-    } // End Method 
+        return view('downloads.download_add', compact('downloads'));
+    } // End Method
 
-    public function DownloadsStore(Request $request){
+    public function DownloadsStore(Request $request)
+    {
 
         $request->validate([
-            'form_name'=> 'required',
-            'form_file'=> 'required|mimes:png,jpg,pdf,xls,xlsx,ppt,pptx,doc,docx',
+            'form_name' => 'required',
+            'form_file' => 'required|mimes:png,jpg,pdf,xls,xlsx,ppt,pptx,doc,docx',
 
         ]);
 
@@ -37,7 +41,7 @@ class DownloadsController extends Controller
             $file = $request->file('form_file');
 
             $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path('upload/downloads/form/'),$filename);
+            $file->move(public_path('upload/downloads/form/'), $filename);
             $data['form_file'] = $filename;
         }
 
@@ -46,35 +50,34 @@ class DownloadsController extends Controller
             'form_type' => $request->form_type,
             'form_file' => $filename,
             'created_by' => Auth::user()->id,
-            'created_at' => Carbon::now(), 
-            
+            'created_at' => Carbon::now(),
+
         ]);
 
-    
-        
-
         $notification = array(
-            'message' => 'File Uploded Successfully', 
-            'alert-type' => 'success'
+            'message' => 'File Uploded Successfully',
+            'alert-type' => 'success',
         );
 
         return redirect()->route('download.all')->with($notification);
 
-    } // End Method 
+    } // End Method
 
-    public function DownloadsEdit($id){
+    public function DownloadsEdit($id)
+    {
 
         $downloads = Downloads::findOrFail($id);
-        return view('downloads.download_edit',compact('downloads'));
+        return view('downloads.download_edit', compact('downloads'));
 
-    } // End Method 
+    } // End Method
 
-    public function DownloadsUpdate(Request $request){
+    public function DownloadsUpdate(Request $request)
+    {
 
         $id = $request->id;
 
         $request->validate([
-            'form_name'=> 'required',
+            'form_name' => 'required',
             // 'form_file'=> 'required|mimes:png,jpg,pdf,xls,xlsx,ppt,pptx,doc,docx',
 
         ]);
@@ -92,28 +95,29 @@ class DownloadsController extends Controller
             'form_type' => $request->form_type,
             // 'form_file' => $filename,
             'updated_by' => Auth::user()->id,
-            'updated_at' => Carbon::now(), 
+            'updated_at' => Carbon::now(),
 
         ]);
 
         $notification = array(
-            'message' => 'NewEmployee Updated Successfully', 
-            'alert-type' => 'success'
+            'message' => 'NewEmployee Updated Successfully',
+            'alert-type' => 'success',
         );
 
         return redirect()->route('download.all')->with($notification);
 
-    } // End Method 
-    public function DownloadsDelete($id){
+    } // End Method
+    public function DownloadsDelete($id)
+    {
 
         Downloads::findOrFail($id)->delete();
-    
-    $notification = array(
-            'message' => 'Form Deleted Successfully', 
-            'alert-type' => 'success'
+
+        $notification = array(
+            'message' => 'Form Deleted Successfully',
+            'alert-type' => 'success',
         );
 
         return redirect()->back()->with($notification);
 
-    } // End Method 
+    } // End Method
 }

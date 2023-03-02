@@ -100,8 +100,8 @@ public function DeletePermissionGroup($id){
     public function AllPermission(){
 
         $permissions = Permission::all();
-        $permission_groups = PermissionGroup::all();
-        return view('backend.pages.permission.all_permission',compact('permissions','permission_groups'));
+        // $permission_groups = PermissionGroup::all();
+        return view('backend.pages.permission.all_permission',compact('permissions'));
 
     } // End Method
 
@@ -135,8 +135,8 @@ public function DeletePermissionGroup($id){
     public function EditPermission($id){
 
         $permission = Permission::findOrFail($id);
-        $permissiongroup = PermissionGroup::all();
-        return view('backend.pages.permission.edit_permission',compact('permission','permissiongroup'));
+        // $permissiongroup = PermissionGroup::all();
+        return view('backend.pages.permission.edit_permission',compact('permission'));
 
     }// End Method
 

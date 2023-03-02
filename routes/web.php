@@ -1,43 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\NoticeController;
-use App\Http\Controllers\ReportsController;
-use App\Http\Controllers\Pos\UnitController;
-use App\Http\Controllers\Demo\DemoController;
-use App\Http\Controllers\DownloadsController;
-use App\Http\Controllers\Pos\StockController;
-use App\Http\Controllers\AllReportsController;
-use App\Http\Controllers\Setup\AreaController;
-use App\Http\Controllers\Setup\ZoneController;
-use App\Http\Controllers\NewEmployeeController;
+use App\Http\Controllers\{RoleController,AdminController,NoticeController,ReportsController,DownloadsController,NewEmployeeController,StaffProfileController};
+use App\Http\Controllers\Setup\{AreaController,ZoneController,SetupController,BranchController, DomainController, GenderController, SectorController,
+    DistrictController, DivisionController, ReligionController, UpazillaController,JobStatusController, BloodGroupController, DepartmentController,
+    DesignationController, EmployeeTypeController, MaritalStatusController, UserManagementController, EducationalQualificationController,};
 use App\Http\Controllers\Pos\DefaultController;
 use App\Http\Controllers\Pos\InvoiceController;
 use App\Http\Controllers\Pos\ProductController;
-use App\Http\Controllers\Setup\SetupController;
 use App\Http\Controllers\Pos\CategoryController;
 use App\Http\Controllers\Pos\CustomerController;
 use App\Http\Controllers\Pos\PurchaseController;
 use App\Http\Controllers\Pos\SupplierController;
-use App\Http\Controllers\Setup\BranchController;
-use App\Http\Controllers\Setup\DomainController;
-use App\Http\Controllers\Setup\GenderController;
-use App\Http\Controllers\Setup\SectorController;
-use App\Http\Controllers\StaffProfileController;
-use App\Http\Controllers\Setup\DistrictController;
-use App\Http\Controllers\Setup\DivisionController;
-use App\Http\Controllers\Setup\ReligionController;
-use App\Http\Controllers\Setup\UpazillaController;
-use App\Http\Controllers\Setup\JobStatusController;
-use App\Http\Controllers\Setup\BloodGroupController;
-use App\Http\Controllers\Setup\DepartmentController;
-use App\Http\Controllers\Setup\DesignationController;
-use App\Http\Controllers\Setup\EmployeeTypeController;
-use App\Http\Controllers\Setup\MaritalStatusController;
-use App\Http\Controllers\Setup\UserManagementController;
-use App\Http\Controllers\Setup\EducationalQualificationController;
+use App\Http\Controllers\Pos\UnitController;
+use App\Http\Controllers\Demo\DemoController;
+use App\Http\Controllers\Pos\StockController;
+use App\Http\Controllers\AllReportsController;
+
 
 Route::view('/', 'auth.login');
 // Route::get('/', function () {

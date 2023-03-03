@@ -36,9 +36,9 @@
                             <div class="mb-4">
                                 <label class="form-label" for="example-text-input">Notice Title</label>
                                 <input type="text" class="form-control" id="example-text-input" name="notice_title"
-                                    required="" value="{{ old('name') }}">
+                                    required="" value="{{ old('notice_title') }}">
                             </div>
-                            <div class="mb-4">
+                            {{-- <div class="mb-4">
                                 <label for="firstname" class="form-label">File Type </label>
                                 <select name="form_type" value="{{ old('name') }}" class="form-select"
                                     id="example-select">
@@ -49,17 +49,17 @@
                                     <option value="ppt">Powe Point</option>
                                     <option value="image">Image</option>
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="mb-4">
                                 <label for="firstname" class="form-label">Notice Description </label>
                                 <div class="mb-4">
-                                    <textarea id="elm1" name="area"></textarea>
+                                    <textarea id="elm1" name="notice_description"></textarea>
                                 </div>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="example-file-input">Upload File</label>
-                                <input class="form-control" type="file" name="form_file" id="example-file-input"
-                                    required="" value="{{ old('name') }}">
+                                <input class="form-control" type="file" name="notice_file" id="example-file-input"
+                                    required="" value="{{ old('notice_file') }}">
                             </div>
                             <div class="mb-4">
                                 <input type="submit" style="float:right;"

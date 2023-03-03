@@ -15,6 +15,16 @@ class ReportsController extends Controller
         $reports = Reports::all();
         return view('reports.report_all', compact('reports'));
     } // End Method
+
+    public function ReportLatest()
+    {
+
+        $latestreport = Reports::orderBy ('id','desc')->get();
+        return view('admin.index', compact('latestreport'));
+    } // End Method
+
+
+
     public function ReportShow()
     {
 
@@ -41,7 +51,7 @@ class ReportsController extends Controller
             $file = $request->file('report_file');
 
             $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path('upload/reports/report/'), $filename);
+            $file->move(public_path('upload/reports/'), $filename);
             $data['report_file'] = $filename;
         }
 

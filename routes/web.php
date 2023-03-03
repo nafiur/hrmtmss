@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{RoleController,AdminController,NoticeController,ReportsController,DownloadsController,NewEmployeeController,StaffProfileController};
+use App\Http\Controllers\{RoleController,AdminController,NoticeController,ReportsController,DownloadsController, LatestsController, NewEmployeeController,StaffProfileController};
 use App\Http\Controllers\Setup\{AreaController,ZoneController,SetupController,BranchController, DomainController, GenderController, SectorController,
     DistrictController, DivisionController, ReligionController, UpazillaController,JobStatusController, BloodGroupController, DepartmentController,
     DesignationController, EmployeeTypeController, MaritalStatusController, UserManagementController, EducationalQualificationController,};
@@ -27,6 +27,11 @@ Route::post('get-districts-by-division','DivisionDistrictUpazillaController@getD
 Route::post('get-upazillas-by-district','DivisionDistrictUpazillaController@getUpazilla');
 
 Route::controller(DemoController::class)->group(function () {
+    Route::get('/about', 'Index')->name('about.page')->middleware('check');
+    Route::get('/contact', 'ContactMethod')->name('cotact.page');
+});
+
+Route::controller(LatestsController::class)->group(function () {
     Route::get('/about', 'Index')->name('about.page')->middleware('check');
     Route::get('/contact', 'ContactMethod')->name('cotact.page');
 });
@@ -289,6 +294,7 @@ Route::controller(DownloadsController::class)->group(function () {
 // Notices
 Route::controller(NoticeController::class)->group(function () {
     Route::get('/notice/all', 'NoticeAll')->name('notice.all')->middleware('permission:notice.all');
+    // Route::get('/notice/latest', 'NoticeLatest');
     Route::get('/notice/show/{id}', 'NoticeShow')->name('notice.show')->middleware('permission:notice.show');
     Route::get('/notice/add', 'NoticeAdd')->name('notice.add')->middleware('permission:notice.add');
     Route::post('/notice/store', 'NoticeStore')->name('notice.store');
@@ -528,6 +534,9 @@ Route::get('/efile', function () {
 Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth'])->name('dashboard');
+Route::get('latestreport', function () {
+    return view('admin.index');
+})->middleware(['auth'])->name('latestreport');
 
 // Route::get('/efile', function () {
 //     return view('efile.index');

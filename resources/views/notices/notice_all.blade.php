@@ -42,7 +42,7 @@
                             <tr>
                                 <td> {{ $key + 1 }} </td>
                                 {{-- <td> {{ $item->name }} </td>  --}}
-                                <td> {{ $item->form_name }} </td>
+                                <td> {{ $item->notice_title }} </td>
                                 <td> {{ $item->form_type }} </td>
                                 {{-- <td> {{ $item->form_file }} </td>  --}}
                                 <td> <a href="{{ asset('upload/notice/' . $item->notice_file) }}"

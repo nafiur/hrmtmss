@@ -16,6 +16,34 @@
                     <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                 </ol>
             </nav>
+            {{-- <nav aria-label="breadcrumb">
+                <ol class="px-4 py-3 rounded breadcrumb breadcrumb-alt bg-body-extra-light push fs-sm">
+                    <li class="breadcrumb-item">
+                        <a href="javascript:void(0)">Latest Notice</a>
+                    </li>
+
+                    @foreach ($latestnotice as $key => $item)
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a href="javascript:void(0)">{{ $item->notice_title }} </a>
+                        </li>
+                    @endforeach
+
+                </ol>
+            </nav> --}}
+            {{-- <nav aria-label="breadcrumb">
+                <ol class="px-4 py-3 rounded breadcrumb breadcrumb-alt bg-body-extra-light push fs-sm">
+                    <li class="breadcrumb-item">
+                        <a href="javascript:void(0)">Latest Report</a>
+                    </li>
+
+                    @foreach ($latestreport as $key => $item)
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a href="javascript:void(0)">{{ $item->report_title }} </a>
+                        </li>
+                    @endforeach
+
+                </ol>
+            </nav> --}}
             <div class="row">
                 @if (Auth::user()->can('newemployee.module'))
                     <div class="col-6 col-md-4 col-xl-2">

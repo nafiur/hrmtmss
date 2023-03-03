@@ -15,6 +15,15 @@ class NoticeController extends Controller
         $notices = Notice::all();
         return view('notices.notice_all', compact('notices'));
     } // End Method
+
+    public function NoticeLatest()
+    {
+
+        $latestnotice = Notice::orderBy ('id','desc')->get();
+        return view('admin.index', compact('latestnotice'));
+    } // End Method
+
+
     public function NoticeShow()
     {
 
@@ -32,23 +41,23 @@ class NoticeController extends Controller
     {
 
         $request->validate([
-            'form_name' => 'required',
-            'form_file' => 'required|mimes:png,jpg,pdf,xls,xlsx,ppt,pptx,doc,docx',
+            'notice_title' => 'required',
+            'notice_file' => 'required|mimes:png,jpg,pdf,xls,xlsx,ppt,pptx,doc,docx',
 
         ]);
 
-        if ($request->file('form_file')) {
-            $file = $request->file('form_file');
+        if ($request->file('notice_file')) {
+            $file = $request->file('notice_file');
 
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/notice/'), $filename);
-            $data['form_file'] = $filename;
+            $data['notice_file'] = $filename;
         }
 
         Notice::insert([
-            'form_name' => $request->form_name,
-            'form_type' => $request->form_type,
-            'form_file' => $filename,
+            'notice_title' => $request->notice_title,
+            'notice_description' => $request->notice_description,
+            'notice_file' => $filename,
             'created_by' => Auth::user()->id,
             'created_at' => Carbon::now(),
 
@@ -77,7 +86,7 @@ class NoticeController extends Controller
         $id = $request->id;
 
         $request->validate([
-            'form_name' => 'required',
+            'notice_title' => 'required',
             // 'form_file'=> 'required|mimes:png,jpg,pdf,xls,xlsx,ppt,pptx,doc,docx',
 
         ]);
@@ -91,8 +100,9 @@ class NoticeController extends Controller
         //  }
 
         Notice::findOrFail($id)->update([
-            'form_name' => $request->form_name,
-            'form_type' => $request->form_type,
+            'notice_title' => $request->notice_title,
+            'notice_description' => $request->notice_description,
+            // 'notice_file' => $filename,
             // 'form_file' => $filename,
             'updated_by' => Auth::user()->id,
             'updated_at' => Carbon::now(),
@@ -100,7 +110,7 @@ class NoticeController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'NewEmployee Updated Successfully',
+            'message' => 'Notice Updated Successfully',
             'alert-type' => 'success',
         );
 
@@ -113,7 +123,7 @@ class NoticeController extends Controller
         Notice::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'Form Deleted Successfully',
+            'message' => 'Notice Deleted Successfully',
             'alert-type' => 'success',
         );
 

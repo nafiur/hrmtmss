@@ -119,19 +119,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($downloads as $key => $item)
+                        {{-- @foreach ($notices as $key => $item)
                             <tr>
                                 <td> {{ $key + 1 }} </td>
-                                {{-- <td> {{ $item->name }} </td>  --}}
-                                <td> {{ $item->form_name }} </td>
+                                <td> {{ $item->notice }} </td>
                                 <td> {{ $item->form_type }} </td>
-                                {{-- <td> {{ $item->form_file }} </td>  --}}
                                 <td> <a href="{{ asset('upload/downloads/form/' . $item->form_file) }}"
                                         class="btn btn-primary sm" title="Download"> <i
                                             class="fas fa-file-download"></i></a> </td>
-                                {{-- <td> {{ $item->name }} </td>  --}}
                                 <td>
-                                    {{-- <a href="{{ asset('upload/downloads/'. $item->form_file) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a> --}}
                                     @if (Auth::user()->can('formformats.show'))
                                         <a href="{{ route('download.show', $item->id) }}" class="btn btn-info sm"
                                             title="Show Data"> <i class="fas fa-eye"></i> </a>
@@ -147,7 +143,7 @@
                                     @endif
                                 </td>
                             </tr>
-                        @endforeach
+                        @endforeach --}}
                     </tbody>
                 </table>
                 <div class="col-lg-8 col-xl-6">

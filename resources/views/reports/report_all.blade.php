@@ -45,7 +45,7 @@
                                 <td> {{ $item->report_title }} </td>
                                 <td> {{ $item->report_description }} </td>
                                 {{-- <td> {{ $item->form_file }} </td>  --}}
-                                <td> <a href="{{ asset('upload/report/' . $item->report_file) }}"
+                                <td> <a href="{{ asset('upload/reports/' . $item->report_file) }}"
                                         class="btn btn-primary sm" title="Download" target="_blank" rel="noopener"> <i
                                             class="fas fa-file-download"></i></a> </td>
                                 {{-- <td> {{ $item->name }} </td>  --}}

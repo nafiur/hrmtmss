@@ -20,18 +20,18 @@ return new class extends Migration
             $table->string('spouce_present_village')->nullable();
             $table->string('spouce_present_post')->nullable();
             $table->string('spouce_present_postal_code')->nullable();
-            $table->string('spouce_present_division_id')->nullable();
-            $table->string('spouce_present_district_id')->nullable();
-            $table->string('spouce_present_upazilla_id')->nullable();
+            $table->integer('spouce_present_division_id')->nullable();
+            $table->integer('spouce_present_district_id')->nullable();
+            $table->integer('spouce_present_upazilla_id')->nullable();
             $table->string('spouce_permanent_village')->nullable();
             $table->string('spouce_permanent_post')->nullable();
             $table->string('spouce_permanent_postal_code')->nullable();
-            $table->string('spouce_permanent_division_id')->nullable();
-            $table->string('spouce_permanent_district_id')->nullable();
-            $table->string('spouce_permanent_upazilla_id')->nullable();
+            $table->integer('spouce_permanent_division_id')->nullable();
+            $table->integer('spouce_permanent_district_id')->nullable();
+            $table->integer('spouce_permanent_upazilla_id')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
-            $table->string('profession_id')->nullable();
+            $table->integer('profession_id')->nullable();
             $table->timestamps();
         });
     }

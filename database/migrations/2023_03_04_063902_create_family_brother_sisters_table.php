@@ -17,18 +17,17 @@ return new class extends Migration
             $table->id();
             $table->integer('employee_id');
             $table->string('brother_sister_name');
-            $table->string('relation_id')->nullable();
-            $table->string('profession_id')->nullable();
+            $table->integer('relation_types__id');
+            $table->integer('profession_id');
             $table->string('depend')->nullable();
             $table->string('brother_sister_village')->nullable();
             $table->string('brother_sister_post')->nullable();
             $table->string('brother_sister_postal_code')->nullable();
-            $table->string('brother_sister_division_id')->nullable();
-            $table->string('brother_sister_district_id')->nullable();
-            $table->string('brother_sister_upazilla_id')->nullable();
+            $table->integer('brother_sister_division_id')->nullable();
+            $table->integer('brother_sister_district_id')->nullable();
+            $table->integer('brother_sister_upazilla_id')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
-            $table->string('profession_id')->nullable();
             $table->timestamps();
         });
     }

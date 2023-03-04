@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('education', function (Blueprint $table) {
             $table->id();
             $table->integer('employee_id');
-            $table->string('educational_qualification_id')->nullable();
+            $table->integer('educational_qualification_id')->nullable();
             $table->string('year')->nullable();
-            $table->string('educational_subjects_id')->nullable();
+            $table->integer('educational_subjects_id')->nullable();
             $table->string('group')->nullable();
             $table->string('name_of_institute')->nullable();
             $table->string('thesis_topic')->nullable();
-            $table->string('board_university_id')->nullable();
+            $table->integer('board_university_id')->nullable();
             $table->string('total_marks')->nullable();
             $table->string('grade_class')->nullable();
             $table->string('gpa')->nullable();

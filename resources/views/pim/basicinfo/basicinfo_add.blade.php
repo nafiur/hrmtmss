@@ -20,15 +20,15 @@
 
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Add New Employee Info</h3>
-                <a href="{{ route('newemployee.all') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
+                <h3 class="block-title">Add New Basic Info</h3>
+                <a href="{{ route('all.basicinfo') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
                     style="float:right;"><i class="fa fa-undo"> Back </i></a> <br> <br>
             </div>
             <div class="block-content">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" action="{{ route('newemployee.store') }}" id="myForm">
+                            <form method="post" action="{{ route('basicinfo.store') }}" id="myForm">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-3">

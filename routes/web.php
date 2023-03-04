@@ -15,6 +15,7 @@ use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\Pos\UnitController;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\Pos\StockController;
+use App\Http\Controllers\Pim\BasicInfoController;
 use App\Http\Controllers\AllReportsController;
 
 
@@ -511,6 +512,17 @@ Route::controller(AdminController::class)->group(function(){
     // Route::get('{getFilename}','DownloadDatabase');
     // Route::get('/delete/database/{getFilename}','DeleteDatabase');
 
+});
+
+///Permission All Route
+Route::controller(BasicInfoController::class)->group(function(){
+
+    Route::get('/all/basicinfo','AllBasicInfo')->name('all.basicinfo');
+    Route::get('/add/basicinfo','AddBasicInfo')->name('add.basicinfo');
+    Route::post('/store/basicinfo','StoreBasicInfo')->name('basicinfo.store');
+    Route::get('/edit/basicinfo/{id}','EditBasicInfo')->name('edit.basicinfo');
+    Route::post('/update/basicinfo','UpdateBasicInfo')->name('basicinfo.update');
+    Route::get('/delete/basicinfo/{id}','DeleteBasicInfo')->name('delete.basicinfo');
 });
 
 

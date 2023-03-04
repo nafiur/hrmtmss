@@ -17,11 +17,11 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">Employee Info</h3>
-                <a href="{{ route('newemployee.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
+                <a href="{{ route('add.basicinfo') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
                     style="float:right;"><i class="fa fa-plus-circle"> Add New Employee </i></a> <br> <br>
             </div>
             <div class="mb-5 block-content">
-                <h4 class="card-title">Employee Qualification All Data {{ $newemployees->count() }} </h4>
+                <h4 class="card-title">Employee Qualification All Data {{ $basicinfos->count() }} </h4>
                 <table id="datatable" class="table table-bordered dt-responsive nowrap"
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
@@ -37,7 +37,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($newemployees as $key => $item)
+                        @foreach ($basicinfos as $key => $item)
                             <tr>
                                 <td> {{ $key + 1 }} </td>
                                 {{-- <td> {{ $item['domains']['name']  }}</td>  --}}
@@ -67,8 +67,9 @@
                                     @endif
 
                                     @if (Auth::user()->can('newemployee.delete'))
-                                        <a href="{{ route('newemployee.delete', $item->id) }}" class="btn btn-danger sm"
-                                            title="Delete Data" id="delete"> <i class="fas fa-trash-alt"></i> </a>
+                                        <a href="{{ route('newemployee.delete', $item->id) }}"
+                                            class="btn btn-danger sm" title="Delete Data" id="delete"> <i
+                                                class="fas fa-trash-alt"></i> </a>
                                     @endif
                                 </td>
                             </tr>
@@ -81,6 +82,4 @@
 </div> <!-- end row -->
 </div> <!-- container-fluid -->
 </div>
-
-
 @endsection

@@ -1,163 +1,215 @@
 @extends('admin.admin_master')
 @section('admin')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @section('title')
-    {{ 'Forms Download' }}
+    {{ 'Employee Details Information' }}
 @endsection
-
 <div class="page-content">
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="px-4 py-3 rounded breadcrumb breadcrumb-alt bg-body-extra-light push fs-sm">
                 <li class="breadcrumb-item">
-                    <a href="/dashboard">Home</a>
+                    <a href="javascript:void(0)">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">All Form & Formats</li>
+                <li class="breadcrumb-item active" aria-current="page">Employee Details Information</li>
             </ol>
         </nav>
 
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Add New Form</h3>
-                <a href="{{ route('download.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
-                    style="float:right;"><i class="fa fa-plus-circle"> Add New Form </i></a> <br> <br>
+                <h3 class="block-title">Employee Details Information</h3>
+                <a href="{{ route('newemployee.all') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
+                    style="float:right;"><i class="fa fa-undo"> Back </i></a> <br> <br>
             </div>
             <div class="block-content">
                 <!-- Label on top Layout -->
                 {{-- <h2 class="content-heading">Labels on top</h2> --}}
                 <div class="row">
-                    <div class="col-12">
-                        <div class="row">
-                            @if (Auth::user()->can('newemployee.module'))
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <a class="block text-center block-rounded block-bordered block-link-shadow"
-                                        href="{{ route('employee.all') }}">
-                                        <div class="block-content">
-                                            <p class="my-2">
-                                                <i class="fa fas fa-house-user fa-2x text-muted"></i>
-                                            </p>
-                                            <p class="fw-semibold">All Employee</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endif
-
-                            @if (Auth::user()->can('newemployee.module'))
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                                        href="{{ route('newemployee.add') }}">
-                                        {{-- <div class="ribbon-box">2</div> --}}
-                                        <div class="block-content">
-                                            <p class="my-2">
-                                                <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                            </p>
-                                            <p class="fw-semibold">New Employee</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endif
-
-                            @if (Auth::user()->can('efile.module'))
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-success"
-                                        href="/efile">
-                                        {{-- <div class="ribbon-box">3</div> --}}
-                                        <div class="block-content">
-                                            <p class="my-2">
-                                                <i class="fa fas fa-file-archive fa-2x text-muted"></i>
-                                            </p>
-                                            <p class="fw-semibold">eFile Magt</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endif
-
-                            @if (Auth::user()->can('settings.module'))
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <a class="block text-center block-rounded block-bordered block-link-shadow"
-                                        href="{{ route('setup.all') }}">
-                                        <div class="block-content">
-                                            <p class="my-2">
-                                                <i class="fa fas fa-cogs fa-2x text-muted"></i>
-                                            </p>
-                                            <p class="fw-semibold">All Setup</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endif
-
-                            @if (Auth::user()->can('usermanagement.module'))
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                                        href="{{ route('all.roles-permission-mgt') }}">
-                                        {{-- <div class="ribbon-box">24</div> --}}
-                                        <div class="block-content">
-                                            <p class="my-2">
-                                                <i class="fa fa-user-tie fa-2x text-muted"></i>
-                                            </p>
-                                            <p class="fw-semibold">User Management</p>
-                                        </div>
-                                    </a>
-                                </div><!-- User Management -->
-                            @endif
-                        </div>
+                    <div class="col-lg-3">
+                        <p class="text-muted">
+                            Employee Details Information
+                        </p>
                     </div>
-                </div> <!-- end col -->
-            </div> <!-- end row -->
-            <div class="row">
-                <h4 class="card-title"> All Data </h4>
-                <table id="datatable" class="self-center table align-middle table-bordered dt-responsive nowrap"
-                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                    <thead>
-                        <tr>
-                            <th width="10%">Sl</th>
-                            <th>Name</th>
-                            {{-- <th>Name English</th>  --}}
-                            <th width="10%">File Type</th>
-                            <th width="10%">Download</th>
-                            {{-- <th width="5%">Doc</th> --}}
-                            <th width="20%">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{-- @foreach ($notices as $key => $item)
-                            <tr>
-                                <td> {{ $key + 1 }} </td>
-                                <td> {{ $item->notice }} </td>
-                                <td> {{ $item->form_type }} </td>
-                                <td> <a href="{{ asset('upload/downloads/form/' . $item->form_file) }}"
-                                        class="btn btn-primary sm" title="Download"> <i
-                                            class="fas fa-file-download"></i></a> </td>
-                                <td>
-                                    @if (Auth::user()->can('formformats.show'))
-                                        <a href="{{ route('download.show', $item->id) }}" class="btn btn-info sm"
-                                            title="Show Data"> <i class="fas fa-eye"></i> </a>
-                                    @endif
-                                    @if (Auth::user()->can('formformats.edit'))
-                                        <a href="{{ route('download.edit', $item->id) }}" class="btn btn-info sm"
-                                            title="Edit Data"> <i class="fas fa-edit"></i> </a>
-                                    @endif
-
-                                    @if (Auth::user()->can('formformats.delete'))
-                                        <a href="{{ route('download.delete', $item->id) }}" class="btn btn-danger sm"
-                                            title="Delete Data" id="delete"> <i class="fas fa-trash-alt"></i> </a>
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach --}}
-                    </tbody>
-                </table>
-                <div class="col-lg-8 col-xl-6">
-                    <!-- Form Labels on top - Default Style -->
-
-                    <!-- END Form Labels on top - Default Style -->
+                    <div class="col-lg-10 col-xl-7">
+                        <!-- Form Labels on top - Default Style -->
+                        {{-- <form class="mb-5" action="{{ route('roles.store') }}" method="POST">
+                    @csrf --}}
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Employee ID</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" value="{{ $newemployee->id }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Employee Name</label>
+                            <div class="col-sm-10">
+                                <input class="capitalize form-control" type="text"
+                                    value="{{ $newemployee->name ?? '' }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Designation</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="{{ $newemployee->Designation->name ?? '' }} " readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Joining Date</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" value="{{ $newemployee->joiningdate }}"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Domain</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="{{ $newemployee->domain->name ?? '' }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Father's Name</label>
+                            <div class="col-sm-10">
+                                <input class="capitalize form-control" type="text"
+                                    value="{{ $newemployee->father_name }}" readonly>
+                                {{-- <input class="form-control" type="text" value="{{ $newemployee-> }}" readonly> --}}
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Mother's Name</label>
+                            <div class="col-sm-10">
+                                <input class="capitalize form-control" type="text"
+                                    value="{{ $newemployee->mother_name }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Marital Status</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="{{ $newemployee->marital_status->name ?? '' }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Place of Birth
+                                (District)</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="{{ $newemployee->birth_place_district->name ?? '' }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Present Address</label>
+                            <div class="col-sm-10">
+                                <textarea id="textarea" class="capitalize form-control" readonly>Village: {{ $newemployee->present_village }} , PostOffice: {{ $newemployee->present_village }}, Upazilla: {{ $newemployee->present_upazilla->name ?? '' }}, District: {{ $newemployee->present_district->name ?? '' }}</textarea>
+                                {{-- <input class="form-control" type="text" value="Village: {{ $newemployee->present_village }} , PostOffice: {{ $newemployee->present_village }}, Postcode: {{ $newemployee->present_postal_code }}, Upazilla: {{ $newemployee->present_upazilla_id }}, District: {{ $newemployee->present_district_id }}" readonly> --}}
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Permanent Address</label>
+                            <div class="col-sm-10">
+                                <textarea id="textarea" class="capitalize form-control" readonly>Village: {{ $newemployee->permanent_village }} , PostOffice: {{ $newemployee->permanent_village }}, Upazilla: {{ $newemployee->permanent_upazilla->name ?? '' }}, District: {{ $newemployee->permanent_district->name ?? '' }}</textarea>
+                                {{-- <input class="form-control" type="text" value="Village: {{ $newemployee->permanent_village }} , PostOffice: {{ $newemployee->permanent_village }}, Postcode: {{ $newemployee->permanent_postal_code }}, Upazilla: {{ $newemployee->permanent_upazilla_id }}, District: {{ $newemployee->permanent_district_id }}" readonly> --}}
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Date of Birth Date</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" value="{{ $newemployee->date_of_birth }}"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">National ID</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" value="{{ $newemployee->nid }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Smart Card</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" value="{{ $newemployee->smartcard }}"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Bloodgroup</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="{{ $newemployee->blood_groups->name ?? '' }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Mobile No.</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" value="{{ $newemployee->mobile }}"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" value="{{ $newemployee->email }}"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Educational
+                                Qualification</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="{{ $newemployee->educational_qualification->name ?? '' }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="example-text-input" class="col-2 col-form-label">Employee Type</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="{{ $newemployee->employee_type->name ?? '' }}" readonly>
+                            </div>
+                        </div>
+                        {{-- </form> --}}
+                        <!-- END Form Labels on top - Default Style -->
+                    </div>
                 </div>
+                <!-- END Label on top Layout -->
             </div>
-            <!-- END Label on top Layout -->
-        </div>
-        <!--block-content-->
-    </div><!-- END block -->
-
-
-</div> <!-- container-fluid -->
+            <!--block-content-->
+        </div><!-- END block -->
+    </div>
 </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#myForm').validate({
+            rules: {
+                name: {
+                    required: true,
+                },
+
+            },
+            messages: {
+                name: {
+                    required: 'Please Enter Educational Qualification Name',
+                },
+
+            },
+            errorElement: 'span',
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
+</script>
+
+
+
 @endsection

@@ -33,9 +33,10 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Employee Type</label>
+                                            <label for="example-text-input" class="form-label">Employee Type (*)</label>
                                             <select name="employee_type_id" class="form-select"
-                                                aria-label="Default select example" value="{{ old('name') }}">
+                                                aria-label="Default select example"
+                                                value="{{ old('employee_type_id') }}">
                                                 <option selected="" value="">Select Employee Type</option>
                                                 @foreach ($employeetypes as $employeetype)
                                                     <option value="{{ $employeetype->id }}">{{ $employeetype->name }}
@@ -48,8 +49,8 @@
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Employee ID</label>
                                             <input data-parsley-type="digits" data-parsley-id="15"
-                                                aria-describedby="parsley-id-15" type="text" name="id"
-                                                class="form-control" required="" value="{{ old('id') }}"
+                                                aria-describedby="parsley-id-15" type="text" name="employee_id"
+                                                class="form-control" required="" value="{{ old('employee_id') }}"
                                                 @error('id') is-invalid @enderror>
                                             @error('id')
                                                 <span class="text-danger"> {{ $message }} </span>
@@ -385,7 +386,7 @@
                                                         </datalist> --}}
                                                 <select name="blood_groups_id" required=""
                                                     class="form-select select2" aria-label="Default select example"
-                                                    value="{{ old('bloodgroups_id') }}">
+                                                    value="{{ old('blood_groups_id') }}">
                                                     <option selected="">Select Blood Group</option>
                                                     {{-- <option value=""></option> --}}
                                                     @foreach ($blood_groups as $blood_group)
@@ -396,60 +397,33 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    </div>
+                                    {{-- <div class="alert alert-secondary" role="alert">
+                                        <label for="example-text-input" class="form-label">Employee Photo</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3 row">
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Upload Photo </label>
+                                                <div class="col-sm-10">
+                                                    <input name="employee_photo" class="form-control" type="file" id="image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pull-right">
+                                            <label for="example-text-input" class="col-sm-2 col-form-label"> </label>
+                                            <div class="mb-3 row">
+                                                <img id="showImage" class="rounded avatar-lg" width="200"
+                                                    src="{{ !empty($basicinfo->employee_photo) ? url('upload/photo/employee/' . $basicinfo->employee_photo) : url('upload/no_image.jpg') }}"
+                                                    alt="Card image cap" data-holder-rendered="true">
+                                            </div>
+                                        </div>
+                                        </div> --}}
                                     <div class="col-md-6 fl">
                                         <input type="submit" class="btn btn-info waves-effect waves-light"
                                             value="Save Info">
                                     </div>
                             </form>
-
-
-                            {{-- <div class="container mt-4">
-                                    <div class="row justify-content-center">
-                                    <div class="col-md-12">
-                                        <h2>Laravel 9 Country State City Dropdown Using AJAX</h2>
-                                        <form>
-                                        <div class="mb-3 form-group">
-                                            <select id="division-dd" class="form-control">
-                                            <option value="">Select Division</option>
-                                            @foreach ($divisions as $data)
-                                                <option value="{{$data->id}}">{{$data->name}}</option>
-                                            @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="mb-3 form-group">
-                                            <select id="district-dd" class="form-control"></select>
-                                        </div>
-                                        <div class="mb-3 form-group">
-                                            <select id="upazilla-dd" class="form-control"></select>
-                                        </div>
-                                        </form>
-                                    </div>
-                                    </div>
-                                </div> --}}
-                            {{-- <div class="form-group">
-                                    <label for="division">division</label>
-                                    <select class="form-control" id="division-dropdown">
-                                    <option value="">Select division</option>
-                                    @foreach ($divisions as $division)
-                                    <option value="{{$division->id}}">
-                                    {{$division->name}}
-                                    </option>
-                                    @endforeach
-                                    </select>
-                                    </div>
-                                    <div class="form-group">
-                                    <label for="district">district</label>
-                                    <select class="form-control" id="district-dropdown">
-                                    </select>
-                                    </div>
-                                    <div class="form-group">
-                                    <label for="city">city</label>
-                                    <select class="form-control" id="city-dropdown">
-                                    </select>
-                                    </div> --}}
-
-
                         </div>
                     </div>
                 </div> <!-- end col -->
@@ -461,95 +435,6 @@
     </div>
 </div>
 </div>
-{{-- <script>
-    $(document).ready(function() {
-    $('#division-dropdown').on('change', function() {
-    var division_id = this.value;
-    $("#disrtict-dropdown").html('');
-    $.ajax({
-    url:"{{url('get-disrtict-by-division')}}",
-    type: "POST",
-    data: {
-    division_id: division_id,
-    _token: '{{csrf_token()}}'
-    },
-    dataType : 'json',
-    success: function(result){
-    $('#disrtict-dropdown').html('<option value="">Select disrtict</option>');
-    $.each(result.disrticts,function(key,value){
-    $("#disrtict-dropdown").append('<option value="'+value.id+'">'+value.name+'</option>');
-    });
-    $('#upazilla-dropdown').html('<option value="">Select disrtict First</option>');
-    }
-    });
-    });
-    $('#disrtict-dropdown').on('change', function() {
-    var disrtict_id = this.value;
-    $("#upazilla-dropdown").html('');
-    $.ajax({
-    url:"{{url('get-upazillas-by-disrtict')}}",
-    type: "POST",
-    data: {
-    disrtict_id: disrtict_id,
-    _token: '{{csrf_token()}}'
-    },
-    dataType : 'json',
-    success: function(result){
-    $('#upazilla-dropdown').html('<option value="">Select upazilla</option>');
-    $.each(result.upazillas,function(key,value){
-    $("#upazilla-dropdown").append('<option value="'+value.id+'">'+value.name+'</option>');
-    });
-    }
-    });
-    });
-    });
-    </script> --}}
-
-
-
-
-
-
-
-{{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-        $('#division-dd').change(function(event) {
-            var idDivision = this.value;
-            $('#district-dd').html('');
-
-            $.ajax({
-            url: "/api/fetch-district",
-            type: 'POST',
-            dataType: 'json',
-            data: {division_id: idDivision,_token:"{{ csrf_token() }}"},
-            success:function(response){
-                $('#district-dd').html('<option value="">Select District</option>');
-                $.each(response.districts,function(index, val){
-                $('#district-dd').append('<option value="'+val.id+'"> '+val.name+' </option>')
-                });
-                $('#upazilla-dd').html('<option value="">Select Upazilla</option>');
-            }
-            })
-        });
-        $('#district-dd').change(function(event) {
-            var idDistrict = this.value;
-            $('#upazilla-dd').html('');
-            $.ajax({
-            url: "/api/fetch-upazilla",
-            type: 'POST',
-            dataType: 'json',
-            data: {district_id: idDistrict,_token:"{{ csrf_token() }}"},
-            success:function(response){
-                $('#upazilla-dd').html('<option value="">Select District</option>');
-                $.each(response.upazilla,function(index, val){
-                $('#upazilla-dd').append('<option value="'+val.id+'"> '+val.name+' </option>')
-                });
-            }
-            })
-        });
-        });
-    </script> --}}
 <script type="text/javascript">
     $(document).ready(function() {
         $('#myForm').validate({
@@ -624,5 +509,15 @@
         'jq-masked-inputs', 'jq-pw-strength'
     ]);
 </script>
-
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#image').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#showImage').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
 @endsection

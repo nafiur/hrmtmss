@@ -50,27 +50,27 @@
                                 <td> {{ $item->joiningdate }} </td>
                                 {{-- <td> {{ $item->status }} </td>    --}}
                                 <td>
-                                    @if (Auth::user()->can('newemployee.show'))
-                                        <a href="{{ route('newemployee.show', $item->id) }}" class="btn btn-info sm"
+                                    {{-- @if (Auth::user()->can('basicinfo.show')) --}}
+                                        <a href="{{ route('show.basicinfo', $item->id) }}" class="btn btn-info sm"
                                             title="Show Data"> <i class="fas fa-eye"></i> </a>
-                                    @endif
+                                    {{-- @endif --}}
 
-                                    @if (Auth::user()->can('ewemployee.export'))
-                                        <a href="{{ route('newemployee.delete', $item->id) }}"
+                                    {{-- @if (Auth::user()->can('ewemployee.export')) --}}
+                                        <a href="{{ route('delete.basicinfo', $item->id) }}"
                                             class="btn btn-success sm" title="Delete Data" id="delete"> <i
                                                 class="fas fa-download"></i> </a>
-                                    @endif
+                                    {{-- @endif --}}
 
-                                    @if (Auth::user()->can('newemployee.edit'))
-                                        <a href="{{ route('newemployee.edit', $item->id) }}" class="btn btn-info sm"
+                                    {{-- @if (Auth::user()->can('basicinfo.edit')) --}}
+                                        <a href="{{ route('edit.basicinfo', $item->id) }}" class="btn btn-info sm"
                                             title="Edit Data"> <i class="fas fa-edit"></i> </a>
-                                    @endif
+                                    {{-- @endif --}}
 
-                                    @if (Auth::user()->can('newemployee.delete'))
-                                        <a href="{{ route('newemployee.delete', $item->id) }}"
+                                    {{-- @if (Auth::user()->can('basicinfo.delete')) --}}
+                                        <a href="{{ route('delete.basicinfo', $item->id) }}"
                                             class="btn btn-danger sm" title="Delete Data" id="delete"> <i
                                                 class="fas fa-trash-alt"></i> </a>
-                                    @endif
+                                    {{-- @endif --}}
                                 </td>
                             </tr>
                         @endforeach

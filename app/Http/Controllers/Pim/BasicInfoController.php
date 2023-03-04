@@ -58,8 +58,8 @@ class BasicInfoController extends Controller
 
         $validateData = $request->validate([
             'name' => 'required',
-            'id' => 'required|unique:new_employees,id|max:8|min:8',
-            'employee_type_id' => 'required',
+            'id' => 'required|unique:basic_infos,id|max:8|min:8',
+            // 'employee_type_id' => 'required',
             'name' => 'required',
             'father_name' => 'required',
             'mother_name' => 'required',
@@ -89,7 +89,23 @@ class BasicInfoController extends Controller
             'blood_groups_id' => 'required',
             // 'id' => ['required', 'numeric','max:8', 'min:8', 'unique:new_employees']
             // 'id' => 'required|max:8|min:8',
+            // 'employee_photo' => 'mimes:png,jpg',
         ]);
+
+        // if ($request->file('employee_photo')) {
+        //     $photo = $request->file('employee_photo');
+
+        //     $photoname = $photo->getClientOriginalName();
+        //     $photo->move(public_path('upload/photo/employee/'), $photoname);
+        //     $data['employee_photo'] = $photoname;
+        // }
+        // if ($request->file('employee_photo')) {
+        //     $file = $request->file('employee_photo');
+
+        //     $filename = $file->getClientOriginalName();
+        //     $file->move(public_path('upload/photo/employee/'), $filename);
+        //     $data['employee_photo'] = $filename;
+        // }
 
         BasicInfo::insert([
             'id' => $request->id,
@@ -121,6 +137,7 @@ class BasicInfoController extends Controller
             'nid' => $request->nid,
             'smartcard' => $request->smartcard,
             'blood_groups_id' => $request->blood_groups_id,
+            // 'employee_photo' => $filename,
             'created_by' => Auth::user()->id,
             'created_at' => Carbon::now(),
 
@@ -131,7 +148,7 @@ class BasicInfoController extends Controller
             'alert-type' => 'success',
         );
 
-        return redirect()->route('basicinfo.all')->with($notification);
+        return redirect()->route('all.basicinfo')->with($notification);
 
     } // End Method
 
@@ -237,4 +254,29 @@ class BasicInfoController extends Controller
         return redirect()->back()->with($notification);
 
     } // End Method
+
+    public function ShowBasicInfo($id)
+    {
+
+        $domains = Domain::all();
+        $designations = Designation::all();
+        $maritalstatus = MaritalStatus::all();
+        $districts = District::all();
+        $divisions = Division::all();
+        $upazillas = Upazilla::all();
+        $blood_groups = BloodGroup::all();
+        $employeetypes = EmployeeType::all();
+        $educationqualifications = EducationalQualification::all();
+
+        // $employee = DB::table('basicinfos')
+        // ->join('designations', 'designations.id', '=', 'basicinfos.designation_id')
+        // ->get();
+
+        // $basicinfos = basicinfo::findOrFail($id);
+        $basicinfo = BasicInfo::findOrFail($id);
+        // return View('backend.basicinfo.basicinfo_show',['designations'=>$designation]);
+        return view('pim.basicinfo.basicinfo_show', compact('basicinfo', 'domains', 'employeetypes', 'designations', 'maritalstatus', 'districts', 'divisions', 'blood_groups', 'educationqualifications', 'upazillas'));
+        // return view('backend.basicinfo.basicinfo_show',compact('basicinfo'));
+
+    } //
 }

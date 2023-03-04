@@ -520,6 +520,7 @@ Route::controller(BasicInfoController::class)->group(function(){
     Route::get('/all/basicinfo','AllBasicInfo')->name('all.basicinfo');
     Route::get('/add/basicinfo','AddBasicInfo')->name('add.basicinfo');
     Route::post('/store/basicinfo','StoreBasicInfo')->name('basicinfo.store');
+    Route::get('/show/basicinfo/{id}', 'ShowBasicInfo')->name('show.basicinfo');
     Route::get('/edit/basicinfo/{id}','EditBasicInfo')->name('edit.basicinfo');
     Route::post('/update/basicinfo','UpdateBasicInfo')->name('basicinfo.update');
     Route::get('/delete/basicinfo/{id}','DeleteBasicInfo')->name('delete.basicinfo');

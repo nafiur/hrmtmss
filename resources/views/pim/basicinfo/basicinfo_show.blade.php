@@ -18,7 +18,7 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">Employee Details Information</h3>
-                <a href="{{ route('newemployee.all') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
+                <a href="{{ route('all.basicinfo') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
                     style="float:right;"><i class="fa fa-undo"> Back </i></a> <br> <br>
             </div>
             <div class="block-content">
@@ -37,27 +37,27 @@
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Employee ID</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" value="{{ $newemployee->id }}" readonly>
+                                <input class="form-control" type="text" value="{{ $basicinfo->id }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Employee Name</label>
                             <div class="col-sm-10">
                                 <input class="capitalize form-control" type="text"
-                                    value="{{ $newemployee->name ?? '' }}" readonly>
+                                    value="{{ $basicinfo->name ?? '' }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Designation</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="text"
-                                    value="{{ $newemployee->Designation->name ?? '' }} " readonly>
+                                    value="{{ $basicinfo->Designation->name ?? '' }} " readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Joining Date</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" value="{{ $newemployee->joiningdate }}"
+                                <input class="form-control" type="text" value="{{ $basicinfo->joiningdate }}"
                                     readonly>
                             </div>
                         </div>
@@ -65,29 +65,29 @@
                             <label for="example-text-input" class="col-2 col-form-label">Domain</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="text"
-                                    value="{{ $newemployee->domain->name ?? '' }}" readonly>
+                                    value="{{ $basicinfo->domain->name ?? '' }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Father's Name</label>
                             <div class="col-sm-10">
                                 <input class="capitalize form-control" type="text"
-                                    value="{{ $newemployee->father_name }}" readonly>
-                                {{-- <input class="form-control" type="text" value="{{ $newemployee-> }}" readonly> --}}
+                                    value="{{ $basicinfo->father_name }}" readonly>
+                                {{-- <input class="form-control" type="text" value="{{ $basicinfo-> }}" readonly> --}}
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Mother's Name</label>
                             <div class="col-sm-10">
                                 <input class="capitalize form-control" type="text"
-                                    value="{{ $newemployee->mother_name }}" readonly>
+                                    value="{{ $basicinfo->mother_name }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Marital Status</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="text"
-                                    value="{{ $newemployee->marital_status->name ?? '' }}" readonly>
+                                    value="{{ $basicinfo->marital_status->name ?? '' }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -95,40 +95,40 @@
                                 (District)</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="text"
-                                    value="{{ $newemployee->birth_place_district->name ?? '' }}" readonly>
+                                    value="{{ $basicinfo->birth_place_district->name ?? '' }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Present Address</label>
                             <div class="col-sm-10">
-                                <textarea id="textarea" class="capitalize form-control" readonly>Village: {{ $newemployee->present_village }} , PostOffice: {{ $newemployee->present_village }}, Upazilla: {{ $newemployee->present_upazilla->name ?? '' }}, District: {{ $newemployee->present_district->name ?? '' }}</textarea>
-                                {{-- <input class="form-control" type="text" value="Village: {{ $newemployee->present_village }} , PostOffice: {{ $newemployee->present_village }}, Postcode: {{ $newemployee->present_postal_code }}, Upazilla: {{ $newemployee->present_upazilla_id }}, District: {{ $newemployee->present_district_id }}" readonly> --}}
+                                <textarea id="textarea" class="capitalize form-control" readonly>Village: {{ $basicinfo->present_village }} , PostOffice: {{ $basicinfo->present_village }}, Upazilla: {{ $basicinfo->present_upazilla->name ?? '' }}, District: {{ $basicinfo->present_district->name ?? '' }}</textarea>
+                                {{-- <input class="form-control" type="text" value="Village: {{ $basicinfo->present_village }} , PostOffice: {{ $basicinfo->present_village }}, Postcode: {{ $basicinfo->present_postal_code }}, Upazilla: {{ $basicinfo->present_upazilla_id }}, District: {{ $basicinfo->present_district_id }}" readonly> --}}
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Permanent Address</label>
                             <div class="col-sm-10">
-                                <textarea id="textarea" class="capitalize form-control" readonly>Village: {{ $newemployee->permanent_village }} , PostOffice: {{ $newemployee->permanent_village }}, Upazilla: {{ $newemployee->permanent_upazilla->name ?? '' }}, District: {{ $newemployee->permanent_district->name ?? '' }}</textarea>
-                                {{-- <input class="form-control" type="text" value="Village: {{ $newemployee->permanent_village }} , PostOffice: {{ $newemployee->permanent_village }}, Postcode: {{ $newemployee->permanent_postal_code }}, Upazilla: {{ $newemployee->permanent_upazilla_id }}, District: {{ $newemployee->permanent_district_id }}" readonly> --}}
+                                <textarea id="textarea" class="capitalize form-control" readonly>Village: {{ $basicinfo->permanent_village }} , PostOffice: {{ $basicinfo->permanent_village }}, Upazilla: {{ $basicinfo->permanent_upazilla->name ?? '' }}, District: {{ $basicinfo->permanent_district->name ?? '' }}</textarea>
+                                {{-- <input class="form-control" type="text" value="Village: {{ $basicinfo->permanent_village }} , PostOffice: {{ $basicinfo->permanent_village }}, Postcode: {{ $basicinfo->permanent_postal_code }}, Upazilla: {{ $basicinfo->permanent_upazilla_id }}, District: {{ $basicinfo->permanent_district_id }}" readonly> --}}
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Date of Birth Date</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" value="{{ $newemployee->date_of_birth }}"
+                                <input class="form-control" type="text" value="{{ $basicinfo->date_of_birth }}"
                                     readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">National ID</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" value="{{ $newemployee->nid }}" readonly>
+                                <input class="form-control" type="text" value="{{ $basicinfo->nid }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Smart Card</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" value="{{ $newemployee->smartcard }}"
+                                <input class="form-control" type="text" value="{{ $basicinfo->smartcard }}"
                                     readonly>
                             </div>
                         </div>
@@ -136,20 +136,20 @@
                             <label for="example-text-input" class="col-2 col-form-label">Bloodgroup</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="text"
-                                    value="{{ $newemployee->blood_groups->name ?? '' }}" readonly>
+                                    value="{{ $basicinfo->blood_groups->name ?? '' }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Mobile No.</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" value="{{ $newemployee->mobile }}"
+                                <input class="form-control" type="text" value="{{ $basicinfo->mobile }}"
                                     readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" value="{{ $newemployee->email }}"
+                                <input class="form-control" type="text" value="{{ $basicinfo->email }}"
                                     readonly>
                             </div>
                         </div>
@@ -158,14 +158,14 @@
                                 Qualification</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="text"
-                                    value="{{ $newemployee->educational_qualification->name ?? '' }}" readonly>
+                                    value="{{ $basicinfo->educational_qualification->name ?? '' }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="example-text-input" class="col-2 col-form-label">Employee Type</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="text"
-                                    value="{{ $newemployee->employee_type->name ?? '' }}" readonly>
+                                    value="{{ $basicinfo->employee_type->name ?? '' }}" readonly>
                             </div>
                         </div>
                         {{-- </form> --}}

@@ -14,6 +14,7 @@
     <!-- Dashmix framework -->
     <link rel="stylesheet" id="css-main" href="{{ asset('backend/mix/assets/css/dashmix.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/libs/dropzone/min/dropzone.min.css') }}">
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="{{ asset('backend/mix/assets/css/themes/xwork.min.css') }}"> -->
     <link rel="stylesheet" id="css-theme" href="{{ asset('backend/mix/assets/css/themes/xdream.min.css') }}">
@@ -137,6 +138,7 @@
     <!-- end  For Select2 -->
     <script src="{{ asset('backend/assets/libs/inputmask/jquery.inputmask.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/pages/form-mask.init.js') }}"></script>
+    <script src="{{ asset('backend/assets/libs/dropzone/min/dropzone.min.js') }}"></script>
 
     {{-- <script src="{{ asset('backend/mix/assets/js/dashmix.app.min-5.5.js') }}"></script>
 <script src="{{ asset('backend/mix/assets/js/lib/jquery.min.js') }}"></script>

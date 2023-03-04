@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class BoardUniversity extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 }

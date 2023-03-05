@@ -33,10 +33,11 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Employee Type</label>
+                                            <label for="example-text-input" class="form-label">Employee Type (*)</label>
                                             <select name="employee_type_id" class="form-select"
-                                                aria-label="Default select example" value="{{ old('name') }}">
-                                                <option selected="" value="0">Select Employee Type</option>
+                                                aria-label="Default select example"
+                                                value="{{ old('employee_type_id') }}">
+                                                <option selected="" value="">Select Employee Type</option>
                                                 @foreach ($employeetypes as $employeetype)
                                                     <option value="{{ $employeetype->id }}">{{ $employeetype->name }}
                                                     </option>
@@ -81,27 +82,15 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Gender</label>
-                                            <select name="gender_id" class="form-select select2"
-                                                aria-label="Default select example"
-                                                value="{{ old('gender_id') }}">
-                                                <option selected="" value="">Select Gender</option>
-                                                @foreach ($genders as $gender)
-                                                    <option value="{{ $gender->id }}">
-                                                        {{ $gender->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Designation</label>
+                                            {{-- <input type="text" class="form-control" required=""> --}}
                                             <select name="designation_id" class="form-select select2"
                                                 aria-label="Default select example"
                                                 value="{{ old('designation_id') }}">
                                                 <option selected="" value="">Select Designation</option>
+                                                {{-- <option value=""></option> --}}
                                                 @foreach ($designations as $designation)
                                                     <option value="{{ $designation->id }}">
                                                         {{ $designation->name }}.{{ $designation->grade }}</option>
@@ -109,13 +98,15 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Domain</label>
+                                            {{-- <input type="text" class="form-control" required=""> --}}
                                             <select name="domain_id" class="form-select select2"
                                                 aria-label="Default select example" value="{{ old('domain_id') }} "
                                                 required>
                                                 <option selected="">Select Domain</option>
+                                                {{-- <option value=""></option> --}}
                                                 @foreach ($domains as $domain)
                                                     <option value="{{ $domain->id }}">{{ $domain->name }}</option>
                                                 @endforeach
@@ -127,6 +118,8 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-date-input" class="form-label">Joining Date</label>
+                                            {{-- <input id="input-date1" name="joiningdate"  class="form-control input-mask" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="dd/mm/yyyy" inputmode="numeric">  --}}
+                                            {{-- <input type="text" class="js-datepicker form-control js-datepicker-enabled" id="example-datepicker3" name="joiningdate" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy"> --}}
                                             <input class="form-control" required="" name="joiningdate"
                                                 type="date" value="{{ old('joiningdate') }}">
 
@@ -135,7 +128,8 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Date of Birth</label>
-                                                <input class="form-control" required="" name="date_of_birth"
+                                            {{-- <input id="input-date1" name="date_of_birth"  class="form-control input-mask" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="dd/mm/yyyy" inputmode="numeric"> --}}
+                                            <input class="form-control" required="" name="date_of_birth"
                                                 type="date" value="{{ old('date_of_birth') }}">
                                         </div>
                                     </div>
@@ -149,6 +143,7 @@
                                                 aria-label="Default select example"
                                                 value="{{ old('marital_status_id') }}">
                                                 <option selected="">Select Marital Status</option>
+                                                {{-- <option value=""></option> --}}
                                                 @foreach ($maritalstatus as $mstatus)
                                                     <option value="{{ $mstatus->id }}">{{ $mstatus->name }}</option>
                                                 @endforeach
@@ -163,6 +158,7 @@
                                                 aria-label="Default select example"
                                                 value="{{ old('birth_place_district_id') }}">
                                                 <option selected="">Select District</option>
+                                                {{-- <option value=""></option> --}}
                                                 @foreach ($districts as $district)
                                                     <option value="{{ $district->id }}">{{ $district->name }}
                                                     </option>
@@ -178,6 +174,7 @@
                                                 aria-label="Default select example"
                                                 value="{{ old('birth_place_district_id') }}">
                                                 <option selected="">Select Qualification</option>
+                                                {{-- <option value=""></option> --}}
                                                 @foreach ($educationqualifications as $educationqualification)
                                                     <option value="{{ $educationqualification->id }}">
                                                         {{ $educationqualification->name }}</option>
@@ -218,10 +215,12 @@
                                     <div class="col-md-4">
                                         <div class="mb-3 position-relative">
                                             <label for="example-text-input" class="form-label">Division</label>
+                                            {{-- <input type="text" class="form-control"  required=""> --}}
                                             <select name="permanent_division_id" id="permanent_division"
                                                 class="form-select select2" aria-label="Default select example"
                                                 value="{{ old('permanent_division_id') }}">
                                                 <option selected="">Select Division</option>
+                                                {{-- <option value=""></option> --}}
                                                 @foreach ($divisions as $division)
                                                     <option value="{{ $division->id }}">{{ $division->name }}
                                                     </option>
@@ -232,10 +231,12 @@
                                     <div class="col-md-4">
                                         <div class="mb-3 position-relative">
                                             <label for="example-text-input" class="form-label">District</label>
+                                            {{-- <input type="text" class="form-control"  required=""> --}}
                                             <select name="permanent_district_id" id="permanent_district"
                                                 class="form-select select2" aria-label="Default select example"
                                                 value="{{ old('permanent_district_id') }}">
                                                 <option selected="">Select District</option>
+                                                {{-- <option value=""></option> --}}
                                                 @foreach ($districts as $district)
                                                     <option value="{{ $district->id }}">{{ $district->name }}
                                                     </option>
@@ -246,6 +247,7 @@
                                     <div class="col-md-4">
                                         <div class="mb-3 position-relative">
                                             <label for="example-text-input" class="form-label">Upazilla</label>
+                                            {{-- <input type="text" class="form-control"  required=""> --}}
                                             <select name="permanent_upazilla_id" id="permanent_upazilla"
                                                 class="form-select select2" aria-label="Default select example"
                                                 value="{{ old('permanent_upazilla_id') }}">
@@ -258,6 +260,8 @@
                                             </select>
                                         </div>
                                     </div>
+                                    {{-- <h4 class="card-title">Present Address</h4><br><hr> --}}
+                                    {{-- <label for="example-text-input" class="form-label">Present Address</label> --}}
                                     <div class="alert alert-secondary" role="alert">
                                         Present Address
                                         <label for="" style="float: right"><input class="form-check-input"
@@ -297,6 +301,7 @@
                                                     class="form-select select2" aria-label="Default select example"
                                                     value="{{ old('present_division_id') }}">
                                                     <option selected="">Select Division</option>
+                                                    {{-- <option value=""></option> --}}
                                                     @foreach ($divisions as $division)
                                                         <option value="{{ $division->id }}">{{ $division->name }}
                                                         </option>
@@ -372,10 +377,18 @@
                                         <div class="col-md-4">
                                             <div class="mb-3 position-relative">
                                                 <label for="example-text-input" class="form-label">BloodGroups</label>
+                                                {{-- <input type="text" class="form-control"  required=""> --}}
+                                                {{-- <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                                                        <datalist id="datalistOptions">
+                                                            @foreach ($blood_groups as $blood_group)
+                                                            <option value="{{ $blood_group->id }}">{{ $blood_group->name }}</option>
+                                                            @endforeach
+                                                        </datalist> --}}
                                                 <select name="blood_groups_id" required=""
                                                     class="form-select select2" aria-label="Default select example"
-                                                    value="{{ old('bloodgroups_id') }}">
+                                                    value="{{ old('blood_groups_id') }}">
                                                     <option selected="">Select Blood Group</option>
+                                                    {{-- <option value=""></option> --}}
                                                     @foreach ($blood_groups as $blood_group)
                                                         <option value="{{ $blood_group->id }}">
                                                             {{ $blood_group->name }}</option>
@@ -384,7 +397,28 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    </div>
+                                    <div class="alert alert-secondary" role="alert">
+                                        <label for="example-text-input" class="form-label">Employee Photo</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3 row">
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Upload Photo </label>
+                                                <div class="col-sm-10">
+                                                    <input name="employee_photo" class="form-control" type="file" id="image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pull-right">
+                                            <label for="example-text-input" class="col-sm-2 col-form-label"> </label>
+                                            <div class="mb-3 row">
+                                                <img id="showImage" class="rounded avatar-lg" width="200"
+                                                    src="{{ !empty($basicinfo->employee_photo) ? url('upload/photo/employee/' . $basicinfo->employee_photo) : url('upload/no_image.jpg') }}"
+                                                    alt="Card image cap" data-holder-rendered="true">
+                                            </div>
+                                        </div>
+                                        </div>
                                     <div class="col-md-6 fl">
                                         <input type="submit" class="btn btn-info waves-effect waves-light"
                                             value="Save Info">

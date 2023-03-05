@@ -2,7 +2,7 @@
 @section('admin')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @section('title')
-    {{ 'Edit Employee Qualification' }}
+    {{ 'Edit Employee Basic Info' }}
 @endsection
 <div class="page-content">
     <div class="container-fluid">
@@ -11,7 +11,7 @@
                 <li class="breadcrumb-item">
                     <a href="javascript:void(0)">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Edit Employee Information</li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Employee Basic Information</li>
             </ol>
         </nav>
         <div class="block block-rounded">
@@ -34,7 +34,7 @@
                                             <label for="example-text-input" class="form-label">Employee Type</label>
                                             <select name="employee_type_id" class="form-select"
                                                 aria-label="Default select example" required>
-                                                <option selected="">Select Employee Type</option>
+                                                <option selected="" value="0">Select Employee Type</option>
                                                 @foreach ($employeetypes as $employeetype)
                                                     <option value="{{ $employeetype->id }}"
                                                         {{ $employeetype->id == $basicinfo->employee_type_id ? 'selected' : '' }}>
@@ -78,7 +78,22 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="example-text-input" class="form-label">Gender</label>
+                                            <select name="designation_id" class="form-select select2"
+                                                aria-label="Default select example">
+                                                <option selected="">Select Gender</option>
+                                                {{-- <option value=""></option> --}}
+                                                @foreach ($genders as $gender)
+                                                    <option value="{{ $gender->id }}"
+                                                        {{ $gender->id == $basicinfo->gender_id ? 'selected' : '' }}>
+                                                        {{ $gender->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Designation</label>
                                             <select name="designation_id" class="form-select select2"
@@ -93,7 +108,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Domain</label>
                                             <select name="domain_id" class="form-select select2"
@@ -113,8 +128,6 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-date-input" class="form-label">Joining Date</label>
-                                            {{-- <input id="input-date1" name="joiningdate" value="{{ $basicinfo->joiningdate }}"  class="form-control input-mask" data-inputmask="'datetime'" data-inputmask-inputformat="dd/mm/yyyy" inputmode="numeric">  --}}
-
                                             <input class="form-control" name="joiningdate"
                                                 value="{{ $basicinfo->joiningdate }}" type="date">
                                         </div>
@@ -122,7 +135,6 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Date of Birth</label>
-                                            {{-- <input id="input-date1" name="date_of_birth" value="{{ $basicinfo->date_of_birth }}"  class="form-control input-mask" data-inputmask="'datetime'" data-inputmask-inputformat="dd/mm/yyyy" inputmode="numeric">  --}}
                                             <input class="form-control" name="date_of_birth"
                                                 value="{{ $basicinfo->date_of_birth }}" type="date">
                                         </div>
@@ -135,7 +147,6 @@
                                             <select name="marital_status_id" class="form-select"
                                                 aria-label="Default select example">
                                                 <option selected="">Select Marital Status</option>
-                                                {{-- <option value=""></option> --}}
                                                 @foreach ($maritalstatus as $mstatus)
                                                     <option value="{{ $mstatus->id }}"
                                                         {{ $mstatus->id == $basicinfo->marital_status_id ? 'selected' : '' }}>
@@ -150,7 +161,6 @@
                                                 District</label>
                                             <select name="birth_place_district_id" class="form-select select2"
                                                 aria-label="Default select example">
-                                                {{-- <option value=""></option> --}}
                                                 <option selected="">Select District</option>
                                                 @foreach ($districts as $district)
                                                     <option value="{{ $district->id }}"
@@ -167,7 +177,6 @@
                                             <select name="educational_qualification_id" class="form-select select2"
                                                 aria-label="Default select example">
                                                 <option selected="">Select Qualification</option>
-                                                {{-- <option value=""></option> --}}
                                                 @foreach ($educationqualifications as $educationqualification)
                                                     <option value="{{ $educationqualification->id }}"
                                                         {{ $educationqualification->id == $basicinfo->educational_qualification_id ? 'selected' : '' }}>
@@ -211,7 +220,6 @@
                                             <select name="permanent_division_id" class="form-select select2"
                                                 aria-label="Default select example">
                                                 <option selected="">Select Division</option>
-                                                {{-- <option value=""></option> --}}
                                                 @foreach ($divisions as $division)
                                                     <option value="{{ $division->id }}"
                                                         {{ $division->id == $basicinfo->permanent_division_id ? 'selected' : '' }}>
@@ -226,7 +234,6 @@
                                             <select name="permanent_district_id" class="form-select select2"
                                                 aria-label="Default select example">
                                                 <option selected="">Select District</option>
-                                                {{-- <option value=""></option> --}}
                                                 @foreach ($districts as $district)
                                                     <option value="{{ $district->id }}"
                                                         {{ $district->id == $basicinfo->permanent_district_id ? 'selected' : '' }}>
@@ -241,7 +248,6 @@
                                             <select name="permanent_upazilla_id" class="form-select select2"
                                                 aria-label="Default select example">
                                                 <option selected="">Select Upazilla</option>
-                                                {{-- <option value=""></option> --}}
                                                 @foreach ($upazillas as $upazilla)
                                                     <option value="{{ $upazilla->id }}"
                                                         {{ $upazilla->id == $basicinfo->permanent_upazilla_id ? 'selected' : '' }}>
@@ -286,7 +292,6 @@
                                                 <select name="present_division_id" class="form-select select2"
                                                     aria-label="Default select example">
                                                     <option selected="">Select Division</option>
-                                                    {{-- <option value=""></option> --}}
                                                     @foreach ($divisions as $division)
                                                         <option value="{{ $division->id }}"
                                                             {{ $division->id == $basicinfo->present_division_id ? 'selected' : '' }}>
@@ -301,7 +306,6 @@
                                                 <select name="present_district_id" class="form-select select2"
                                                     aria-label="Default select example">
                                                     <option selected="">Select District</option>
-                                                    {{-- <option value=""></option> --}}
                                                     @foreach ($districts as $district)
                                                         <<option value="{{ $district->id }}"
                                                             {{ $district->id == $basicinfo->present_district_id ? 'selected' : '' }}>
@@ -316,7 +320,6 @@
                                                 <select name="present_upazilla_id" class="form-select select2"
                                                     aria-label="Default select example">
                                                     <option selected="">Select Upazilla</option>
-                                                    {{-- <option value=""></option> --}}
                                                     @foreach ($upazillas as $upazilla)
                                                         <option value="{{ $upazilla->id }}"
                                                             {{ $upazilla->id == $basicinfo->present_upazilla_id ? 'selected' : '' }}>
@@ -364,7 +367,6 @@
                                                 <select name="blood_groups_id" class="form-select select2"
                                                     aria-label="Default select example">
                                                     <option selected="">Select Blood Group</option>
-                                                    {{-- <option value=""></option> --}}
                                                     @foreach ($blood_groups as $blood_group)
                                                         <option value="{{ $blood_group->id }}"
                                                             {{ $blood_group->id == $basicinfo->blood_groups_id ? 'selected' : '' }}>

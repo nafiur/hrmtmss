@@ -17,6 +17,8 @@ use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\Pos\StockController;
 use App\Http\Controllers\Pim\BasicInfoController;
 use App\Http\Controllers\Pim\GuardianController;
+use App\Http\Controllers\Pim\NomineeController;
+use App\Http\Controllers\Pim\PIMController;
 use App\Http\Controllers\AllReportsController;
 
 
@@ -60,6 +62,12 @@ Route::controller(AdminController::class)->group(function () {
 
 Route::controller(SetupController::class)->group(function () {
     Route::get('/setup/all', 'SetupAll')->name('setup.all');
+
+});
+ // PIM All Route
+
+Route::controller(PIMController::class)->group(function () {
+    Route::get('/pim/all', 'AllPIM')->name('pim.all');
 
 });
 
@@ -548,7 +556,7 @@ Route::controller(NomineeController::class)->group(function(){
     Route::get('/show/nominee/{id}', 'ShowNominee')->name('show.nominee');
     Route::get('/edit/nominee/{id}','EditNominee')->name('edit.nominee');
     Route::post('/update/nominee','UpdateNominee')->name('nominee.update');
-    Route::get('/delete/nominee/{id}','DeleteNominee')->name('delete.guardian');
+    Route::get('/delete/nominee/{id}','DeleteNominee')->name('delete.nominee');
 });
 
 

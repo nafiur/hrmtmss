@@ -114,7 +114,7 @@ class BasicInfoController extends Controller
             'name' => $request->name,
             'father_name' => $request->father_name,
             'mother_name' => $request->mother_name,
-            'gender' => $request->gender,
+            'gender_id' => $request->gender_id,
             'designation_id' => $request->designation_id,
             'joiningdate' => $request->joiningdate,
             'date_of_birth' => $request->date_of_birth,
@@ -191,11 +191,11 @@ class BasicInfoController extends Controller
         $upazillas = Upazilla::all();
         $blood_groups = BloodGroup::all();
         $employeetypes = EmployeeType::all();
-        $genders = Gender::all();
+        $gender = Gender::all();
         $educationqualifications = EducationalQualification::all();
 
         $basicinfo = BasicInfo::findOrFail($id);
-        return view('pim.basicinfo.basicinfo_edit', compact('basicinfo', 'genders', 'employeetypes', 'domains', 'designations', 'maritalstatus', 'districts', 'divisions', 'blood_groups', 'educationqualifications', 'upazillas'));
+        return view('pim.basicinfo.basicinfo_edit', compact('basicinfo', 'gender', 'employeetypes', 'domains', 'designations', 'maritalstatus', 'districts', 'divisions', 'blood_groups', 'educationqualifications', 'upazillas'));
 
     } // End Method
 

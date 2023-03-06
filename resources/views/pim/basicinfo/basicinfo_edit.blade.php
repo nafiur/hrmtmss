@@ -33,8 +33,8 @@
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Employee Type</label>
                                             <select name="employee_type_id" class="form-select"
-                                                aria-label="Default select example" required>
-                                                <option selected="" value="0">Select Employee Type</option>
+                                                aria-label="Default select example">
+                                                <option selected="" value="">Select Employee Type</option>
                                                 @foreach ($employeetypes as $employeetype)
                                                     <option value="{{ $employeetype->id }}"
                                                         {{ $employeetype->id == $basicinfo->employee_type_id ? 'selected' : '' }}>
@@ -46,8 +46,8 @@
                                     <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Employee ID</label>
-                                            <input type="text" name="id" value="{{ $basicinfo->id }}"
-                                                class="form-control" readonly required="" data-parsley-maxlength="8"
+                                            <input type="text" name="id" required="" value="{{ $basicinfo->id }}"
+                                                class="form-control" readonly  data-parsley-maxlength="8"
                                                 placeholder="10100000">
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                             <label for="example-text-input" class="form-label">Father's Name</label>
                                             <input type="text" name="father_name"
                                                 value="{{ $basicinfo->father_name }}" class="form-control"
-                                                required="">
+                                                >
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -73,7 +73,7 @@
                                             <label for="example-text-input" class="form-label">Mother's Name</label>
                                             <input type="text" name="mother_name"
                                                 value="{{ $basicinfo->mother_name }}" class="form-control"
-                                                required="">
+                                                >
                                         </div>
                                     </div>
                                 </div>
@@ -81,11 +81,11 @@
                                     <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Gender</label>
-                                            <select name="designation_id" class="form-select select2"
+                                            <select name="gender_id" class="form-select select2"
                                                 aria-label="Default select example">
-                                                <option selected="">Select Gender</option>
+                                                <option selected="" value="">Select Gender</option>
                                                 {{-- <option value=""></option> --}}
-                                                @foreach ($genders as $gender)
+                                                @foreach ($gender as $gender)
                                                     <option value="{{ $gender->id }}"
                                                         {{ $gender->id == $basicinfo->gender_id ? 'selected' : '' }}>
                                                         {{ $gender->name }}</option>
@@ -98,7 +98,7 @@
                                             <label for="example-text-input" class="form-label">Designation</label>
                                             <select name="designation_id" class="form-select select2"
                                                 aria-label="Default select example">
-                                                <option selected="">Select Designation</option>
+                                                <option selected="" value="">Select Designation</option>
                                                 {{-- <option value=""></option> --}}
                                                 @foreach ($designations as $designation)
                                                     <option value="{{ $designation->id }}"
@@ -113,7 +113,7 @@
                                             <label for="example-text-input" class="form-label">Domain</label>
                                             <select name="domain_id" class="form-select select2"
                                                 aria-label="Default select example">
-                                                <option selected="">Select Domain</option>
+                                                <option selected="" value="">Select Domain</option>
                                                 {{-- <option value=""></option> --}}
                                                 @foreach ($domains as $domain)
                                                     <option value="{{ $domain->id }}"
@@ -146,7 +146,7 @@
                                             <label for="example-text-input" class="form-label">Marital Status</label>
                                             <select name="marital_status_id" class="form-select"
                                                 aria-label="Default select example">
-                                                <option selected="">Select Marital Status</option>
+                                                <option selected="" value="">Select Marital Status</option>
                                                 @foreach ($maritalstatus as $mstatus)
                                                     <option value="{{ $mstatus->id }}"
                                                         {{ $mstatus->id == $basicinfo->marital_status_id ? 'selected' : '' }}>
@@ -161,7 +161,7 @@
                                                 District</label>
                                             <select name="birth_place_district_id" class="form-select select2"
                                                 aria-label="Default select example">
-                                                <option selected="">Select District</option>
+                                                <option selected="" value="">Select District</option>
                                                 @foreach ($districts as $district)
                                                     <option value="{{ $district->id }}"
                                                         {{ $district->id == $basicinfo->birth_place_district_id ? 'selected' : '' }}>
@@ -176,7 +176,7 @@
                                                 Qualification (Last)</label>
                                             <select name="educational_qualification_id" class="form-select select2"
                                                 aria-label="Default select example">
-                                                <option selected="">Select Qualification</option>
+                                                <option selected="" value="">Select Qualification</option>
                                                 @foreach ($educationqualifications as $educationqualification)
                                                     <option value="{{ $educationqualification->id }}"
                                                         {{ $educationqualification->id == $basicinfo->educational_qualification_id ? 'selected' : '' }}>
@@ -195,7 +195,7 @@
                                             <label for="example-text-input" class="form-label">Village</label>
                                             <input type="text" name="permanent_village"
                                                 value="{{ $basicinfo->permanent_village }}" class="form-control"
-                                                required="">
+                                                >
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -203,7 +203,7 @@
                                             <label for="example-text-input" class="form-label">Postoffice</label>
                                             <input type="text" name="permanent_post"
                                                 value="{{ $basicinfo->permanent_post }}" class="form-control"
-                                                required="">
+                                                >
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -219,7 +219,7 @@
                                             <label for="example-text-input" class="form-label">Division</label>
                                             <select name="permanent_division_id" class="form-select select2"
                                                 aria-label="Default select example">
-                                                <option selected="">Select Division</option>
+                                                <option selected="" value="">Select Division</option>
                                                 @foreach ($divisions as $division)
                                                     <option value="{{ $division->id }}"
                                                         {{ $division->id == $basicinfo->permanent_division_id ? 'selected' : '' }}>
@@ -233,7 +233,7 @@
                                             <label for="example-text-input" class="form-label">District</label>
                                             <select name="permanent_district_id" class="form-select select2"
                                                 aria-label="Default select example">
-                                                <option selected="">Select District</option>
+                                                <option selected="" value="">Select District</option>
                                                 @foreach ($districts as $district)
                                                     <option value="{{ $district->id }}"
                                                         {{ $district->id == $basicinfo->permanent_district_id ? 'selected' : '' }}>
@@ -247,7 +247,7 @@
                                             <label for="example-text-input" class="form-label">Upazilla</label>
                                             <select name="permanent_upazilla_id" class="form-select select2"
                                                 aria-label="Default select example">
-                                                <option selected="">Select Upazilla</option>
+                                                <option selected="" value="">Select Upazilla</option>
                                                 @foreach ($upazillas as $upazilla)
                                                     <option value="{{ $upazilla->id }}"
                                                         {{ $upazilla->id == $basicinfo->permanent_upazilla_id ? 'selected' : '' }}>
@@ -267,7 +267,7 @@
                                                 <label for="example-text-input" class="form-label">Village</label>
                                                 <input type="text" name="present_village"
                                                     value="{{ $basicinfo->present_village }}" class="form-control"
-                                                    required="">
+                                                    >
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -275,7 +275,7 @@
                                                 <label for="example-text-input" class="form-label">Postoffice</label>
                                                 <input type="text" name="present_post"
                                                     value="{{ $basicinfo->present_post }}" class="form-control"
-                                                    required="">
+                                                    >
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -291,7 +291,7 @@
                                                 <label for="example-text-input" class="form-label">Division</label>
                                                 <select name="present_division_id" class="form-select select2"
                                                     aria-label="Default select example">
-                                                    <option selected="">Select Division</option>
+                                                    <option selected="" value="">Select Division</option>
                                                     @foreach ($divisions as $division)
                                                         <option value="{{ $division->id }}"
                                                             {{ $division->id == $basicinfo->present_division_id ? 'selected' : '' }}>
@@ -305,7 +305,7 @@
                                                 <label for="example-text-input" class="form-label">District</label>
                                                 <select name="present_district_id" class="form-select select2"
                                                     aria-label="Default select example">
-                                                    <option selected="">Select District</option>
+                                                    <option selected="" value="">Select District</option>
                                                     @foreach ($districts as $district)
                                                         <<option value="{{ $district->id }}"
                                                             {{ $district->id == $basicinfo->present_district_id ? 'selected' : '' }}>
@@ -319,7 +319,7 @@
                                                 <label for="example-text-input" class="form-label">Upazilla</label>
                                                 <select name="present_upazilla_id" class="form-select select2"
                                                     aria-label="Default select example">
-                                                    <option selected="">Select Upazilla</option>
+                                                    <option selected="" value="">Select Upazilla</option>
                                                     @foreach ($upazillas as $upazilla)
                                                         <option value="{{ $upazilla->id }}"
                                                             {{ $upazilla->id == $basicinfo->present_upazilla_id ? 'selected' : '' }}>
@@ -335,7 +335,7 @@
                                                 <label for="example-text-input" class="form-label">Mobile</label>
                                                 <input type="text" name="mobile"
                                                     value="{{ $basicinfo->mobile }}" class="form-control"
-                                                    required="">
+                                                    >
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -366,7 +366,7 @@
                                                 <label for="example-text-input" class="form-label">BloodGroups</label>
                                                 <select name="blood_groups_id" class="form-select select2"
                                                     aria-label="Default select example">
-                                                    <option selected="">Select Blood Group</option>
+                                                    <option selected="" value="">Select Blood Group</option>
                                                     @foreach ($blood_groups as $blood_group)
                                                         <option value="{{ $blood_group->id }}"
                                                             {{ $blood_group->id == $basicinfo->blood_groups_id ? 'selected' : '' }}>

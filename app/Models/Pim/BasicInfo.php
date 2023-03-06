@@ -3,6 +3,7 @@
 namespace App\Models\Pim;
 
 use App\Models\Domain;
+use App\Models\Gender;
 use App\Models\District;
 use App\Models\Division;
 use App\Models\Upazilla;

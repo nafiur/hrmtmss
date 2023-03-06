@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Detils Staff Report</title>
@@ -116,25 +117,25 @@ document.write(currentDate);
                     <th>Mother Name</th>
                     <td>{{ $basicinfo->mother_name }}</td>
                     <th>Maritial Status</th>
-                    <td>{{ $basicinfo->marital_status->name }}</td>
+                    <td>{{ $basicinfo->marital_status->name ?? '' }}</td>
                 </tr>
                 <tr>
                     <th>Husband Name</th>
                     <td>N/A</td>
-                    <th>Nationality</th>
-                    <td>Bangladeshi</td>
+                    <th>Gender</th>
+                    <td>{{ $basicinfo->gender->name ?? '' }}</td>
                 </tr>
                 <tr>
                     <th>E-Mail</th>
                     <td>{{ $basicinfo->email }}</td>
                     <th>Bank Name</th>
-                    <td>N/A</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <th>Mobile</th>
-                    <td>{{ $basicinfo->mobile}}</td>
+                    <td>{{ $basicinfo->mobile }}</td>
                     <th>Bank Branch</th>
-                    <td>N/A</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <th>Phone</th>
@@ -150,9 +151,9 @@ document.write(currentDate);
                 </tr>
                 <tr>
                     <th>Domain</th>
-                    <td>{{ $basicinfo->domain->name }} </td>
+                    <td>{{ $basicinfo->domain->name ?? '' }} </td>
                     <th>Smart Card No</th>
-                    <td>{{ $basicinfo->smartcard}}</td>
+                    <td>{{ $basicinfo->smartcard }}</td>
                 </tr>
                 <tr>
                     <th>Department</th>
@@ -162,13 +163,13 @@ document.write(currentDate);
                 </tr>
                 <tr>
                     <th>Designation</th>
-                    <td>{{ $basicinfo->designation->name }} </td>
+                    <td>{{ $basicinfo->designation->name ?? '' }} </td>
                     <th>Passport</th>
                     <td></td>
                 </tr>
                 <tr>
                     <th>Grade</th>
-                    <td>{{ $basicinfo->designation->grade }} </td>
+                    <td>{{ $basicinfo->designation->grade ?? '' }} </td>
                     <th>TIN#</th>
                     <td></td>
 
@@ -231,7 +232,7 @@ document.write(currentDate);
                     <th>Date of Birth</th>
                     <td>{{ $basicinfo->date_of_birth }}</td>
                     <th>Place of Birth</th>
-                    <td>{{ $basicinfo->birth_place_district->name}}</td>
+                    <td>{{ $basicinfo->birth_place_district->name ?? '' }}</td>
                 </tr>
                 <tr>
                     <th>Present Age</th>
@@ -253,21 +254,28 @@ document.write(currentDate);
                 </tr>
                 <tr>
                     <th>Permanent Address</th>
-                    <td>Village: {{ $basicinfo->permanent_village }} , PostOffice: {{ $basicinfo->permanent_village }}, Upazilla: {{ $basicinfo->permanent_upazilla->name ?? '' }}, District: {{ $basicinfo->permanent_district->name ?? '' }}</td>
+                    <td>Village: {{ $basicinfo->permanent_village }} ,
+                        PostOffice: {{ $basicinfo->permanent_village }},
+                        Upazilla: {{ $basicinfo->permanent_upazilla->name ?? '' }},
+                        District: {{ $basicinfo->permanent_district->name ?? '' }}
+                    </td>
                     <th>Job Location</th>
                     <td>Bogra</td>
                 </tr>
                 <tr>
                     <th>Present Address</th>
-                    <td>Village: {{ $basicinfo->present_village }} , PostOffice: {{ $basicinfo->present_village }}, Upazilla: {{ $basicinfo->present_upazilla->name ?? '' }}, District: {{ $basicinfo->present_district->name ?? '' }}</td>
+                    <td>Village: {{ $basicinfo->present_village }} ,
+                        PostOffice: {{ $basicinfo->present_village }},
+                        Upazilla: {{ $basicinfo->present_upazilla->name ?? '' }},
+                        District: {{ $basicinfo->present_district->name ?? '' }}</td>
                     <th>Job Status</th>
-                    <td>In Service</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <th>Type of Employee</th>
                     <td>{{ $basicinfo->employee_type->name ?? '' }}</td>
                     <th>Functional Designation</th>
-                    <td>N/A</td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>

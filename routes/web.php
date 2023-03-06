@@ -16,6 +16,7 @@ use App\Http\Controllers\Pos\UnitController;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\Pos\StockController;
 use App\Http\Controllers\Pim\BasicInfoController;
+use App\Http\Controllers\Pim\GuardianController;
 use App\Http\Controllers\AllReportsController;
 
 
@@ -514,7 +515,7 @@ Route::controller(AdminController::class)->group(function(){
 
 });
 
-///Permission All Route
+///PIM Basic Info All Route
 Route::controller(BasicInfoController::class)->group(function(){
 
     Route::get('/all/basicinfo','AllBasicInfo')->name('all.basicinfo');
@@ -524,6 +525,18 @@ Route::controller(BasicInfoController::class)->group(function(){
     Route::get('/edit/basicinfo/{id}','EditBasicInfo')->name('edit.basicinfo');
     Route::post('/update/basicinfo','UpdateBasicInfo')->name('basicinfo.update');
     Route::get('/delete/basicinfo/{id}','DeleteBasicInfo')->name('delete.basicinfo');
+});
+
+///PIM Guardian All Route
+Route::controller(GuardianController::class)->group(function(){
+
+    Route::get('/all/guardian','AllGuardian')->name('all.guardian');
+    Route::get('/add/guardian','AddGuardian')->name('add.guardian');
+    Route::post('/store/guardian','StoreGuardian')->name('guardian.store');
+    Route::get('/show/guardian/{id}', 'ShowGuardian')->name('show.guardian');
+    Route::get('/edit/guardian/{id}','EditGuardian')->name('edit.guardian');
+    Route::post('/update/guardian','UpdateGuardian')->name('guardian.update');
+    Route::get('/delete/guardian/{id}','DeleteGuardian')->name('delete.guardian');
 });
 
 

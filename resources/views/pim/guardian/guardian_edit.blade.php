@@ -1,8 +1,11 @@
 @extends('admin.admin_master')
 @section('admin')
+
+    <link rel="stylesheet"
+        href="{{ asset('backend/mix/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @section('title')
-    {{ 'Edit Guardian Info' }}
+    {{ 'Edit Guardian' }}
 @endsection
 <div class="page-content">
     <div class="container-fluid">
@@ -14,48 +17,34 @@
                 <li class="breadcrumb-item active" aria-current="page">Edit Guardian Information</li>
             </ol>
         </nav>
+
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Add New Form</h3>
+                <h3 class="block-title">Edit New Guardian</h3>
                 <a href="{{ route('all.guardian') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
                     style="float:right;"><i class="fa fa-undo"> Back </i></a> <br> <br>
             </div>
             <div class="block-content">
-                <!-- Label on top Layout -->
-                {{-- <h2 class="content-heading">Labels on top</h2> --}}
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <form method="post" action="{{ route('guardian.update') }}" id="myForm">
                                 @csrf
+                                <input type="hidden" name="id" value="{{ $guardian->id }}">
                                 <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Employee Type</label>
-                                            <select name="employee_type_id" class="form-select"
-                                                aria-label="Default select example">
-                                                <option selected="" value="">Select Employee Type</option>
-                                                @foreach ($employeetypes as $employeetype)
-                                                    <option value="{{ $employeetype->id }}"
-                                                        {{ $employeetype->id == $basicinfo->employee_type_id ? 'selected' : '' }}>
-                                                        {{ $employeetype->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Employee ID</label>
-                                            <input type="text" name="id" required="" value="{{ $basicinfo->id }}"
-                                                class="form-control" readonly  data-parsley-maxlength="8"
-                                                placeholder="10100000">
+                                            <input type="text" name="employee_id" required=""
+                                                value="{{ $guardian->employee_id }}" class="form-control" readonly
+                                                data-parsley-maxlength="8" placeholder="10100000">
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Employee Name</label>
-                                            <input type="text" name="name" value="{{ $basicinfo->name }}"
-                                                class="form-control" required="">
+                                            <label for="example-text-input" class="form-label">Guardian Name</label>
+                                            <input type="text" name="guardian_name" class="form-control"
+                                                required="" value="{{ $guardian->guardian_name }}">
                                         </div>
                                     </div>
                                 </div>
@@ -63,238 +52,94 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Father's Name</label>
-                                            <input type="text" name="father_name"
-                                                value="{{ $basicinfo->father_name }}" class="form-control"
-                                                >
+                                            <input type="text" name="guardian_father_name" class="form-control"
+                                                value="{{ $guardian->guardian_father_name }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Mother's Name</label>
-                                            <input type="text" name="mother_name"
-                                                value="{{ $basicinfo->mother_name }}" class="form-control"
-                                                >
+                                            <input type="text" name="guardian_mother_name" class="form-control"
+                                                value="{{ $guardian->guardian_mother_name }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Gender</label>
-                                            <select name="gender_id" class="form-select select2"
-                                                aria-label="Default select example">
-                                                <option selected="" value="">Select Gender</option>
-                                                {{-- <option value=""></option> --}}
-                                                @foreach ($gender as $gender)
-                                                    <option value="{{ $gender->id }}"
-                                                        {{ $gender->id == $basicinfo->gender_id ? 'selected' : '' }}>
-                                                        {{ $gender->name }}</option>
+                                            <label for="example-text-input" class="form-label">Relation</label>
+                                            <select name="guardian_relation_types_id" class="form-select select2"
+                                                aria-label="Default select example"
+                                                value="{{ old('guardian_relation_types_id') }}">
+                                                <option selected="" value="">Select Relation</option>
+                                                @foreach ($relation_types as $relation)
+                                                    <option value="{{ $relation->id }}"
+                                                        {{ $relation->id == $guardian->guardian_relation_types_id ? 'selected' : '' }}>
+                                                        {{ $relation->relation_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Designation</label>
-                                            <select name="designation_id" class="form-select select2"
-                                                aria-label="Default select example">
-                                                <option selected="" value="">Select Designation</option>
-                                                {{-- <option value=""></option> --}}
-                                                @foreach ($designations as $designation)
-                                                    <option value="{{ $designation->id }}"
-                                                        {{ $designation->id == $basicinfo->designation_id ? 'selected' : '' }}>
-                                                        {{ $designation->name }}</option>
+                                            <label for="example-text-input" class="form-label">Profession</label>
+                                            <select name="guardian_profession_id" class="form-select select2"
+                                                aria-label="Default select example"
+                                                value="{{ old('guardian_profession_id') }}">
+                                                <option selected="" value="">Select Profession</option>
+                                                @foreach ($professions as $profession)
+                                                    <option value="{{ $profession->id }}"
+                                                        {{ $profession->id == $guardian->guardian_profession_id ? 'selected' : '' }}>
+                                                        {{ $profession->profession_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Domain</label>
-                                            <select name="domain_id" class="form-select select2"
-                                                aria-label="Default select example">
-                                                <option selected="" value="">Select Domain</option>
-                                                {{-- <option value=""></option> --}}
-                                                @foreach ($domains as $domain)
-                                                    <option value="{{ $domain->id }}"
-                                                        {{ $domain->id == $basicinfo->domain_id ? 'selected' : '' }}>
-                                                        {{ $domain->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="example-date-input" class="form-label">Joining Date</label>
-                                            <input class="form-control" name="joiningdate"
-                                                value="{{ $basicinfo->joiningdate }}" type="date">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Date of Birth</label>
-                                            <input class="form-control" name="date_of_birth"
-                                                value="{{ $basicinfo->date_of_birth }}" type="date">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Marital Status</label>
-                                            <select name="marital_status_id" class="form-select"
-                                                aria-label="Default select example">
-                                                <option selected="" value="">Select Marital Status</option>
-                                                @foreach ($maritalstatus as $mstatus)
-                                                    <option value="{{ $mstatus->id }}"
-                                                        {{ $mstatus->id == $basicinfo->marital_status_id ? 'selected' : '' }}>
-                                                        {{ $mstatus->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Place of Birth
-                                                District</label>
-                                            <select name="birth_place_district_id" class="form-select select2"
-                                                aria-label="Default select example">
-                                                <option selected="" value="">Select District</option>
-                                                @foreach ($districts as $district)
-                                                    <option value="{{ $district->id }}"
-                                                        {{ $district->id == $basicinfo->birth_place_district_id ? 'selected' : '' }}>
-                                                        {{ $district->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Educational
-                                                Qualification (Last)</label>
-                                            <select name="educational_qualification_id" class="form-select select2"
-                                                aria-label="Default select example">
-                                                <option selected="" value="">Select Qualification</option>
-                                                @foreach ($educationqualifications as $educationqualification)
-                                                    <option value="{{ $educationqualification->id }}"
-                                                        {{ $educationqualification->id == $basicinfo->educational_qualification_id ? 'selected' : '' }}>
-                                                        {{ $educationqualification->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="alert alert-secondary" role="alert">
-                                    Permanent Address
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="mb-3 position-relative">
-                                            <label for="example-text-input" class="form-label">Village</label>
-                                            <input type="text" name="permanent_village"
-                                                value="{{ $basicinfo->permanent_village }}" class="form-control"
-                                                >
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3 position-relative">
-                                            <label for="example-text-input" class="form-label">Postoffice</label>
-                                            <input type="text" name="permanent_post"
-                                                value="{{ $basicinfo->permanent_post }}" class="form-control"
-                                                >
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3 position-relative">
-                                            <label for="example-text-input" class="form-label">Postal Code</label>
-                                            <input type="text" name="permanent_postal_code"
-                                                value="{{ $basicinfo->permanent_postal_code }}"
-                                                class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3 position-relative">
-                                            <label for="example-text-input" class="form-label">Division</label>
-                                            <select name="permanent_division_id" class="form-select select2"
-                                                aria-label="Default select example">
-                                                <option selected="" value="">Select Division</option>
-                                                @foreach ($divisions as $division)
-                                                    <option value="{{ $division->id }}"
-                                                        {{ $division->id == $basicinfo->permanent_division_id ? 'selected' : '' }}>
-                                                        {{ $division->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3 position-relative">
-                                            <label for="example-text-input" class="form-label">District</label>
-                                            <select name="permanent_district_id" class="form-select select2"
-                                                aria-label="Default select example">
-                                                <option selected="" value="">Select District</option>
-                                                @foreach ($districts as $district)
-                                                    <option value="{{ $district->id }}"
-                                                        {{ $district->id == $basicinfo->permanent_district_id ? 'selected' : '' }}>
-                                                        {{ $district->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3 position-relative">
-                                            <label for="example-text-input" class="form-label">Upazilla</label>
-                                            <select name="permanent_upazilla_id" class="form-select select2"
-                                                aria-label="Default select example">
-                                                <option selected="" value="">Select Upazilla</option>
-                                                @foreach ($upazillas as $upazilla)
-                                                    <option value="{{ $upazilla->id }}"
-                                                        {{ $upazilla->id == $basicinfo->permanent_upazilla_id ? 'selected' : '' }}>
-                                                        {{ $upazilla->name }}</option>
-                                                @endforeach
-                                            </select>
+                                            <label for="example-text-input" class="form-label">Monthly Income</label>
+                                            <input type="text" name="guardian_monthly_income" class="form-control"
+                                                value="{{ $guardian->guardian_monthly_income }}">
                                         </div>
                                     </div>
                                     <div class="alert alert-secondary" role="alert">
-                                        Present Address
-                                        <label for="" style="float: right"><input class="form-check-input"
-                                                type="checkbox" id="sameaspermanentaddress"> Same As Above</label>
+                                        <label for="example-text-input" class="form-label">Permanent Address</label>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="mb-3 position-relative">
                                                 <label for="example-text-input" class="form-label">Village</label>
-                                                <input type="text" name="present_village"
-                                                    value="{{ $basicinfo->present_village }}" class="form-control"
-                                                    >
+                                                <input type="text" name="guardian_permanent_village"
+                                                    id="guardian_permanent_village" class="form-control"
+                                                    value="{{ $guardian->guardian_permanent_village }}">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3 position-relative">
                                                 <label for="example-text-input" class="form-label">Postoffice</label>
-                                                <input type="text" name="present_post"
-                                                    value="{{ $basicinfo->present_post }}" class="form-control"
-                                                    >
+                                                <input type="text" name="guardian_permanent_post"
+                                                    id="guardian_permanent_post" class="form-control"
+                                                    value="{{ $guardian->guardian_permanent_post }}">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3 position-relative">
                                                 <label for="example-text-input" class="form-label">Postal Code</label>
-                                                <input type="text" name="present_postal_code"
-                                                    value="{{ $basicinfo->present_postal_code }}"
-                                                    class="form-control">
+                                                <input type="text" name="guardian_permanent_postal_code"
+                                                    id="guardian_permanent_postal_code" class="form-control"
+                                                    value="{{ $guardian->guardian_permanent_postal_code }}">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3 position-relative">
                                                 <label for="example-text-input" class="form-label">Division</label>
-                                                <select name="present_division_id" class="form-select select2"
-                                                    aria-label="Default select example">
+                                                <select name="guardian_permanent_division_id" id="guardian_permanent_division"
+                                                    class="form-select select2" aria-label="Default select example"
+                                                    value="{{ old('guardian_permanent_division_id') }}">
                                                     <option selected="" value="">Select Division</option>
                                                     @foreach ($divisions as $division)
                                                         <option value="{{ $division->id }}"
-                                                            {{ $division->id == $basicinfo->present_division_id ? 'selected' : '' }}>
+                                                            {{ $division->id == $guardian->guardian_permanent_division_id ? 'selected' : '' }}>
                                                             {{ $division->name }}</option>
                                                     @endforeach
                                                 </select>
@@ -303,12 +148,13 @@
                                         <div class="col-md-4">
                                             <div class="mb-3 position-relative">
                                                 <label for="example-text-input" class="form-label">District</label>
-                                                <select name="present_district_id" class="form-select select2"
-                                                    aria-label="Default select example">
+                                                <select name="guardian_permanent_district_id" id="guardian_permanent_district"
+                                                    class="form-select select2" aria-label="Default select example"
+                                                    value="{{ old('guardian_permanent_district_id') }}">
                                                     <option selected="" value="">Select District</option>
                                                     @foreach ($districts as $district)
-                                                        <<option value="{{ $district->id }}"
-                                                            {{ $district->id == $basicinfo->present_district_id ? 'selected' : '' }}>
+                                                        <option value="{{ $district->id }}"
+                                                            {{ $district->id == $guardian->guardian_permanent_district_id ? 'selected' : '' }}>
                                                             {{ $district->name }}</option>
                                                     @endforeach
                                                 </select>
@@ -317,68 +163,148 @@
                                         <div class="col-md-4">
                                             <div class="mb-3 position-relative">
                                                 <label for="example-text-input" class="form-label">Upazilla</label>
-                                                <select name="present_upazilla_id" class="form-select select2"
-                                                    aria-label="Default select example">
+                                                <select name="guardian_permanent_upazilla_id" id="guardian_permanent_upazilla"
+                                                    class="form-select select2" aria-label="Default select example"
+                                                    value="{{ old('guardian_permanent_upazilla_id') }}">
                                                     <option selected="" value="">Select Upazilla</option>
+                                                    {{-- <option value=""></option> --}}
                                                     @foreach ($upazillas as $upazilla)
                                                         <option value="{{ $upazilla->id }}"
-                                                            {{ $upazilla->id == $basicinfo->present_upazilla_id ? 'selected' : '' }}>
+                                                            {{ $upazilla->id == $guardian->guardian_permanent_upazilla_id ? 'selected' : '' }}>
                                                             {{ $upazilla->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="alert alert-secondary" role="alert">
+                                            Present Address
+                                            <label for="" style="float: right"><input
+                                                    class="form-check-input" type="checkbox"
+                                                    id="sameaspermanentaddress"> Same As Above</label>
+                                        </div>
+                                        {{-- <hr> --}}
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="example-text-input" class="form-label">Village</label>
+                                                    <input type="text" name="guardian_present_village"
+                                                        id="guardian_present_village" class="form-control"
+                                                        value="{{ $guardian->guardian_present_village }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="example-text-input"
+                                                        class="form-label">Postoffice</label>
+                                                    <input type="text" name="guardian_present_post"
+                                                        id="guardian_present_post" class="form-control"
+                                                        value="{{ $guardian->guardian_present_post }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="example-text-input" class="form-label">Postal
+                                                        Code</label>
+                                                    <input type="text" name="guardian_present_postal_code"
+                                                        id="guardian_present_postal_code" class="form-control"
+                                                        value="{{ $guardian->guardian_present_postal_code }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="example-text-input"
+                                                        class="form-label">Division</label>
+                                                    {{-- <input type="text" class="form-control"  > --}}
+                                                    <select name="guardian_present_division_id" id="guardian_present_division"
+                                                        class="form-select select2"
+                                                        aria-label="Default select example"
+                                                        value="{{ old('guardian_present_division_id') }}">
+                                                        <option selected="" value="">Select Division</option>
+                                                        @foreach ($divisions as $division)
+                                                            <option value="{{ $division->id }}"
+                                                                {{ $division->id == $guardian->guardian_present_division_id ? 'selected' : '' }}>
+                                                                {{ $division->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="example-text-input"
+                                                        class="form-label">District</label>
+                                                    {{-- <input type="text" class="form-control"  > --}}
+                                                    <select name="guardian_present_district_id" id="guardian_present_district"
+                                                        class="form-select select2"
+                                                        aria-label="Default select example"
+                                                        value="{{ old('guardian_present_district_id') }}">
+                                                        <option selected="" value="">Select District</option>
+                                                        {{-- <option value=""></option> --}}
+                                                        @foreach ($districts as $district)
+                                                            <option value="{{ $district->id }}"
+                                                                {{ $district->id == $guardian->guardian_present_district_id ? 'selected' : '' }}>
+                                                                {{ $district->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="example-text-input"
+                                                        class="form-label">Upazilla</label>
+                                                    {{-- <input type="text" class="form-control"  > --}}
+                                                    <select name="guardian_present_upazilla_id" id="guardian_present_upazilla"
+                                                        class="form-select select2"
+                                                        aria-label="Default select example"
+                                                        value="{{ old('guardian_present_upazilla_id') }}">
+                                                        <option selected="" value="">Select Upazilla</option>
+                                                        {{-- <option value=""></option> --}}
+                                                        @foreach ($upazillas as $upazilla)
+                                                            <option value="{{ $upazilla->id }}"
+                                                                {{ $upazilla->id == $guardian->guardian_present_upazilla_id ? 'selected' : '' }}>
+                                                                {{ $upazilla->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="example-text-input" class="form-label">Mobile</label>
+                                                    <input type="text" name="guardian_mobile" class="form-control"
+                                                        value="{{ $guardian->guardian_mobile }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="example-text-input" class="form-label">Email</label>
+                                                    <input type="text" name="guardian_email" class="form-control"
+                                                        value="{{ $guardian->guardian_email }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="example-text-input" class="form-label">Fax
+                                                        Card</label>
+                                                    <input type="text" name="guardian_fax" class="form-control"
+                                                        value="{{ $guardian->guardian_fax }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="example-text-input" class="form-label">NID
+                                                        Card</label>
+                                                    <input type="text" name="guardian_nid" class="form-control"
+                                                        value="{{ $guardian->guardian_nid }}">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="example-text-input" class="form-label">Mobile</label>
-                                                <input type="text" name="mobile"
-                                                    value="{{ $basicinfo->mobile }}" class="form-control"
-                                                    >
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="example-text-input" class="form-label">Email</label>
-                                                <input type="text" name="email"
-                                                    value="{{ $basicinfo->email }}" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="mb-3">
-                                                <label for="example-text-input" class="form-label">NID Card</label>
-                                                <input type="text" name="nid" value="{{ $basicinfo->nid }}"
-                                                    class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="mb-3">
-                                                <label for="example-text-input" class="form-label">Smard Card</label>
-                                                <input type="text" name="smartcard"
-                                                    value="{{ $basicinfo->smartcard }}" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="mb-3 position-relative">
-                                                <label for="example-text-input" class="form-label">BloodGroups</label>
-                                                <select name="blood_groups_id" class="form-select select2"
-                                                    aria-label="Default select example">
-                                                    <option selected="" value="">Select Blood Group</option>
-                                                    @foreach ($blood_groups as $blood_group)
-                                                        <option value="{{ $blood_group->id }}"
-                                                            {{ $blood_group->id == $basicinfo->blood_groups_id ? 'selected' : '' }}>
-                                                            {{ $blood_group->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 fl">
-                                        <input type="submit" style="float:right"
-                                            class="btn btn-info waves-effect waves-light" value="Save Info">
+                                    <div class="col-md-6 fl">
+                                        <input type="submit" class="btn btn-info waves-effect waves-light"
+                                            value="Save Info">
                                     </div>
                             </form>
                         </div>
@@ -388,18 +314,10 @@
             </div>
             <!--block-content-->
         </div><!-- END block -->
+
     </div>
 </div>
-</div> <!-- end col -->
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
 <script type="text/javascript">
     $(document).ready(function() {
         $('#myForm').validate({
@@ -407,13 +325,16 @@
                 name: {
                     required: true,
                 },
-
-            },
+                id: {
+                    required: true,
+                },
             messages: {
                 name: {
-                    required: 'Please Enter Educational Qualification Name',
+                    required: 'Please Enter Employee Name',
                 },
-
+                id: {
+                    required: 'Please Enter Employee ID',
+                },
             },
             errorElement: 'span',
             errorPlacement: function(error, element) {
@@ -434,28 +355,45 @@
     $(document).ready(function() {
         $('#sameaspermanentaddress').click(function() {
             if ($('#sameaspermanentaddress').is(":checked")) {
-                $('#present_village').val($('#permanent_village').val());
-                $('#present_post').val($('#permanent_post').val());
-                $('#present_postal_code').val($('#permanent_postal_code').val());
+                $('#guardian_present_village').val($('#guardian_permanent_village').val());
+                $('#guardian_present_post').val($('#guardian_permanent_post').val());
+                $('#guardian_present_postal_code').val($('#guardian_permanent_postal_code').val());
                 var division = $('#permanent_division option:selected').val();
-                $('#present_division option[value=' + division + ']').attr('selected', 'selected');
-                var district = $('#permanent_district option:selected').val();
-                $('#present_district option[value=' + district + ']').attr('selected', 'selected');
-                var upazilla = $('#permanent_upazilla option:selected').val();
-                $('#present_upazilla option[value=' + upazilla + ']').attr('selected', 'selected');
+                $('#guardian_present_division option[value=' + division + ']').attr('selected', 'selected');
+                var district = $('#guardian_permanent_district option:selected').val();
+                $('#guardian_present_district option[value=' + district + ']').attr('selected', 'selected');
+                var upazilla = $('#guardian_permanent_upazilla option:selected').val();
+                $('#guardian_present_upazilla option[value=' + upazilla + ']').attr('selected', 'selected');
             } else { //Clear on uncheck
-                $('#present_village').val("");
-                $('#present_post').val("");
-                $('#present_postal_code').val("");
-                $('#present_division option[value=""]').attr('selected', 'selected');
-                $('#present_district option[value=""]').attr('selected', 'selected');
-                $('#present_upazilla option[value=""]').attr('selected', 'selected');
+                $('#guardian_present_village').val("");
+                $('#guardian_present_post').val("");
+                $('#guardian_present_postal_code').val("");
+                $('#guardian_present_division option[value=""]').attr('selected', 'selected');
+                $('#guardian_present_district option[value=""]').attr('selected', 'selected');
+                $('#guardian_present_upazilla option[value=""]').attr('selected', 'selected');
             };
         });
 
     });
 </script>
-
-
-
+<script src="{{ asset('backend/assets/libs/parsleyjs/parsley.min.js') }}"></script>
+<script src="{{ asset('backend/mix/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}">
+</script>
+<script src="{{ asset('backend/mix/assets/js/lib/jquery.min.js') }}"></script>
+<script>
+    Dashmix.helpersOnLoad(['js-flatpickr', 'jq-datepicker', 'jq-maxlength', 'jq-select2', 'jq-rangeslider',
+        'jq-masked-inputs', 'jq-pw-strength'
+    ]);
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#image').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#showImage').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
 @endsection

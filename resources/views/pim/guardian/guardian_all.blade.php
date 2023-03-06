@@ -27,11 +27,11 @@
                     <thead>
                         <tr>
                             <th width="5%">Sl</th>
-                            <th width="10%">ID</th>
-                            <th>Name</th>
-                            <th width="5%">Designation</th>
-                            <th width="5%">Domain</th>
-                            <th width="5%">Joining Date</th>
+                            <th width="10%">Employee ID</th>
+                            <th width="20%">Employee Name</th>
+                            <th width="20%">Guardian Name</th>
+                            {{-- <th width="5%">Domain</th>
+                            <th width="5%">Joining Date</th> --}}
                             {{-- <th width="5%">Status</th>  --}}
                             <th width="15%">Action</th>
                         </tr>
@@ -41,14 +41,14 @@
                             <tr>
                                 <td> {{ $key + 1 }} </td>
                                 {{-- <td> {{ $item['domains']['name']  }}</td>  --}}
-                                <td> {{ $item->id }} </td>
-                                <td> {{ $item->name }} </td>
+                                <td> {{ $item->employee_id }} </td>
+                                <td> {{ $item['basic_infos']['name'] ?? ''}} </td>
+                                {{-- <td> {{ $item['basicinfos']['name'] ?? '' }} </td> --}}
+                                <td> {{ $item->guardian_name }} </td>
                                 {{-- <td> {{ $item->designation_id }} </td> --}}
-                                <td> {{ $item['designation']['name'] ?? '' }} </td>
-                                <td> {{ $item['domain']['name'] ?? '' }} </td>
-                                {{-- <td> {{ $item->domain_id }} </td>  --}}
-                                <td> {{ $item->joiningdate }} </td>
-                                {{-- <td> {{ $item->status }} </td>    --}}
+                                {{-- <td> {{ $item['basicinfo']['name'] ?? '' }} </td> --}}
+                                {{-- <td> {{ $item['domain']['name'] ?? '' }} </td> --}}
+
                                 <td>
                                     {{-- @if (Auth::user()->can('guardian.show')) --}}
                                         <a href="{{ route('show.guardian', $item->id) }}" class="btn btn-info sm"

@@ -289,37 +289,37 @@ document.write(currentDate);
                 </tr>
                 <tr>
                     <th>Guardian Name</th>
-                    <td>Md. Saiful Islam</td>
+                    <td></td>
                     <th>Father Name</th>
-                    <td>Late. Boyen Ali</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <th>Relation</th>
-                    <td>Father</td>
-                    <th>Mother Name</th>
+                    <td></td>
+                    <th></th>
                     <td></td>
                 </tr>
                 <tr>
                     <th>Mobile No</th>
-                    <td>01738284050</td>
+                    <td></td>
                     <th>National ID#</th>
-                    <td>1012086318750</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <th>Phone No</th>
-                    <td>0</td>
+                    <td></td>
                     <th>Birth Certificate No</th>
                     <td></td>
                 </tr>
                 <tr>
                     <th>E-mail</th>
-                    <td>0</td>
+                    <td></td>
                     <th>Monthly Income</th>
                     <td></td>
                 </tr>
                 <tr>
                     <th>Profession</th>
-                    <td>Service</td>
+                    <td></td>
                     <th rowspan="4">Picture</th>
                     <td rowspan="4">
                         <img src="./Detils Staff Report_files/10118707(1).jpg" alt="10118707" width="90"
@@ -328,15 +328,15 @@ document.write(currentDate);
                 </tr>
                 <tr>
                     <th>Working Location</th>
-                    <td>N/I</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <th>Present Address</th>
-                    <td>Vill: Dakshin Bhag, Post: Shekerkola, PS: &amp; Dist: Bogra.</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <th>Permanent Address</th>
-                    <td>Vill: Dakshin Bhag, Post: Shekerkola, PS: &amp; Dist: Bogra.</td>
+                    <td></td>
                 </tr>
             </tbody>
         </table> <br>

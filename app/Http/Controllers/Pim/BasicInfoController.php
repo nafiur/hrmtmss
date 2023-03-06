@@ -18,6 +18,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\EducationalQualification;
 use App\Models\Gender;
+use App\Models\Pim\Guardian;
 
 class BasicInfoController extends Controller
 {
@@ -272,6 +273,7 @@ class BasicInfoController extends Controller
         $blood_groups = BloodGroup::all();
         $employeetypes = EmployeeType::all();
         $gender = Gender::all();
+        $guardian = Guardian::all();
         $educationqualifications = EducationalQualification::all();
 
         // $employee = DB::table('basicinfos')
@@ -281,7 +283,7 @@ class BasicInfoController extends Controller
         // $basicinfos = basicinfo::findOrFail($id);
         $basicinfo = BasicInfo::findOrFail($id);
         // return View('backend.basicinfo.basicinfo_show',['designations'=>$designation]);
-        return view('pim.basicinfo.basicinfo_show', compact('basicinfo', 'gender', 'domains', 'employeetypes', 'designations', 'maritalstatus', 'districts', 'divisions', 'blood_groups', 'educationqualifications', 'upazillas'));
+        return view('pim.basicinfo.basicinfo_show', compact('basicinfo', 'gender', 'guardian','domains', 'employeetypes', 'designations', 'maritalstatus', 'districts', 'divisions', 'blood_groups', 'educationqualifications', 'upazillas'));
         // return view('backend.basicinfo.basicinfo_show',compact('basicinfo'));
 
     } //

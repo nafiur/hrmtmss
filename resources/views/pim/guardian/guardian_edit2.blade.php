@@ -2,7 +2,7 @@
 @section('admin')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @section('title')
-    {{ 'Edit Employee Basic Info' }}
+    {{ 'Edit Guardian Info' }}
 @endsection
 <div class="page-content">
     <div class="container-fluid">
@@ -11,13 +11,13 @@
                 <li class="breadcrumb-item">
                     <a href="javascript:void(0)">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Edit Employee Basic Information</li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Guardian Information</li>
             </ol>
         </nav>
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">Add New Form</h3>
-                <a href="{{ route('all.basicinfo') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
+                <a href="{{ route('all.guardian') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
                     style="float:right;"><i class="fa fa-undo"> Back </i></a> <br> <br>
             </div>
             <div class="block-content">
@@ -26,7 +26,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" action="{{ route('basicinfo.update') }}" id="myForm">
+                            <form method="post" action="{{ route('guardian.update') }}" id="myForm">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-3">
@@ -307,7 +307,7 @@
                                                     aria-label="Default select example">
                                                     <option selected="" value="">Select District</option>
                                                     @foreach ($districts as $district)
-                                                        <option value="{{ $district->id }}"
+                                                        <<option value="{{ $district->id }}"
                                                             {{ $district->id == $basicinfo->present_district_id ? 'selected' : '' }}>
                                                             {{ $district->name }}</option>
                                                     @endforeach

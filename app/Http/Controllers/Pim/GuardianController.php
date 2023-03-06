@@ -26,6 +26,7 @@ class GuardianController extends Controller
         $districts = District::all();
         $divisions = Division::all();
         $upazillas = Upazilla::all();
+        $basicinfos = BasicInfo::all();
         $guardian = Guardian::all();
         // $guardians = Guardian::where('created_by', $user->id)->orderBy('id', 'DESC')->get();
         return view('pim.guardian.guardian_all', compact('guardian'));
@@ -40,18 +41,19 @@ class GuardianController extends Controller
         $districts = District::all();
         $divisions = Division::all();
         $upazillas = Upazilla::all();
+        $basicinfos = BasicInfo::all();
         $guardian = Guardian::all();
-        return view('pim.guardian.guardian_add', compact('guardian','basicinfo', 'relation_types', 'professions', 'districts', 'divisions', 'upazillas'));
+        return view('pim.guardian.guardian_add', compact('guardian','basicinfos', 'relation_types', 'professions', 'districts', 'divisions', 'upazillas'));
     } // End Method
 
     public function StoreGuardian(Request $request)
     {
 
         $validateData = $request->validate([
-            'name' => 'required',
-            'id' => 'required|unique:basic_infos,id|max:8|min:8',
+            'guardian_name' => 'required',
+            // 'id' => 'required|unique:basic_infos,id|max:8|min:8',
             // 'employee_type_id' => 'required',
-            'name' => 'required',
+            'employee_id' => 'required',
             // 'father_name' => 'required',
             // 'mother_name' => 'required',
             // 'designation_id' => 'required',
@@ -99,44 +101,41 @@ class GuardianController extends Controller
         // }
 
         Guardian::insert([
-            'id' => $request->id,
-            'employee_type_id' => $request->employee_type_id,
-            'name' => $request->name,
-            'father_name' => $request->father_name,
-            'mother_name' => $request->mother_name,
-            'gender_id' => $request->gender_id,
-            'designation_id' => $request->designation_id,
-            'joiningdate' => $request->joiningdate,
-            'date_of_birth' => $request->date_of_birth,
-            'domain_id' => $request->domain_id,
-            'marital_status_id' => $request->marital_status_id,
-            'birth_place_district_id' => $request->birth_place_district_id,
-            'educational_qualification_id' => $request->educational_qualification_id,
-            'permanent_village' => $request->permanent_village,
-            'permanent_post' => $request->permanent_post,
-            'permanent_postal_code' => $request->permanent_postal_code,
-            'permanent_division_id' => $request->permanent_division_id,
-            'permanent_district_id' => $request->permanent_district_id,
-            'permanent_upazilla_id' => $request->permanent_upazilla_id,
-            'present_village' => $request->present_village,
-            'present_post' => $request->present_post,
-            'present_postal_code' => $request->present_postal_code,
-            'present_division_id' => $request->present_division_id,
-            'present_district_id' => $request->present_district_id,
-            'present_upazilla_id' => $request->present_upazilla_id,
-            'mobile' => $request->mobile,
-            'email' => $request->email,
-            'nid' => $request->nid,
-            'smartcard' => $request->smartcard,
-            'blood_groups_id' => $request->blood_groups_id,
-            // 'employee_photo' => $filename,
+            'employee_id' => $request->employee_id,
+            'guardian_name' => $request->guardian_name,
+            'guardian_father_name' => $request->guardian_father_name,
+            'guardian_mother_name' => $request->guardian_mother_name,
+            'guardian_relation_types_id' => $request->guardian_relation_types_id,
+            'guardian_profession_id' => $request->guardian_profession_id,
+            'guardian_monthly_income' => $request->guardian_monthly_income,
+
+            'guardian_permanent_village' => $request->guardian_permanent_village,
+            'guardian_permanent_post' => $request->guardian_permanent_post,
+            'guardian_permanent_postal_code' => $request->guardian_permanent_postal_code,
+            'guardian_permanent_division_id' => $request->guardian_permanent_division_id,
+            'guardian_permanent_district_id' => $request->guardian_permanent_district_id,
+            'guardian_permanent_upazilla_id' => $request->guardian_permanent_upazilla_id,
+
+            'guardian_present_village' => $request->guardian_present_village,
+            'guardian_present_post' => $request->guardian_present_post,
+            'guardian_present_postal_code' => $request->guardian_present_postal_code,
+            'guardian_present_division_id' => $request->guardian_present_division_id,
+            'guardian_present_district_id' => $request->guardian_present_district_id,
+            'guardian_present_upazilla_id' => $request->guardian_present_upazilla_id,
+
+            'guardian_mobile' => $request->guardian_mobile,
+            'guardian_phone' => $request->guardian_phone,
+            'guardian_email' => $request->guardian_email,
+            'guardian_fax' => $request->guardian_fax,
+            'guardian_nid' => $request->guardian_nid,
+
             'created_by' => Auth::user()->id,
             'created_at' => Carbon::now(),
 
         ]);
 
         $notification = array(
-            'message' => 'Guardian Inserted Successfully',
+            'message' => 'Guardian In Saved Successfully',
             'alert-type' => 'success',
         );
 
@@ -149,11 +148,12 @@ class GuardianController extends Controller
 
         $user = Auth::user();
         $basicinfo = BasicInfo::all();
-        $relationtype = RelationType::all();
+        $relation_types = RelationType::all();
         $professionype = Profession::all();
         $districts = District::all();
         $divisions = Division::all();
         $upazillas = Upazilla::all();
+        $basicinfos = BasicInfo::all();
         $guardian = Guardian::all();
 
         // $employee = DB::table('guardians')
@@ -163,7 +163,7 @@ class GuardianController extends Controller
         // $guardians = Guardian::findOrFail($id);
         $guardian = Guardian::findOrFail($id);
         // return View('pim.guardian.guardian_show',['designations'=>$designation]);
-        return view('pim.guardian.guardian_show', compact('guardian','gender', 'domains', 'employeetypes', 'designations', 'maritalstatus', 'districts', 'divisions', 'blood_groups', 'educationqualifications', 'upazillas'));
+        return view('pim.guardian.guardian_show', compact('guardian', 'basicinfos', 'districts', 'divisions', 'basicinfos', 'relation_types', 'upazillas'));
         // return view('pim.guardian.guardian_show',compact('guardian'));
 
     } // End Method
@@ -173,15 +173,17 @@ class GuardianController extends Controller
 
         $user = Auth::user();
         $basicinfo = BasicInfo::all();
-        $relationtype = RelationType::all();
-        $professionype = Profession::all();
+        $relation_types = RelationType::all();
+        $professions = Profession::all();
         $districts = District::all();
         $divisions = Division::all();
         $upazillas = Upazilla::all();
-        $guardian = Guardian::all();
+        $basicinfos = BasicInfo::all();
+        // $guardian = Guardian::all();
 
         $guardian = Guardian::findOrFail($id);
-        return view('pim.guardian.guardian_edit', compact('guardian', 'BasicInfo', 'employeetypes', 'domains', 'designations', 'maritalstatus', 'districts', 'divisions', 'blood_groups', 'educationqualifications', 'upazillas'));
+
+        return view('pim.guardian.guardian_edit', compact('guardian', 'professions', 'basicinfos', 'districts', 'divisions', 'basicinfos', 'relation_types', 'upazillas'));
 
     } // End Method
 
@@ -191,41 +193,41 @@ class GuardianController extends Controller
         $id = $request->id;
 
         Guardian::findOrFail($id)->update([
-            'employee_type_id' => $request->employee_type_id,
-            'name' => $request->name,
-            'father_name' => $request->father_name,
-            'mother_name' => $request->mother_name,
-            'gender_id' => $request->gender_id,
-            'designation_id' => $request->designation_id,
-            'joiningdate' => $request->joiningdate,
-            'date_of_birth' => $request->date_of_birth,
-            'domain_id' => $request->domain_id,
-            'marital_status_id' => $request->marital_status_id,
-            'birth_place_district_id' => $request->birth_place_district_id,
-            'educational_qualification_id' => $request->educational_qualification_id,
-            'permanent_village' => $request->permanent_village,
-            'permanent_post' => $request->permanent_post,
-            'permanent_postal_code' => $request->permanent_postal_code,
-            'permanent_division_id' => $request->permanent_division_id,
-            'permanent_district_id' => $request->permanent_district_id,
-            'permanent_upazilla_id' => $request->permanent_upazilla_id,
-            'present_village' => $request->present_village,
-            'present_post' => $request->present_post,
-            'present_postal_code' => $request->present_postal_code,
-            'present_division_id' => $request->present_division_id,
-            'present_district_id' => $request->present_district_id,
-            'present_upazilla_id' => $request->present_upazilla_id,
-            'mobile' => $request->mobile,
-            'email' => $request->email,
-            'nid' => $request->nid,
-            'smartcard' => $request->smartcard,
-            'blood_groups_id' => $request->blood_groups_id,
+
+            'employee_id' => $request->employee_id,
+            'guardian_name' => $request->guardian_name,
+            'guardian_father_name' => $request->guardian_father_name,
+            'guardian_mother_name' => $request->guardian_mother_name,
+            'guardian_relation_types_id' => $request->guardian_relation_types_id,
+            'guardian_profession_id' => $request->guardian_profession_id,
+            'guardian_monthly_income' => $request->guardian_monthly_income,
+
+            'guardian_permanent_village' => $request->guardian_permanent_village,
+            'guardian_permanent_post' => $request->guardian_permanent_post,
+            'guardian_permanent_postal_code' => $request->guardian_permanent_postal_code,
+            'guardian_permanent_division_id' => $request->guardian_permanent_division_id,
+            'guardian_permanent_district_id' => $request->guardian_permanent_district_id,
+            'guardian_permanent_upazilla_id' => $request->guardian_permanent_upazilla_id,
+
+            'guardian_present_village' => $request->guardian_present_village,
+            'guardian_present_post' => $request->guardian_present_post,
+            'guardian_present_postal_code' => $request->guardian_present_postal_code,
+            'guardian_present_division_id' => $request->guardian_present_division_id,
+            'guardian_present_district_id' => $request->guardian_present_district_id,
+            'guardian_present_upazilla_id' => $request->guardian_present_upazilla_id,
+
+            'guardian_mobile' => $request->guardian_mobile,
+            'guardian_phone' => $request->guardian_phone,
+            'guardian_email' => $request->guardian_email,
+            'guardian_fax' => $request->guardian_fax,
+            'guardian_nid' => $request->guardian_nid,
+
             'updated_by' => Auth::user()->id,
             'updated_at' => Carbon::now(),
         ]);
 
         $notification = array(
-            'message' => 'Guardian Updated Successfully',
+            'message' => 'Guardian Info Updated Successfully',
             'alert-type' => 'success',
         );
 
@@ -251,12 +253,15 @@ class GuardianController extends Controller
 
         $user = Auth::user();
         $basicinfo = BasicInfo::all();
-        $relationtype = RelationType::all();
-        $professionype = Profession::all();
+        $relation_types = RelationType::all();
+        $professions = Profession::all();
         $districts = District::all();
         $divisions = Division::all();
         $upazillas = Upazilla::all();
-        $guardian = Guardian::all();
+        $basicinfos = BasicInfo::all();
+        // $guardian = Guardian::all();
+
+        // $guardian = Guardian::findOrFail($id);
 
         // $employee = DB::table('guardians')
         // ->join('designations', 'designations.id', '=', 'guardians.designation_id')
@@ -265,7 +270,7 @@ class GuardianController extends Controller
         // $guardians = guardian::findOrFail($id);
         $guardian = Guardian::findOrFail($id);
         // return View('backend.guardian.guardian_show',['designations'=>$designation]);
-        return view('pim.guardian.guardian_show', compact('guardian', 'gender', 'domains', 'employeetypes', 'designations', 'maritalstatus', 'districts', 'divisions', 'blood_groups', 'educationqualifications', 'upazillas'));
+        return view('pim.guardian.guardian_show', compact('guardian', 'basicinfos', 'relation_types', 'professions', 'districts', 'divisions', 'upazillas'));
         // return view('backend.guardian.guardian_show',compact('guardian'));
 
     } //

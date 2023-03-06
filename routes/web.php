@@ -539,6 +539,29 @@ Route::controller(GuardianController::class)->group(function(){
     Route::get('/delete/guardian/{id}','DeleteGuardian')->name('delete.guardian');
 });
 
+///PIM Nominee All Route
+Route::controller(NomineeController::class)->group(function(){
+
+    Route::get('/all/nominee','AllNominee')->name('all.nominee');
+    Route::get('/add/nominee','AddNominee')->name('add.nominee');
+    Route::post('/store/nominee','StoreNominee')->name('nominee.store');
+    Route::get('/show/nominee/{id}', 'ShowNominee')->name('show.nominee');
+    Route::get('/edit/nominee/{id}','EditNominee')->name('edit.nominee');
+    Route::post('/update/nominee','UpdateNominee')->name('nominee.update');
+    Route::get('/delete/nominee/{id}','DeleteNominee')->name('delete.guardian');
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
  }); // End Group Middleware
 

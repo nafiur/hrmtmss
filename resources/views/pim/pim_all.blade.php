@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
 @section('title')
-    {{ 'Setup All' }}
+    {{ 'PIM All' }}
 @endsection
 
 <div class="page-content">
@@ -11,7 +11,7 @@
                 <li class="breadcrumb-item">
                     <a href="/dashboard">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                <li class="breadcrumb-item active" aria-current="page">PIM ALL</li>
             </ol>
         </nav>
 
@@ -54,6 +54,104 @@
                                     <i class="fa fas fa-user-plus fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">Nominee</p>
+                            </div>
+                        </a>
+                    </div>
+                {{-- @endif --}}
+                {{-- @if (Auth::user()->can('newemployee.module')) --}}
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
+                            href="{{ route('all.education') }}">
+                            {{-- <div class="ribbon-box">2</div> --}}
+                            <div class="block-content">
+                                <p class="my-2">
+                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                </p>
+                                <p class="fw-semibold">Education</p>
+                            </div>
+                        </a>
+                    </div>
+                {{-- @endif --}}
+                {{-- @if (Auth::user()->can('newemployee.module')) --}}
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
+                            href="{{ route('all.course') }}">
+                            {{-- <div class="ribbon-box">2</div> --}}
+                            <div class="block-content">
+                                <p class="my-2">
+                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                </p>
+                                <p class="fw-semibold">Course</p>
+                            </div>
+                        </a>
+                    </div>
+                {{-- @endif --}}
+                {{-- @if (Auth::user()->can('newemployee.module')) --}}
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
+                            href="{{ route('all.experience') }}">
+                            {{-- <div class="ribbon-box">2</div> --}}
+                            <div class="block-content">
+                                <p class="my-2">
+                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                </p>
+                                <p class="fw-semibold">Experience</p>
+                            </div>
+                        </a>
+                    </div>
+                {{-- @endif --}}
+                {{-- @if (Auth::user()->can('newemployee.module')) --}}
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
+                            href="{{ route('all.familybrothersister') }}">
+                            {{-- <div class="ribbon-box">2</div> --}}
+                            <div class="block-content">
+                                <p class="my-2">
+                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                </p>
+                                <p class="fw-semibold">Brother/Sister</p>
+                            </div>
+                        </a>
+                    </div>
+                {{-- @endif --}}
+                {{-- @if (Auth::user()->can('newemployee.module')) --}}
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
+                            href="{{ route('all.familychild') }}">
+                            {{-- <div class="ribbon-box">2</div> --}}
+                            <div class="block-content">
+                                <p class="my-2">
+                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                </p>
+                                <p class="fw-semibold">Child</p>
+                            </div>
+                        </a>
+                    </div>
+                {{-- @endif --}}
+                {{-- @if (Auth::user()->can('newemployee.module')) --}}
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
+                            href="{{ route('all.familyspouce') }}">
+                            {{-- <div class="ribbon-box">2</div> --}}
+                            <div class="block-content">
+                                <p class="my-2">
+                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                </p>
+                                <p class="fw-semibold">Spouce</p>
+                            </div>
+                        </a>
+                    </div>
+                {{-- @endif --}}
+                {{-- @if (Auth::user()->can('newemployee.module')) --}}
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
+                            href="{{ route('all.training') }}">
+                            {{-- <div class="ribbon-box">2</div> --}}
+                            <div class="block-content">
+                                <p class="my-2">
+                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                </p>
+                                <p class="fw-semibold">Training</p>
                             </div>
                         </a>
                     </div>

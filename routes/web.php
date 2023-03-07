@@ -15,11 +15,8 @@ use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\Pos\UnitController;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\Pos\StockController;
-use App\Http\Controllers\Pim\BasicInfoController;
-use App\Http\Controllers\Pim\GuardianController;
-use App\Http\Controllers\Pim\NomineeController;
-use App\Http\Controllers\Pim\PIMController;
-use App\Http\Controllers\AllReportsController;
+use App\Http\Controllers\Pim\{PIMController, BasicInfoController,GuardianController,NomineeController,EducationController, CourseController, ExperienceController, FamilyBrotherSisterController, FamilyChildController, FamilySpouceController};
+
 
 
 Route::view('/', 'auth.login');
@@ -277,11 +274,13 @@ Route::controller(BranchController::class)->group(function () {
 // New Employee Information
 Route::controller(NewEmployeeController::class)->group(function () {
     Route::get('/employee/all', 'EmployeeAll')->name('employee.all')->middleware('permission:employee.all');
+    Route::get('/employee/show/{id}', 'EmployeeShow')->name('employee.show')->middleware('permission:employee.show');
     Route::get('/newemployee/all', 'NewEmployeeAll')->name('newemployee.all')->middleware('permission:newemployee.all');
     Route::get('/newemployee/add', 'NewEmployeeAdd')->name('newemployee.add')->middleware('permission:newemployee.add');
     // Route::get('/newemployee/show', 'NewEmployeeShow')->name('newemployee.show')->middleware('permission:newemployee.show');
     Route::post('/newemployee/store', 'NewEmployeeStore')->name('newemployee.store');
     // Route::get('/newemployee/show3/{id}', 'NewEmployeeShow')->name('newemployee.show')->middleware('permission:newemployee.show');
+
     Route::get('/newemployee/show/{id}', 'NewEmployeeShow')->name('newemployee.show')->middleware('permission:newemployee.show');
     Route::get('/newemployee/edit/{id}', 'NewEmployeeEdit')->name('newemployee.edit')->middleware('permission:newemployee.edit');
     Route::post('/newemployee/update', 'NewEmployeeUpdate')->name('newemployee.update');
@@ -558,6 +557,91 @@ Route::controller(NomineeController::class)->group(function(){
     Route::post('/update/nominee','UpdateNominee')->name('nominee.update');
     Route::get('/delete/nominee/{id}','DeleteNominee')->name('delete.nominee');
 });
+
+///PIM Education All Route
+Route::controller(EducationController::class)->group(function(){
+
+    Route::get('/all/education','AllEducation')->name('all.education');
+    Route::get('/add/education','AddEducation')->name('add.education');
+    Route::post('/store/education','StoreEducation')->name('education.store');
+    Route::get('/show/education/{id}', 'ShowEducation')->name('show.education');
+    Route::get('/edit/education/{id}','EditEducation')->name('edit.education');
+    Route::post('/update/education','UpdateEducation')->name('education.update');
+    Route::get('/delete/education/{id}','DeleteEducation')->name('delete.education');
+});
+
+///PIM Education All Route
+Route::controller(CourseController::class)->group(function(){
+
+    Route::get('/all/course','AllCourse')->name('all.course');
+    Route::get('/add/course','AddCourse')->name('add.course');
+    Route::post('/store/course','StoreCourse')->name('course.store');
+    Route::get('/show/course/{id}', 'ShowCourse')->name('show.course');
+    Route::get('/edit/course/{id}','EditCourse')->name('edit.course');
+    Route::post('/update/course','UpdateCourse')->name('course.update');
+    Route::get('/delete/course/{id}','DeleteCourse')->name('delete.course');
+});
+
+///PIM Training All Route
+Route::controller(TrainingController::class)->group(function(){
+
+    Route::get('/all/training','AllTraining')->name('all.training');
+    Route::get('/add/training','AddTraining')->name('add.training');
+    Route::post('/store/training','StoreTraining')->name('training.store');
+    Route::get('/show/training/{id}', 'ShowTraining')->name('show.training');
+    Route::get('/edit/training/{id}','EditTraining')->name('edit.training');
+    Route::post('/update/training','UpdateTraining')->name('training.update');
+    Route::get('/delete/training/{id}','DeleteTraining')->name('delete.training');
+});
+
+///PIM Education All Route
+Route::controller(ExperienceController::class)->group(function(){
+
+    Route::get('/all/experience','AllExperience')->name('all.experience');
+    Route::get('/add/experience','AddExperience')->name('add.experience');
+    Route::post('/store/experience','StoreExperience')->name('experience.store');
+    Route::get('/show/experience/{id}', 'ShowExperience')->name('show.experience');
+    Route::get('/edit/experience/{id}','EditExperience')->name('edit.experience');
+    Route::post('/update/experience','UpdateExperience')->name('experience.update');
+    Route::get('/delete/experience/{id}','DeleteExperience')->name('delete.experience');
+});
+
+///PIM Education All Route
+Route::controller(FamilyBrotherSisterController::class)->group(function(){
+
+    Route::get('/all/brothersister','AllFamilyBrotherSister')->name('all.familybrothersister');
+    Route::get('/add/familybrothersister','AddFamilyBrotherSister')->name('add.familybrothersister');
+    Route::post('/store/familybrothersister','StoreFamilyBrotherSister')->name('familybrothersister.store');
+    Route::get('/show/familybrothersister/{id}', 'ShowFamilyBrotherSister')->name('show.familybrothersister');
+    Route::get('/edit/familybrothersister/{id}','EditFamilyBrotherSister')->name('edit.familybrothersister');
+    Route::post('/update/familybrothersister','UpdateFamilyBrotherSister')->name('familybrothersister.update');
+    Route::get('/delete/familybrothersister/{id}','DeleteFamilyBrotherSister')->name('delete.familybrothersister');
+});
+
+///PIM Education All Route
+Route::controller(FamilyChildController::class)->group(function(){
+
+    Route::get('/all/child','AllFamilyChild')->name('all.familychild');
+    Route::get('/add/familychild','AddFamilyChild')->name('add.familychild');
+    Route::post('/store/familychild','StoreFamilyChild')->name('familychild.store');
+    Route::get('/show/familychild/{id}', 'ShowFamilyChild')->name('show.familychild');
+    Route::get('/edit/familychild/{id}','EditFamilyChild')->name('edit.familychild');
+    Route::post('/update/familychild','UpdateFamilyChild')->name('familychild.update');
+    Route::get('/delete/familychild/{id}','DeleteFamilyChild')->name('delete.child');
+});
+
+///PIM Education All Route
+Route::controller(FamilySpouceController::class)->group(function(){
+
+    Route::get('/all/familyspouce','AllFamilySpouce')->name('all.familyspouce');
+    Route::get('/add/familyspouce','AddFamilySpouce')->name('add.familyspouce');
+    Route::post('/store/familyspouce','StoreFamilySpouce')->name('familyspouce.store');
+    Route::get('/show/familyspouce/{id}', 'ShowFamilySpouce')->name('show.familyspouce');
+    Route::get('/edit/familyspouce/{id}','EditFamilySpouce')->name('edit.familyspouce');
+    Route::post('/update/familyspouce','UpdateFamilySpouce')->name('familyspouce.update');
+    Route::get('/delete/familyspouce/{id}','DeleteFamilySpouce')->name('delete.familyspouce');
+});
+
 
 
 

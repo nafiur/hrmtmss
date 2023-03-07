@@ -51,7 +51,7 @@
                                 {{-- <td> {{ $item->status }} </td>    --}}
                                 <td>
                                     @if (Auth::user()->can('employee.show'))
-                                        <a href="{{ route('newemployee.show', $item->id) }}" class="btn btn-info sm"
+                                        <a href="{{ route('employee.show', $item->id) }}" class="btn btn-info sm"
                                             title="Show Data"> <i class="fas fa-eye"></i> </a>
                                     @endif
 

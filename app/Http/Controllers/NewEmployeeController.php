@@ -37,6 +37,35 @@ class NewEmployeeController extends Controller
         // $employeeall = NewEmployee::where('created_by',$user->id)->orderBy('id','DESC')->get();
         return view('backend.newemployee.employee_all', compact('employeeall'));
     } // End Method
+
+    public function EmployeeShow($id)
+    {
+
+        $domains = Domain::all();
+        $designations = Designation::all();
+        $maritalstatus = MaritalStatus::all();
+        $districts = District::all();
+        $divisions = Division::all();
+        $upazillas = Upazilla::all();
+        $blood_groups = BloodGroup::all();
+        $employeetypes = EmployeeType::all();
+        $educationqualifications = EducationalQualification::all();
+
+        // $employee = DB::table('newemployees')
+        // ->join('designations', 'designations.id', '=', 'newemployees.designation_id')
+        // ->get();
+
+        // $newemployees = NewEmployee::findOrFail($id);
+        $employeeshow = NewEmployee::findOrFail($id);
+        // return View('backend.newemployee.newemployee_show',['designations'=>$designation]);
+        return view('backend.newemployee.employee_show', compact('employeeshow', 'domains', 'employeetypes', 'designations', 'maritalstatus', 'districts', 'divisions', 'blood_groups', 'educationqualifications', 'upazillas'));
+        // return view('backend.newemployee.newemployee_show',compact('newemployee'));
+
+    } // End Method
+
+
+
+
     public function NewEmployeeAll()
     {
 

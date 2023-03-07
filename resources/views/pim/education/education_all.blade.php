@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
 @section('title')
-    {{ 'Education Information' }}
+    {{ 'Education Management' }}
 @endsection
 
 <div class="page-content">
@@ -11,7 +11,8 @@
                 <li class="breadcrumb-item">
                     <a href="javascript:void(0)">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Employee Management</li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('pim.all') }}">PIM</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('all.education') }}">Education</a>
             </ol>
         </nav>
         <div class="block block-rounded">
@@ -44,7 +45,7 @@
                                 <td> {{ $item->employee_id }} </td>
                                 <td> {{ $item->basicinfo->name }}</td>
                                 {{-- <td> {{ $item['basicinfos']['name'] ?? '' }} </td> --}}
-                                <td> {{ $item->education_name }} </td>
+                                <td> {{ $item->examname->name}} </td>
                                 {{-- <td> {{ $item->designation_id }} </td> --}}
                                 {{-- <td> {{ $item['basicinfo']['name'] ?? '' }} </td> --}}
                                 {{-- <td> {{ $item['domain']['name'] ?? '' }} </td> --}}

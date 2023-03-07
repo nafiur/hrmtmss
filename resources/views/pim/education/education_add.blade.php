@@ -99,9 +99,9 @@
                                                 aria-label="Default select example"
                                                 value="{{ old('education_group') }}">
                                                 <option selected="" value="">Select Duration</option>
-                                                @foreach ($duration as $duration)
-                                                    <option value="{{ $duration->id }}">
-                                                        {{ $duration->duration_name }}</option>
+                                                @foreach ($educationgroup as $edugroup)
+                                                    <option value="{{ $edugroup->id }}">
+                                                        {{ $edugroup->group_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

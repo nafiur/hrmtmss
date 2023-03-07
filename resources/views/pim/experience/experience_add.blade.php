@@ -14,6 +14,10 @@
                 <li class="breadcrumb-item">
                     <a href="javascript:void(0)">Home</a>
                 </li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('pim.all') }}">PIM</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a
+                        href="{{ route('all.education') }}">Experience</a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">Add Experience Information</li>
             </ol>
         </nav>
@@ -45,139 +49,134 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Experience Name</label>
-                                            <input type="text" name="experience_name" class="form-control"
-                                                required="" value="{{ old('experience_name') }}">
+                                            <label for="example-text-input" class="form-label">Organization Name
+                                            </label>
+                                            <input type="text" name="organization_name" class="form-control"
+                                                required="" value="{{ old('organization_name') }}">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Relation</label>
-                                            <select name="experience_relation_types_id" class="form-select select2"
-                                                aria-label="Default select example"
-                                                value="{{ old('experience_relation_types_id') }}">
-                                                <option selected="" value="">Select Relation</option>
-                                                @foreach ($relation_types as $relation)
-                                                    <option value="{{ $relation->id }}">{{ $relation->relation_name }}
-                                                    </option>
-                                                @endforeach
+                                            <label for="example-text-input" class="form-label">Job Nature
+                                            </label>
+                                            <input type="text" name="job_nature" class="form-control" required=""
+                                                value="{{ old('job_nature') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="example-text-input" class="form-label">Post
+                                            </label>
+                                            <input type="text" name="post_name" class="form-control" required=""
+                                                value="{{ old('post_name') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="example-text-input" class="form-label">From
+                                            </label>
+                                            <input type="date" name="experience_from" class="form-control fromEx"
+                                                required="" id="firstDate" value="{{ old('experience_from') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="example-text-input" class="form-label">To
+                                            </label>
+                                            <input type="date" id="secondDate" name="experience_to" class="form-control toEx"
+                                                required="" value="{{ old('experience_to') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <button type="button" onclick="X()">Find Difference</button><br>
+                                            <div id="dayCount"></div>
+                                            <label for="example-text-input" class="form-label">Total Experience</label>
+                                            <input type="text" id="dayCount" readonly name="total_experience"
+                                                class="form-control duration" required=""
+                                                value="{{ old('total_experience') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="example-text-input" class="form-label">Document</label>
+                                            <select name="documents"class="form-select select2"
+                                                aria-label="Default select example" value="{{ old('documents') }}">
+                                                <option selected="" value="">Select Document</option>
+                                                <option value="yes">Yes</option>
+                                                <option value="no">No</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Percentage</label>
-                                            <input type="text" name="experience_percentage" class="form-control"
-                                                value="{{ old('experience_percentage') }}">
-                                        </div>
-                                    </div>
-                                    <div class="alert alert-secondary" role="alert">
-                                        <label for="example-text-input" class="form-label">Experience Address</label>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="mb-3 position-relative">
-                                                <label for="example-text-input" class="form-label">Village</label>
-                                                <input type="text" name="experience_permanent_village" id="experience_permanent_village"
-                                                    class="form-control" value="{{ old('experience_permanent_village') }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="mb-3 position-relative">
-                                                <label for="example-text-input" class="form-label">Postoffice</label>
-                                                <input type="text" name="experience_permanent_post" id="experience_permanent_post"
-                                                    class="form-control" value="{{ old('experience_permanent_post') }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="mb-3 position-relative">
-                                                <label for="example-text-input" class="form-label">Postal Code</label>
-                                                <input type="text" name="experience_permanent_postal_code"
-                                                    id="experience_permanent_postal_code" class="form-control"
-                                                    value="{{ old('experience_permanent_postal_code') }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="mb-3 position-relative">
-                                                <label for="example-text-input" class="form-label">Division</label>
-                                                <select name="experience_permanent_division_id" id="permanent_division"
-                                                    class="form-select select2" aria-label="Default select example"
-                                                    value="{{ old('experience_permanent_division_id') }}">
-                                                    <option selected="" value="">Select Division</option>
-                                                    @foreach ($divisions as $division)
-                                                        <option value="{{ $division->id }}">{{ $division->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="mb-3 position-relative">
-                                                <label for="example-text-input" class="form-label">District</label>
-                                                <select name="experience_permanent_district_id" id="permanent_district"
-                                                    class="form-select select2" aria-label="Default select example"
-                                                    value="{{ old('experience_permanent_district_id') }}">
-                                                    <option selected="" value="">Select District</option>
-                                                    @foreach ($districts as $district)
-                                                        <option value="{{ $district->id }}">{{ $district->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="mb-3 position-relative">
-                                                <label for="example-text-input" class="form-label">Upazilla</label>
-                                                <select name="experience_permanent_upazilla_id" id="permanent_upazilla"
-                                                    class="form-select select2" aria-label="Default select example"
-                                                    value="{{ old('experience_permanent_upazilla_id') }}">
-                                                    <option selected="" value="">Select Upazilla</option>
-                                                    {{-- <option value=""></option> --}}
-                                                    @foreach ($upazillas as $upazilla)
-                                                        <option value="{{ $upazilla->id }}">{{ $upazilla->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="example-text-input" class="form-label">Mobile</label>
-                                                    <input type="text" name="experience_mobile" class="form-control"
-                                                        value="{{ old('experience_mobile') }}">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="example-text-input" class="form-label">NID
-                                                        Card</label>
-                                                    <input type="text" name="experience_nid" class="form-control"
-                                                        value="{{ old('experience_nid') }}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 fl">
+                                    <div class="col-md-12 fl">
                                         <input type="submit" class="btn btn-info waves-effect waves-light"
-                                            value="Save Info">
+                                            style="float:right" value="Save Info">
                                     </div>
-                            </form>
+                                </div>
+
                         </div>
                     </div>
-                </div> <!-- end col -->
-                <!-- END Label on top Layout -->
+                    </form>
+                </div>
             </div>
-            <!--block-content-->
-        </div><!-- END block -->
-
+        </div> <!-- end col -->
+        <!-- END Label on top Layout -->
     </div>
+    <!--block-content-->
+</div><!-- END block -->
+
 </div>
 </div>
+</div>
+<script>
+    function X() {
+
+        const firstDate = document.getElementById('firstDate').value;
+        const secondDate = document.getElementById('secondDate').value;
+
+
+        const startTimestamp = new Date(firstDate).getTime();
+        const endTimestamp = new Date(secondDate).getTime();
+
+
+        const difference = endTimestamp - startTimestamp;
+
+
+        const differenceInDays = Math.round(difference / (1000 * 60 * 60 * 24));
+
+
+        const dayCountElement = document.getElementById('dayCount');
+        dayCountElement.innerHTML = `The difference between the dates is ${differenceInDays} days.`;
+    }
+</script>
+<script>
+    $(document).ready(function() {
+        $('.fromEx').on('change', function() {
+            var fromdate = $(this).val(),
+                todate = $('.toEx').val();
+            if (todate !== '') {
+                var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                var firstDate = new Date(fromdate);
+                var secondDate = new Date(todate);
+                var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (
+                    oneDay)));
+                $('.duration').val(diffDays);
+            }
+        });
+        $('.toEx').on('change', function() {
+            var todate = $(this).val(),
+                fromdate = $('.fromEx').val();
+            if (fromdate !== '') {
+                var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                var firstDate = new Date(fromdate);
+                var secondDate = new Date(todate);
+                var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (
+                    oneDay)));
+                $('.duration').val(diffDays);
+            }
+        });
+    });
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#myForm').validate({

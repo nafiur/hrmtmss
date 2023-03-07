@@ -10,11 +10,12 @@ use App\Models\Pim\Education;
 use App\Models\Setup\Duration;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\EducationalQualification;
-use App\Models\Setup\BoardUniversity;
-use App\Models\Setup\EducationGradeClass;
-use App\Models\Setup\EducationSubject;
+use App\Models\Setup\EducationGroup;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Setup\BoardUniversity;
+use App\Models\Setup\EducationSubject;
+use App\Models\EducationalQualification;
+use App\Models\Setup\EducationGradeClass;
 
 class EducationController extends Controller
 {
@@ -29,9 +30,10 @@ class EducationController extends Controller
         $subject= EducationSubject::all();
         $boarduniversity= BoardUniversity::all();
         $gradeclass= EducationGradeClass::all();
+        $educationgroup= EducationGroup::all();
         $education= Education::all();
         // $educations = Education::where('created_by', $user->id)->orderBy('id', 'DESC')->get();
-        return view('pim.education.education_all', compact('education', 'duration', 'examname', 'subject', 'boarduniversity', 'gradeclass'));
+        return view('pim.education.education_all', compact('education', 'duration', 'examname', 'subject', 'boarduniversity', 'gradeclass', 'educationgroup'));
     } // End Method
 
     public function AddEducation()
@@ -45,8 +47,9 @@ class EducationController extends Controller
         $subject= EducationSubject::all();
         $boarduniversity= BoardUniversity::all();
         $gradeclass= EducationGradeClass::all();
+        $educationgroup= EducationGroup::all();
         $education= Education::all();
-        return view('pim.education.education_add', compact('education','basicinfos','duration', 'year','examname', 'subject', 'boarduniversity', 'gradeclass'));
+        return view('pim.education.education_add', compact('education','basicinfos','duration', 'year','examname', 'subject', 'boarduniversity', 'gradeclass', 'educationgroup'));
     } // End Method
 
     public function StoreEducation(Request $request)
@@ -66,7 +69,7 @@ class EducationController extends Controller
 
             'education_year_id' => $request->education_year_id,
             'educational_subjects_id' => $request->educational_subjects_id,
-            'education_group' => $request->education_group,
+            'education_groups_id' => $request->education_groups_id,
             'name_of_institute' => $request->name_of_institute,
             'thesis_topic' => $request->thesis_topic,
             'board_university_id' => $request->board_university_id,
@@ -101,6 +104,7 @@ class EducationController extends Controller
         $subject= EducationSubject::all();
         $boarduniversity= BoardUniversity::all();
         $gradeclass= EducationGradeClass::all();
+        $educationgroup= EducationGroup::all();
         $education= Education::all();
 
         // $employee = DB::table('educations')
@@ -110,7 +114,7 @@ class EducationController extends Controller
         // $educations = Education::findOrFail($id);
         $education= Education::findOrFail($id);
         // return View('pim.education.education_show',['designations'=>$designation]);
-        return view('pim.education.education_show', compact('education', 'basicinfos', 'duration','year','examname' , 'subject', 'boarduniversity', 'gradeclass'));
+        return view('pim.education.education_show', compact('education', 'basicinfos', 'duration','year','examname' , 'subject', 'boarduniversity', 'gradeclass', 'educationgroup'));
         // return view('pim.education.education_show',compact('education'));
 
     } // End Method
@@ -126,12 +130,13 @@ class EducationController extends Controller
         $subject= EducationSubject::all();
         $gradeclass= EducationGradeClass::all();
         $boarduniversity= BoardUniversity::all();
+        $educationgroup= EducationGroup::all();
         $year = Year::all();
         // $education= Education::all();
 
         $education= Education::findOrFail($id);
 
-        return view('pim.education.education_edit', compact('education', 'basicinfos', 'duration', 'year','examname','subject', 'boarduniversity', 'gradeclass'));
+        return view('pim.education.education_edit', compact('education', 'basicinfos', 'duration', 'year','examname','subject', 'boarduniversity', 'gradeclass', 'educationgroup'));
 
     } // End Method
 
@@ -147,7 +152,7 @@ class EducationController extends Controller
 
             'education_year_id' => $request->education_year_id,
             'educational_subjects_id' => $request->educational_subjects_id,
-            'education_group' => $request->education_group,
+            'education_groups_id' => $request->education_groups_id,
             'name_of_institute' => $request->name_of_institute,
             'thesis_topic' => $request->thesis_topic,
             'board_university_id' => $request->board_university_id,
@@ -194,6 +199,7 @@ class EducationController extends Controller
         $gradeclass= EducationGradeClass::all();
         $boarduniversity= BoardUniversity::all();
         $subject = EducationSubject::all();
+        $educationgroup= EducationGroup::all();
         $year = Year::all();
         // $education= Education::all();
 
@@ -206,7 +212,7 @@ class EducationController extends Controller
         // $educations = education::findOrFail($id);
         $education= Education::findOrFail($id);
         // return View('backend.education.education_show',['designations'=>$designation]);
-        return view('pim.education.education_show', compact('education', 'basicinfos', 'year', 'duration','examname','subject', 'boarduniversity', 'gradeclass'));
+        return view('pim.education.education_show', compact('education', 'basicinfos', 'year', 'duration','examname','subject', 'boarduniversity', 'gradeclass', 'educationgroup'));
         // return view('backend.education.education_show',compact('education'));
 
     } //

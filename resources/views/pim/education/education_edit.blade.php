@@ -5,7 +5,7 @@
         href="{{ asset('backend/mix/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @section('title')
-    {{ 'Edit Course Information' }}
+    {{ 'Edit Education Information' }}
 @endsection
 <div class="page-content">
     <div class="container-fluid">
@@ -18,21 +18,21 @@
                 <li class="breadcrumb-item active" aria-current="page"><a
                         href="{{ route('all.education') }}">Education</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Edit Course Information</li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Education Information</li>
             </ol>
         </nav>
 
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Edit Course Information</h3>
-                <a href="{{ route('all.course') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
+                <h3 class="block-title">Edit Education Information</h3>
+                <a href="{{ route('all.education') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
                     style="float:right;"><i class="fa fa-undo"> Back </i></a> <br> <br>
             </div>
             <div class="block-content">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" action="{{ route('course.update') }}" id="myForm">
+                            <form method="post" action="{{ route('education.update') }}" id="myForm">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $education->id }}">
                                 <div class="row">
@@ -40,8 +40,9 @@
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Employee ID</label>
                                             <input data-parsley-type="digits" data-parsley-id="15"
-                                                aria-describedby="parsley-id-15" readonly type="text" name="employee_id"
-                                                class="form-control" required="" value="{{ $education->employee_id }}"
+                                                aria-describedby="parsley-id-15" readonly type="text"
+                                                name="employee_id" class="form-control" required=""
+                                                value="{{ $education->employee_id }}"
                                                 @error('employee_id') is-invalid @enderror>
                                             @error('employee_id')
                                                 <span class="text-danger"> {{ $message }} </span>
@@ -104,9 +105,10 @@
                                                 aria-label="Default select example"
                                                 value="{{ old('education_group') }}">
                                                 <option selected="" value="">Select Duration</option>
-                                                @foreach ($duration as $duration)
-                                                    <option value="{{ $duration->id }}">
-                                                        {{ $duration->duration_name }}</option>
+                                                @foreach ($educationgroup as $edugroup)
+                                                <option value="{{ $edugroup->id }}"
+                                                    {{ $edugroup->id == $education->education_group_id ? 'selected' : '' }}>
+                                                    {{ $edugroup->group_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -115,14 +117,14 @@
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Name of Institute</label>
                                             <input type="text" name="name_of_institute" class="form-control"
-                                                value="{{ old('name_of_institute') }}">
+                                                value="{{ $education->name_of_institute }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Thesis Topic</label>
                                             <input type="text" name="thesis_topic" class="form-control"
-                                                value="{{ old('thesis_topic') }}">
+                                                value="{{ $education->thesis_topic }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -134,9 +136,9 @@
                                                 value="{{ old('board_university_id') }}">
                                                 <option selected="" value="">Select Board/University</option>
                                                 @foreach ($boarduniversity as $boarduniversity)
-                                                <option value="{{ $boarduniversity->id }}"
+                                                    <option value="{{ $boarduniversity->id }}"
                                                         {{ $boarduniversity->id == $education->board_university_id ? 'selected' : '' }}>
-                                                        {{ $boarduniversity->board_university_name}}</option>
+                                                        {{ $boarduniversity->board_university_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -145,7 +147,7 @@
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Total Marks</label>
                                             <input type="text" name="total_marks" class="form-control"
-                                                value="{{ old('total_marks') }}">
+                                                value="{{ $education->total_marks }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -155,9 +157,9 @@
                                                 aria-label="Default select example" value="{{ old('grade_class') }}">
                                                 <option selected="" value="">Select Grade/Class</option>
                                                 @foreach ($gradeclass as $gradeclass)
-                                                <option value="{{ $gradeclass->id }}"
+                                                    <option value="{{ $gradeclass->id }}"
                                                         {{ $gradeclass->id == $education->grade_class ? 'selected' : '' }}>
-                                                        {{ $gradeclass->grade_class_name}}</option>
+                                                        {{ $gradeclass->grade_class_name }}</option>
                                                     <option value="{{ $gradeclass->id }}">
                                                         {{ $gradeclass->grade_class_name }}</option>
                                                 @endforeach
@@ -168,7 +170,7 @@
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">GPA</label>
                                             <input type="text" name="gpa" class="form-control"
-                                                value="{{ old('gpa') }}">
+                                                value="{{ $education->gpa }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -177,8 +179,12 @@
                                             <select name="documents"class="form-select select2"
                                                 aria-label="Default select example" value="{{ old('documents') }}">
                                                 <option selected="" value="">Select Document</option>
-                                                <option value="yes">Yes</option>
-                                                <option value="no">No</option>
+                                                <option
+                                                    value="yes"{{ $education->documents == 'yes' ? 'selected' : '' }}>
+                                                    Yes</option>
+                                                <option
+                                                    value="no"{{ $education->documents == 'no' ? 'selected' : '' }}>
+                                                    No</option>
                                             </select>
                                         </div>
                                     </div>

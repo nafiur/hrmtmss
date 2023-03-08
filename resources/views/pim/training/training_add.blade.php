@@ -5,7 +5,7 @@
         href="{{ asset('backend/mix/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @section('title')
-    {{ 'Add Nominee' }}
+    {{ 'Add Training Information' }}
 @endsection
 <div class="page-content">
     <div class="container-fluid">
@@ -14,21 +14,25 @@
                 <li class="breadcrumb-item">
                     <a href="javascript:void(0)">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Add Nominee Information</li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('pim.all') }}">PIM</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a
+                        href="{{ route('all.training') }}">Training</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Add Training Information</li>
             </ol>
         </nav>
 
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Add New Nominee</h3>
-                <a href="{{ route('all.nominee') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
+                <h3 class="block-title">Add Training Information</h3>
+                <a href="{{ route('all.training') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
                     style="float:right;"><i class="fa fa-undo"> Back </i></a> <br> <br>
             </div>
             <div class="block-content">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" action="{{ route('nominee.store') }}" id="myForm">
+                            <form method="post" action="{{ route('training.store') }}" id="myForm">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">
@@ -45,137 +49,108 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Nominee Name</label>
-                                            <input type="text" name="nominee_name" class="form-control"
-                                                required="" value="{{ old('nominee_name') }}">
+                                            <label for="example-text-input" class="form-label">Training Name</label>
+                                            <input type="text" name="training_name" class="form-control" required=""
+                                                value="{{ old('training_name') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="example-text-input" class="form-label">From
+                                            </label>
+                                            <input type="date" name="date_from" class="form-control fromEx"
+                                                required="" id="firstDate" value="{{ old('date_from') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="example-text-input" class="form-label">To
+                                            </label>
+                                            <input type="date" id="secondDate" name="date_to" class="form-control toEx"
+                                                required="" value="{{ old('date_to') }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Relation</label>
-                                            <select name="nominee_relation_types_id" class="form-select select2"
-                                                aria-label="Default select example"
-                                                value="{{ old('nominee_relation_types_id') }}">
-                                                <option selected="" value="">Select Relation</option>
-                                                @foreach ($relation_types as $relation)
-                                                    <option value="{{ $relation->id }}">{{ $relation->relation_name }}
-                                                    </option>
-                                                @endforeach
+                                            <label for="example-text-input" class="form-label">Domestic/Overseas</label>
+                                            <select name="domestic_overseas"class="form-select select2"
+                                                aria-label="Default select example" value="{{ old('domestic_overseas') }}">
+                                                <option selected="" value="">Select Document</option>
+                                                <option value="domestic">Domestic</option>
+                                                <option value="overseas">Overseas</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Percentage</label>
-                                            <input type="text" name="nominee_percentage" class="form-control"
-                                                value="{{ old('nominee_percentage') }}">
+                                            <label for="example-text-input" class="form-label">Place</label>
+                                            <input type="text" name="place" class="form-control"
+                                                value="{{ old('place') }}">
                                         </div>
                                     </div>
-                                    <div class="alert alert-secondary" role="alert">
-                                        <label for="example-text-input" class="form-label">Nominee Address</label>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="mb-3 position-relative">
-                                                <label for="example-text-input" class="form-label">Village</label>
-                                                <input type="text" name="nominee_permanent_village" id="nominee_permanent_village"
-                                                    class="form-control" value="{{ old('nominee_permanent_village') }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="mb-3 position-relative">
-                                                <label for="example-text-input" class="form-label">Postoffice</label>
-                                                <input type="text" name="nominee_permanent_post" id="nominee_permanent_post"
-                                                    class="form-control" value="{{ old('nominee_permanent_post') }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="mb-3 position-relative">
-                                                <label for="example-text-input" class="form-label">Postal Code</label>
-                                                <input type="text" name="nominee_permanent_postal_code"
-                                                    id="nominee_permanent_postal_code" class="form-control"
-                                                    value="{{ old('nominee_permanent_postal_code') }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="mb-3 position-relative">
-                                                <label for="example-text-input" class="form-label">Division</label>
-                                                <select name="nominee_permanent_division_id" id="permanent_division"
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3 position-relative">
+                                            <label for="example-text-input" class="form-label">Country</label>
+                                            <select name="country_id" id="country_id"
                                                     class="form-select select2" aria-label="Default select example"
-                                                    value="{{ old('nominee_permanent_division_id') }}">
-                                                    <option selected="" value="">Select Division</option>
-                                                    @foreach ($divisions as $division)
-                                                        <option value="{{ $division->id }}">{{ $division->name }}
+                                                    value="{{ old('country_id') }}">
+                                                    <option selected="" value="">Select Country</option>
+                                                    @foreach ($country as $country)
+                                                        <option value="{{ $country->id }}">{{ $country->country_name }}
                                                         </option>
                                                     @endforeach
                                                 </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="mb-3 position-relative">
-                                                <label for="example-text-input" class="form-label">District</label>
-                                                <select name="nominee_permanent_district_id" id="permanent_district"
-                                                    class="form-select select2" aria-label="Default select example"
-                                                    value="{{ old('nominee_permanent_district_id') }}">
-                                                    <option selected="" value="">Select District</option>
-                                                    @foreach ($districts as $district)
-                                                        <option value="{{ $district->id }}">{{ $district->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="mb-3 position-relative">
-                                                <label for="example-text-input" class="form-label">Upazilla</label>
-                                                <select name="nominee_permanent_upazilla_id" id="permanent_upazilla"
-                                                    class="form-select select2" aria-label="Default select example"
-                                                    value="{{ old('nominee_permanent_upazilla_id') }}">
-                                                    <option selected="" value="">Select Upazilla</option>
-                                                    {{-- <option value=""></option> --}}
-                                                    @foreach ($upazillas as $upazilla)
-                                                        <option value="{{ $upazilla->id }}">{{ $upazilla->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="example-text-input" class="form-label">Mobile</label>
-                                                    <input type="text" name="nominee_mobile" class="form-control"
-                                                        value="{{ old('nominee_mobile') }}">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="example-text-input" class="form-label">NID
-                                                        Card</label>
-                                                    <input type="text" name="nominee_nid" class="form-control"
-                                                        value="{{ old('nominee_nid') }}">
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 fl">
-                                        <input type="submit" class="btn btn-info waves-effect waves-light"
-                                            value="Save Info">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="example-text-input" class="form-label">Sponsor Organi</label>
+                                            <input type="text" name="sponsor" class="form-control" required=""
+                                                value="{{ old('sponsor') }}">
+                                        </div>
                                     </div>
-                            </form>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="example-text-input" class="form-label">Venue</label>
+                                            <input type="text" name="venue" class="form-control" required=""
+                                                value="{{ old('venue') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="example-text-input" class="form-label">Document</label>
+                                            <select name="documents"class="form-select select2"
+                                                aria-label="Default select example" value="{{ old('documents') }}">
+                                                <option selected="" value="">Select Document</option>
+                                                <option value="yes">Yes</option>
+                                                <option value="no">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 fl">
+                                    <input type="submit" class="btn btn-info waves-effect waves-light"
+                                        style="float:right" value="Save Info">
+                                </div>
+                        </div>
+                        </div>
                         </div>
                     </div>
-                </div> <!-- end col -->
-                <!-- END Label on top Layout -->
-            </div>
-            <!--block-content-->
-        </div><!-- END block -->
 
+                    </form>
+                </div>
+            </div>
+        </div> <!-- end col -->
+        <!-- END Label on top Layout -->
     </div>
+    <!--block-content-->
+</div><!-- END block -->
+
+</div>
 </div>
 </div>
 <script type="text/javascript">

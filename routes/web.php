@@ -15,7 +15,7 @@ use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\Pos\UnitController;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\Pos\StockController;
-use App\Http\Controllers\Pim\{PIMController, BasicInfoController,GuardianController,NomineeController,EducationController, CourseController, ExperienceController, FamilyBrotherSisterController, FamilyChildController, FamilySpouceController};
+use App\Http\Controllers\Pim\{PIMController, BasicInfoController,GuardianController,NomineeController,EducationController, CourseController, TrainingController, ExperienceController, FamilyBrotherSisterController, FamilyChildController, FamilySpouceController};
 
 
 
@@ -627,7 +627,7 @@ Route::controller(FamilyChildController::class)->group(function(){
     Route::get('/show/familychild/{id}', 'ShowFamilyChild')->name('show.familychild');
     Route::get('/edit/familychild/{id}','EditFamilyChild')->name('edit.familychild');
     Route::post('/update/familychild','UpdateFamilyChild')->name('familychild.update');
-    Route::get('/delete/familychild/{id}','DeleteFamilyChild')->name('delete.child');
+    Route::get('/delete/familychild/{id}','DeleteFamilyChild')->name('delete.familychild');
 });
 
 ///PIM Education All Route

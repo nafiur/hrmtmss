@@ -5,7 +5,7 @@
         href="{{ asset('backend/mix/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @section('title')
-    {{ 'Add Nominee' }}
+    {{ 'Add Family/Child' }}
 @endsection
 <div class="page-content">
     <div class="container-fluid">
@@ -14,21 +14,24 @@
                 <li class="breadcrumb-item">
                     <a href="javascript:void(0)">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Add Nominee Information</li>
+                <li class="breadcrumb-item active" aria-current="page"><a
+                    href="{{ route('all.familybrothersister') }}">Family/Child</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Add Child Information</li>
             </ol>
         </nav>
 
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Add New Nominee</h3>
-                <a href="{{ route('all.nominee') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
+                <h3 class="block-title">Add New Child</h3>
+                <a href="{{ route('all.familychild') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
                     style="float:right;"><i class="fa fa-undo"> Back </i></a> <br> <br>
             </div>
             <div class="block-content">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" action="{{ route('nominee.store') }}" id="myForm">
+                            <form method="post" action="{{ route('familychild.store') }}" id="myForm">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">
@@ -45,66 +48,80 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Nominee Name</label>
-                                            <input type="text" name="nominee_name" class="form-control"
-                                                required="" value="{{ old('nominee_name') }}">
+                                            <label for="example-text-input" class="form-label">Child Name</label>
+                                            <input type="text" name="child_name" class="form-control"
+                                                required="" value="{{ old('child_name') }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Relation</label>
-                                            <select name="nominee_relation_types_id" class="form-select select2"
+                                            <label for="example-text-input" class="form-label">Date of Birth</label>
+                                            <input class="form-control" name="date_of_birth" type="date"
+                                                value="{{ old('date_of_birth') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="example-text-input" class="form-label">Gender</label>
+                                            <select name="gender_id" class="form-select select2"
+                                                aria-label="Default select example" value="{{ old('gender_id') }}">
+                                                <option selected="" value="{{ old('gender_id') }}">Select Gender
+                                                </option>
+                                                @foreach ($gender as $gender)
+                                                    <option value="{{ $gender->id }}">
+                                                        {{ $gender->name }}</option>
+                                                @endforeach
+                                            </select>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="example-text-input" class="form-label">Profession</label>
+                                            <select name="profession_id" class="form-select select2"
                                                 aria-label="Default select example"
-                                                value="{{ old('nominee_relation_types_id') }}">
-                                                <option selected="" value="">Select Relation</option>
-                                                @foreach ($relation_types as $relation)
-                                                    <option value="{{ $relation->id }}">{{ $relation->relation_name }}
+                                                value="{{ old('profession_id') }}">
+                                                <option selected="" value="">Select Profession</option>
+                                                @foreach ($professions as $profession)
+                                                    <option value="{{ $profession->id }}">{{ $profession->profession_name }}
                                                     </option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="example-text-input" class="form-label">Percentage</label>
-                                            <input type="text" name="nominee_percentage" class="form-control"
-                                                value="{{ old('nominee_percentage') }}">
-                                        </div>
-                                    </div>
                                     <div class="alert alert-secondary" role="alert">
-                                        <label for="example-text-input" class="form-label">Nominee Address</label>
+                                        <label for="example-text-input" class="form-label">Address</label>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="mb-3 position-relative">
                                                 <label for="example-text-input" class="form-label">Village</label>
-                                                <input type="text" name="nominee_permanent_village" id="nominee_permanent_village"
-                                                    class="form-control" value="{{ old('nominee_permanent_village') }}">
+                                                <input type="text" name="child_village" id="child_village"
+                                                    class="form-control" value="{{ old('child_village') }}">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3 position-relative">
                                                 <label for="example-text-input" class="form-label">Postoffice</label>
-                                                <input type="text" name="nominee_permanent_post" id="nominee_permanent_post"
-                                                    class="form-control" value="{{ old('nominee_permanent_post') }}">
+                                                <input type="text" name="child_post" id="child_post"
+                                                    class="form-control" value="{{ old('child_post') }}">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3 position-relative">
                                                 <label for="example-text-input" class="form-label">Postal Code</label>
-                                                <input type="text" name="nominee_permanent_postal_code"
-                                                    id="nominee_permanent_postal_code" class="form-control"
-                                                    value="{{ old('nominee_permanent_postal_code') }}">
+                                                <input type="text" name="child_postal_code"
+                                                    id="child_postal_code" class="form-control"
+                                                    value="{{ old('child_postal_code') }}">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3 position-relative">
                                                 <label for="example-text-input" class="form-label">Division</label>
-                                                <select name="nominee_permanent_division_id" id="permanent_division"
+                                                <select name="child_division_id" id="permanent_division"
                                                     class="form-select select2" aria-label="Default select example"
-                                                    value="{{ old('nominee_permanent_division_id') }}">
+                                                    value="{{ old('child_division_id') }}">
                                                     <option selected="" value="">Select Division</option>
                                                     @foreach ($divisions as $division)
                                                         <option value="{{ $division->id }}">{{ $division->name }}
@@ -116,9 +133,9 @@
                                         <div class="col-md-4">
                                             <div class="mb-3 position-relative">
                                                 <label for="example-text-input" class="form-label">District</label>
-                                                <select name="nominee_permanent_district_id" id="permanent_district"
+                                                <select name="child_district_id" id="permanent_district"
                                                     class="form-select select2" aria-label="Default select example"
-                                                    value="{{ old('nominee_permanent_district_id') }}">
+                                                    value="{{ old('child_district_id') }}">
                                                     <option selected="" value="">Select District</option>
                                                     @foreach ($districts as $district)
                                                         <option value="{{ $district->id }}">{{ $district->name }}
@@ -130,9 +147,9 @@
                                         <div class="col-md-4">
                                             <div class="mb-3 position-relative">
                                                 <label for="example-text-input" class="form-label">Upazilla</label>
-                                                <select name="nominee_permanent_upazilla_id" id="permanent_upazilla"
+                                                <select name="child_upazilla_id" id="permanent_upazilla"
                                                     class="form-select select2" aria-label="Default select example"
-                                                    value="{{ old('nominee_permanent_upazilla_id') }}">
+                                                    value="{{ old('child_upazilla_id') }}">
                                                     <option selected="" value="">Select Upazilla</option>
                                                     {{-- <option value=""></option> --}}
                                                     @foreach ($upazillas as $upazilla)
@@ -143,29 +160,11 @@
                                             </div>
                                         </div>
                                         </div>
+                                        <div class="col-md-12 fl">
+                                            <input type="submit" class="btn btn-info waves-effect waves-light"
+                                                style="float:right" value="Save Info">
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="example-text-input" class="form-label">Mobile</label>
-                                                    <input type="text" name="nominee_mobile" class="form-control"
-                                                        value="{{ old('nominee_mobile') }}">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="example-text-input" class="form-label">NID
-                                                        Card</label>
-                                                    <input type="text" name="nominee_nid" class="form-control"
-                                                        value="{{ old('nominee_nid') }}">
-                                                </div>
-                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6 fl">
-                                        <input type="submit" class="btn btn-info waves-effect waves-light"
-                                            value="Save Info">
-                                    </div>
                             </form>
                         </div>
                     </div>
@@ -182,7 +181,7 @@
     $(document).ready(function() {
         $('#myForm').validate({
             rules: {
-                nominee_name: {
+                familychild_name: {
                     required: true,
                 },
                 employee_id: {
@@ -196,7 +195,7 @@
                 // },
             },
             messages: {
-                nominee_name: {
+                familychild_name: {
                     required: 'Please Enter Nominee Name',
                 },
                 employee_id: {
@@ -222,22 +221,22 @@
     $(document).ready(function() {
         $('#sameaspermanentaddress').click(function() {
             if ($('#sameaspermanentaddress').is(":checked")) {
-                $('#nominee_present_village').val($('#nominee_permanent_village').val());
+                $('#familychild_present_village').val($('#familychild_permanent_village').val());
                 $('#present_post').val($('#permanent_post').val());
                 $('#present_postal_code').val($('#permanent_postal_code').val());
-                var division = $('#nominee_permanent_division option:selected').val();
+                var division = $('#familychild_permanent_division option:selected').val();
                 $('#present_division option[value=' + division + ']').attr('selected', 'selected');
-                var district = $('#nominee_permanent_district option:selected').val();
+                var district = $('#familychild_permanent_district option:selected').val();
                 $('#present_district option[value=' + district + ']').attr('selected', 'selected');
-                var upazilla = $('#nominee_permanent_upazilla option:selected').val();
+                var upazilla = $('#familychild_permanent_upazilla option:selected').val();
                 $('#present_upazilla option[value=' + upazilla + ']').attr('selected', 'selected');
             } else { //Clear on uncheck
-                $('#nominee_present_village').val("");
-                $('#nominee_present_post').val("");
-                $('#nominee_present_postal_code').val("");
-                $('#nominee_present_division option[value=""]').attr('selected', 'selected');
-                $('#nominee_present_district option[value=""]').attr('selected', 'selected');
-                $('#nominee_present_upazilla option[value=""]').attr('selected', 'selected');
+                $('#familychild_present_village').val("");
+                $('#familychild_present_post').val("");
+                $('#familychild_present_postal_code').val("");
+                $('#familychild_present_division option[value=""]').attr('selected', 'selected');
+                $('#familychild_present_district option[value=""]').attr('selected', 'selected');
+                $('#familychild_present_upazilla option[value=""]').attr('selected', 'selected');
             };
         });
 

@@ -630,7 +630,7 @@ Route::controller(FamilyChildController::class)->group(function(){
     Route::get('/delete/familychild/{id}','DeleteFamilyChild')->name('delete.familychild');
 });
 
-///PIM Education All Route
+///PIM Family Spouce All Route
 Route::controller(FamilySpouceController::class)->group(function(){
 
     Route::get('/all/familyspouce','AllFamilySpouce')->name('all.familyspouce');
@@ -640,6 +640,41 @@ Route::controller(FamilySpouceController::class)->group(function(){
     Route::get('/edit/familyspouce/{id}','EditFamilySpouce')->name('edit.familyspouce');
     Route::post('/update/familyspouce','UpdateFamilySpouce')->name('familyspouce.update');
     Route::get('/delete/familyspouce/{id}','DeleteFamilySpouce')->name('delete.familyspouce');
+});
+///PIM Relative StaffAll Route
+Route::controller(RelativeStaffController::class)->group(function(){
+
+    Route::get('/all/relativestaff','AllRelativeStaff')->name('all.relativestaff');
+    Route::get('/add/relativestaff','AddRelativeStaff')->name('add.relativestaff');
+    Route::post('/store/relativestaff','StoreRelativeStaff')->name('relativestaff.store');
+    Route::get('/show/relativestaff/{id}', 'ShowRelativeStaff')->name('show.relativestaff');
+    Route::get('/edit/relativestaff/{id}','EditRelativeStaff')->name('edit.relativestaff');
+    Route::post('/update/relativestaff','UpdateRelativeStaff')->name('relativestaff.update');
+    Route::get('/delete/relativestaff/{id}','DeleteRelativeStaff')->name('delete.relativestaff');
+});
+
+///PIM Yearly Health Checkup All Route
+Route::controller(YearlyHealthCheckUpController::class)->group(function(){
+
+    Route::get('/all/yearlyhealthcheckup','AllYearlyHealthCheckUp')->name('all.yearlyhealthcheckup');
+    Route::get('/add/yearlyhealthcheckup','AddYearlyHealthCheckUp')->name('add.yearlyhealthcheckup');
+    Route::post('/store/yearlyhealthcheckup','StorYearlyHealthCheckUp')->name('yearlyhealthcheckup.store');
+    Route::get('/show/yearlyhealthcheckup/{id}', 'ShowYearlyHealthCheckUp')->name('show.yearlyhealthcheckup');
+    Route::get('/edit/yearlyhealthcheckup/{id}','EditYearlyHealthCheckUp')->name('edit.yearlyhealthcheckup');
+    Route::post('/update/yearlyhealthcheckup','UpdateYearlyHealthCheckUp')->name('yearlyhealthcheckup.update');
+    Route::get('/delete/yearlyhealthcheckup/{id}','DeleteYearlyHealthCheckUp')->name('delete.yearlyhealthcheckup');
+});
+
+///PIM PF Check List All Route
+Route::controller(PFCheckListController::class)->group(function(){
+
+    Route::get('/all/pfchecklist','AllPFCheckList')->name('all.pfchecklist');
+    Route::get('/add/pfchecklist','AddPFCheckList')->name('add.pfchecklist');
+    Route::post('/store/pfchecklist','StorPFCheckList')->name('pfchecklist.store');
+    Route::get('/show/pfchecklist/{id}', 'ShowPFCheckList')->name('show.pfchecklist');
+    Route::get('/edit/pfchecklist/{id}','EditPFCheckList')->name('edit.pfchecklist');
+    Route::post('/update/pfchecklist','UpdatePFCheckList')->name('pfchecklist.update');
+    Route::get('/delete/pfchecklist/{id}','DeletePFCheckList')->name('delete.pfchecklist');
 });
 
 

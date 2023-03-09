@@ -155,7 +155,7 @@
             var fromdate = $(this).val(),
                 todate = $('.toEx').val();
             if (todate !== '') {
-                var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                var oneDay = 365*24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
                 var firstDate = new Date(fromdate);
                 var secondDate = new Date(todate);
                 var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (
@@ -167,7 +167,7 @@
             var todate = $(this).val(),
                 fromdate = $('.fromEx').val();
             if (fromdate !== '') {
-                var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                var oneDay = 365*24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
                 var firstDate = new Date(fromdate);
                 var secondDate = new Date(todate);
                 var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (

@@ -19,7 +19,7 @@
             {{-- @if (Auth::user()->can('newemployee.module')) --}}
                     <div class="col-6 col-md-4 col-xl-2">
                         <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.basicinfo') }}">
+                            href="{{ route('staffdetailsreport') }}">
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
@@ -180,20 +180,6 @@
                                     <i class="fa fas fa-user-plus fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">Yearly Health CheckUp</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
-                {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.pimreport') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">PIM Report</p>
                             </div>
                         </a>
                     </div>

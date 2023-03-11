@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Division;
 use App\Models\NewEmployee;
+use App\Models\Pim\Nominee;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -18,4 +19,5 @@ class District extends Model
     public function newemployee(){
         return $this->belongsTo(NewEmployee::class,'id','id');
     }
+
 }

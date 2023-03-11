@@ -220,7 +220,15 @@ document.write(currentDate);
                     <th>Date of Confirmation</th>
                     <td></td>
                     <th>Total Sevice Length</th>
-                    <td></td>
+                    @php
+                        $initialjoiningdate = $basicinfo->joiningdate;
+                        $now = \Carbon\Carbon::now();
+                        $joindate = \Carbon\Carbon::parse($initialjoiningdate);
+                        $totalservicelength = $joindate->diff($now)->format('%y years, %m months, and %d days');
+                    @endphp
+                    <td>
+                        {{ $totalservicelength}}
+                    </td>
                 </tr>
                 <tr>
                     <th>Joining Date of Present Post</th>
@@ -236,7 +244,15 @@ document.write(currentDate);
                 </tr>
                 <tr>
                     <th>Present Age</th>
-                    <td></td>
+                    @php
+                        $dateofbirth = $basicinfo->date_of_birth;
+                        $now = \Carbon\Carbon::now();
+                        $agedate = \Carbon\Carbon::parse($dateofbirth);
+                        $presentage = $agedate->diff($now)->format('%y years, %m months, and %d days');
+                    @endphp
+                    <td>
+                        {{ $presentage}}
+                    </td>
                     <th>Blood Group</th>
                     <td>{{ $basicinfo->blood_groups->name ?? '' }}</td>
                 </tr>
@@ -287,39 +303,40 @@ document.write(currentDate);
                 <tr>
                     <th colspan="4" bgcolor="#AAC6FF">Guardian Information</th>
                 </tr>
+                @foreach ($guardian as $iteam)
                 <tr>
                     <th>Guardian Name</th>
-                    <td></td>
+                    <td>{{ $iteam->guardian_name }}</td>
                     <th>Father Name</th>
-                    <td></td>
+                    <td>{{ $iteam->guardian_father_name }}</td>
                 </tr>
                 <tr>
                     <th>Relation</th>
-                    <td></td>
-                    <th></th>
-                    <td></td>
+                    <td>{{ $iteam->relation->relation_name }}</td>
+                    <th>Mother Name</th>
+                    <td>{{ $iteam->guardian_mother_name }}</td>
                 </tr>
                 <tr>
                     <th>Mobile No</th>
-                    <td></td>
+                    <td>{{ $iteam->guardian_mobile }}</td>
                     <th>National ID#</th>
-                    <td></td>
+                    <td>{{ $iteam->guardian_nid }}</td>
                 </tr>
                 <tr>
                     <th>Phone No</th>
-                    <td></td>
+                    <td>{{ $iteam->guardian_phone}}</td>
                     <th>Birth Certificate No</th>
-                    <td></td>
+                    <td>{{ $iteam->guardian_name }}</td>
                 </tr>
                 <tr>
                     <th>E-mail</th>
-                    <td></td>
+                    <td>{{ $iteam->guardian_email }}</td>
                     <th>Monthly Income</th>
-                    <td></td>
+                    <td>{{ $iteam->guardian_monthly_income }}</td>
                 </tr>
                 <tr>
                     <th>Profession</th>
-                    <td></td>
+                    <td>{{ $iteam->profession->profession_name }}</td>
                     <th rowspan="4">Picture</th>
                     <td rowspan="4">
                         <img src="./Detils Staff Report_files/10118707(1).jpg" alt="10118707" width="90"
@@ -328,16 +345,23 @@ document.write(currentDate);
                 </tr>
                 <tr>
                     <th>Working Location</th>
-                    <td></td>
+                    <td>{{ $iteam->guardian_name }}</td>
                 </tr>
                 <tr>
                     <th>Present Address</th>
-                    <td></td>
+                    <td>Village: {{ $iteam->guardian_present_village }} ,
+                        PostOffice: {{ $iteam->guardian_present_village }},
+                        Upazilla: {{ $iteam->guardian_present_upazilla->name ?? '' }},
+                        District: {{ $iteam->guardian_present_district->name ?? '' }}</td>
                 </tr>
                 <tr>
                     <th>Permanent Address</th>
-                    <td></td>
+                    <td>Village: {{ $iteam->guardian_permanent_village }} ,
+                        PostOffice: {{ $iteam->guardian_permanent_village }},
+                        Upazilla: {{ $iteam->guardian_permanent_upazilla->name ?? '' }},
+                        District: {{ $iteam->guardian_permanent_district->name ?? '' }}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table> <br>
 
@@ -359,32 +383,21 @@ document.write(currentDate);
                     <th>GPA</th>
                     <th>Documents</th>
                 </tr>
-                <tr>
-                    <td>Diploma Eng</td>
-                    <td>2014</td>
-                    <td>Diploma in Computer Engineering</td>
-                    <td></td>
-                    <td>N/I</td>
-                    <td>TMSS Technical Institute </td>
-                    <td>Technical Education Board, Dhaka</td>
-                    <td>0</td>
-                    <td>B-</td>
-                    <td>2.89</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>SSC</td>
-                    <td>2005</td>
-                    <td>N/A</td>
-                    <td>Science</td>
-                    <td>N/I</td>
-                    <td>Satshimulia High School</td>
-                    <td>Rajshahi</td>
-                    <td>0</td>
-                    <td>A-</td>
-                    <td>3.88</td>
-                    <td>Yes</td>
-                </tr>
+                @foreach ($education as $education)
+                    <tr>
+                        <td>{{ $education->examname->name }}</td>
+                        <td>{{ $education->year->year_name }}</td>
+                        <td>{{ $education->edusubject->subject_name }}</td>
+                        <td>{{ $education->educationgroup->group_name ?? '' }}</td>
+                        <td>{{ $education->thesis_topic }}</td>
+                        <td>{{ $education->name_of_institute }}</td>
+                        <td>{{ $education->boarduniversity->board_university_name }}</td>
+                        <td>{{ $education->total_marks }}</td>
+                        <td>{{ $education->gradeclass->grade_class_name  }}</td>
+                        <td>{{ $education->gpa }}</td>
+                        <td>{{ $education->documents }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table><br>
 
@@ -402,14 +415,16 @@ document.write(currentDate);
                     <th>Duration</th>
                     <th>Grade</th>
                 </tr>
-                <tr>
-                    <td>Diploma in Databse Programming</td>
-                    <td>Databse Programming</td>
-                    <td>2012</td>
-                    <td>National Youth Training Institute</td>
-                    <td>6-Months</td>
-                    <td>A</td>
-                </tr>
+                @foreach ($course as $item)
+                    <tr>
+                        <td>{{ $item->course_name }}</td>
+                        <td>{{ $item->course_subject }}</td>
+                        <td>{{ $item->course_passing_year }}</td>
+                        <td>{{ $item->name_of_institute }}</td>
+                        <td>{{ $item->course_duration }}</td>
+                        <td>{{ $item->course_grade_class }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <br>
@@ -469,35 +484,31 @@ document.write(currentDate);
                     <th>%</th>
                     <th>Address</th>
                     <th>Voter ID</th>
-                    <th>Phone</th>
                     <th>Mobile</th>
                     <th>Picture</th>
                 </tr>
-
-                <tr>
-                    <td>Mst. Nasima Banu</td>
-                    <td>Mother</td>
-                    <td>50</td>
-                    <td>Vill: Dakshin Bhag, Post: Shekerkola, PS: &amp; Dist: Bogra.</td>
-                    <td>1012086318751</td>
-                    <td>0</td>
-                    <td>01717566431</td>
-                    <td>
-                        <img src="./Detils Staff Report_files/12865.jpg" alt="10118707" width="47" height="52">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Mst. Khadiza Khatun Rinty</td>
-                    <td>Wife</td>
-                    <td>50</td>
-                    <td>Vill: Dakshin Bhag, Post: Shekerkola, PS: &amp; Dist: Bogra.</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>01796747053</td>
-                    <td>
-                        <img src="./Detils Staff Report_files/12866.jpg" alt="10118707" width="47" height="52">
-                    </td>
-                </tr>
+                @foreach ($nominee as $key => $item)
+                    <tr>
+                        <td>{{ $item->nominee_name }}</td>
+                        {{-- <td>{{ $item->relation_types->relation_name }}</td> --}}
+                        <td>{{ $item->nominee_relation_types->relation_name }}</td>
+                        {{-- <td>{{ $item->nominee_relation_types_id }}</td> --}}
+                        <td>{{ $item->nominee_percentage }}</td>
+                        <td>Village: {{ $item->nominee_permanent_village }},
+                            Postoffice: {{ $item->nominee_permanent_post }},
+                            Upazilla: {{ $item->nominee_upazilla->name }},
+                            District: {{ $item->nominee_district->name }},
+                        </td>
+                        <td>{{ $item->nominee_nid }}</td>
+                        <td>{{ $item->nominee_mobile }}</td>
+                        {{-- <td>{{ $nominee->nominee_mobile }} --}}
+                        </td>
+                        <td>
+                            <img src="./Detils Staff Report_files/12865.jpg" alt="10118707" width="47"
+                                height="52">
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <br>
@@ -515,14 +526,25 @@ document.write(currentDate);
                     <th>Present Address</th>
                     <th>Permanent Address</th>
                 </tr>
-                <tr>
-                    <td>Mst. Khadiza Khatun Rinty</td>
-                    <td></td>
-                    <td></td>
-                    <td>Student</td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                @foreach ($spouce as $key => $item)
+                    <tr>
+                        <td>{{ $item->spouce_name }}</td>
+                        <td>{{ $item->mobile }}</td>
+                        <td>{{ $item->email }}</td>
+                        <td>{{ $item->profession_id }}</td>
+                        <td>Village: {{ $item->nominee_permanent_village }},
+                            Postoffice: {{ $item->nominee_permanent_post }},
+                            Upazilla: {{ $item->nominee_permanent_upazilla_id }},
+                            District: {{ $item->nominee_permanent_district_id }},
+                        </td>
+                        <td>Village: {{ $item->nominee_permanent_village }},
+                            Postoffice: {{ $item->nominee_permanent_post }},
+                            Upazilla: {{ $item->nominee_permanent_upazilla_id }},
+                            District: {{ $item->nominee_permanent_district_id }},
+                        </td>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <br>
@@ -539,20 +561,19 @@ document.write(currentDate);
                     <th>Profession</th>
                     <th>Present Address</th>
                 </tr>
-                <tr>
-                    <td>Nawafi Tafannun Yumna</td>
-                    <td>Female</td>
-                    <td>2015-07-23</td>
-                    <td>Student</td>
-                    <td>Vill: Dakshin Bhag, Post: Shekerkola, PS: &amp; Dist: Bogra.</td>
-                </tr>
-                <tr>
-                    <td>Yusha Al Nufais</td>
-                    <td>Male</td>
-                    <td>2021-10-03</td>
-                    <td>N/A</td>
-                    <td>Vill: Dakshin Bhag, Post: Shekerkola, PS: &amp; Dist: Bogra.</td>
-                </tr>
+                @foreach ($child as $key => $item)
+                    <tr>
+                        <td>{{ $item->child_name }}</td>
+                        <td>{{ $item->date_of_birth }}</td>
+                        {{-- <td>{{ $item->email }}</td> --}}
+                        <td>{{ $item->profession_id }}</td>
+                        <td>Village: {{ $item->nominee_permanent_village }},
+                            Postoffice: {{ $item->nominee_permanent_post }},
+                            Upazilla: {{ $item->nominee_permanent_upazilla_id }},
+                            District: {{ $item->nominee_permanent_district_id }},
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <br>
@@ -570,13 +591,20 @@ document.write(currentDate);
                     <th>Depend</th>
                     <th>Address</th>
                 </tr>
-                <tr>
-                    <td>Mst. Nafisun Nahar Sumona</td>
-                    <td>Sister</td>
-                    <td>Student</td>
-                    <td>No</td>
-                    <td>Vill: Dakshin Bhag, Post: Shekerkola, PS: &amp; Dist: Bogra. </td>
-                </tr>
+                @foreach ($fbs as $key => $item)
+                    <tr>
+                        <td>{{ $item->brother_sister_name }}</td>
+                        <td>{{ $item->relation_types_id }}</td>
+                        {{-- <td>{{ $item->email }}</td> --}}
+                        <td>{{ $item->profession_id }}</td>
+                        <td>{{ $item->depend }}</td>
+                        <td>Village: {{ $item->nominee_permanent_village }},
+                            Postoffice: {{ $item->nominee_permanent_post }},
+                            Upazilla: {{ $item->nominee_permanent_upazilla_id }},
+                            District: {{ $item->nominee_permanent_district_id }},
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <br>

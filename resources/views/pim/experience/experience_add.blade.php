@@ -76,25 +76,26 @@
                                             <label for="example-text-input" class="form-label">From
                                             </label>
                                             <input type="date" name="experience_from" class="form-control fromEx"
-                                                required="" id="firstDate" value="{{ old('experience_from') }}">
+                                                required="" id="startDate" value="{{ old('experience_from') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">To
                                             </label>
-                                            <input type="date" id="secondDate" name="experience_to" class="form-control toEx"
-                                                required="" value="{{ old('experience_to') }}">
+                                            <input type="date" id="endDate" name="experience_to"
+                                                class="form-control toEx" required=""
+                                                value="{{ old('experience_to') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <button type="button" onclick="X()">Find Difference</button><br>
-                                            <div id="dayCount"></div>
+                                            <div name="result" id="result"></div>
                                             <label for="example-text-input" class="form-label">Total Experience</label>
-                                            <input type="text" id="dayCount" readonly name="total_experience"
+                                            <input type="text" id="result" readonly name="total_experience"
                                                 class="form-control duration" required=""
-                                                value="{{ old('total_experience') }}">
+                                                value="{{ old('result') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -149,13 +150,30 @@
         dayCountElement.innerHTML = `The difference between the dates is ${differenceInDays} days.`;
     }
 </script>
+
 <script>
+    $(document).ready(function() {
+        $("#endDate").change(function() {
+            var startDate = new Date($("#startDate").val());
+            var endDate = new Date($(this).val());
+            var yearDiff = endDate.getFullYear() - startDate.getFullYear();
+            var monthDiff = endDate.getMonth() - startDate.getMonth();
+            if (monthDiff < 0) {
+                yearDiff--;
+                monthDiff += 12;
+            }
+            $("#result").text(yearDiff + " years, " + monthDiff + " months");
+        });
+    });
+</script>
+
+{{-- <script>
     $(document).ready(function() {
         $('.fromEx').on('change', function() {
             var fromdate = $(this).val(),
                 todate = $('.toEx').val();
             if (todate !== '') {
-                var oneDay = 365*24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                var oneDay = 365 * 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
                 var firstDate = new Date(fromdate);
                 var secondDate = new Date(todate);
                 var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (
@@ -167,7 +185,7 @@
             var todate = $(this).val(),
                 fromdate = $('.fromEx').val();
             if (fromdate !== '') {
-                var oneDay = 365*24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                var oneDay = 365 * 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
                 var firstDate = new Date(fromdate);
                 var secondDate = new Date(todate);
                 var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (
@@ -176,7 +194,7 @@
             }
         });
     });
-</script>
+</script> --}}
 <script type="text/javascript">
     $(document).ready(function() {
         $('#myForm').validate({
@@ -217,31 +235,7 @@
     });
 </script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#sameaspermanentaddress').click(function() {
-            if ($('#sameaspermanentaddress').is(":checked")) {
-                $('#experience_present_village').val($('#experience_permanent_village').val());
-                $('#present_post').val($('#permanent_post').val());
-                $('#present_postal_code').val($('#permanent_postal_code').val());
-                var division = $('#experience_permanent_division option:selected').val();
-                $('#present_division option[value=' + division + ']').attr('selected', 'selected');
-                var district = $('#experience_permanent_district option:selected').val();
-                $('#present_district option[value=' + district + ']').attr('selected', 'selected');
-                var upazilla = $('#experience_permanent_upazilla option:selected').val();
-                $('#present_upazilla option[value=' + upazilla + ']').attr('selected', 'selected');
-            } else { //Clear on uncheck
-                $('#experience_present_village').val("");
-                $('#experience_present_post').val("");
-                $('#experience_present_postal_code').val("");
-                $('#experience_present_division option[value=""]').attr('selected', 'selected');
-                $('#experience_present_district option[value=""]').attr('selected', 'selected');
-                $('#experience_present_upazilla option[value=""]').attr('selected', 'selected');
-            };
-        });
 
-    });
-</script>
 <script src="{{ asset('backend/assets/libs/parsleyjs/parsley.min.js') }}"></script>
 <script src="{{ asset('backend/mix/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}">
 </script>

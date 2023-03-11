@@ -9,20 +9,29 @@ use App\Models\Division;
 use App\Models\Upazilla;
 use App\Models\BloodGroup;
 use App\Models\Designation;
+use App\Models\Pim\Nominee;
 use App\Models\EmployeeType;
 use App\Models\Pim\Guardian;
+use App\Models\Pim\Training;
 use App\Models\MaritalStatus;
-use App\Models\Pim\StaffDetailsReport;
+use App\Models\Pim\Education;
+use App\Models\Pim\Experience;
+use App\Models\Pim\FamilyChild;
+use App\Models\Pim\FamilySpouce;
+use App\Models\Pim\FamilyBrotherSister;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\EducationalQualification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class BasicInfo extends Model
+class StaffDetailsReport extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
-
+    public function staffdetails(){
+        return $this->belongsTo(BasicInfo::class,'id');
+    }
     public function division(){
         return $this->belongsTo(Division::class,'division_id','id');
     }
@@ -82,6 +91,10 @@ class BasicInfo extends Model
     {
         return $this->hasMany(Education::class);
     }
+    public function employeedetails()
+    {
+        return $this->hasMany(BasicInfo::class);
+    }
 
     public function guardian()
     {
@@ -120,6 +133,5 @@ class BasicInfo extends Model
         return $this->hasMany(Experience::class);
     }
 
+
 }
-
-

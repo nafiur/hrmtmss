@@ -2,8 +2,10 @@
 
 namespace App\Models\Pim;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Pim\BasicInfo;
+use App\Models\Pim\StaffDetailsReport;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class FamilyChild extends Model
 {
@@ -14,4 +16,8 @@ class FamilyChild extends Model
         return $this->belongsTo(BasicInfo::class,'employee_id','id');
     }
 
+    public function staffdetailsreport()
+    {
+        return $this->belongsTo(StaffDetailsReport::class);
+    }
 }

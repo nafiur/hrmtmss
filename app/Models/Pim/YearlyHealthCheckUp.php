@@ -2,10 +2,15 @@
 
 namespace App\Models\Pim;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Pim\StaffDetailsReport;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class YearlyHealthCheckUp extends Model
 {
     use HasFactory;
+    public function staffdetailsreport()
+    {
+        return $this->belongsTo(StaffDetailsReport::class);
+    }
 }

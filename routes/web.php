@@ -15,7 +15,9 @@ use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\Pos\UnitController;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\Pos\StockController;
-use App\Http\Controllers\Pim\{PIMController, BasicInfoController,GuardianController,NomineeController,EducationController, CourseController, TrainingController, ExperienceController, FamilyBrotherSisterController, FamilyChildController, FamilySpouceController};
+use App\Http\Controllers\Pim\{PIMController, BasicInfoController,GuardianController,NomineeController,EducationController,
+    CourseController, TrainingController, ExperienceController, FamilyBrotherSisterController, FamilyChildController,
+    FamilySpouceController, PIMReportController, StaffDetailsReportController};
 
 
 
@@ -67,6 +69,7 @@ Route::controller(PIMController::class)->group(function () {
     Route::get('/pim/all', 'AllPIM')->name('pim.all');
 
 });
+
 
  // Satff Profile All Route
 Route::controller(StaffProfileController::class)->group(function () {
@@ -532,6 +535,8 @@ Route::controller(BasicInfoController::class)->group(function(){
     Route::get('/edit/basicinfo/{id}','EditBasicInfo')->name('edit.basicinfo');
     Route::post('/update/basicinfo','UpdateBasicInfo')->name('basicinfo.update');
     Route::get('/delete/basicinfo/{id}','DeleteBasicInfo')->name('delete.basicinfo');
+    Route::get('/pim/report/staffdetailsreport', 'StaffDetailsReport')->name('staffdetailsreport');
+    Route::get('/pim/report/show/staffdetailsreport/{id}', 'ShowStaffDetailsReport')->name('showstaffdetailsreport');
 });
 
 ///PIM Guardian All Route
@@ -679,7 +684,17 @@ Route::controller(PFCheckListController::class)->group(function(){
 
 
 
+Route::controller(PIMReportController::class)->group(function () {
+    Route::get('/pim/report/all', 'AllPIMReport')->name('all.pimreport');
 
+});
+
+// Route::controller(StaffDetailsReportController::class)->group(function () {
+//     Route::get('/pim/report/staffdetailsreport', 'StaffDetailsReport')->name('staffdetailsreport');
+//     // Route::get('/pim/report/show/staffdetailsreport/{id}', 'ShowStaffDetailsReport')->name('showstaffdetailsreport');
+//     Route::get('/pim/report/show/staffdetailsreport/', 'ShowStaffDetailsReport')->name('showstaffdetailsreport');
+
+// });
 
 
 

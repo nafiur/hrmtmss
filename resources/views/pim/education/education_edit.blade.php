@@ -101,13 +101,13 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="example-text-input" class="form-label">Group</label>
-                                            <select name="education_group"class="form-select select2"
+                                            <select name="education_groups_id"class="form-select select2"
                                                 aria-label="Default select example"
-                                                value="{{ old('education_group') }}">
+                                                value="{{ old('education_groups_id') }}">
                                                 <option selected="" value="">Select Duration</option>
                                                 @foreach ($educationgroup as $edugroup)
                                                 <option value="{{ $edugroup->id }}"
-                                                    {{ $edugroup->id == $education->education_group_id ? 'selected' : '' }}>
+                                                    {{ $edugroup->id == $education->education_groups_id ? 'selected' : '' }}>
                                                     {{ $edugroup->group_name }}</option>
                                                 @endforeach
                                             </select>

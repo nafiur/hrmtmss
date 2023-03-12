@@ -12,8 +12,11 @@ class Course extends Model
     use HasFactory;
     protected $guarded = [];
 
+    // public function basicinfo(){
+    //     return $this->belongsTo(BasicInfo::class,'employee_id','id');
+    // }
     public function basicinfo(){
-        return $this->belongsTo(BasicInfo::class,'employee_id','id');
+        return $this->belongsTo(BasicInfo::class);
     }
 
     public function staffdetailsreport()

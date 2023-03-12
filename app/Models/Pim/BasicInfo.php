@@ -85,7 +85,7 @@ class BasicInfo extends Model
 
     public function guardian()
     {
-        return $this->hasOne(Guardian::class);
+        return $this->hasMany(Guardian::class);
     }
 
     public function nominee()

@@ -15,8 +15,12 @@ class Nominee extends Model
     protected $guarded = [];
 
     public function basicinfo(){
-        return $this->belongsTo(BasicInfo::class,'employee_id','id');
+        return $this->belongsTo(BasicInfo::class);
     }
+
+    // public function basicinfo(){
+    //     return $this->belongsTo(BasicInfo::class,'employee_id','id');
+    // }
 
     public function nominee_persent_division(){
         return $this->belongsTo(Division::class,'nominee_persent_division_id','id');

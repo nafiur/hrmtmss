@@ -13,4 +13,8 @@ class PFCheckList extends Model
     {
         return $this->belongsTo(StaffDetailsReport::class);
     }
+
+    public function basicinfo(){
+        return $this->belongsTo(BasicInfo::class);
+    }
 }

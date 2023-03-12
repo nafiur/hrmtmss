@@ -19,8 +19,12 @@ class Education extends Model
     protected $guarded = [];
 
     public function basicinfo(){
-        return $this->belongsTo(BasicInfo::class,'employee_id','id');
+        return $this->belongsTo(BasicInfo::class);
     }
+
+    // public function basicinfo(){
+    //     return $this->belongsTo(BasicInfo::class,'employee_id','id');
+    // }
     public function examname(){
         return $this->belongsTo(EducationalQualification::class,'educational_qualification_id','id');
     }

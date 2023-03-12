@@ -14,8 +14,11 @@ class Training extends Model
     protected $guarded = [];
 
     public function basicinfo(){
-        return $this->belongsTo(BasicInfo::class,'employee_id','id');
+        return $this->belongsTo(BasicInfo::class);
     }
+    // public function basicinfo(){
+    //     return $this->belongsTo(BasicInfo::class,'employee_id','id');
+    // }
     public function country(){
         return $this->belongsTo(Country::class,'country_id','id');
     }

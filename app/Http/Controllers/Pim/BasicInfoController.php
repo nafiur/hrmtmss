@@ -324,10 +324,21 @@ class BasicInfoController extends Controller
         $blood_groups = BloodGroup::all();
         $educationqualifications = EducationalQualification::all();
         $employeetypes = EmployeeType::all();
-        $basicinfos = BasicInfo::all();
-        $basicinfo = BasicInfo::all();
+        // $basicinfos = BasicInfo::all();
+        // $basicinfo = BasicInfo::all();
         // $basicinfos = BasicInfo::where('created_by', $user->id)->orderBy('id', 'DESC')->get();
-        return view('pim.report.staffdetailsreport', compact('basicinfos'));
+        $basicinfo = DB::table('basic_infos')
+            ->join('guardians', 'basic_infos.id', '=', 'guardians.employee_id')
+            ->join('nominees', 'basic_infos.id', '=', 'nominees.employee_id')
+            ->join('education', 'basic_infos.id', '=', 'education.employee_id')
+            ->join('trainings', 'basic_infos.id', '=', 'trainings.employee_id')
+            ->join('experiences', 'basic_infos.id', '=', 'experiences.employee_id')
+            ->join('family_brother_sisters', 'basic_infos.id', '=', 'family_brother_sisters.employee_id')
+            ->join('family_children', 'basic_infos.id', '=', 'family_children.employee_id')
+            ->join('family_spouces', 'basic_infos.id', '=', 'family_spouces.employee_id')
+            ->select('basic_infos.*', 'guardians.*', 'nominees.*', 'education.*', 'education.*', 'trainings.*', 'experiences.*', 'family_brother_sisters.*', 'family_spouces.*', 'family_children.*',)
+            ->get();
+        return view('pim.report.staffdetailsreport', compact('basicinfo'));
     } // End Method
 
     public function ShowStaffDetailsReport($id)
@@ -364,9 +375,28 @@ class BasicInfoController extends Controller
             // ->select('basic_infos.*', 'guardians.*', 'education.*', 'nominees.*', 'trainings.*')
             // ->get();
             // $basicinfos = basicinfo::findOrFail($id);
-            $basicinfo = BasicInfo::findOrFail($id);
+            // $basicinfo = BasicInfo::findOrFail($id);
             // return View('backend.basicinfo.basicinfo_show',['designations'=>$designation]);
-            return view('pim.report.showstaffdetailsreport', compact('basicinfo','guardian','education', 'course','nominee','spouce','child', 'fbs','educationgroup', 'boarduni'));
+
+            // $employee = BasicInfo::with(['guardians', 'nominees', 'education', 'training', 'experiences', 'family_brother_sisters','family_children','family_spouces'])
+            //     ->where('id', $id)
+            //     ->first();
+
+            // $employee_id = 10100004;
+            $basicinfo = DB::table('basic_infos')
+            ->join('guardians', 'basic_infos.id', '=', 'guardians.employee_id')
+            ->join('nominees', 'basic_infos.id', '=', 'nominees.employee_id')
+            ->join('education', 'basic_infos.id', '=', 'education.employee_id')
+            ->join('trainings', 'basic_infos.id', '=', 'trainings.employee_id')
+            ->join('experiences', 'basic_infos.id', '=', 'experiences.employee_id')
+            ->join('family_brother_sisters', 'basic_infos.id', '=', 'family_brother_sisters.employee_id')
+            ->join('family_children', 'basic_infos.id', '=', 'family_children.employee_id')
+            ->join('family_spouces', 'basic_infos.id', '=', 'family_spouces.employee_id')
+            ->select('basic_infos.*', 'guardians.*', 'nominees.*', 'education.*', 'education.*', 'trainings.*', 'experiences.*', 'family_brother_sisters.*', 'family_spouces.*', 'family_children.*',)
+            ->get();
+            dd($basicinfo);
+            return view('pim.report.showstaffdetailsreport', compact('basicinfo'));
+            // dd($employee);
             // return view('backend.basicinfo.basicinfo_show',compact('basicinfo'));
 
         } //

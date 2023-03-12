@@ -21,6 +21,7 @@
                 <a href="" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i
                         class="fa fa-plus-circle"> Add New Experience </i></a> <br> <br>
             </div>
+
             <div class="mb-5 block-content">
                 {{-- <form method="GET" action="{{ route('showstaffdetailsreport') }}">
                     <label for="employee_id">Employee ID:</label>
@@ -28,7 +29,7 @@
                     <button type="submit">Search</button>
                 </form> --}}
                 <div class="mb-5 block-content">
-                    <h4 class="card-title">Employee Qualification All Data {{ $basicinfos->count() }} </h4>
+                    {{-- <h4 class="card-title">Employee Qualification All Data {{ $basicinfos->count() }} </h4> --}}
                     <table id="datatable" class="table table-bordered dt-responsive nowrap"
                         style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
@@ -44,21 +45,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($basicinfos as $key => $item)
+                            @foreach ($basicinfo as $key => $item)
                                 <tr>
                                     <td> {{ $key + 1 }} </td>
                                     {{-- <td> {{ $item['domains']['name']  }}</td>  --}}
-                                    <td> {{ $item->id }} </td>
+                                    <td> {{ $item->employee_id }} </td>
                                     <td> {{ $item->name }} </td>
                                     {{-- <td> {{ $item->Designation->name  }} </td>  --}}
-                                    <td> {{ $item['designation']['name'] ?? '' }} </td>
-                                    <td> {{ $item['domain']['name'] ?? '' }} </td>
+                                    {{-- <td> {{ $item['designation']['name'] ?? '' }} </td>
+                                    <td> {{ $item['domain']['name'] ?? '' }} </td> --}}
                                     {{-- <td> {{ $item->domain_id }} </td>  --}}
                                     <td> {{ $item->joiningdate }} </td>
                                     {{-- <td> {{ $item->status }} </td>    --}}
                                     <td>
                                         {{-- @if (Auth::user()->can('employee.show')) --}}
-                                            <a href="{{ route('showstaffdetailsreport', $item->id) }}" target="_blank"  class="btn btn-info sm"
+                                            <a href="{{ route('showstaffdetailsreport', $item->employee_id) }}" target="_blank"  class="btn btn-info sm"
                                                 title="Show Data"> <i class="fas fa-eye"></i>  </a>
                                         {{-- @endif --}}
                                     </td>

@@ -14,6 +14,9 @@
                 <li class="breadcrumb-item">
                     <a href="javascript:void(0)">Home</a>
                 </li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('pim.all') }}">PIM</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a
+                        href="{{ route('all.basicinfo') }}">Basic Info</a>
                 <li class="breadcrumb-item active" aria-current="page">Add New Employee Information</li>
             </ol>
         </nav>

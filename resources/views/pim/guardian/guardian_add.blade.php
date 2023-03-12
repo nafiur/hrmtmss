@@ -14,6 +14,9 @@
                 <li class="breadcrumb-item">
                     <a href="javascript:void(0)">Home</a>
                 </li>
+                                <li class="breadcrumb-item active" aria-current="page"><a
+                    href="{{ route('all.guardian') }}">Guardian Information</a>
+            </li>
                 <li class="breadcrumb-item active" aria-current="page">Add Guardian Information</li>
             </ol>
         </nav>
@@ -75,7 +78,7 @@
                                                 aria-label="Default select example"
                                                 value="{{ old('guardian_relation_types_id') }}">
                                                 <option selected="" value="">Select Relation</option>
-                                                @foreach ($relation_types as $relation)
+                                                @foreach ($relation as $relation)
                                                     <option value="{{ $relation->id }}">{{ $relation->relation_name }}
                                                     </option>
                                                 @endforeach
@@ -89,7 +92,7 @@
                                                 aria-label="Default select example"
                                                 value="{{ old('guardian_profession_id') }}">
                                                 <option selected="" value="">Select Profession</option>
-                                                @foreach ($professions as $profession)
+                                                @foreach ($profession as $profession)
                                                     <option value="{{ $profession->id }}">{{ $profession->profession_name }}
                                                     </option>
                                                 @endforeach

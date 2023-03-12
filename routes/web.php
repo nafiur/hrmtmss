@@ -532,13 +532,13 @@ Route::get('/pim/report/search', [SearchController::class, 'index'])->name('sear
 ///PIM Basic Info All Route
 Route::controller(BasicInfoController::class)->group(function(){
 
-    Route::get('/all/basicinfo','AllBasicInfo')->name('all.basicinfo');
-    Route::get('/add/basicinfo','AddBasicInfo')->name('add.basicinfo');
-    Route::post('/store/basicinfo','StoreBasicInfo')->name('basicinfo.store');
-    Route::get('/show/basicinfo/{id}', 'ShowBasicInfo')->name('show.basicinfo');
-    Route::get('/edit/basicinfo/{id}','EditBasicInfo')->name('edit.basicinfo');
-    Route::post('/update/basicinfo','UpdateBasicInfo')->name('basicinfo.update');
-    Route::get('/delete/basicinfo/{id}','DeleteBasicInfo')->name('delete.basicinfo');
+    Route::get('/pim/all/basicinfo','AllBasicInfo')->name('all.basicinfo');
+    Route::get('/pim/add/basicinfo','AddBasicInfo')->name('add.basicinfo');
+    Route::post('/pim/store/basicinfo','StoreBasicInfo')->name('basicinfo.store');
+    Route::get('/pim/show/basicinfo/{id}', 'ShowBasicInfo')->name('show.basicinfo');
+    Route::get('/pim/edit/basicinfo/{id}','EditBasicInfo')->name('edit.basicinfo');
+    Route::post('/pim/update/basicinfo','UpdateBasicInfo')->name('basicinfo.update');
+    Route::get('/pim/delete/basicinfo/{id}','DeleteBasicInfo')->name('delete.basicinfo');
     Route::get('/pim/report/staffdetailsreport', 'StaffDetailsReport')->name('staffdetailsreport');
     Route::get('/pim/report/show/staffdetailsreport/{id}', 'ShowStaffDetailsReport')->name('showstaffdetailsreport');
 });
@@ -546,144 +546,144 @@ Route::controller(BasicInfoController::class)->group(function(){
 ///PIM Guardian All Route
 Route::controller(GuardianController::class)->group(function(){
 
-    Route::get('/all/guardian','AllGuardian')->name('all.guardian');
-    Route::get('/add/guardian','AddGuardian')->name('add.guardian');
-    Route::post('/store/guardian','StoreGuardian')->name('guardian.store');
-    Route::get('/show/guardian/{id}', 'ShowGuardian')->name('show.guardian');
-    Route::get('/edit/guardian/{id}','EditGuardian')->name('edit.guardian');
-    Route::post('/update/guardian','UpdateGuardian')->name('guardian.update');
-    Route::get('/delete/guardian/{id}','DeleteGuardian')->name('delete.guardian');
+    Route::get('/pim/all/guardian','AllGuardian')->name('all.guardian');
+    Route::get('/pim/add/guardian','AddGuardian')->name('add.guardian');
+    Route::post('/pim/store/guardian','StoreGuardian')->name('guardian.store');
+    Route::get('/pim/show/guardian/{id}', 'ShowGuardian')->name('show.guardian');
+    Route::get('/pim/edit/guardian/{id}','EditGuardian')->name('edit.guardian');
+    Route::post('/pim/update/guardian','UpdateGuardian')->name('guardian.update');
+    Route::get('/pim/delete/guardian/{id}','DeleteGuardian')->name('delete.guardian');
 });
 
 ///PIM Nominee All Route
 Route::controller(NomineeController::class)->group(function(){
 
-    Route::get('/all/nominee','AllNominee')->name('all.nominee');
-    Route::get('/add/nominee','AddNominee')->name('add.nominee');
-    Route::post('/store/nominee','StoreNominee')->name('nominee.store');
-    Route::get('/show/nominee/{id}', 'ShowNominee')->name('show.nominee');
-    Route::get('/edit/nominee/{id}','EditNominee')->name('edit.nominee');
-    Route::post('/update/nominee','UpdateNominee')->name('nominee.update');
-    Route::get('/delete/nominee/{id}','DeleteNominee')->name('delete.nominee');
+    Route::get('/pim/all/nominee','AllNominee')->name('all.nominee');
+    Route::get('/pim/add/nominee','AddNominee')->name('add.nominee');
+    Route::post('/pim/store/nominee','StoreNominee')->name('nominee.store');
+    Route::get('/pim/show/nominee/{id}', 'ShowNominee')->name('show.nominee');
+    Route::get('/pim/dit/nominee/{id}','EditNominee')->name('edit.nominee');
+    Route::post('/pim/update/nominee','UpdateNominee')->name('nominee.update');
+    Route::get('/pim/delete/nominee/{id}','DeleteNominee')->name('delete.nominee');
 });
 
 ///PIM Education All Route
 Route::controller(EducationController::class)->group(function(){
 
-    Route::get('/all/education','AllEducation')->name('all.education');
-    Route::get('/add/education','AddEducation')->name('add.education');
-    Route::post('/store/education','StoreEducation')->name('education.store');
-    Route::get('/show/education/{id}', 'ShowEducation')->name('show.education');
-    Route::get('/edit/education/{id}','EditEducation')->name('edit.education');
-    Route::post('/update/education','UpdateEducation')->name('education.update');
-    Route::get('/delete/education/{id}','DeleteEducation')->name('delete.education');
+    Route::get('/pim/all/education','AllEducation')->name('all.education');
+    Route::get('/pim/add/education','AddEducation')->name('add.education');
+    Route::post('/pim/store/education','StoreEducation')->name('education.store');
+    Route::get('/pim/show/education/{id}', 'ShowEducation')->name('show.education');
+    Route::get('/pim/edit/education/{id}','EditEducation')->name('edit.education');
+    Route::post('/pim/update/education','UpdateEducation')->name('education.update');
+    Route::get('/pim/delete/education/{id}','DeleteEducation')->name('delete.education');
 });
 
 ///PIM Education All Route
 Route::controller(CourseController::class)->group(function(){
 
-    Route::get('/all/course','AllCourse')->name('all.course');
-    Route::get('/add/course','AddCourse')->name('add.course');
-    Route::post('/store/course','StoreCourse')->name('course.store');
-    Route::get('/show/course/{id}', 'ShowCourse')->name('show.course');
-    Route::get('/edit/course/{id}','EditCourse')->name('edit.course');
-    Route::post('/update/course','UpdateCourse')->name('course.update');
-    Route::get('/delete/course/{id}','DeleteCourse')->name('delete.course');
+    Route::get('/pim/all/course','AllCourse')->name('all.course');
+    Route::get('/pim/add/course','AddCourse')->name('add.course');
+    Route::post('/pim/store/course','StoreCourse')->name('course.store');
+    Route::get('/pim/show/course/{id}', 'ShowCourse')->name('show.course');
+    Route::get('/pim/edit/course/{id}','EditCourse')->name('edit.course');
+    Route::post('/pim/update/course','UpdateCourse')->name('course.update');
+    Route::get('/pim/delete/course/{id}','DeleteCourse')->name('delete.course');
 });
 
 ///PIM Training All Route
 Route::controller(TrainingController::class)->group(function(){
 
-    Route::get('/all/training','AllTraining')->name('all.training');
-    Route::get('/add/training','AddTraining')->name('add.training');
-    Route::post('/store/training','StoreTraining')->name('training.store');
-    Route::get('/show/training/{id}', 'ShowTraining')->name('show.training');
-    Route::get('/edit/training/{id}','EditTraining')->name('edit.training');
-    Route::post('/update/training','UpdateTraining')->name('training.update');
-    Route::get('/delete/training/{id}','DeleteTraining')->name('delete.training');
+    Route::get('/pim/all/training','AllTraining')->name('all.training');
+    Route::get('/pim/add/training','AddTraining')->name('add.training');
+    Route::post('/pim/store/training','StoreTraining')->name('training.store');
+    Route::get('/pim/show/training/{id}', 'ShowTraining')->name('show.training');
+    Route::get('/pim/edit/training/{id}','EditTraining')->name('edit.training');
+    Route::post('/pim/update/training','UpdateTraining')->name('training.update');
+    Route::get('/pim/delete/training/{id}','DeleteTraining')->name('delete.training');
 });
 
 ///PIM Education All Route
 Route::controller(ExperienceController::class)->group(function(){
 
-    Route::get('/all/experience','AllExperience')->name('all.experience');
-    Route::get('/add/experience','AddExperience')->name('add.experience');
-    Route::post('/store/experience','StoreExperience')->name('experience.store');
-    Route::get('/show/experience/{id}', 'ShowExperience')->name('show.experience');
-    Route::get('/edit/experience/{id}','EditExperience')->name('edit.experience');
-    Route::post('/update/experience','UpdateExperience')->name('experience.update');
-    Route::get('/delete/experience/{id}','DeleteExperience')->name('delete.experience');
+    Route::get('/pim/all/experience','AllExperience')->name('all.experience');
+    Route::get('/pim/add/experience','AddExperience')->name('add.experience');
+    Route::post('/pim/store/experience','StoreExperience')->name('experience.store');
+    Route::get('/pim/show/experience/{id}', 'ShowExperience')->name('show.experience');
+    Route::get('/pim/edit/experience/{id}','EditExperience')->name('edit.experience');
+    Route::post('/pim/update/experience','UpdateExperience')->name('experience.update');
+    Route::get('/pim/delete/experience/{id}','DeleteExperience')->name('delete.experience');
 });
 
 ///PIM Education All Route
 Route::controller(FamilyBrotherSisterController::class)->group(function(){
 
-    Route::get('/all/brothersister','AllFamilyBrotherSister')->name('all.familybrothersister');
-    Route::get('/add/familybrothersister','AddFamilyBrotherSister')->name('add.familybrothersister');
-    Route::post('/store/familybrothersister','StoreFamilyBrotherSister')->name('familybrothersister.store');
-    Route::get('/show/familybrothersister/{id}', 'ShowFamilyBrotherSister')->name('show.familybrothersister');
-    Route::get('/edit/familybrothersister/{id}','EditFamilyBrotherSister')->name('edit.familybrothersister');
-    Route::post('/update/familybrothersister','UpdateFamilyBrotherSister')->name('familybrothersister.update');
-    Route::get('/delete/familybrothersister/{id}','DeleteFamilyBrotherSister')->name('delete.familybrothersister');
+    Route::get('/pim/all/brothersister','AllFamilyBrotherSister')->name('all.familybrothersister');
+    Route::get('/pim/add/familybrothersister','AddFamilyBrotherSister')->name('add.familybrothersister');
+    Route::post('/pim/store/familybrothersister','StoreFamilyBrotherSister')->name('familybrothersister.store');
+    Route::get('/pim/show/familybrothersister/{id}', 'ShowFamilyBrotherSister')->name('show.familybrothersister');
+    Route::get('/pim/edit/familybrothersister/{id}','EditFamilyBrotherSister')->name('edit.familybrothersister');
+    Route::post('/pim/update/familybrothersister','UpdateFamilyBrotherSister')->name('familybrothersister.update');
+    Route::get('/pim/delete/familybrothersister/{id}','DeleteFamilyBrotherSister')->name('delete.familybrothersister');
 });
 
 ///PIM Education All Route
 Route::controller(FamilyChildController::class)->group(function(){
 
-    Route::get('/all/child','AllFamilyChild')->name('all.familychild');
-    Route::get('/add/familychild','AddFamilyChild')->name('add.familychild');
-    Route::post('/store/familychild','StoreFamilyChild')->name('familychild.store');
-    Route::get('/show/familychild/{id}', 'ShowFamilyChild')->name('show.familychild');
-    Route::get('/edit/familychild/{id}','EditFamilyChild')->name('edit.familychild');
-    Route::post('/update/familychild','UpdateFamilyChild')->name('familychild.update');
-    Route::get('/delete/familychild/{id}','DeleteFamilyChild')->name('delete.familychild');
+    Route::get('/pim/all/child','AllFamilyChild')->name('all.familychild');
+    Route::get('/pim/add/familychild','AddFamilyChild')->name('add.familychild');
+    Route::post('/pim/store/familychild','StoreFamilyChild')->name('familychild.store');
+    Route::get('/pim/show/familychild/{id}', 'ShowFamilyChild')->name('show.familychild');
+    Route::get('/pim/edit/familychild/{id}','EditFamilyChild')->name('edit.familychild');
+    Route::post('/pim/update/familychild','UpdateFamilyChild')->name('familychild.update');
+    Route::get('/pim/delete/familychild/{id}','DeleteFamilyChild')->name('delete.familychild');
 });
 
 ///PIM Family Spouce All Route
 Route::controller(FamilySpouceController::class)->group(function(){
 
-    Route::get('/all/familyspouce','AllFamilySpouce')->name('all.familyspouce');
-    Route::get('/add/familyspouce','AddFamilySpouce')->name('add.familyspouce');
-    Route::post('/store/familyspouce','StoreFamilySpouce')->name('familyspouce.store');
-    Route::get('/show/familyspouce/{id}', 'ShowFamilySpouce')->name('show.familyspouce');
-    Route::get('/edit/familyspouce/{id}','EditFamilySpouce')->name('edit.familyspouce');
-    Route::post('/update/familyspouce','UpdateFamilySpouce')->name('familyspouce.update');
-    Route::get('/delete/familyspouce/{id}','DeleteFamilySpouce')->name('delete.familyspouce');
+    Route::get('/pim/all/familyspouce','AllFamilySpouce')->name('all.familyspouce');
+    Route::get('/pim/add/familyspouce','AddFamilySpouce')->name('add.familyspouce');
+    Route::post('/pim/store/familyspouce','StoreFamilySpouce')->name('familyspouce.store');
+    Route::get('/pim/show/familyspouce/{id}', 'ShowFamilySpouce')->name('show.familyspouce');
+    Route::get('/pim/edit/familyspouce/{id}','EditFamilySpouce')->name('edit.familyspouce');
+    Route::post('/pim/update/familyspouce','UpdateFamilySpouce')->name('familyspouce.update');
+    Route::get('/pim/delete/familyspouce/{id}','DeleteFamilySpouce')->name('delete.familyspouce');
 });
 ///PIM Relative StaffAll Route
 Route::controller(RelativeStaffController::class)->group(function(){
 
-    Route::get('/all/relativestaff','AllRelativeStaff')->name('all.relativestaff');
-    Route::get('/add/relativestaff','AddRelativeStaff')->name('add.relativestaff');
-    Route::post('/store/relativestaff','StoreRelativeStaff')->name('relativestaff.store');
-    Route::get('/show/relativestaff/{id}', 'ShowRelativeStaff')->name('show.relativestaff');
-    Route::get('/edit/relativestaff/{id}','EditRelativeStaff')->name('edit.relativestaff');
-    Route::post('/update/relativestaff','UpdateRelativeStaff')->name('relativestaff.update');
-    Route::get('/delete/relativestaff/{id}','DeleteRelativeStaff')->name('delete.relativestaff');
+    Route::get('/pim/all/relativestaff','AllRelativeStaff')->name('all.relativestaff');
+    Route::get('/pim/add/relativestaff','AddRelativeStaff')->name('add.relativestaff');
+    Route::post('/pim/store/relativestaff','StoreRelativeStaff')->name('relativestaff.store');
+    Route::get('/pim/show/relativestaff/{id}', 'ShowRelativeStaff')->name('show.relativestaff');
+    Route::get('/pim/edit/relativestaff/{id}','EditRelativeStaff')->name('edit.relativestaff');
+    Route::post('/pim/update/relativestaff','UpdateRelativeStaff')->name('relativestaff.update');
+    Route::get('/pim/delete/relativestaff/{id}','DeleteRelativeStaff')->name('delete.relativestaff');
 });
 
 ///PIM Yearly Health Checkup All Route
 Route::controller(YearlyHealthCheckUpController::class)->group(function(){
 
-    Route::get('/all/yearlyhealthcheckup','AllYearlyHealthCheckUp')->name('all.yearlyhealthcheckup');
-    Route::get('/add/yearlyhealthcheckup','AddYearlyHealthCheckUp')->name('add.yearlyhealthcheckup');
-    Route::post('/store/yearlyhealthcheckup','StorYearlyHealthCheckUp')->name('yearlyhealthcheckup.store');
-    Route::get('/show/yearlyhealthcheckup/{id}', 'ShowYearlyHealthCheckUp')->name('show.yearlyhealthcheckup');
-    Route::get('/edit/yearlyhealthcheckup/{id}','EditYearlyHealthCheckUp')->name('edit.yearlyhealthcheckup');
-    Route::post('/update/yearlyhealthcheckup','UpdateYearlyHealthCheckUp')->name('yearlyhealthcheckup.update');
-    Route::get('/delete/yearlyhealthcheckup/{id}','DeleteYearlyHealthCheckUp')->name('delete.yearlyhealthcheckup');
+    Route::get('/pim/all/yearlyhealthcheckup','AllYearlyHealthCheckUp')->name('all.yearlyhealthcheckup');
+    Route::get('/pim/add/yearlyhealthcheckup','AddYearlyHealthCheckUp')->name('add.yearlyhealthcheckup');
+    Route::post('/pim/store/yearlyhealthcheckup','StorYearlyHealthCheckUp')->name('yearlyhealthcheckup.store');
+    Route::get('/pim/show/yearlyhealthcheckup/{id}', 'ShowYearlyHealthCheckUp')->name('show.yearlyhealthcheckup');
+    Route::get('/pim/edit/yearlyhealthcheckup/{id}','EditYearlyHealthCheckUp')->name('edit.yearlyhealthcheckup');
+    Route::post('/pim/update/yearlyhealthcheckup','UpdateYearlyHealthCheckUp')->name('yearlyhealthcheckup.update');
+    Route::get('/pim/delete/yearlyhealthcheckup/{id}','DeleteYearlyHealthCheckUp')->name('delete.yearlyhealthcheckup');
 });
 
 ///PIM PF Check List All Route
 Route::controller(PFCheckListController::class)->group(function(){
 
-    Route::get('/all/pfchecklist','AllPFCheckList')->name('all.pfchecklist');
-    Route::get('/add/pfchecklist','AddPFCheckList')->name('add.pfchecklist');
-    Route::post('/store/pfchecklist','StorPFCheckList')->name('pfchecklist.store');
-    Route::get('/show/pfchecklist/{id}', 'ShowPFCheckList')->name('show.pfchecklist');
-    Route::get('/edit/pfchecklist/{id}','EditPFCheckList')->name('edit.pfchecklist');
-    Route::post('/update/pfchecklist','UpdatePFCheckList')->name('pfchecklist.update');
-    Route::get('/delete/pfchecklist/{id}','DeletePFCheckList')->name('delete.pfchecklist');
+    Route::get('/pim/all/pfchecklist','AllPFCheckList')->name('all.pfchecklist');
+    Route::get('/pim/add/pfchecklist','AddPFCheckList')->name('add.pfchecklist');
+    Route::post('/pim/store/pfchecklist','StorPFCheckList')->name('pfchecklist.store');
+    Route::get('/pim/show/pfchecklist/{id}', 'ShowPFCheckList')->name('show.pfchecklist');
+    Route::get('/pim/edit/pfchecklist/{id}','EditPFCheckList')->name('edit.pfchecklist');
+    Route::post('/pim/update/pfchecklist','UpdatePFCheckList')->name('pfchecklist.update');
+    Route::get('/pim/delete/pfchecklist/{id}','DeletePFCheckList')->name('delete.pfchecklist');
 });
 
 

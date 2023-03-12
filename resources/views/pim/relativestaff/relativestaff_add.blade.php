@@ -16,7 +16,7 @@
                 </li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('pim.all') }}">PIM</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a
-                        href="{{ route('all.training') }}">Training</a>
+                        href="{{ route('all.training') }}">Relative Information</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Add Training Information</li>
             </ol>

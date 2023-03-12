@@ -14,10 +14,12 @@ use App\Models\Designation;
 use App\Models\Pim\Nominee;
 use App\Models\EmployeeType;
 use App\Models\Pim\Guardian;
+use App\Models\Pim\Training;
 use Illuminate\Http\Request;
 use App\Models\MaritalStatus;
 use App\Models\Pim\BasicInfo;
 use App\Models\Pim\Education;
+use App\Models\Pim\Experience;
 use App\Models\Pim\FamilyChild;
 use App\Models\Pim\FamilySpouce;
 use Illuminate\Support\Facades\DB;
@@ -325,79 +327,39 @@ class BasicInfoController extends Controller
         $educationqualifications = EducationalQualification::all();
         $employeetypes = EmployeeType::all();
         // $basicinfos = BasicInfo::all();
-        // $basicinfo = BasicInfo::all();
+        $basicinfo = BasicInfo::all();
         // $basicinfos = BasicInfo::where('created_by', $user->id)->orderBy('id', 'DESC')->get();
-        $basicinfo = DB::table('basic_infos')
-            ->join('guardians', 'basic_infos.id', '=', 'guardians.employee_id')
-            ->join('nominees', 'basic_infos.id', '=', 'nominees.employee_id')
-            ->join('education', 'basic_infos.id', '=', 'education.employee_id')
-            ->join('trainings', 'basic_infos.id', '=', 'trainings.employee_id')
-            ->join('experiences', 'basic_infos.id', '=', 'experiences.employee_id')
-            ->join('family_brother_sisters', 'basic_infos.id', '=', 'family_brother_sisters.employee_id')
-            ->join('family_children', 'basic_infos.id', '=', 'family_children.employee_id')
-            ->join('family_spouces', 'basic_infos.id', '=', 'family_spouces.employee_id')
-            ->select('basic_infos.*', 'guardians.*', 'nominees.*', 'education.*', 'education.*', 'trainings.*', 'experiences.*', 'family_brother_sisters.*', 'family_spouces.*', 'family_children.*',)
-            ->get();
+        // $basicinfo = DB::table('basic_infos')
+        //     ->join('guardians', 'basic_infos.id', '=', 'guardians.employee_id')
+        //     ->join('nominees', 'basic_infos.id', '=', 'nominees.employee_id')
+        //     ->join('education', 'basic_infos.id', '=', 'education.employee_id')
+        //     ->join('trainings', 'basic_infos.id', '=', 'trainings.employee_id')
+        //     ->join('experiences', 'basic_infos.id', '=', 'experiences.employee_id')
+        //     ->join('family_brother_sisters', 'basic_infos.id', '=', 'family_brother_sisters.employee_id')
+        //     ->join('family_children', 'basic_infos.id', '=', 'family_children.employee_id')
+        //     ->join('family_spouces', 'basic_infos.id', '=', 'family_spouces.employee_id')
+        //     ->select('basic_infos.*', 'guardians.*', 'nominees.*', 'education.*', 'education.*', 'trainings.*', 'experiences.*', 'family_brother_sisters.*', 'family_spouces.*', 'family_children.*',)
+        //     ->get();
         return view('pim.report.staffdetailsreport', compact('basicinfo'));
     } // End Method
 
-    public function ShowStaffDetailsReport($id)
+
+
+
+        public function ShowStaffDetailsReport($id)
     {
+    //    $id = $request->$id;
 
-            $domains = Domain::all();
-            $designations = Designation::all();
-            $maritalstatus = MaritalStatus::all();
-            $districts = District::all();
-            $divisions = Division::all();
-            $upazillas = Upazilla::all();
-            $blood_groups = BloodGroup::all();
-            $employeetypes = EmployeeType::all();
-            $gender = Gender::all();
-            $guardian = Guardian::latest()->take(1)->get();
-            $education = Education::all();
-            $educationgroup = EducationGroup::all();
-            $boarduni = BoardUniversity::all();
-            $course = Course::all();
-            $nominee = Nominee::all();
-            $spouce = FamilySpouce::all();
-            $child = FamilyChild::all();
-            $fbs = FamilyBrotherSister::all();
-            $educationqualifications = EducationalQualification::all();
-
-            // $employee = DB::table('basicinfos')
-            // ->join('designations', 'designations.id', '=', 'basicinfos.designation_id')
-            // ->get();
-            // $data = DB::table('basic_infos')
-            // ->join('guardians', 'basic_infos.id', '=', 'guardians.employee_id')
-            // ->join('education', 'basic_infos.id', '=', 'education.employee_id')
-            // ->join('nominees', 'basic_infos.id', '=', 'nominees.employee_id')
-            // ->join('trainings', 'basic_infos.id', '=', 'trainings.employee_id')
-            // ->select('basic_infos.*', 'guardians.*', 'education.*', 'nominees.*', 'trainings.*')
-            // ->get();
-            // $basicinfos = basicinfo::findOrFail($id);
-            // $basicinfo = BasicInfo::findOrFail($id);
-            // return View('backend.basicinfo.basicinfo_show',['designations'=>$designation]);
-
-            // $employee = BasicInfo::with(['guardians', 'nominees', 'education', 'training', 'experiences', 'family_brother_sisters','family_children','family_spouces'])
-            //     ->where('id', $id)
-            //     ->first();
-
-            // $employee_id = 10100004;
-            $basicinfo = DB::table('basic_infos')
-            ->join('guardians', 'basic_infos.id', '=', 'guardians.employee_id')
-            ->join('nominees', 'basic_infos.id', '=', 'nominees.employee_id')
-            ->join('education', 'basic_infos.id', '=', 'education.employee_id')
-            ->join('trainings', 'basic_infos.id', '=', 'trainings.employee_id')
-            ->join('experiences', 'basic_infos.id', '=', 'experiences.employee_id')
-            ->join('family_brother_sisters', 'basic_infos.id', '=', 'family_brother_sisters.employee_id')
-            ->join('family_children', 'basic_infos.id', '=', 'family_children.employee_id')
-            ->join('family_spouces', 'basic_infos.id', '=', 'family_spouces.employee_id')
-            ->select('basic_infos.*', 'guardians.*', 'nominees.*', 'education.*', 'education.*', 'trainings.*', 'experiences.*', 'family_brother_sisters.*', 'family_spouces.*', 'family_children.*',)
-            ->get();
-            dd($basicinfo);
-            return view('pim.report.showstaffdetailsreport', compact('basicinfo'));
-            // dd($employee);
-            // return view('backend.basicinfo.basicinfo_show',compact('basicinfo'));
-
-        } //
+        $basicinfo = BasicInfo::where('id', 'LIKE', '%'.$id.'%')->get();
+        $guardian = Guardian::where('employee_id', 'LIKE', '%'.$id.'%')->latest()->take(1)->get();;
+        $nominee = Nominee::where('employee_id', 'LIKE', '%'.$id.'%')->get();
+        $education = Education::where('employee_id', 'LIKE', '%'.$id.'%')->get();
+        $training = Training::where('employee_id', 'LIKE', '%'.$id.'%')->get();
+        $course = Course::where('employee_id', 'LIKE', '%'.$id.'%')->get();
+        $experience = Experience::where('employee_id', 'LIKE', '%'.$id.'%')->get();
+        $fbs = FamilyBrotherSister::where('employee_id', 'LIKE', '%'.$id.'%')->get();
+        $child = FamilyChild::where('employee_id', 'LIKE', '%'.$id.'%')->get();
+        $spouce = FamilySpouce::where('employee_id', 'LIKE', '%'.$id.'%')->get();
+        return view('pim.report.showstaffdetailsreport', compact('basicinfo', 'nominee', 'guardian', 'education', 'training', 'experience', 'fbs', 'child', 'spouce', 'course'));
+    }
 }

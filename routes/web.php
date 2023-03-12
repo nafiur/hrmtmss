@@ -17,7 +17,7 @@ use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\Pos\StockController;
 use App\Http\Controllers\Pim\{PIMController, BasicInfoController,GuardianController,NomineeController,EducationController,
     CourseController, TrainingController, ExperienceController, FamilyBrotherSisterController, FamilyChildController,
-    FamilySpouceController, PIMReportController, StaffDetailsReportController};
+    FamilySpouceController, PIMReportController, StaffDetailsReportController, SearchController};
 
 
 
@@ -524,6 +524,10 @@ Route::controller(AdminController::class)->group(function(){
     // Route::get('/delete/database/{getFilename}','DeleteDatabase');
 
 });
+
+
+Route::get('/pim/report/search', [SearchController::class, 'index'])->name('search');
+
 
 ///PIM Basic Info All Route
 Route::controller(BasicInfoController::class)->group(function(){

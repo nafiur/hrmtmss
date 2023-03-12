@@ -49,17 +49,17 @@
                                 <tr>
                                     <td> {{ $key + 1 }} </td>
                                     {{-- <td> {{ $item['domains']['name']  }}</td>  --}}
-                                    <td> {{ $item->employee_id }} </td>
+                                    <td> {{ $item->id }} </td>
                                     <td> {{ $item->name }} </td>
                                     {{-- <td> {{ $item->Designation->name  }} </td>  --}}
-                                    {{-- <td> {{ $item['designation']['name'] ?? '' }} </td>
-                                    <td> {{ $item['domain']['name'] ?? '' }} </td> --}}
-                                    {{-- <td> {{ $item->domain_id }} </td>  --}}
+                                    <td> {{ $item['designation']['name'] ?? '' }} </td>
+                                    <td> {{ $item['domain']['name'] ?? '' }} </td>
+                                    {{-- <td> {{ $item->domain_id }} </td> --}}
                                     <td> {{ $item->joiningdate }} </td>
-                                    {{-- <td> {{ $item->status }} </td>    --}}
+                                    {{-- <td> {{ $item->status }} </td>--}}
                                     <td>
                                         {{-- @if (Auth::user()->can('employee.show')) --}}
-                                            <a href="{{ route('showstaffdetailsreport', $item->employee_id) }}" target="_blank"  class="btn btn-info sm"
+                                            <a href="{{ route('showstaffdetailsreport', $item->id) }}" target="_blank"  class="btn btn-info sm"
                                                 title="Show Data"> <i class="fas fa-eye"></i>  </a>
                                         {{-- @endif --}}
                                     </td>

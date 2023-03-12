@@ -47,7 +47,7 @@ class Guardian extends Model
     public function relation(){
         return $this->belongsTo(RelationType::class,'guardian_relation_types_id','id');
     }
-    public function profession(){
+    public function professions(){
         return $this->belongsTo(Profession::class,'guardian_profession_id','id');
     }
     // public function profession(){

@@ -34,6 +34,8 @@ class NewEmployeeController extends Controller
         $educationqualifications = EducationalQualification::all();
         $employeetypes = EmployeeType::all();
         $employeeall = NewEmployee::all();
+        // $employeeall = NewEmployee::paginate(8);
+        // $employeeall = NewEmployee::paginate(5);
         // $employeeall = NewEmployee::where('created_by',$user->id)->orderBy('id','DESC')->get();
         return view('backend.newemployee.employee_all', compact('employeeall'));
     } // End Method

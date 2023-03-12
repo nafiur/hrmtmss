@@ -2,6 +2,8 @@
 
 namespace App\Models\Pim;
 
+use App\Models\Setup\Profession;
+use App\Models\Setup\RelationType;
 use App\Models\Pim\StaffDetailsReport;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,8 +21,16 @@ class FamilyBrotherSister extends Model
         return $this->belongsTo(BasicInfo::class);
     }
 
+    public function professions(){
+        return $this->belongsTo(Profession::class,'profession_id','id');
+    }
+
     public function staffdetailsreport()
     {
         return $this->belongsTo(StaffDetailsReport::class);
+    }
+
+    public function relation(){
+        return $this->belongsTo(RelationType::class,'relation_types_id','id');
     }
 }

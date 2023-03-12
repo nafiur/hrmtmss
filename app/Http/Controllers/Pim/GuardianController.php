@@ -21,7 +21,7 @@ class GuardianController extends Controller
 
         $user = Auth::user();
         $basicinfo = BasicInfo::all();
-        $relation_types = RelationType::all();
+        $relation = RelationType::all();
         $profession = Profession::all();
         $districts = District::all();
         $divisions = Division::all();
@@ -36,14 +36,14 @@ class GuardianController extends Controller
     {
         $user = Auth::user();
         $basicinfo = BasicInfo::all();
-        $relation_types = RelationType::all();
-        $professions = Profession::all();
+        $relation = RelationType::all();
+        $profession = Profession::all();
         $districts = District::all();
         $divisions = Division::all();
         $upazillas = Upazilla::all();
         $basicinfos = BasicInfo::all();
         $guardian = Guardian::all();
-        return view('pim.guardian.guardian_add', compact('guardian','basicinfos', 'relation_types', 'professions', 'districts', 'divisions', 'upazillas'));
+        return view('pim.guardian.guardian_add', compact('guardian','basicinfos', 'relation', 'profession', 'districts', 'divisions', 'upazillas'));
     } // End Method
 
     public function StoreGuardian(Request $request)
@@ -148,8 +148,8 @@ class GuardianController extends Controller
 
         $user = Auth::user();
         $basicinfo = BasicInfo::all();
-        $relation_types = RelationType::all();
-        $professionype = Profession::all();
+        $relation = RelationType::all();
+        $profession = Profession::all();
         $districts = District::all();
         $divisions = Division::all();
         $upazillas = Upazilla::all();
@@ -163,7 +163,7 @@ class GuardianController extends Controller
         // $guardians = Guardian::findOrFail($id);
         $guardian = Guardian::findOrFail($id);
         // return View('pim.guardian.guardian_show',['designations'=>$designation]);
-        return view('pim.guardian.guardian_show', compact('guardian', 'basicinfos', 'districts', 'divisions', 'basicinfos', 'relation_types', 'upazillas'));
+        return view('pim.guardian.guardian_show', compact('guardian', 'profession', 'basicinfos', 'districts', 'divisions', 'basicinfos', 'relation', 'upazillas'));
         // return view('pim.guardian.guardian_show',compact('guardian'));
 
     } // End Method
@@ -173,8 +173,8 @@ class GuardianController extends Controller
 
         $user = Auth::user();
         $basicinfo = BasicInfo::all();
-        $relation_types = RelationType::all();
-        $professions = Profession::all();
+        $relation = RelationType::all();
+        $profession = Profession::all();
         $districts = District::all();
         $divisions = Division::all();
         $upazillas = Upazilla::all();
@@ -183,7 +183,7 @@ class GuardianController extends Controller
 
         $guardian = Guardian::findOrFail($id);
 
-        return view('pim.guardian.guardian_edit', compact('guardian', 'professions', 'basicinfos', 'districts', 'divisions', 'basicinfos', 'relation_types', 'upazillas'));
+        return view('pim.guardian.guardian_edit', compact('guardian', 'profession', 'basicinfos', 'districts', 'divisions', 'basicinfos', 'relation', 'upazillas'));
 
     } // End Method
 
@@ -253,7 +253,7 @@ class GuardianController extends Controller
 
         $user = Auth::user();
         $basicinfo = BasicInfo::all();
-        $relation_types = RelationType::all();
+        $relation = RelationType::all();
         $professions = Profession::all();
         $districts = District::all();
         $divisions = Division::all();
@@ -270,7 +270,7 @@ class GuardianController extends Controller
         // $guardians = guardian::findOrFail($id);
         $guardian = Guardian::findOrFail($id);
         // return View('backend.guardian.guardian_show',['designations'=>$designation]);
-        return view('pim.guardian.guardian_show', compact('guardian', 'basicinfos', 'relation_types', 'professions', 'districts', 'divisions', 'upazillas'));
+        return view('pim.guardian.guardian_show', compact('guardian', 'basicinfos', 'relation', 'professions', 'districts', 'divisions', 'upazillas'));
         // return view('backend.guardian.guardian_show',compact('guardian'));
 
     } //

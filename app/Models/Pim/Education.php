@@ -19,7 +19,7 @@ class Education extends Model
     protected $guarded = [];
 
     public function basicinfo(){
-        return $this->belongsTo(BasicInfo::class);
+        return $this->belongsTo(BasicInfo::class,'employee_id','id');
     }
 
     // public function basicinfo(){

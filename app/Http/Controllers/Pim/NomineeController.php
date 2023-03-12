@@ -29,7 +29,7 @@ class NomineeController extends Controller
         $basicinfos = BasicInfo::all();
         $nominee = Nominee::all();
         // $nominees = Nominee::where('created_by', $user->id)->orderBy('id', 'DESC')->get();
-        return view('pim.nominee.nominee_all', compact('nominee'));
+        return view('pim.nominee.nominee_all', compact('nominee','basicinfo'));
     } // End Method
 
     public function AddNominee()

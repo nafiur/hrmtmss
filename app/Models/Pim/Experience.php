@@ -2,6 +2,7 @@
 
 namespace App\Models\Pim;
 
+use App\Models\Pim\BasicInfo;
 use App\Models\Pim\StaffDetailsReport;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,7 +17,7 @@ class Experience extends Model
     // }
 
     public function basicinfo(){
-        return $this->belongsTo(BasicInfo::class);
+        return $this->belongsTo(BasicInfo::class,'employee_id','id');
     }
     public function staffdetailsreport()
     {

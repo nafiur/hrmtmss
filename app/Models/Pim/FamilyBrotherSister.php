@@ -2,6 +2,7 @@
 
 namespace App\Models\Pim;
 
+use App\Models\Pim\BasicInfo;
 use App\Models\Setup\Profession;
 use App\Models\Setup\RelationType;
 use App\Models\Pim\StaffDetailsReport;
@@ -18,7 +19,7 @@ class FamilyBrotherSister extends Model
     // }
 
     public function basicinfo(){
-        return $this->belongsTo(BasicInfo::class);
+        return $this->belongsTo(BasicInfo::class,'employee_id','id');
     }
 
     public function professions(){

@@ -4,6 +4,7 @@ namespace App\Models\Pim;
 
 use App\Models\District;
 use App\Models\Upazilla;
+use App\Models\Pim\BasicInfo;
 use App\Models\Setup\RelationType;
 use App\Models\Pim\StaffDetailsReport;
 use Illuminate\Database\Eloquent\Model;
@@ -15,9 +16,8 @@ class Nominee extends Model
     protected $guarded = [];
 
     public function basicinfo(){
-        return $this->belongsTo(BasicInfo::class);
+        return $this->belongsTo(BasicInfo::class,'employee_id','id');
     }
-
     // public function basicinfo(){
     //     return $this->belongsTo(BasicInfo::class,'employee_id','id');
     // }

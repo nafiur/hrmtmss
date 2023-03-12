@@ -18,6 +18,10 @@ class FamilyChild extends Model
     //     return $this->belongsTo(BasicInfo::class,'employee_id','id');
     // }
 
+    public function basicinfo(){
+        return $this->belongsTo(BasicInfo::class,'employee_id','id');
+    }
+
     public function staffdetailsreport()
     {
         return $this->belongsTo(StaffDetailsReport::class);

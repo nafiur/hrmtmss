@@ -23,7 +23,7 @@
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                    <i class=" fas fa-info-circle fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">Basic Info</p>
                             </div>
@@ -37,7 +37,7 @@
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                    <i class=" fas fa-user-friends  fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">Guardian</p>
                             </div>
@@ -51,7 +51,7 @@
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                    <i class="fas fa-users fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">Nominee</p>
                             </div>
@@ -65,7 +65,7 @@
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                    <i class="fas fa-user-graduate fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">Education</p>
                             </div>
@@ -79,7 +79,7 @@
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                    <i class="fas fa-book fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">Course</p>
                             </div>
@@ -93,7 +93,7 @@
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                    <i class="fas fa-passport fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">Experience</p>
                             </div>
@@ -107,7 +107,7 @@
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                    <i class="fas fa-users fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">Brother/Sister</p>
                             </div>
@@ -121,7 +121,7 @@
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                    <i class="fas fa-baby fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">Child</p>
                             </div>
@@ -135,7 +135,7 @@
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                    <i class="fas fa-crown fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">Spouce</p>
                             </div>
@@ -149,7 +149,7 @@
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                    <i class="fas fa-toolbox fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">Training</p>
                             </div>
@@ -163,7 +163,7 @@
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                    <i class="fas fa-clipboard-list fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">PF Check List</p>
                             </div>
@@ -177,7 +177,7 @@
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                    <i class="fas fa-first-aid fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">Yearly Health CheckUp</p>
                             </div>
@@ -191,7 +191,7 @@
                             {{-- <div class="ribbon-box">2</div> --}}
                             <div class="block-content">
                                 <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
+                                    <i class=" fas fa-file-signature fa-2x text-muted"></i>
                                 </p>
                                 <p class="fw-semibold">PIM Report</p>
                             </div>

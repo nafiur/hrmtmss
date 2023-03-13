@@ -15,6 +15,40 @@
                 <li class="breadcrumb-item active" aria-current="page">Add New Report</li>
             </ol>
         </nav>
+        <div class="card push">
+                <div class="card-body">
+                    <div class="mb-4 text-center row items-push text-sm-start">
+                        <div class="mb-4">
+                            <button type="button" class="mb-3 btn btn-success me-1">
+                                <i class="fa fa-fw fa-plus me-1"></i> Add User
+                            </button>
+                            <button type="button" class="mb-3 btn btn-info me-1">
+                                <i class="fa fa-fw fa-download me-1"></i> Download
+                            </button>
+                            <button type="button" class="mb-3 btn btn-warning me-1">
+                                <i class="fa fa-fw fa-exclamation-triangle me-1"></i> Are you sure?
+                            </button>
+                            <button type="button" class="mb-3 btn btn-primary me-1">
+                                <i class="fa fa-fw fa-upload me-1"></i> Upload
+                            </button>
+                            <button type="button" class="mb-3 btn btn-secondary me-1">
+                                <i class="fab fa-fw fa-bluetooth-b me-1"></i> 3 Connections
+                            </button>
+                            <button type="button" class="mb-3 btn btn-danger me-1">
+                                <i class="fa fa-fw fa-times me-1"></i> Delete
+                            </button>
+                            <button type="button" class="mb-3 btn btn-primary me-1">
+                                <i class="fa fa-fw fa-thumbs-up me-1"></i> Like
+                            </button>
+                            <button type="button" class="mb-3 btn btn-secondary me-1">
+                                <i class="fa fa-fw fa-play me-1"></i> Play
+                            </button>
+                            <button type="button" class="mb-3 btn btn-dark me-1">
+                                <i class="fa fa-fw fa-box me-1"></i> 10 Products
+                            </button>
+                        </div>
+                </div>
+        </div>
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">Add New Report</h3>
@@ -67,12 +101,17 @@
                         </form>
                         <!-- END Form Labels on top - Default Style -->
                     </div>
-                </div>
+
                 <!-- END Label on top Layout -->
+            </div>
+            <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+                <button> HI</button>
             </div>
             <!--block-content-->
         </div><!-- END block -->
     </div>
+
+</div>
 </div>
 
 <script type="text/javascript">

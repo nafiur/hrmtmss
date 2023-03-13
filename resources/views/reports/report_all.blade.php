@@ -31,8 +31,8 @@
                             <th width="10%">Sl</th>
                             <th>Report Title</th>
                             {{-- <th>Name English</th>  --}}
-                            <th width="10%">Report Description</th>
-                            <th width="10%">Download</th>
+                            <th width="20%">Report Description</th>
+                            {{-- <th width="10%">Download</th> --}}
                             {{-- <th width="5%">Doc</th> --}}
                             <th width="20%">Action</th>
                         </tr>
@@ -45,11 +45,12 @@
                                 <td> {{ $item->report_title }} </td>
                                 <td> {{ $item->report_description }} </td>
                                 {{-- <td> {{ $item->form_file }} </td>  --}}
-                                <td> <a href="{{ asset('upload/reports/' . $item->report_file) }}"
-                                        class="btn btn-primary sm" title="Download" target="_blank" rel="noopener"> <i
-                                            class="fas fa-file-download"></i></a> </td>
+
                                 {{-- <td> {{ $item->name }} </td>  --}}
                                 <td>
+                                    <td> <a href="{{ asset('upload/reports/' . $item->report_file) }}"
+                                        class="btn btn-primary sm" title="Download" target="_blank" rel="noopener"> <i
+                                            class="fas fa-file-download"></i></a> </td>
                                     {{-- <a href="{{ asset('upload/downloads/'. $item->form_file) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a> --}}
                                     @if (Auth::user()->can('report.show'))
                                         <a href="{{ route('report.show', $item->id) }}" class="btn btn-info sm"

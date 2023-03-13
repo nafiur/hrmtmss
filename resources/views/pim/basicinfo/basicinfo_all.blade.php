@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
 @section('title')
-    {{ 'New Employee' }}
+    {{ 'Employee Basic Information' }}
 @endsection
 
 <div class="page-content">
@@ -11,196 +11,47 @@
                 <li class="breadcrumb-item">
                     <a href="javascript:void(0)">Home</a>
                 </li>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page"><a
-                    href="{{ route('pim.all') }}">PIM</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('pim.all') }}">PIM</a>
                 <li class="breadcrumb-item active" aria-current="page">Basic Info</li>
             </ol>
         </nav>
-        <div class="row">
-            {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.basicinfo') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">Basic Info</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
-                {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.guardian') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">Guardian</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
-                {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.nominee') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">Nominee</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
-                {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.education') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">Education</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
-                {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.course') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">Course</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
-                {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.experience') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">Experience</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
-                {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.familybrothersister') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">Brother/Sister</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
-                {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.familychild') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">Child</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
-                {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.familyspouce') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">Spouce</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
-                {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.training') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">Training</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
-                {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.training') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">PF Check List</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
-                {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.training') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">Yearly Health CheckUp</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
-                {{-- @if (Auth::user()->can('newemployee.module')) --}}
-                    <div class="col-6 col-md-4 col-xl-2">
-                        <a class="block text-center block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary"
-                            href="{{ route('all.pimreport') }}">
-                            {{-- <div class="ribbon-box">2</div> --}}
-                            <div class="block-content">
-                                <p class="my-2">
-                                    <i class="fa fas fa-user-plus fa-2x text-muted"></i>
-                                </p>
-                                <p class="fw-semibold">PIM Report</p>
-                            </div>
-                        </a>
-                    </div>
-                {{-- @endif --}}
+        <div class="block block-rounded center">
+            <div class="mb-4 text-center row items-push text-sm-start">
+                <div class="mb-4">
+                    <button type="button" class="mb-3 btn btn-success me-1">
+                        <i class="fa fa-fw fa-plus me-1"></i> Add User
+                    </button>
+                    <button type="button" class="mb-3 btn btn-info me-1">
+                        <i class="fa fa-fw fa-download me-1"></i> Download
+                    </button>
+                    <button type="button" class="mb-3 btn btn-warning me-1">
+                        <i class="fa fa-fw fa-exclamation-triangle me-1"></i> Are you sure?
+                    </button>
+                    <button type="button" class="mb-3 btn btn-primary me-1">
+                        <i class="fa fa-fw fa-upload me-1"></i> Upload
+                    </button>
+                    <button type="button" class="mb-3 btn btn-secondary me-1">
+                        <i class="fab fa-fw fa-bluetooth-b me-1"></i> 3 Connections
+                    </button>
+                    <button type="button" class="mb-3 btn btn-danger me-1">
+                        <i class="fa fa-fw fa-times me-1"></i> Delete
+                    </button>
+                    <button type="button" class="mb-3 btn btn-primary me-1">
+                        <i class="fa fa-fw fa-thumbs-up me-1"></i> Like
+                    </button>
+                    <button type="button" class="mb-3 btn btn-secondary me-1">
+                        <i class="fa fa-fw fa-play me-1"></i> Play
+                    </button>
+                    <button type="button" class="mb-3 btn btn-dark me-1">
+                        <i class="fa fa-fw fa-box me-1"></i> 10 Products
+                    </button>
+                </div>
+            </div>
         </div>
+
+
+
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">Employee Info</h3>
@@ -238,25 +89,23 @@
                                 {{-- <td> {{ $item->status }} </td>    --}}
                                 <td>
                                     {{-- @if (Auth::user()->can('basicinfo.show')) --}}
-                                        <a href="{{ route('show.basicinfo', $item->id) }}" class="btn btn-info sm"
-                                            title="Show Data"> <i class="fas fa-eye"></i> </a>
+                                    <a href="{{ route('show.basicinfo', $item->id) }}" class="btn btn-info sm"
+                                        title="Show Data"> <i class="fas fa-eye"></i> </a>
                                     {{-- @endif --}}
 
                                     {{-- @if (Auth::user()->can('ewemployee.export')) --}}
-                                        <a href="{{ route('delete.basicinfo', $item->id) }}"
-                                            class="btn btn-success sm" title="Delete Data" id="delete"> <i
-                                                class="fas fa-download"></i> </a>
+                                    <a href="{{ route('delete.basicinfo', $item->id) }}" class="btn btn-success sm"
+                                        title="Delete Data" id="delete"> <i class="fas fa-download"></i> </a>
                                     {{-- @endif --}}
 
                                     {{-- @if (Auth::user()->can('basicinfo.edit')) --}}
-                                        <a href="{{ route('edit.basicinfo', $item->id) }}" class="btn btn-info sm"
-                                            title="Edit Data"> <i class="fas fa-edit"></i> </a>
+                                    <a href="{{ route('edit.basicinfo', $item->id) }}" class="btn btn-info sm"
+                                        title="Edit Data"> <i class="fas fa-edit"></i> </a>
                                     {{-- @endif --}}
 
                                     {{-- @if (Auth::user()->can('basicinfo.delete')) --}}
-                                        <a href="{{ route('delete.basicinfo', $item->id) }}"
-                                            class="btn btn-danger sm" title="Delete Data" id="delete"> <i
-                                                class="fas fa-trash-alt"></i> </a>
+                                    <a href="{{ route('delete.basicinfo', $item->id) }}" class="btn btn-danger sm"
+                                        title="Delete Data" id="delete"> <i class="fas fa-trash-alt"></i> </a>
                                     {{-- @endif --}}
                                 </td>
                             </tr>

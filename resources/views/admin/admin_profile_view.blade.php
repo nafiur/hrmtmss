@@ -1,5 +1,8 @@
 @extends('admin.admin_master')
 @section('admin')
+@section('title')
+    {{ 'Profile' }}
+@endsection
     <div class="page-content">
         <div class="container-fluid">
 

@@ -17,7 +17,7 @@
         </nav>
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Employee Info</h3>
+                <h3 class="block-title">Course Info</h3>
                 <a href="{{ route('add.course') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
                     style="float:right;"><i class="fa fa-plus-circle"> Add Course Info </i></a> <br> <br>
             </div>
@@ -42,7 +42,7 @@
                                 <td> {{ $key + 1 }} </td>
                                 {{-- <td> {{ $item['domains']['name']  }}</td>  --}}
                                 <td> {{ $item->employee_id }} </td>
-                                <td> {{ $item->basicinfo->name }}</td>
+                                <td> {{ $item->basicinfo->name ??'' }}</td>
                                 {{-- <td> {{ $item['basicinfos']['name'] ?? '' }} </td> --}}
                                 <td> {{ $item->course_name }} </td>
                                 {{-- <td> {{ $item->designation_id }} </td> --}}

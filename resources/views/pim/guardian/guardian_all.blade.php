@@ -24,7 +24,7 @@
                     style="float:right;"><i class="fa fa-plus-circle"> Add New Employee </i></a> <br> <br>
             </div>
             <div class="mb-5 block-content">
-                <h4 class="card-title">Employee Qualification All Data {{ $guardian->count() }} </h4>
+                {{-- <h4 class="card-title">Employee Qualification All Data {{ $guardian->count() }} </h4> --}}
                 <table id="datatable" class="table table-bordered dt-responsive nowrap"
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
@@ -45,7 +45,7 @@
                                 <td> {{ $key + 1 }} </td>
                                 {{-- <td> {{ $item['domains']['name']  }}</td>  --}}
                                 <td> {{ $item->employee_id }} </td>
-                                <td> {{ $item->basicinfo->name }}</td>
+                                <td> {{ $item->basicinfo->name ??'' }}</td>
                                 {{-- <td> {{ $item['basicinfos']['name'] ?? '' }} </td> --}}
                                 <td> {{ $item->guardian_name }} </td>
                                 {{-- <td> {{ $item->designation_id }} </td> --}}

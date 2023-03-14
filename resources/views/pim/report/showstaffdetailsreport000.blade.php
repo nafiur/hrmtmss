@@ -94,7 +94,8 @@
                             <td rowspan="3">
                             <img class="rounded-circle avatar-xl"
                                 src="{{ !empty($basicinfo->employee_photo) ? url('upload/admin_images/' . $adminData->profile_image) : url('upload/no_image.jpg') }}"
-                                alt="Card image cap">
+                                alt="Card image cap" width="90"
+                                    height="110">
                                 {{-- <img src="./Detils Staff Report_files/10118707.jpg" alt="10118707" width="90"
                                     height="110" class="hoverZoomLink"> --}}
                             </td>

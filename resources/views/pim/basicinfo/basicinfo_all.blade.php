@@ -16,7 +16,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Basic Info</li>
             </ol>
         </nav>
-        <div class="block block-rounded center">
+        {{-- <div class="block block-rounded center">
             <div class="mb-4 text-center row items-push text-sm-start">
                 <div class="mb-4">
                     <button type="button" class="mb-3 btn btn-success me-1">
@@ -48,7 +48,7 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
 
@@ -59,13 +59,13 @@
                     style="float:right;"><i class="fa fa-plus-circle"> Add New Employee </i></a> <br> <br>
             </div>
             <div class="mb-5 block-content">
-                <h4 class="card-title">Employee Qualification All Data {{ $basicinfos->count() }} </h4>
+                {{-- <h4 class="card-title">Employee Qualification All Data {{ $basicinfos->count() }} </h4> --}}
                 <table id="datatable" class="table table-bordered dt-responsive nowrap"
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th width="5%">Sl</th>
-                            <th width="10%">ID</th>
+                            <th width="10%">Employee ID</th>
                             <th>Name</th>
                             <th width="5%">Designation</th>
                             <th width="5%">Domain</th>

@@ -6,11 +6,20 @@
     <title>Detils Staff Report</title>
     <link rel="stylesheet" href="{{ asset('backend/assets/report.css') }}">
     <script src="{{ asset('backend/assets/report.js') }}"></script>
+
     <style>
         /*table {
                 border-collapse: collapse;
                 width: 100%;
             }*/
+        avatar-xl {
+            height: 7.5rem;
+            width: 7.5rem;
+        }
+
+        rounded-circle {
+            border-radius: 50% !important;
+        }
 
         th,
         td {
@@ -94,7 +103,7 @@ document.write(currentDate);
         <table>
             <tbody>
                 <tr>
-                    <th colspan="4" bgcolor="#AAC6FF">Personal Basic Information</th>
+                    <th colspan="4" bgcolor="#84dc86">Personal Basic Information</th>
                 </tr>
                 @foreach ($basicinfo as $key => $iteam)
                     <tr>
@@ -102,8 +111,9 @@ document.write(currentDate);
                         <td>{{ $iteam->id }}</td>
                         <th rowspan="3">Picture</th>
                         <td rowspan="3">
-                            <img src="./Detils Staff Report_files/10118707.jpg" alt="10118707" width="90"
-                                height="110" class="hoverZoomLink">
+                            <img class="rounded-circle avatar-xl"
+                                src="{{ !empty($basicinfo->employee_photo) ? url('upload/staffprofile/' . $basicinfo->employee_photo) : url('upload/no_image.jpg')}}"
+                                alt="Card image cap" width="100px">
                         </td>
                     </tr>
                     <tr>
@@ -272,7 +282,7 @@ document.write(currentDate);
                     <tr>
                         <th>Permanent Address</th>
                         <td>Village: {{ $iteam->permanent_village }} ,
-                            PostOffice: {{ $iteam->permanent_village }},
+                            PostOffice: {{ $iteam->permanent_post }},
                             Upazilla: {{ $iteam->permanent_upazilla->name ?? '' }},
                             District: {{ $iteam->permanent_district->name ?? '' }}
                         </td>
@@ -282,7 +292,7 @@ document.write(currentDate);
                     <tr>
                         <th>Present Address</th>
                         <td>Village: {{ $iteam->present_village }} ,
-                            PostOffice: {{ $iteam->present_village }},
+                            PostOffice: {{ $iteam->present_post }},
                             Upazilla: {{ $iteam->present_upazilla->name ?? '' }},
                             District: {{ $iteam->present_district->name ?? '' }}</td>
                         <th>Job Status</th>
@@ -303,7 +313,7 @@ document.write(currentDate);
         &nbsp;<table>
             <tbody>
                 <tr>
-                    <th colspan="4" bgcolor="#AAC6FF">Guardian Information</th>
+                    <th colspan="4" bgcolor="#84dc86">Guardian Information</th>
                 </tr>
                 @foreach ($guardian as $iteam)
                     <tr>
@@ -341,7 +351,9 @@ document.write(currentDate);
                         <td>{{ $iteam->professions->profession_name ?? '' }}</td>
                         <th rowspan="4">Picture</th>
                         <td rowspan="4">
-                            <img src="./Detils Staff Report_files/10118707(1).jpg" alt="10118707" width="90"
+                            <img class="rounded-circle avatar-xl"
+                                src="{{ !empty($basicinfo->employee_photo) ? url('upload/staffprofile/' . $basicinfo->employee_photo) : url('upload/no_image.jpg') }}"
+                                alt="Card image cap" width="90"
                                 height="110">
                         </td>
                     </tr>
@@ -352,14 +364,14 @@ document.write(currentDate);
                     <tr>
                         <th>Present Address</th>
                         <td>Village: {{ $iteam->guardian_present_village }} ,
-                            PostOffice: {{ $iteam->guardian_present_village }},
+                            PostOffice: {{ $iteam->guardian_present_post }},
                             Upazilla: {{ $iteam->guardian_present_upazilla->name ?? '' }},
                             District: {{ $iteam->guardian_present_district->name ?? '' }}</td>
                     </tr>
                     <tr>
                         <th>Permanent Address</th>
                         <td>Village: {{ $iteam->guardian_permanent_village }} ,
-                            PostOffice: {{ $iteam->guardian_permanent_village }},
+                            PostOffice: {{ $iteam->guardian_permanent_post }},
                             Upazilla: {{ $iteam->guardian_permanent_upazilla->name ?? '' }},
                             District: {{ $iteam->guardian_permanent_district->name ?? '' }}</td>
                     </tr>
@@ -370,7 +382,7 @@ document.write(currentDate);
         <table>
             <tbody>
                 <tr>
-                    <th colspan="11" bgcolor="#AAC6FF">Education Information</th>
+                    <th colspan="11" bgcolor="#84dc86">Education Information</th>
                 </tr>
                 <tr>
                     <th>Exam Name</th>
@@ -387,15 +399,15 @@ document.write(currentDate);
                 </tr>
                 @foreach ($education as $education)
                     <tr>
-                        <td>{{ $education->examname->name }}</td>
-                        <td>{{ $education->year->year_name }}</td>
-                        <td>{{ $education->edusubject->subject_name }}</td>
+                        <td>{{ $education->examname->name ?? ''  }}</td>
+                        <td>{{ $education->year->year_name ?? ''  }}</td>
+                        <td>{{ $education->edusubject->subject_name ?? ''  }}</td>
                         <td>{{ $education->educationgroup->group_name ?? '' }}</td>
                         <td>{{ $education->thesis_topic }}</td>
                         <td>{{ $education->name_of_institute }}</td>
-                        <td>{{ $education->boarduniversity->board_university_name }}</td>
+                        <td>{{ $education->boarduniversity->board_university_name ??'' }}</td>
                         <td>{{ $education->total_marks }}</td>
-                        <td>{{ $education->gradeclass->grade_class_name }}</td>
+                        <td>{{ $education->gradeclass->grade_class_name ?? ''  }}</td>
                         <td>{{ $education->gpa }}</td>
                         <td>{{ $education->documents }}</td>
                     </tr>
@@ -407,7 +419,7 @@ document.write(currentDate);
         &nbsp;<table>
             <tbody>
                 <tr>
-                    <th colspan="6" bgcolor="#AAC6FF">Course/Diploma Information</th>
+                    <th colspan="6" bgcolor="#84dc86">Course/Diploma Information</th>
                 </tr>
                 <tr>
                     <th>Title</th>
@@ -434,7 +446,7 @@ document.write(currentDate);
         <table>
             <tbody>
                 <tr>
-                    <th colspan="7" bgcolor="#AAC6FF">Training Information</th>
+                    <th colspan="7" bgcolor="#84dc86">Training Information</th>
                 </tr>
                 <tr>
                     <th>Name</th>
@@ -453,16 +465,16 @@ document.write(currentDate);
                     <td>{{ $item->date_to }}</td>
                     <td>{{ $item->domestic_overseas }}</td>
                     @php
-                            $date_from = $item->date_from;
-                            $now = $item->date_to;
-                            $traindate = \Carbon\Carbon::parse($date_from);
-                            $length = $traindate->diff($now)->format('%y years, %m months, and %d days');
-                        @endphp
-                        <td>
-                            {{ $length }}
-                        </td>
+                        $date_from = $item->date_from;
+                        $now = $item->date_to;
+                        $traindate = \Carbon\Carbon::parse($date_from);
+                        $length = $traindate->diff($now)->format('%y years, %m months, and %d days');
+                    @endphp
+                    <td>
+                        {{ $length }}
+                    </td>
                     <td>{{ $item->place }}</td>
-                    <td>{{ $item->country->country_name ??'' }}</td>
+                    <td>{{ $item->country->country_name ?? '' }}</td>
                 </tr>
                 @endforeach
                 </tr>
@@ -473,7 +485,7 @@ document.write(currentDate);
         <table>
             <tbody>
                 <tr>
-                    <th colspan="6" bgcolor="#AAC6FF">Experience Information</th>
+                    <th colspan="6" bgcolor="#84dc86">Experience Information</th>
                 </tr>
                 <tr>
                     <th>Organization</th>
@@ -490,7 +502,7 @@ document.write(currentDate);
         <table>
             <tbody>
                 <tr>
-                    <th colspan="8" bgcolor="#AAC6FF">Nominee information</th>
+                    <th colspan="8" bgcolor="#84dc86">Nominee information</th>
                 </tr>
                 <tr>
                     <th>Name of Nominee</th>
@@ -518,7 +530,9 @@ document.write(currentDate);
                         {{-- <td>{{ $nominee->nominee_mobile }} --}}
                         </td>
                         <td>
-                            <img src="./Detils Staff Report_files/12865.jpg" alt="10118707" width="47"
+                            <img class="rounded-circle avatar-xl"
+                                src="{{ !empty($basicinfo->employee_photo) ? url('upload/staffprofile/' . $basicinfo->employee_photo) : url('upload/no_image.jpg') }}"
+                                alt="Card image cap" width="47"
                                 height="52">
                         </td>
                     </tr>
@@ -530,7 +544,7 @@ document.write(currentDate);
         <table>
             <tbody>
                 <tr>
-                    <th colspan="6" bgcolor="#AAC6FF">Spouse Information</th>
+                    <th colspan="6" bgcolor="#84dc86">Spouse Information</th>
                 </tr>
                 <tr>
                     <th>Name of Spouse</th>
@@ -548,13 +562,13 @@ document.write(currentDate);
                         <td>{{ $item->professions->profession_name }}</td>
                         <td>Village: {{ $item->nominee_permanent_village }},
                             Postoffice: {{ $item->nominee_permanent_post }},
-                            Upazilla: {{ $item->nominee_permanent_upazilla_id }},
-                            District: {{ $item->nominee_permanent_district_id }},
+                            Upazilla: {{ $item->nominee_permanent_upazilla_id ?? '' }},
+                            District: {{ $item->nominee_permanent_district_id ?? '' }},
                         </td>
                         <td>Village: {{ $item->nominee_permanent_village }},
                             Postoffice: {{ $item->nominee_permanent_post }},
-                            Upazilla: {{ $item->nominee_permanent_upazilla_id }},
-                            District: {{ $item->nominee_permanent_district_id }},
+                            Upazilla: {{ $item->nominee_permanent_upazilla_id ?? '' }},
+                            District: {{ $item->nominee_permanent_district_id ?? '' }},
                         </td>
                         </td>
                     </tr>
@@ -566,7 +580,7 @@ document.write(currentDate);
         <table>
             <tbody>
                 <tr>
-                    <th colspan="5" bgcolor="#AAC6FF">Child Information</th>
+                    <th colspan="5" bgcolor="#84dc86">Child Information</th>
                 </tr>
                 <tr>
                     <th>Name of Child</th>
@@ -597,7 +611,7 @@ document.write(currentDate);
         &nbsp;<table>
             <tbody>
                 <tr>
-                    <th colspan="5" bgcolor="#AAC6FF">Brother and Sister Information</th>
+                    <th colspan="5" bgcolor="#84dc86">Brother and Sister Information</th>
                 </tr>
                 <tr>
                     <th>Name</th>
@@ -609,7 +623,7 @@ document.write(currentDate);
                 @foreach ($fbs as $key => $item)
                     <tr>
                         <td>{{ $item->brother_sister_name }}</td>
-                        <td>{{ $item->relation->relation_name?? '' }}</td>
+                        <td>{{ $item->relation->relation_name ?? '' }}</td>
                         {{-- <td>{{ $item->email }}</td> --}}
                         <td>{{ $item->professions->profession_name ?? '' }}</td>
                         <td>{{ $item->depend }}</td>
@@ -627,7 +641,7 @@ document.write(currentDate);
         <table>
             <tbody>
                 <tr>
-                    <th colspan="7" bgcolor="#AAC6FF">Relative in TMSS</th>
+                    <th colspan="7" bgcolor="#84dc86">Relative in TMSS</th>
                 </tr>
                 <tr>
                     <th>ID</th>
@@ -646,7 +660,7 @@ document.write(currentDate);
         &nbsp;<table>
             <tbody>
                 <tr>
-                    <th colspan="9" bgcolor="#AAC6FF">Reference Information</th>
+                    <th colspan="9" bgcolor="#84dc86">Reference Information</th>
                 </tr>
                 <tr>
                     <th>Referance Person</th>
@@ -662,11 +676,11 @@ document.write(currentDate);
             </tbody>
         </table>
         <br>
-{{--
+        {{--
         &nbsp;<table>
             <tbody>
                 <tr>
-                    <th colspan="6" bgcolor="#AAC6FF">Personal File Check List</th>
+                    <th colspan="6" bgcolor="#84dc86">Personal File Check List</th>
                 </tr>
                 <tr>
                     <th>File/Document</th>

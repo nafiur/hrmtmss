@@ -18,8 +18,8 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">Search Employee</h3>
-                <a href="" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i
-                        class="fa fa-plus-circle"> Add New Experience </i></a> <br> <br>
+                {{-- <a href="" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i
+                        class="fa fa-plus-circle"> Add New Experience </i></a> <br> <br> --}}
             </div>
 
             <div class="mb-5 block-content">

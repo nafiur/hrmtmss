@@ -29,12 +29,12 @@
                     <thead>
                         <tr>
                             <th width="10%">Sl</th>
-                            <th>Report Title</th>
+                            <th width="50%">Report Title</th>
                             {{-- <th>Name English</th>  --}}
-                            <th width="20%">Report Description</th>
+                            {{-- <th width="20%">Report Description</th> --}}
                             {{-- <th width="10%">Download</th> --}}
                             {{-- <th width="5%">Doc</th> --}}
-                            <th width="20%">Action</th>
+                            <th width="30%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,14 +43,14 @@
                                 <td> {{ $key + 1 }} </td>
                                 {{-- <td> {{ $item->name }} </td>  --}}
                                 <td> {{ $item->report_title }} </td>
-                                <td> {{ $item->report_description }} </td>
+                                {{-- <td> {{ $item->report_description }} </td> --}}
                                 {{-- <td> {{ $item->form_file }} </td>  --}}
 
                                 {{-- <td> {{ $item->name }} </td>  --}}
                                 <td>
-                                    <td> <a href="{{ asset('upload/reports/' . $item->report_file) }}"
+                                    <a href="{{ asset('upload/reports/' . $item->report_file) }}"
                                         class="btn btn-primary sm" title="Download" target="_blank" rel="noopener"> <i
-                                            class="fas fa-file-download"></i></a> </td>
+                                            class="fas fa-file-download"></i></a>
                                     {{-- <a href="{{ asset('upload/downloads/'. $item->form_file) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a> --}}
                                     @if (Auth::user()->can('report.show'))
                                         <a href="{{ route('report.show', $item->id) }}" class="btn btn-info sm"

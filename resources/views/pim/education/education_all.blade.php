@@ -17,9 +17,9 @@
         </nav>
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Employee Info</h3>
+                <h3 class="block-title">Employee Education Info</h3>
                 <a href="{{ route('add.education') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
-                    style="float:right;"><i class="fa fa-plus-circle"> Add New Employee </i></a> <br> <br>
+                    style="float:right;"><i class="fa fa-plus-circle"> Add New Education </i></a> <br> <br>
             </div>
             <div class="mb-5 block-content">
                 {{-- <h4 class="card-title">Employee Qualification All Data {{ $education->count() }} </h4> --}}
@@ -43,9 +43,9 @@
                                 <td> {{ $key + 1 }} </td>
                                 {{-- <td> {{ $item['domains']['name']  }}</td>  --}}
                                 <td> {{ $item->employee_id }} </td>
-                                <td> {{ $item->basicinfo->name }}</td>
+                                <td> {{ $item->basicinfo->name ??''}}</td>
                                 {{-- <td> {{ $item['basicinfos']['name'] ?? '' }} </td> --}}
-                                <td> {{ $item->examname->name}} </td>
+                                <td> {{ $item->examname->name ??''}} </td>
                                 {{-- <td> {{ $item->designation_id }} </td> --}}
                                 {{-- <td> {{ $item['basicinfo']['name'] ?? '' }} </td> --}}
                                 {{-- <td> {{ $item['domain']['name'] ?? '' }} </td> --}}

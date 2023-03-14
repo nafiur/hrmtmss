@@ -45,7 +45,7 @@
                                 <td> {{ $key + 1 }} </td>
                                 {{-- <td> {{ $item['domains']['name']  }}</td>  --}}
                                 <td> {{ $item->employee_id }} </td>
-                                <td> {{ $item->basicinfo->name }}</td>
+                                <td> {{ $item->basicinfo->name ??'' }}</td>
                                 {{-- <td> {{ $item['basicinfos']['name'] ?? '' }} </td> --}}
                                 <td> {{ $item->training_name }} </td>
                                 {{-- <td> {{ $item->designation_id }} </td> --}}

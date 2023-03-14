@@ -89,188 +89,188 @@ Route::controller(UserManagementController::class)->group(function () {
 });
 // Sector Setup
 Route::controller(SectorController::class)->group(function () {
-    Route::get('/sector/all', 'SectorAll')->name('sector.all')->middleware('permission:sector.all');
-    Route::get('/sector/add', 'SectorAdd')->name('sector.add')->middleware('permission:sector.add');
-    Route::post('/sector/store', 'SectorStore')->name('sector.store');
-    Route::get('/sector/edit/{id}', 'SectorEdit')->name('sector.edit');
-    Route::post('/sector/update', 'SectorUpdate')->name('sector.update');
-    Route::get('/sector/delete/{id}', 'SectorDelete')->name('sector.delete')->middleware('permission:sector.delete');
+    Route::get('/setup/sector/all', 'SectorAll')->name('sector.all')->middleware('permission:sector.all');
+    Route::get('/setup/sector/add', 'SectorAdd')->name('sector.add')->middleware('permission:sector.add');
+    Route::post('/setup/sector/store', 'SectorStore')->name('sector.store');
+    Route::get('/setup/sector/edit/{id}', 'SectorEdit')->name('sector.edit');
+    Route::post('/setup/sector/update', 'SectorUpdate')->name('sector.update');
+    Route::get('/setup/sector/delete/{id}', 'SectorDelete')->name('sector.delete')->middleware('permission:sector.delete');
 
 });
 
 // Domain Setup
 Route::controller(DomainController::class)->group(function () {
-    Route::get('/domain/all', 'DomainAll')->name('domain.all')->middleware('permission:domain.all');
-    Route::get('/domain/add', 'DomainAdd')->name('domain.add')->middleware('permission:domain.add');
-    Route::post('/domain/store', 'DomainStore')->name('domain.store')->middleware('permission:domain.store');
-    Route::get('/domain/edit/{id}', 'DomainEdit')->name('domain.edit')->middleware('permission:domain.edit');
-    Route::post('/domain/update', 'DomainUpdate')->name('domain.update')->middleware('permission:domain.update');
-    Route::get('/domain/delete/{id}', 'DomainDelete')->name('domain.delete')->middleware('permission:domain.delete');
+    Route::get('/setup/domain/all', 'DomainAll')->name('domain.all')->middleware('permission:domain.all');
+    Route::get('/setup/domain/add', 'DomainAdd')->name('domain.add')->middleware('permission:domain.add');
+    Route::post('/setup/domain/store', 'DomainStore')->name('domain.store')->middleware('permission:domain.store');
+    Route::get('/setup/domain/edit/{id}', 'DomainEdit')->name('domain.edit')->middleware('permission:domain.edit');
+    Route::post('/setup/domain/update', 'DomainUpdate')->name('domain.update')->middleware('permission:domain.update');
+    Route::get('/setup/domain/delete/{id}', 'DomainDelete')->name('domain.delete')->middleware('permission:domain.delete');
 
 });
 
 // Designation Setup
 Route::controller(DesignationController::class)->group(function () {
-    Route::get('/designation/all', 'DesignationAll')->name('designation.all')->middleware('permission:designation.all');
-    Route::get('/designation/add', 'DesignationAdd')->name('designation.add')->middleware('permission:designation.add');
-    Route::post('/designation/store', 'DesignationStore')->name('designation.store')->middleware('permission:designation.store');
-    Route::get('/designation/edit/{id}', 'DesignationEdit')->name('designation.edit')->middleware('permission:designation.edit');
-    Route::post('/designation/update', 'DesignationUpdate')->name('designation.update')->middleware('permission:designation.update');
-    Route::get('/designation/delete/{id}', 'DesignationDelete')->name('designation.delete')->middleware('permission:designation.delete');
+    Route::get('/setup/designation/all', 'DesignationAll')->name('designation.all')->middleware('permission:designation.all');
+    Route::get('/setup/designation/add', 'DesignationAdd')->name('designation.add')->middleware('permission:designation.add');
+    Route::post('/setup/designation/store', 'DesignationStore')->name('designation.store')->middleware('permission:designation.store');
+    Route::get('/setup/designation/edit/{id}', 'DesignationEdit')->name('designation.edit')->middleware('permission:designation.edit');
+    Route::post('/setup/designation/update', 'DesignationUpdate')->name('designation.update')->middleware('permission:designation.update');
+    Route::get('/setup/designation/delete/{id}', 'DesignationDelete')->name('designation.delete')->middleware('permission:designation.delete');
 
 });
 
 // Divission Setup
 Route::controller(DivisionController::class)->group(function () {
-    Route::get('/division/all', 'DivisionAll')->name('division.all');
-    Route::get('/division/add', 'DivisionAdd')->name('division.add');
-    Route::post('/division/store', 'DivisionStore')->name('division.store');
-    Route::get('/division/edit/{id}', 'DivisionEdit')->name('division.edit');
-    Route::post('/division/update', 'DivisionUpdate')->name('division.update');
-    Route::get('/division/delete/{id}', 'DivisionDelete')->name('division.delete');
+    Route::get('/setup/division/all', 'DivisionAll')->name('division.all');
+    Route::get('/setup/division/add', 'DivisionAdd')->name('division.add');
+    Route::post('/setup/division/store', 'DivisionStore')->name('division.store');
+    Route::get('/setup/division/edit/{id}', 'DivisionEdit')->name('division.edit');
+    Route::post('/setup/division/update', 'DivisionUpdate')->name('division.update');
+    Route::get('/setup/division/delete/{id}', 'DivisionDelete')->name('division.delete');
 
 });
 
 // District Setup
 Route::controller(DistrictController::class)->group(function () {
-    Route::get('/district/all', 'DistrictAll')->name('district.all');
-    Route::get('/district/add', 'DistrictAdd')->name('district.add');
-    Route::post('/district/store', 'DistrictStore')->name('district.store');
-    Route::get('/district/edit/{id}', 'DistrictEdit')->name('district.edit');
-    Route::post('/district/update', 'DistrictUpdate')->name('district.update');
-    Route::get('/district/delete/{id}', 'DistrictDelete')->name('district.delete');
+    Route::get('/setup/district/all', 'DistrictAll')->name('district.all');
+    Route::get('/setup/district/add', 'DistrictAdd')->name('district.add');
+    Route::post('/setup/district/store', 'DistrictStore')->name('district.store');
+    Route::get('/setup/district/edit/{id}', 'DistrictEdit')->name('district.edit');
+    Route::post('/setup/district/update', 'DistrictUpdate')->name('district.update');
+    Route::get('/setup/district/delete/{id}', 'DistrictDelete')->name('district.delete');
 
 });
 
 // Upazilla Setup
 Route::controller(UpazillaController::class)->group(function () {
-    Route::get('/upazilla/all', 'UpazillaAll')->name('upazilla.all');
-    Route::get('/upazilla/add', 'UpazillaAdd')->name('upazilla.add');
-    Route::post('/upazilla/store', 'UpazillaStore')->name('upazilla.store');
-    Route::get('/upazilla/edit/{id}', 'UpazillaEdit')->name('upazilla.edit');
-    Route::post('/upazilla/update', 'UpazillaUpdate')->name('upazilla.update');
-    Route::get('/upazilla/delete/{id}', 'UpazillaDelete')->name('upazilla.delete');
+    Route::get('/setup/upazilla/all', 'UpazillaAll')->name('upazilla.all');
+    Route::get('/setup/upazilla/add', 'UpazillaAdd')->name('upazilla.add');
+    Route::post('/setup/upazilla/store', 'UpazillaStore')->name('upazilla.store');
+    Route::get('/setup/upazilla/edit/{id}', 'UpazillaEdit')->name('upazilla.edit');
+    Route::post('/setup/upazilla/update', 'UpazillaUpdate')->name('upazilla.update');
+    Route::get('/setup/upazilla/delete/{id}', 'UpazillaDelete')->name('upazilla.delete');
 
 });
 
 // BloodGroup Setup
 Route::controller(BloodGroupController::class)->group(function () {
-    Route::get('/bloodgroup/all', 'BloodGroupAll')->name('bloodgroup.all');
-    Route::get('/bloodgroup/add', 'BloodGroupAdd')->name('bloodgroup.add');
-    Route::post('/bloodgroup/store', 'BloodGroupStore')->name('bloodgroup.store');
-    Route::get('/bloodgroup/edit/{id}', 'BloodGroupEdit')->name('bloodgroup.edit');
-    Route::post('/bloodgroup/update', 'BloodGroupUpdate')->name('bloodgroup.update');
-    Route::get('/bloodgroup/delete/{id}', 'BloodGroupDelete')->name('bloodgroup.delete');
+    Route::get('/setup/bloodgroup/all', 'BloodGroupAll')->name('bloodgroup.all');
+    Route::get('/setup/bloodgroup/add', 'BloodGroupAdd')->name('bloodgroup.add');
+    Route::post('/setup/bloodgroup/store', 'BloodGroupStore')->name('bloodgroup.store');
+    Route::get('/setup/bloodgroup/edit/{id}', 'BloodGroupEdit')->name('bloodgroup.edit');
+    Route::post('/setup/bloodgroup/update', 'BloodGroupUpdate')->name('bloodgroup.update');
+    Route::get('/setup/bloodgroup/delete/{id}', 'BloodGroupDelete')->name('bloodgroup.delete');
 
 });
 
 // Department Setup
 Route::controller(DepartmentController::class)->group(function () {
-    Route::get('/department/all', 'DepartmentAll')->name('department.all');
-    Route::get('/department/add', 'DepartmentAdd')->name('department.add');
-    Route::post('/department/store', 'DepartmentStore')->name('department.store');
-    Route::get('/department/edit/{id}', 'DepartmentEdit')->name('department.edit');
-    Route::post('/department/update', 'DepartmentUpdate')->name('department.update');
-    Route::get('/department/delete/{id}', 'DepartmentDelete')->name('department.delete');
+    Route::get('/setup/department/all', 'DepartmentAll')->name('department.all');
+    Route::get('/setup/department/add', 'DepartmentAdd')->name('department.add');
+    Route::post('/setup/department/store', 'DepartmentStore')->name('department.store');
+    Route::get('/setup/department/edit/{id}', 'DepartmentEdit')->name('department.edit');
+    Route::post('/setup/department/update', 'DepartmentUpdate')->name('department.update');
+    Route::get('/setup/department/delete/{id}', 'DepartmentDelete')->name('department.delete');
 
 });
 
 // Educational Qualification Setup
 Route::controller(EducationalQualificationController::class)->group(function () {
-    Route::get('/educationalqualification/all', 'EducationalQualificationAll')->name('educationalqualification.all');
-    Route::get('/educationalqualification/add', 'EducationalQualificationAdd')->name('educationalqualification.add');
-    Route::post('/educationalqualification/store', 'EducationalQualificationStore')->name('educationalqualification.store');
-    Route::get('/educationalqualification/edit/{id}', 'EducationalQualificationEdit')->name('educationalqualification.edit');
-    Route::post('/educationalqualification/update', 'EducationalQualificationUpdate')->name('educationalqualification.update');
-    Route::get('/educationalqualification/delete/{id}', 'EducationalQualificationDelete')->name('educationalqualification.delete');
+    Route::get('/setup/educationalqualification/all', 'EducationalQualificationAll')->name('educationalqualification.all');
+    Route::get('/setup/educationalqualification/add', 'EducationalQualificationAdd')->name('educationalqualification.add');
+    Route::post('/setup/educationalqualification/store', 'EducationalQualificationStore')->name('educationalqualification.store');
+    Route::get('/setup/educationalqualification/edit/{id}', 'EducationalQualificationEdit')->name('educationalqualification.edit');
+    Route::post('/setup/educationalqualification/update', 'EducationalQualificationUpdate')->name('educationalqualification.update');
+    Route::get('/setup/educationalqualification/delete/{id}', 'EducationalQualificationDelete')->name('educationalqualification.delete');
 
 });
 
 // Employee Type Setup
 Route::controller(EmployeeTypeController::class)->group(function () {
-    Route::get('/employeetype/all', 'EmployeeTypeAll')->name('employeetype.all');
-    Route::get('/employeetype/add', 'EmployeeTypeAdd')->name('employeetype.add');
-    Route::post('/employeetype/store', 'EmployeeTypeStore')->name('employeetype.store');
-    Route::get('/employeetype/edit/{id}', 'EmployeeTypeEdit')->name('employeetype.edit');
-    Route::post('/employeetype/update', 'EmployeeTypeUpdate')->name('employeetype.update');
-    Route::get('/employeetype/delete/{id}', 'EmployeeTypeDelete')->name('employeetype.delete');
+    Route::get('/setup/employeetype/all', 'EmployeeTypeAll')->name('employeetype.all');
+    Route::get('/setup/employeetype/add', 'EmployeeTypeAdd')->name('employeetype.add');
+    Route::post('/setup/employeetype/store', 'EmployeeTypeStore')->name('employeetype.store');
+    Route::get('/setup/employeetype/edit/{id}', 'EmployeeTypeEdit')->name('employeetype.edit');
+    Route::post('/setup/employeetype/update', 'EmployeeTypeUpdate')->name('employeetype.update');
+    Route::get('/setup/employeetype/delete/{id}', 'EmployeeTypeDelete')->name('employeetype.delete');
 
 });
 
 // Gender Type Setup
 Route::controller(GenderController::class)->group(function () {
-    Route::get('/gender/all', 'GenderAll')->name('gender.all');
-    Route::get('/gender/add', 'GenderAdd')->name('gender.add');
-    Route::post('/gender/store', 'GenderStore')->name('gender.store');
-    Route::get('/gender/edit/{id}', 'GenderEdit')->name('gender.edit');
-    Route::post('/gender/update', 'GenderUpdate')->name('gender.update');
-    Route::get('/gender/delete/{id}', 'GenderDelete')->name('gender.delete');
+    Route::get('/setup/gender/all', 'GenderAll')->name('gender.all');
+    Route::get('/setup/gender/add', 'GenderAdd')->name('gender.add');
+    Route::post('/setup/gender/store', 'GenderStore')->name('gender.store');
+    Route::get('/setup/gender/edit/{id}', 'GenderEdit')->name('gender.edit');
+    Route::post('/setup/gender/update', 'GenderUpdate')->name('gender.update');
+    Route::get('/setup/gender/delete/{id}', 'GenderDelete')->name('gender.delete');
 
 });
 
 // Job Status Setup
 Route::controller(JobStatusController::class)->group(function () {
-    Route::get('/jobstatus/all', 'JobStatusAll')->name('jobstatus.all');
-    Route::get('/jobstatus/add', 'JobStatusAdd')->name('jobstatus.add');
-    Route::post('/jobstatus/store', 'JobStatusStore')->name('jobstatus.store');
-    Route::get('/jobstatus/edit/{id}', 'JobStatusEdit')->name('jobstatus.edit');
-    Route::post('/jobstatus/update', 'JobStatusUpdate')->name('jobstatus.update');
-    Route::get('/jobstatus/delete/{id}', 'JobStatusDelete')->name('jobstatus.delete');
+    Route::get('/setup/jobstatus/all', 'JobStatusAll')->name('jobstatus.all');
+    Route::get('/setup/jobstatus/add', 'JobStatusAdd')->name('jobstatus.add');
+    Route::post('/setup/jobstatus/store', 'JobStatusStore')->name('jobstatus.store');
+    Route::get('/setup/jobstatus/edit/{id}', 'JobStatusEdit')->name('jobstatus.edit');
+    Route::post('/setup/jobstatus/update', 'JobStatusUpdate')->name('jobstatus.update');
+    Route::get('/setup/jobstatus/delete/{id}', 'JobStatusDelete')->name('jobstatus.delete');
 
 });
 
 // Marital Status Setup
 Route::controller(MaritalStatusController::class)->group(function () {
-    Route::get('/maritalstatus/all', 'MaritalStatusAll')->name('maritalstatus.all');
-    Route::get('/maritalstatus/add', 'MaritalStatusAdd')->name('maritalstatus.add');
-    Route::post('/maritalstatus/store', 'MaritalStatusStore')->name('maritalstatus.store');
-    Route::get('/maritalstatus/edit/{id}', 'MaritalStatusEdit')->name('maritalstatus.edit');
-    Route::post('/maritalstatus/update', 'MaritalStatusUpdate')->name('maritalstatus.update');
-    Route::get('/maritalstatus/delete/{id}', 'MaritalStatusDelete')->name('maritalstatus.delete');
+    Route::get('/setup/maritalstatus/all', 'MaritalStatusAll')->name('maritalstatus.all');
+    Route::get('/setup/maritalstatus/add', 'MaritalStatusAdd')->name('maritalstatus.add');
+    Route::post('/setup/maritalstatus/store', 'MaritalStatusStore')->name('maritalstatus.store');
+    Route::get('/setup/maritalstatus/edit/{id}', 'MaritalStatusEdit')->name('maritalstatus.edit');
+    Route::post('/setup/maritalstatus/update', 'MaritalStatusUpdate')->name('maritalstatus.update');
+    Route::get('/setup/maritalstatus/delete/{id}', 'MaritalStatusDelete')->name('maritalstatus.delete');
 
 });
 
 // Religion Setup
 Route::controller(ReligionController::class)->group(function () {
-    Route::get('/religion/all', 'ReligionAll')->name('religion.all');
-    Route::get('/religion/add', 'ReligionAdd')->name('religion.add');
-    Route::post('/religion/store', 'ReligionStore')->name('religion.store');
-    Route::get('/religion/edit/{id}', 'ReligionEdit')->name('religion.edit');
-    Route::post('/religion/update', 'ReligionUpdate')->name('religion.update');
-    Route::get('/religion/delete/{id}', 'ReligionDelete')->name('religion.delete');
+    Route::get('/setup/religion/all', 'ReligionAll')->name('religion.all');
+    Route::get('/setup/religion/add', 'ReligionAdd')->name('religion.add');
+    Route::post('/setup/religion/store', 'ReligionStore')->name('religion.store');
+    Route::get('/setup/religion/edit/{id}', 'ReligionEdit')->name('religion.edit');
+    Route::post('/setup/religion/update', 'ReligionUpdate')->name('religion.update');
+    Route::get('/setup/religion/delete/{id}', 'ReligionDelete')->name('religion.delete');
 
 });
 
 // Zone Setup
 Route::controller(ZoneController::class)->group(function () {
-    Route::get('/zone/all', 'ZoneAll')->name('zone.all');
-    Route::get('/zone/add', 'ZoneAdd')->name('zone.add');
-    Route::post('/zone/store', 'ZoneStore')->name('zone.store');
-    Route::get('/zone/edit/{id}', 'ZoneEdit')->name('zone.edit');
-    Route::post('/zone/update', 'ZoneUpdate')->name('zone.update');
-    Route::get('/zone/delete/{id}', 'ZoneDelete')->name('zone.delete');
+    Route::get('/setup/zone/all', 'ZoneAll')->name('zone.all');
+    Route::get('/setup/zone/add', 'ZoneAdd')->name('zone.add');
+    Route::post('/setup/zone/store', 'ZoneStore')->name('zone.store');
+    Route::get('/setup/zone/edit/{id}', 'ZoneEdit')->name('zone.edit');
+    Route::post('/setup/zone/update', 'ZoneUpdate')->name('zone.update');
+    Route::get('/setup/zone/delete/{id}', 'ZoneDelete')->name('zone.delete');
 
 });
 
 // Area Setup
 Route::controller(AreaController::class)->group(function () {
-    Route::get('/area/all', 'AreaAll')->name('area.all');
-    Route::get('/area/add', 'AreaAdd')->name('area.add');
-    Route::post('/area/store', 'AreaStore')->name('area.store');
-    Route::get('/area/edit/{id}', 'AreaEdit')->name('area.edit');
-    Route::post('/area/update', 'AreaUpdate')->name('area.update');
-    Route::get('/area/delete/{id}', 'AreaDelete')->name('area.delete');
+    Route::get('/setup/area/all', 'AreaAll')->name('area.all');
+    Route::get('/setup/area/add', 'AreaAdd')->name('area.add');
+    Route::post('/setup/area/store', 'AreaStore')->name('area.store');
+    Route::get('/setup/area/edit/{id}', 'AreaEdit')->name('area.edit');
+    Route::post('/setup/area/update', 'AreaUpdate')->name('area.update');
+    Route::get('/setup/area/delete/{id}', 'AreaDelete')->name('area.delete');
 
 });
 
 // Branch Setup
 Route::controller(BranchController::class)->group(function () {
-    Route::get('/branch/all', 'BranchAll')->name('branch.all');
-    Route::get('/branch/add', 'BranchAdd')->name('branch.add');
-    Route::post('/branch/store', 'BranchStore')->name('branch.store');
-    Route::get('/branch/edit/{id}', 'BranchEdit')->name('branch.edit');
-    Route::post('/branch/update', 'BranchUpdate')->name('branch.update');
-    Route::get('/branch/delete/{id}', 'BranchDelete')->name('branch.delete');
+    Route::get('/setup/branch/all', 'BranchAll')->name('branch.all');
+    Route::get('/setup/branch/add', 'BranchAdd')->name('branch.add');
+    Route::post('/setup/branch/store', 'BranchStore')->name('branch.store');
+    Route::get('/setup/branch/edit/{id}', 'BranchEdit')->name('branch.edit');
+    Route::post('/setup/branch/update', 'BranchUpdate')->name('branch.update');
+    Route::get('/setup/branch/delete/{id}', 'BranchDelete')->name('branch.delete');
 
 });
 
@@ -329,12 +329,12 @@ Route::controller(ReportsController::class)->group(function () {
 
 // Usermanagement Setup
 Route::controller(UserManagementController::class)->group(function () {
-    Route::get('/usermanagement/all', 'UserManagementAll')->name('usermanagement.all');
-    Route::get('/usermanagement/add', 'UserManagementAdd')->name('usermanagement.add');
-    Route::post('/usermanagement/store', 'UserManagementStore')->name('usermanagement.store');
-    Route::get('/usermanagement/edit/{id}', 'UserManagementEdit')->name('usermanagement.edit');
-    Route::post('/usermanagement/update', 'UserManagementUpdate')->name('usermanagement.update');
-    Route::get('/usermanagement/delete/{id}', 'UserManagementDelete')->name('usermanagement.delete');
+    Route::get('/controlpanel/usermanagement/all', 'UserManagementAll')->name('usermanagement.all');
+    Route::get('/controlpanel/usermanagement/add', 'UserManagementAdd')->name('usermanagement.add');
+    Route::post('/controlpanel/usermanagement/store', 'UserManagementStore')->name('usermanagement.store');
+    Route::get('/controlpanel/usermanagement/edit/{id}', 'UserManagementEdit')->name('usermanagement.edit');
+    Route::post('/controlpanel/usermanagement/update', 'UserManagementUpdate')->name('usermanagement.update');
+    Route::get('/controlpanel/usermanagement/delete/{id}', 'UserManagementDelete')->name('usermanagement.delete');
 
 });
 
@@ -618,7 +618,7 @@ Route::controller(ExperienceController::class)->group(function(){
 ///PIM Education All Route
 Route::controller(FamilyBrotherSisterController::class)->group(function(){
 
-    Route::get('/pim/all/brothersister','AllFamilyBrotherSister')->name('all.familybrothersister');
+    Route::get('/pim/all/familybrothersister','AllFamilyBrotherSister')->name('all.familybrothersister');
     Route::get('/pim/add/familybrothersister','AddFamilyBrotherSister')->name('add.familybrothersister');
     Route::post('/pim/store/familybrothersister','StoreFamilyBrotherSister')->name('familybrothersister.store');
     Route::get('/pim/show/familybrothersister/{id}', 'ShowFamilyBrotherSister')->name('show.familybrothersister');
@@ -630,7 +630,7 @@ Route::controller(FamilyBrotherSisterController::class)->group(function(){
 ///PIM Education All Route
 Route::controller(FamilyChildController::class)->group(function(){
 
-    Route::get('/pim/all/child','AllFamilyChild')->name('all.familychild');
+    Route::get('/pim/all/familychild','AllFamilyChild')->name('all.familychild');
     Route::get('/pim/add/familychild','AddFamilyChild')->name('add.familychild');
     Route::post('/pim/store/familychild','StoreFamilyChild')->name('familychild.store');
     Route::get('/pim/show/familychild/{id}', 'ShowFamilyChild')->name('show.familychild');
